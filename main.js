@@ -1,5 +1,4 @@
 const advancedDetermine = require("@hugoalh/advanced-determine"),
-	crypto = require("crypto"),
 	ghactionCore = require("@actions/core"),
 	ghactionGitHub = require("@actions/github"),
 	moreMethod = require("@hugoalh/more-method"),
@@ -120,7 +119,7 @@ function importArgument(name) {
 		ghactionCore.info(`Webhook Event Name: ${webhook.eventName}`);
 		ghactionCore.info(`Network Request Body: ${payload}`);
 		let response = await nodeFetch(
-			`https://jsonplaceholder.typicode.com/posts/${crypto.randomInt(0, 100) + 1}`,
+			`https://jsonplaceholder.typicode.com/posts`,
 			{
 				follow: 5,
 				headers: {
