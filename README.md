@@ -177,7 +177,7 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-        uses: "hugoalh/trigger-ifttt-webhoook-applet-ghaction@v4.0.0"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.0"
         with:
           # dryrun:
           webhook: "${{secrets.IFTTT_WEBHOOK_KEY}}/greeting"

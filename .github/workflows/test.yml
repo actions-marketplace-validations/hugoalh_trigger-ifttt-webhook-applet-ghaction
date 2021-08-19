@@ -44,20 +44,20 @@ jobs:
     name: "Default"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhoook-applet-ghaction@main"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
         with:
           dryrun: true
   nodejs:
     name: "NodeJS"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhoook-applet-ghaction/use/nodejs@main"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
         with:
           dryrun: true
   docker:
     name: "Docker"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhoook-applet-ghaction/use/docker@main"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/docker@main"
         with:
           dryrun: true
