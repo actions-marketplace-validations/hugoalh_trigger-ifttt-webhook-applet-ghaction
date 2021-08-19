@@ -1,35 +1,34 @@
 {
-	"name": "githubaction.sendtoifttt",
-	"version": "3.1.2",
-	"description": "A GitHub action to send data to IFTTT webhook applet.",
+	"name": "trigger-ifttt-webhook-applet-ghaction",
+	"version": "4.0.0",
+	"description": "A GitHub action to trigger IFTTT webhook applet.",
 	"keywords": [
 		"github-action",
 		"ifttt",
-		"send",
+		"trigger",
 		"webhook"
 	],
-	"homepage": "https://github.com/hugoalh/GitHubAction.SendToIFTTT#readme",
+	"homepage": "https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction#readme",
 	"bugs": {
-		"url": "https://github.com/hugoalh/GitHubAction.SendToIFTTT/issues"
+		"url": "https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/issues"
 	},
 	"license": "MIT",
 	"author": "hugoalh",
 	"main": "main.js",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/hugoalh/GitHubAction.SendToIFTTT.git"
+		"url": "git+https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction.git"
 	},
 	"dependencies": {
-		"@actions/core": "^1.2.6",
+		"@actions/core": "^1.4.0",
 		"@actions/github": "^4.0.0",
 		"@hugoalh/advanced-determine": "^4.2.0",
-		"escape-string-regexp": "^4.0.0",
-		"flat": "^5.0.2",
+		"@hugoalh/more-method": "^0.4.1",
 		"node-fetch": "^2.6.1"
 	},
 	"engines": {
-		"node": ">= 12.13.0",
-		"npm": ">= 6.12.0"
+		"node": ">= 14.15.0",
+		"npm": ">= 6.14.8"
 	},
 	"private": true
 }

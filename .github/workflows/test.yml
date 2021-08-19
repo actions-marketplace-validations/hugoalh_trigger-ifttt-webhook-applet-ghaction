@@ -1,0 +1,63 @@
+# $<Schema>$ https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+name: "Test"
+on:
+  workflow_dispatch:
+    inputs:
+      webhook:
+        description: "{string} IFTTT webhook address; Must be a full URL or a mix of event name and key/token in format `<Key/Token>/<EventName>`."
+        required: false
+      replaceholder_list_external:
+        description: "{object} External list of the placeholder."
+        required: false
+        default: "{}"
+      replaceholder_prefix:
+        description: "{string} Prefix of the placeholder."
+        required: false
+        default: "%"
+      replaceholder_replaceundefined:
+        description: "{(boolean|null|string)} Replace undefined placeholder when placeholder is not in the list."
+        required: false
+        default: "false"
+      replaceholder_suffix:
+        description: "{string} Suffix of the placeholder."
+        required: false
+        default: "%"
+      replaceholder_typetransform:
+        description: "{boolean} Transform placeholder to the target value's type."
+        required: false
+        default: "true"
+      value_1:
+        description: "{string} IFTTT default ingredient namespace `value1`."
+        required: false
+      value_2:
+        description: "{string} IFTTT default ingredient namespace `value2`."
+        required: false
+      value_3:
+        description: "{string} IFTTT default ingredient namespace `value3`."
+        required: false
+      value_extra:
+        description: "{object} IFTTT default ingredient namespace `json-payload`."
+        required: false
+        default: "{}"
+jobs:
+  default:
+    name: "Default"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "hugoalh/trigger-ifttt-webhoook-applet@main"
+        with:
+          dryrun: true
+  nodejs:
+    name: "NodeJS"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "hugoalh/trigger-ifttt-webhoook-applet/use/nodejs@main"
+        with:
+          dryrun: true
+  docker:
+    name: "Docker"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "hugoalh/trigger-ifttt-webhoook-applet/use/docker@main"
+        with:
+          dryrun: true

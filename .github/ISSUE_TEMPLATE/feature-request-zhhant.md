@@ -1,9 +1,7 @@
 ---
-name: "功能要求"
+name: "功能要求（Markdown版）"
 about: "提出一個想法。"
-title: ""
-labels: "enhancement➕,unconfirm📋"
-assignees: ""
+labels: "➕enhancement,🔵unconfirm"
 ---
 > ### 建議內容列表
 >

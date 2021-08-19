@@ -1,145 +1,175 @@
-/*==================
-[GitHub Action] Send To IFTTT
-	Language:
-		NodeJS/12.13.0
-==================*/
 const advancedDetermine = require("@hugoalh/advanced-determine"),
-	githubAction = {
-		core: require("@actions/core"),
-		github: require("@actions/github")
-	},
-	jsonFlatten = require("flat").flatten,
-	nodeFetch = require("node-fetch"),
-	regexpEscape = require("escape-string-regexp");
+	crypto = require("crypto"),
+	ghactionCore = require("@actions/core"),
+	ghactionGitHub = require("@actions/github"),
+	moreMethod = require("@hugoalh/more-method"),
+	nodeFetch = require("node-fetch");
+/**
+ * @private
+ * @function importArgument
+ * @param {string} name
+ * @returns {string}
+ */
+function importArgument(name) {
+	ghactionCore.info(`Import argument \`${name}\`.`);
+	return ghactionCore.getInput(name);
+};
 (async () => {
-	githubAction.core.info(`Import workflow argument. ([GitHub Action] Send To IFTTT)`);
-	let input = {
-			value1: githubAction.core.getInput("value1"),
-			value2: githubAction.core.getInput("value2"),
-			value3: githubAction.core.getInput("value3")
-		},
-		variableSystem = {
-			join: githubAction.core.getInput("variable_join"),
-			prefix: githubAction.core.getInput("variable_prefix"),
-			suffix: githubAction.core.getInput("variable_suffix")
-		},
-		webhook = {
-			eventName: githubAction.core.getInput("webhook_eventname"),
-			key: githubAction.core.getInput("webhook_key")
+	let dryRun = moreMethod.stringParse(importArgument("dryrun"));
+	if (typeof dryRun !== "boolean") {
+		throw new TypeError(`Argument \`dryrun\` must be type of boolean!`);
+	};
+	let webhook = importArgument("webhook");
+	if (advancedDetermine.isString(webhook) === true) {
+		if (advancedDetermine.isStringSingleLine(webhook) !== true) {
+			throw new TypeError(`Argument \`webhook\` must be type of string (non-nullable)!`);
 		};
-	githubAction.core.info(`Analysis workflow argument. ([GitHub Action] Send To IFTTT)`);
-	if (advancedDetermine.isStringSingleLine(variableSystem.join, { allowWhitespace: false }) !== true) {
-		throw new TypeError(`Argument "variable_join" must be type of string (non-nullable)! ([GitHub Action] Send To IFTTT)`);
-	};
-	if (advancedDetermine.isStringSingleLine(variableSystem.prefix, { allowWhitespace: false }) !== true) {
-		throw new TypeError(`Argument "variable_prefix" must be type of string (non-nullable)! ([GitHub Action] Send To IFTTT)`);
-	};
-	if (advancedDetermine.isStringSingleLine(variableSystem.suffix, { allowWhitespace: false }) !== true) {
-		throw new TypeError(`Argument "variable_suffix" must be type of string (non-nullable)! ([GitHub Action] Send To IFTTT)`);
-	};
-	if (advancedDetermine.isStringSingleLine(webhook.eventName) !== true) {
-		throw new TypeError(`Argument "webhook_eventname" must be type of string (non-nullable)! ([GitHub Action] Send To IFTTT)`);
-	};
-	if (webhook.eventName.search(/[/\s]/gu) !== -1) {
-		throw new SyntaxError(`Argument "webhook_eventname"'s value is not match the require pattern! ([GitHub Action] Send To IFTTT)`);
+		if (webhook.search(/^https:\/\/maker\.ifttt\.com\/trigger\/[0-9_a-z]+\/with\/key\/[0-9_a-z]+$/giu) === 0) {
+			webhook = webhook.replace(/^https:\/\/maker\.ifttt\.com\/trigger\/(?<eventName>[0-9_a-z]+)\/with\/key\/(?<key>[0-9_a-z]+)$/giu, "$<key>/$<eventName>");
+			let [webhookKey, webhookEventName] = webhook.split("/");
+			webhook = {
+				eventName: webhookEventName,
+				key: webhookKey
+			};
+		} else if (webhook.search(/^[0-9_a-z]+\/[0-9_a-z]+$/giu) === 0) {
+			let [webhookKey, webhookEventName] = webhook.split("/");
+			webhook = {
+				eventName: webhookEventName,
+				key: webhookKey
+			};
+		} else {
+			throw new SyntaxError(`Argument \`webhook\`'s value is not match the require pattern!`);
+		};
+	} else {
+		let webhookEventName = importArgument("webhook_eventname"),
+			webhookKey = importArgument("webhook_key");
+		if (
+			advancedDetermine.isString(webhookEventName) !== true ||
+			advancedDetermine.isStringSingleLine(webhookEventName) !== true
+		) {
+			throw new TypeError(`Argument \`webhook_eventname\` must be type of string (non-nullable)!`);
+		};
+		if (webhookEventName.search(/^[0-9_a-z]+$/giu) !== 0) {
+			throw new SyntaxError(`Argument \`webhook_eventname\`'s value is not match the require pattern!`);
+		};
+		if (
+			advancedDetermine.isString(webhookKey) !== true ||
+			advancedDetermine.isStringSingleLine(webhookKey) !== true
+		) {
+			throw new TypeError(`Argument \`webhook_key\` must be type of string (non-nullable)!`);
+		};
+		if (webhookKey.search(/^[0-9_a-z]+$/giu) !== 0) {
+			throw new SyntaxError(`Argument \`webhook_key\`'s value is not match the require pattern!`);
+		};
+		webhook = {
+			eventName: webhookEventName,
+			key: webhookKey
+		};
 	};
 	if (advancedDetermine.isStringLowerCase(webhook.eventName) !== true) {
-		githubAction.core.warning(`Argument "webhook_eventname" is recommended to keep in lower case to prevent issue! ([GitHub Action] Send To IFTTT)`);
+		ghactionCore.warning(`IFTTT webhook event name is recommended to keep in lower case to prevent issue!`);
 	};
-	if (advancedDetermine.isStringSingleLine(webhook.key) !== true) {
-		throw new TypeError(`Argument "webhook_key" must be type of string (non-nullable)! ([GitHub Action] Send To IFTTT)`);
+	ghactionCore.setSecret(webhook.key);
+	let replaceholderConfig = {
+			prefix: importArgument("replaceholder_prefix"),
+			replaceUndefined: moreMethod.stringParse(importArgument("replaceholder_replaceundefined")),
+			suffix: importArgument("replaceholder_suffix"),
+			typeTransform: moreMethod.stringParse(importArgument("replaceholder_typetransform"))
+		},
+		replaceholderList = {
+			external: moreMethod.stringParse(importArgument("replaceholder_list_external")),
+			payload: ghactionGitHub.context.payload
+		};
+	if (advancedDetermine.isJSON(replaceholderList.external) === false) {
+		throw new TypeError(`Argument \`replaceholder_list_external\` must be type of JSON!`);
 	};
-	if (webhook.key.search(/[/\s]/gu) !== -1) {
-		throw new SyntaxError(`Argument "webhook_key"'s value is not match the require pattern! ([GitHub Action] Send To IFTTT)`);
+	if (typeof replaceholderConfig.replaceUndefined === "string") {
+		replaceholderConfig.replaceUndefined = replaceholderConfig.replaceUndefined.replace(/^\\/giu, "");
 	};
-	githubAction.core.info(`Import variable list. ([GitHub Action] Send To IFTTT)`);
-	variableSystem.list = {
-		external: githubAction.core.getInput(`variable_list_external`),
-		payload: githubAction.github.context.payload
+	let replaceholderService = new moreMethod.Replaceholder(replaceholderList, replaceholderConfig);
+	let data = {
+		value1: importArgument("value_1"),
+		value2: importArgument("value_2"),
+		value3: importArgument("value_3")
 	};
-	githubAction.core.info(`Analysis external variable list. ([GitHub Action] Send To IFTTT)`);
-	switch (advancedDetermine.isString(variableSystem.list.external)) {
-		case null:
-			githubAction.core.info(`External variable list is empty. ([GitHub Action] Send To IFTTT)`);
-			variableSystem.list.external = {};
-			break;
-		case true:
-			if (advancedDetermine.isStringifyJSON(variableSystem.list.external) === false) {
-				throw new TypeError(`Argument "variable_list_external" must be type of object JSON! ([GitHub Action] Send To IFTTT)`);
-			};
-			variableSystem.list.external = JSON.parse(variableSystem.list.external);
-			break;
-		case false:
-		default:
-			throw new TypeError(`Argument "variable_list_external" must be type of object JSON! ([GitHub Action] Send To IFTTT)`);
+	if (advancedDetermine.isString(data.value1) !== true) {
+		data.value1 = importArgument("value1");
 	};
-	githubAction.core.info(`Tokenize variable list. ([GitHub Action] Send To IFTTT)`);
-	variableSystem.list.external = jsonFlatten(
-		variableSystem.list.external,
-		{
-			delimiter: variableSystem.join
-		}
-	);
-	variableSystem.list.payload = jsonFlatten(
-		variableSystem.list.payload,
-		{
-			delimiter: variableSystem.join
-		}
-	);
-	githubAction.core.info(`Replace variable in the data. ([GitHub Action] Send To IFTTT)`);
-	function variableReplace(variableKey, variableValue) {
-		Object.keys(input).forEach((element) => {
-			input[element] = input[element].replace(variableKey, variableValue);
-		});
-		webhook.eventName = webhook.eventName.replace(variableKey, variableValue);
+	if (advancedDetermine.isString(data.value2) !== true) {
+		data.value2 = importArgument("value2");
 	};
-	Object.keys(variableSystem.list.payload).forEach((keyPayload) => {
-		variableReplace(
-			new RegExp(
-				regexpEscape(`${variableSystem.prefix}payload${variableSystem.join}${keyPayload}${variableSystem.suffix}`),
-				"gu"
-			),
-			variableSystem.list.payload[keyPayload]
+	if (advancedDetermine.isString(data.value3) !== true) {
+		data.value3 = importArgument("value3");
+	};
+	let dataExtra = moreMethod.stringParse(importArgument("value_extra"));
+	if (advancedDetermine.isJSON(dataExtra) === false) {
+		throw new TypeError(`Argument \`value_extra\` must be type of JSON!`);
+	};
+	ghactionCore.info(`Execute replaceholder service.`);
+	webhook.eventName = replaceholderService.replace(webhook.eventName);
+	data = replaceholderService.replace(data);
+	dataExtra = replaceholderService.replace(dataExtra);
+	if (
+		advancedDetermine.isString(webhook.eventName) !== true ||
+		advancedDetermine.isStringSingleLine(webhook.eventName) !== true
+	) {
+		throw new TypeError(`Argument \`webhook_eventname\` must be type of string (non-nullable)!`);
+	};
+	let payload = JSON.stringify(moreMethod.concatenate(data, dataExtra));
+	if (dryRun === true) {
+		ghactionCore.info(`Webhook Event Name: ${webhook.eventName}`);
+		ghactionCore.info(`Network Request Body: ${payload}`);
+		let response = await nodeFetch(
+			`https://jsonplaceholder.typicode.com/posts/${crypto.randomInt(0, 100) + 1}`,
+			{
+				follow: 5,
+				headers: {
+					"Content-Type": "application/json",
+					"User-Agent": "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0"
+				},
+				method: "POST",
+				redirect: "follow"
+			}
 		);
-	});
-	Object.keys(variableSystem.list.external).forEach((keyExternal) => {
-		variableReplace(
-			new RegExp(
-				regexpEscape(`${variableSystem.prefix}external${variableSystem.join}${keyExternal}${variableSystem.suffix}`),
-				"gu"
-			),
-			variableSystem.list.external[keyExternal]
-		);
-	});
-	githubAction.core.info(`Generate network request payload. ([GitHub Action] Send To IFTTT)`);
-	let requestPayload = JSON.stringify(input);
-	githubAction.core.debug(`Network Request Payload: ${requestPayload} ([GitHub Action] Send To IFTTT)`);
-	githubAction.core.info(`Send network request to IFTTT. ([GitHub Action] Send To IFTTT)`);
-	let response = await nodeFetch(
-		`https://maker.ifttt.com/trigger/${webhook.eventName}/with/key/${webhook.key}`,
-		{
-			body: requestPayload,
-			follow: 5,
-			headers: {
-				"Content-Type": "application/json",
-				"Content-Length": requestPayload.length,
-				"User-Agent": `NodeJS/${process.version.replace(/^v/giu, "")} node-fetch/2.6.1 GitHubAction.SendToIFTTT(@hugoalh)/3.1.2`
-			},
-			method: "POST",
-			redirect: "follow"
-		}
-	);
-	githubAction.core.info(`Receive network response from IFTTT. ([GitHub Action] Send To IFTTT)`);
-	if (response.status !== 200) {
-		githubAction.core.warning(`Receive status code ${response.status}! May cause error in the beyond. ([GitHub Action] Send To IFTTT)`);
-	};
-	let responseText = await response.text();
-	if (response.ok === true) {
-		githubAction.core.debug(`${response.status} ${responseText} ([GitHub Action] Send To IFTTT)`);
+		if (response.status !== 200) {
+			ghactionCore.warning(`Receive status code ${response.status}! May cause error in the beyond.`);
+		};
+		let responseText = await response.text();
+		if (response.ok === true) {
+			ghactionCore.info(`${response.status} ${responseText}`);
+		} else {
+			throw new Error(`${response.status} ${responseText}`);
+		};
 	} else {
-		throw new Error(`${response.status} ${responseText} ([GitHub Action] Send To IFTTT)`);
+		ghactionCore.debug(`Webhook Event Name: ${webhook.eventName}`);
+		ghactionCore.debug(`Network Request Body: ${payload}`);
+		ghactionCore.info(`Post network request to IFTTT.`);
+		let response = await nodeFetch(
+			`https://maker.ifttt.com/trigger/${webhook.eventName}/with/key/${webhook.key}`,
+			{
+				body: payload,
+				follow: 5,
+				headers: {
+					"Content-Type": "application/json",
+					"Content-Length": payload.length,
+					"User-Agent": "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0"
+				},
+				method: "POST",
+				redirect: "follow"
+			}
+		);
+		ghactionCore.info(`Receive network response from IFTTT.`);
+		if (response.status !== 200) {
+			ghactionCore.warning(`Receive status code ${response.status}! May cause error in the beyond.`);
+		};
+		let responseText = await response.text();
+		if (response.ok === true) {
+			ghactionCore.debug(`${response.status} ${responseText}`);
+		} else {
+			throw new Error(`${response.status} ${responseText}`);
+		};
 	};
 })().catch((error) => {
-	githubAction.core.error(error);
+	ghactionCore.error(error);
 	process.exit(1);
 });

@@ -1,12 +1,20 @@
-/*==================
-[GitHub Action] Send To IFTTT - Setup
-	Language:
-		NodeJS/12.13.0
-==================*/
 const childProcess = require("child_process");
-childProcess.execSync(
+childProcess.exec(
 	`npm install`,
 	{
-		cwd: __dirname
+		cwd: __dirname,
+		encoding: "utf8",
+		windowsHide: true
+	},
+	(error, stdout, stderr) => {
+		if (error) {
+			throw error;
+		};
+		if (stdout.length > 0) {
+			console.log(stdout);
+		};
+		if (stderr.length > 0) {
+			console.error(stderr);
+		};
 	}
 );

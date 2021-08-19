@@ -1,9 +1,7 @@
 ---
-name: "Feature Request"
+name: "Feature Request (Markdown Edition)"
 about: "Suggest an idea."
-title: ""
-labels: "enhancement➕,unconfirm📋"
-assignees: ""
+labels: "➕enhancement,🔵unconfirm"
 ---
 > ### Suggested Content List
 >

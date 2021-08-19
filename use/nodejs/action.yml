@@ -60,8 +60,8 @@ inputs:
     required: false
 runs:
   using: "node12"
-  pre: "setup.js"
-  main: "main.js"
+  pre: "../../setup.js"
+  main: "../../main.js"
 branding:
   icon: "zap"
   color: "blue"
