@@ -40,20 +40,20 @@ on:
         required: false
         default: "{}"
 jobs:
-  default:
-    name: "Default"
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
-        with:
-          dryrun: true
-  nodejs:
-    name: "NodeJS"
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
-        with:
-          dryrun: true
+#   default:
+#     name: "Default"
+#     runs-on: "ubuntu-latest"
+#     steps:
+#       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
+#         with:
+#           dryrun: true
+#   nodejs:
+#     name: "NodeJS"
+#     runs-on: "ubuntu-latest"
+#     steps:
+#       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
+#         with:
+#           dryrun: true
   docker:
     name: "Docker"
     runs-on: "ubuntu-latest"
@@ -61,3 +61,13 @@ jobs:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/docker@main"
         with:
           dryrun: true
+          webhook: "${{github.event.inputs.webhook}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
+          replaceholder_prefix: "${{github.event.inputs.replaceholder_prefix}}"
+          replaceholder_replaceundefined: "${{github.event.inputs.replaceholder_replaceundefined}}"
+          replaceholder_suffix: "${{github.event.inputs.replaceholder_suffix}}"
+          replaceholder_typetransform: "${{github.event.inputs.replaceholder_typetransform}}"
+          value_1: "${{github.event.inputs.value_1}}"
+          value_2: "${{github.event.inputs.value_2}}"
+          value_3: "${{github.event.inputs.value_3}}"
+          value_extra: "${{github.event.inputs.value_extra}}"
