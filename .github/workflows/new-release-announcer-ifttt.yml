@@ -9,7 +9,7 @@ jobs:
     name: "New Release Announcer - IFTTT"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/GitHubAction.SendToIFTTT@main"
+      - uses: "hugoalh/trigger-ifttt-webhoook-applet-ghaction@main"
         with:
           webhook_eventname: "githubaction_twitter"
           webhook_key: "${{secrets.IFTTTWEBHOOK_HUGOALH_KEY}}"
