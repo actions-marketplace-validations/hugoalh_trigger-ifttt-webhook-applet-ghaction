@@ -39,6 +39,21 @@ on:
         description: "value_extra"
         required: false
         default: "{}"
+      webhook_eventname:
+        description: "webhook_eventname"
+        required: false
+      webhook_key:
+        description: "webhook_key"
+        required: false
+      value1:
+        description: "value1"
+        required: false
+      value2:
+        description: "value2"
+        required: false
+      value3:
+        description: "value3"
+        required: false
 jobs:
   test:
     name: "Test"
@@ -71,3 +86,8 @@ jobs:
           value_2: "${{github.event.inputs.value_2}}"
           value_3: "${{github.event.inputs.value_3}}"
           value_extra: "${{github.event.inputs.value_extra}}"
+          webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
+          webhook_key: "${{github.event.inputs.webhook_key}}"
+          value1: "${{github.event.inputs.value1}}"
+          value2: "${{github.event.inputs.value2}}"
+          value3: "${{github.event.inputs.value3}}"

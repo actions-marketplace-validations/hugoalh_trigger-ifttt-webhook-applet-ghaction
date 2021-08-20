@@ -44,6 +44,8 @@ function importArgument(key) {
 	} else {
 		let webhookEventName = importArgument("webhook_eventname"),
 			webhookKey = importArgument("webhook_key");
+		ghactionCore.notice(`Argument \`webhook_eventname\` is officially deprecated and replaced by \`webhook\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
+		ghactionCore.notice(`Argument \`webhook_key\` is officially deprecated and replaced by \`webhook\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
 		if (
 			advancedDetermine.isString(webhookEventName) !== true ||
 			advancedDetermine.isStringSingleLine(webhookEventName) !== true
@@ -95,12 +97,15 @@ function importArgument(key) {
 	};
 	if (advancedDetermine.isString(data.value1) !== true) {
 		data.value1 = importArgument("value1");
+		ghactionCore.notice(`Argument \`value1\` is officially deprecated and replaced by \`value_1\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
 	};
 	if (advancedDetermine.isString(data.value2) !== true) {
 		data.value2 = importArgument("value2");
+		ghactionCore.notice(`Argument \`value2\` is officially deprecated and replaced by \`value_2\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
 	};
 	if (advancedDetermine.isString(data.value3) !== true) {
 		data.value3 = importArgument("value3");
+		ghactionCore.notice(`Argument \`value3\` is officially deprecated and replaced by \`value_3\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
 	};
 	let dataExtra = moreMethod.stringParse(importArgument("value_extra"));
 	if (advancedDetermine.isJSON(dataExtra) === false) {
@@ -120,7 +125,11 @@ function importArgument(key) {
 	if (dryRun === true) {
 		ghactionCore.info(`Webhook Event Name: ${webhook.eventName}`);
 		ghactionCore.info(`Network Request Body: ${payload}`);
-		let payloadFake = JSON.stringify({ foo: "bar" });
+		let payloadFake = JSON.stringify({
+			body: "bar",
+			title: "foo",
+			userId: 1
+		});
 		let response = await nodeFetch(
 			`https://jsonplaceholder.typicode.com/posts`,
 			{
@@ -135,9 +144,6 @@ function importArgument(key) {
 				redirect: "follow"
 			}
 		);
-		if (response.status !== 200) {
-			ghactionCore.warning(`Receive status code ${response.status}! May cause error in the beyond.`);
-		};
 		let responseText = await response.text();
 		if (response.ok === true) {
 			ghactionCore.info(`Status Code: ${response.status}\nResponse: ${responseText}`);
@@ -163,9 +169,6 @@ function importArgument(key) {
 			}
 		);
 		ghactionCore.info(`Receive network response from IFTTT.`);
-		if (response.status !== 200) {
-			ghactionCore.warning(`Receive status code ${response.status}! May cause error in the beyond.`);
-		};
 		let responseText = await response.text();
 		if (response.ok === true) {
 			ghactionCore.debug(`Status Code: ${response.status}\nResponse: ${responseText}`);
