@@ -35,25 +35,58 @@ on:
         description: "value3"
         required: false
 jobs:
-  test:
-    name: "Test"
+  default:
+    name: "Default"
     runs-on: "ubuntu-latest"
-    strategy:
-      fail-fast: false
-      matrix:
-        use:
-          - ""
-          - "/use/docker"
-          - "/use/nodejs"
     steps:
 #       - name: "Setup NodeJS"
-#         if: "${{matrix.use == '' || matrix.use == '/use/nodejs'}}"
 #         uses: "actions/setup-node@v2.4.0"
 #         with:
 #           node-version: 14
 #           registry-url: "https://registry.npmjs.org/"
       - name: "Execute"
-        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction${{matrix.use}}@main"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
+        with:
+          dryrun: true
+          webhook: "${{github.event.inputs.webhook}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
+          value_1: "${{github.event.inputs.value_1}}"
+          value_2: "${{github.event.inputs.value_2}}"
+          value_3: "${{github.event.inputs.value_3}}"
+          webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
+          webhook_key: "${{github.event.inputs.webhook_key}}"
+          value1: "${{github.event.inputs.value1}}"
+          value2: "${{github.event.inputs.value2}}"
+          value3: "${{github.event.inputs.value3}}"
+  docker:
+    name: "Use Docker"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Execute"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/docker@main"
+        with:
+          dryrun: true
+          webhook: "${{github.event.inputs.webhook}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
+          value_1: "${{github.event.inputs.value_1}}"
+          value_2: "${{github.event.inputs.value_2}}"
+          value_3: "${{github.event.inputs.value_3}}"
+          webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
+          webhook_key: "${{github.event.inputs.webhook_key}}"
+          value1: "${{github.event.inputs.value1}}"
+          value2: "${{github.event.inputs.value2}}"
+          value3: "${{github.event.inputs.value3}}"
+  nodejs:
+    name: "Use NodeJS"
+    runs-on: "ubuntu-latest"
+    steps:
+#       - name: "Setup NodeJS"
+#         uses: "actions/setup-node@v2.4.0"
+#         with:
+#           node-version: 14
+#           registry-url: "https://registry.npmjs.org/"
+      - name: "Execute"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
         with:
           dryrun: true
           webhook: "${{github.event.inputs.webhook}}"
