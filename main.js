@@ -6,12 +6,14 @@ const advancedDetermine = require("@hugoalh/advanced-determine"),
 /**
  * @private
  * @function importArgument
- * @param {string} name
+ * @param {string} key
  * @returns {string}
  */
-function importArgument(name) {
-	ghactionCore.info(`Import argument \`${name}\`.`);
-	return ghactionCore.getInput(name);
+function importArgument(key) {
+	ghactionCore.info(`Import argument \`${key}\`.`);
+	let value = ghactionCore.getInput(key);
+	ghactionCore.debug(`Argument \`${key}\`: ${value}`);
+	return value;
 };
 (async () => {
 	let dryRun = moreMethod.stringParse(importArgument("dryrun"));
@@ -79,8 +81,8 @@ function importArgument(name) {
 			external: moreMethod.stringParse(importArgument("replaceholder_list_external")),
 			payload: ghactionGitHub.context.payload
 		};
-	if (advancedDetermine.isJSON(replaceholderList.external) === false) {
-		throw new TypeError(`Argument \`replaceholder_list_external\` must be type of JSON!`);
+	if (advancedDetermine.isJSON(replaceholderList.external, { strictKey: true }) === false) {
+		throw new TypeError(`Argument \`replaceholder_list_external\` must be type of JSON (no illegal namespace character(s))!`);
 	};
 	if (typeof replaceholderConfig.replaceUndefined === "string") {
 		replaceholderConfig.replaceUndefined = replaceholderConfig.replaceUndefined.replace(/^\\/giu, "");

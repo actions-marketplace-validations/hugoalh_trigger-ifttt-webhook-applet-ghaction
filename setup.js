@@ -6,7 +6,7 @@ if (
 	major < 14 ||
 	(major === 14 && minor < 15)
 ) {
-	throw new Error(`This action cannot execute on NodeJS which lower than v14.15.0 (Current NodeJS Version: ${nodejsVersion})!`);
+	throw new Error(`This action cannot execute on NodeJS which lower than v14.15.0!\nCurrent NodeJS Version: ${nodejsVersion}`);
 };
 const childProcess = require("child_process");
 childProcess.exec(

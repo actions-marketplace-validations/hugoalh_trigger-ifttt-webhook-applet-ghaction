@@ -59,7 +59,7 @@ inputs:
     description: "{string} IFTTT default ingredient namespace `value3`."
     required: false
 runs:
-  using: "node12"
+  using: "node14"
   pre: "setup.js"
   main: "main.js"
 branding:

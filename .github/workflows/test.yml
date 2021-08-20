@@ -40,25 +40,25 @@ on:
         required: false
         default: "{}"
 jobs:
-  default:
-    name: "Default"
+  test:
+    name: "Test"
     runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        use:
+          - ""
+          - "/use/docker"
+          - "/use/nodejs"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
-        with:
-          dryrun: true
-  nodejs:
-    name: "NodeJS"
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
-        with:
-          dryrun: true
-  docker:
-    name: "Docker"
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/docker@main"
+#       - name: "Setup NodeJS"
+#         if: "${{matrix.use == '' || matrix.use == '/use/nodejs'}}"
+#         uses: "actions/setup-node@v2.4.0"
+#         with:
+#           node-version: 14
+#           registry-url: "https://registry.npmjs.org/"
+      - name: "Execute"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction${{matrix.use}}@main"
         with:
           dryrun: true
           webhook: "${{github.event.inputs.webhook}}"

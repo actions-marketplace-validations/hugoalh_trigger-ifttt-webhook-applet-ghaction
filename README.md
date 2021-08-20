@@ -20,6 +20,8 @@
 
 ## 📝 Description
 
+*Previous named "\[GitHub Action\] Send To IFTTT".*
+
 ### 🌟 Feature
 
 - Simple setup.
