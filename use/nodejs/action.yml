@@ -61,7 +61,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: "${{github.action_path}}/ghaction-nodejs.sh"
+    - run: "${{github.action_path}}/../../ghaction-nodejs.sh"
       shell: "bash"
 branding:
   icon: "zap"
