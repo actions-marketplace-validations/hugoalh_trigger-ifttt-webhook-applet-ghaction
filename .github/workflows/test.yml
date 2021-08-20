@@ -4,56 +4,56 @@ on:
   workflow_dispatch:
     inputs:
       webhook:
-        description: "{string} IFTTT webhook address; Must be a full URL or a mix of event name and key/token in format `<Key/Token>/<EventName>`."
+        description: "webhook"
         required: false
       replaceholder_list_external:
-        description: "{object} External list of the placeholder."
+        description: "replaceholder_list_external"
         required: false
         default: "{}"
       replaceholder_prefix:
-        description: "{string} Prefix of the placeholder."
+        description: "replaceholder_prefix"
         required: false
         default: "%"
       replaceholder_replaceundefined:
-        description: "{(boolean|null|string)} Replace undefined placeholder when placeholder is not in the list."
+        description: "replaceholder_replaceundefined"
         required: false
         default: "false"
       replaceholder_suffix:
-        description: "{string} Suffix of the placeholder."
+        description: "replaceholder_suffix"
         required: false
         default: "%"
       replaceholder_typetransform:
-        description: "{boolean} Transform placeholder to the target value's type."
+        description: "replaceholder_typetransform"
         required: false
         default: "true"
       value_1:
-        description: "{string} IFTTT default ingredient namespace `value1`."
+        description: "value_1"
         required: false
       value_2:
-        description: "{string} IFTTT default ingredient namespace `value2`."
+        description: "value_2"
         required: false
       value_3:
-        description: "{string} IFTTT default ingredient namespace `value3`."
+        description: "value_3"
         required: false
       value_extra:
-        description: "{object} IFTTT default ingredient namespace `json-payload`."
+        description: "value_extra"
         required: false
         default: "{}"
 jobs:
-#   default:
-#     name: "Default"
-#     runs-on: "ubuntu-latest"
-#     steps:
-#       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
-#         with:
-#           dryrun: true
-#   nodejs:
-#     name: "NodeJS"
-#     runs-on: "ubuntu-latest"
-#     steps:
-#       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
-#         with:
-#           dryrun: true
+  default:
+    name: "Default"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
+        with:
+          dryrun: true
+  nodejs:
+    name: "NodeJS"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
+        with:
+          dryrun: true
   docker:
     name: "Docker"
     runs-on: "ubuntu-latest"

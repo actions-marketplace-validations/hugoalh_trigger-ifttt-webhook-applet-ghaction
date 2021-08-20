@@ -118,12 +118,15 @@ function importArgument(name) {
 	if (dryRun === true) {
 		ghactionCore.info(`Webhook Event Name: ${webhook.eventName}`);
 		ghactionCore.info(`Network Request Body: ${payload}`);
+		let payloadFake = JSON.stringify({ foo: "bar" });
 		let response = await nodeFetch(
 			`https://jsonplaceholder.typicode.com/posts`,
 			{
+				body: payloadFake,
 				follow: 5,
 				headers: {
 					"Content-Type": "application/json",
+					"Content-Length": payloadFake.length,
 					"User-Agent": "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0"
 				},
 				method: "POST",
@@ -135,9 +138,9 @@ function importArgument(name) {
 		};
 		let responseText = await response.text();
 		if (response.ok === true) {
-			ghactionCore.info(`${response.status} ${responseText}`);
+			ghactionCore.info(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		} else {
-			throw new Error(`${response.status} ${responseText}`);
+			throw new Error(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		};
 	} else {
 		ghactionCore.debug(`Webhook Event Name: ${webhook.eventName}`);
@@ -163,9 +166,9 @@ function importArgument(name) {
 		};
 		let responseText = await response.text();
 		if (response.ok === true) {
-			ghactionCore.debug(`${response.status} ${responseText}`);
+			ghactionCore.debug(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		} else {
-			throw new Error(`${response.status} ${responseText}`);
+			throw new Error(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		};
 	};
 })().catch((error) => {

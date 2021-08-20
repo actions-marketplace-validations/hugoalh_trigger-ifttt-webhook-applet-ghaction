@@ -27,6 +27,8 @@
 
 ## 📚 Documentation
 
+> **⚠ Important:** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct one.
+
 ### 🎯 Target
 
 <table>
@@ -68,15 +70,15 @@
 
 🔐🅿 `<string>` IFTTT webhook address; Must be a full URL or a mix of event name and key/token in format `"<Key/Token>/<EventName>"`; Event name is recommended to keep in lower case to prevent issue.
 
-> 💡 **Hint:** A full URL should looks like `https://maker.ifttt.com/trigger/<EventName>/with/key/<Key/Token>`.
+> **💡 Hint:** A full URL should looks like `https://maker.ifttt.com/trigger/<EventName>/with/key/<Key/Token>`.
 
-> 💡 **Hint:** To obtain your webhook key/token, click "Menu" > "My Services" > "Webhooks" > "Settings", your key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
+> **💡 Hint:** To obtain the webhook key/token, click "Menu" > "My Services" > "Webhooks" > "Settings", your key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
 >
 > <img src="https://i.imgur.com/ihnqN5B.png" width="256px"/>
 
 #### `webhook_eventname`
 
-> 👎 **Deprecated:**
+> **👎 Deprecated:**
 > - This argument is officially deprecated and replaced by `webhook`, but no any schedule to remove this argument currently.
 > - This argument will ignore when argument `webhook` is defined.
 
@@ -84,13 +86,13 @@
 
 #### `webhook_key`
 
-> 👎 **Deprecated:**
+> **👎 Deprecated:**
 > - This argument is officially deprecated and replaced by `webhook`, but no any schedule to remove this argument currently.
 > - This argument will ignore when argument `webhook` is defined.
 
-🔐 `<string>` IFTTT webhook key.
+🔐 `<string>` IFTTT webhook key/token.
 
-> 💡 **Hint:** To obtain this, click "Menu" > "My Services" > "Webhooks" > "Settings", your key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
+> **💡 Hint:** To obtain this, click "Menu" > "My Services" > "Webhooks" > "Settings", your key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
 >
 > <img src="https://i.imgur.com/ihnqN5B.png" width="256px"/>
 
@@ -139,7 +141,7 @@
 
 #### `value1`
 
-> 👎 **Deprecated:**
+> **👎 Deprecated:**
 > - This argument is officially deprecated and replaced by `value_1`, but no any schedule to remove this argument currently.
 > - This argument will ignore when argument `value_1` is defined.
 
@@ -147,7 +149,7 @@
 
 #### `value2`
 
-> 👎 **Deprecated:**
+> **👎 Deprecated:**
 > - This argument is officially deprecated and replaced by `value_2`, but no any schedule to remove this argument currently.
 > - This argument will ignore when argument `value_2` is defined.
 
@@ -155,7 +157,7 @@
 
 #### `value3`
 
-> 👎 **Deprecated:**
+> **👎 Deprecated:**
 > - This argument is officially deprecated and replaced by `value_3`, but no any schedule to remove this argument currently.
 > - This argument will ignore when argument `value_3` is defined.
 
