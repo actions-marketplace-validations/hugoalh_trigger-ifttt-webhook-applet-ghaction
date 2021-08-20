@@ -12,7 +12,7 @@
 
 | **Tag / Version** | **Target** | **Support** |
 |:-:|:-:|:-:|
-| v4.X.X | NodeJS v14.15.0 + NPM v6.14.8 | L |
+| v4.X.X | Docker, NodeJS v14.15.0 + NPM v6.14.8 | L |
 | v3.1.X | NodeJS v14.15.0 + NPM v6.14.8 | ✔ |
 | < v3.1.0 | NodeJS v12.13.0 | ❌ |
 | v2.X.X | NodeJS v12.0.0 | ❌ |

@@ -33,24 +33,26 @@
 
 ### 🎯 Target
 
+> **🐛 Known Issue:** GitHub Action seems not working as expected currently when using NodeJS as entrypoint, thus Docker is now the default entrypoint until fixed.
+
 <table>
   <tr>
     <td align="center"></td>
-    <td align="center"><b>Use NodeJS (Default / <code>/use/nodejs</code>)</b></td>
-    <td align="center"><b>Use Docker (<code>/use/docker</code>)</b></td>
+    <td align="center"><b>Docker (Default / <code>/use/docker</code>)</b></td>
+    <td align="center"><b>NodeJS (<code>/use/nodejs</code>)</b></td>
   </tr>
   <tr>
     <td align="center"><b>Operating System</b></td>
-    <td><i>Any</i></td>
     <td>Linux</td>
+    <td><i>Any</i></td>
   </tr>
   <tr>
     <td align="center"><b>Software</b></td>
+    <td>Docker</td>
     <td><ul>
       <li>NodeJS (>= v14.15.0)</li>
       <li>NPM (>= v6.14.8)</li>
     </ul></td>
-    <td>Docker</td>
   </tr>
 </table>
 

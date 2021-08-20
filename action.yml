@@ -59,8 +59,8 @@ inputs:
     description: "{string} IFTTT default ingredient namespace `value3`."
     required: false
 runs:
-  using: "node12"
-  main: "ghaction-nodejs.js"
+  using: "docker"
+  image: "Dockerfile"
 branding:
   icon: "zap"
   color: "blue"
