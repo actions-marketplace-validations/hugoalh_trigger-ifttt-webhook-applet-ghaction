@@ -10,22 +10,6 @@ on:
         description: "replaceholder_list_external"
         required: false
         default: "{}"
-      replaceholder_prefix:
-        description: "replaceholder_prefix"
-        required: false
-        default: "%"
-      replaceholder_replaceundefined:
-        description: "replaceholder_replaceundefined"
-        required: false
-        default: "false"
-      replaceholder_suffix:
-        description: "replaceholder_suffix"
-        required: false
-        default: "%"
-      replaceholder_typetransform:
-        description: "replaceholder_typetransform"
-        required: false
-        default: "true"
       value_1:
         description: "value_1"
         required: false
@@ -35,10 +19,6 @@ on:
       value_3:
         description: "value_3"
         required: false
-      value_extra:
-        description: "value_extra"
-        required: false
-        default: "{}"
       webhook_eventname:
         description: "webhook_eventname"
         required: false
@@ -78,14 +58,9 @@ jobs:
           dryrun: true
           webhook: "${{github.event.inputs.webhook}}"
           replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
-          replaceholder_prefix: "${{github.event.inputs.replaceholder_prefix}}"
-          replaceholder_replaceundefined: "${{github.event.inputs.replaceholder_replaceundefined}}"
-          replaceholder_suffix: "${{github.event.inputs.replaceholder_suffix}}"
-          replaceholder_typetransform: "${{github.event.inputs.replaceholder_typetransform}}"
           value_1: "${{github.event.inputs.value_1}}"
           value_2: "${{github.event.inputs.value_2}}"
           value_3: "${{github.event.inputs.value_3}}"
-          value_extra: "${{github.event.inputs.value_extra}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
           value1: "${{github.event.inputs.value1}}"
