@@ -39,11 +39,11 @@ jobs:
     name: "Default"
     runs-on: "ubuntu-latest"
     steps:
-      - name: "Setup NodeJS"
-        uses: "actions/setup-node@v2.4.0"
-        with:
-          node-version: 14
-          registry-url: "https://registry.npmjs.org/"
+#       - name: "Setup NodeJS"
+#         uses: "actions/setup-node@v2.4.0"
+#         with:
+#           node-version: 14
+#           registry-url: "https://registry.npmjs.org/"
       - name: "Execute"
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
         with:
