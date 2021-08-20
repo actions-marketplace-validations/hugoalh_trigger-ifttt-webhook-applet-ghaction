@@ -6,25 +6,16 @@ on:
       webhook:
         description: "webhook"
         required: false
-      replaceholder_list_external:
-        description: "replaceholder_list_external"
-        required: false
-        default: "{}"
-      value_1:
-        description: "value_1"
-        required: false
-      value_2:
-        description: "value_2"
-        required: false
-      value_3:
-        description: "value_3"
-        required: false
       webhook_eventname:
         description: "webhook_eventname"
         required: false
       webhook_key:
         description: "webhook_key"
         required: false
+      replaceholder_list_external:
+        description: "replaceholder_list_external"
+        required: false
+        default: "{}"
       value1:
         description: "value1"
         required: false
@@ -49,12 +40,9 @@ jobs:
         with:
           dryrun: true
           webhook: "${{github.event.inputs.webhook}}"
-          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
-          value_1: "${{github.event.inputs.value_1}}"
-          value_2: "${{github.event.inputs.value_2}}"
-          value_3: "${{github.event.inputs.value_3}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
           value1: "${{github.event.inputs.value1}}"
           value2: "${{github.event.inputs.value2}}"
           value3: "${{github.event.inputs.value3}}"
@@ -67,12 +55,9 @@ jobs:
         with:
           dryrun: true
           webhook: "${{github.event.inputs.webhook}}"
-          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
-          value_1: "${{github.event.inputs.value_1}}"
-          value_2: "${{github.event.inputs.value_2}}"
-          value_3: "${{github.event.inputs.value_3}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
           value1: "${{github.event.inputs.value1}}"
           value2: "${{github.event.inputs.value2}}"
           value3: "${{github.event.inputs.value3}}"
@@ -83,19 +68,16 @@ jobs:
       - name: "Setup NodeJS"
         uses: "actions/setup-node@v2.4.0"
         with:
-          node-version: 14
+          node-version: "lts"
           registry-url: "https://registry.npmjs.org/"
       - name: "Execute"
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
         with:
           dryrun: true
           webhook: "${{github.event.inputs.webhook}}"
-          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
-          value_1: "${{github.event.inputs.value_1}}"
-          value_2: "${{github.event.inputs.value_2}}"
-          value_3: "${{github.event.inputs.value_3}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
           value1: "${{github.event.inputs.value1}}"
           value2: "${{github.event.inputs.value2}}"
           value3: "${{github.event.inputs.value3}}"

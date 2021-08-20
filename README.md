@@ -29,7 +29,7 @@
 
 ## 📚 Documentation
 
-> **⚠ Important:** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct one.
+> **⚠ Important:** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct version.
 
 ### 🎯 Target
 
@@ -60,49 +60,46 @@
 
 > | **Legend** | **Description** |
 > |:-:|:--|
-> | 🔐 | This argument should be an encrypted secret. |
-> | 🅿 | This argument is support placeholder. |
+> | 🔐 | Should be an encrypted secret. |
+> | 🅿 | Support placeholder. |
 >
 > To use placeholder in the supported argument, follow the pattern:
 >
 > | **List** | **Via GitHub Action Runner** | **Via Replaceholder** |
 > |:-:|:-:|:-:|
-> | External (`external`) | *N/A* | `"<Prefix>external<Namespace><Suffix>"` |
-> | GitHub Event Webhook Payload (`payload`) | `"${{github.event.<Namespace>}}"` | `"<Prefix>payload<Namespace><Suffix>"` |
+> | External | *N/A* | `"<Prefix>external<Namespace><Suffix>"` |
+> | GitHub Event Webhook Payload | `"${{github.event.<Namespace>}}"` | `"<Prefix>payload<Namespace><Suffix>"` |
 
 #### `webhook`
 
-🔐🅿 `<string>` IFTTT webhook address; Must be a full URL or a mix of event name and key/token in format `"<Key/Token>/<EventName>"`; Event name is recommended to keep in lower case to prevent issue.
+**🔐🅿 \[Optional\]** `<string>` IFTTT webhook address; Must be one of the listed format:
+- **Full URL with standard payload:** `https://maker.ifttt.com/trigger/<EventName>/with/key/<Key>`
+- **Full URL with custom payload:** `https://maker.ifttt.com/trigger/<EventName>/json/with/key/<Key>`
 
-> **💡 Hint:** A full URL should looks like `https://maker.ifttt.com/trigger/<EventName>/with/key/<Key/Token>`.
+Do not define this argument if need a detail adjust; When this argument is defined, will ignore:
+- `webhook_custompayload`
+- `webhook_eventname`
+- `webhook_key`
 
-> **💡 Hint:** To obtain the webhook key/token, click "Menu" > "My Services" > "Webhooks" > "Settings", your key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
->
-> <img src="https://i.imgur.com/ihnqN5B.png" width="256px"/>
+#### `webhook_custompayload`
+
+**\[Optional\]** `<boolean = false>` Trigger with a standard payload (IFTTT default ingredient namespace `value1`, `value2`, and `value3`) or a custom payload.
 
 #### `webhook_eventname`
 
-> **👎 Deprecated:**
-> - This argument is officially deprecated and replaced by `webhook`, but no any schedule to remove this argument currently.
-> - This argument will ignore when argument `webhook` is defined.
+**🅿 \[Optional\]** `<string>` IFTTT webhook event name; Recommended to keep in lower case to prevent issue (except using placeholder).
 
-🅿 `<string>` IFTTT webhook event name; Recommended to keep in lower case to prevent issue.
+*This argument is required when argument `webhook` is not defined.*
 
 #### `webhook_key`
 
-> **👎 Deprecated:**
-> - This argument is officially deprecated and replaced by `webhook`, but no any schedule to remove this argument currently.
-> - This argument will ignore when argument `webhook` is defined.
+**🔐 \[Optional\]** `<string>` IFTTT webhook key.
 
-🔐 `<string>` IFTTT webhook key/token.
-
-> **💡 Hint:** To obtain this, click "Menu" > "My Services" > "Webhooks" > "Settings", your key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
->
-> <img src="https://i.imgur.com/ihnqN5B.png" width="256px"/>
+*This argument is required when argument `webhook` is not defined.*
 
 #### `replaceholder_list_external`
 
-**\[Optional\]** `<object = {}>` External list of the placeholder; Can import from other action's output.
+**\[Optional\]** `<object = {}>` External list of the placeholder, can import from other action's output.
 
 #### `replaceholder_prefix`
 
@@ -127,45 +124,21 @@
 
 **\[Optional\]** `<boolean = true>` Transform placeholder to the target value's type.
 
-#### `value_1`
-
-🅿 **\[Optional\]** `<string>` IFTTT default ingredient namespace `value1`.
-
-#### `value_2`
-
-🅿 **\[Optional\]** `<string>` IFTTT default ingredient namespace `value2`.
-
-#### `value_3`
-
-🅿 **\[Optional\]** `<string>` IFTTT default ingredient namespace `value3`.
-
-#### `value_extra`
-
-🅿 **\[Optional\]** `<object = {}>` IFTTT default ingredient namespace `json-payload`.
-
 #### `value1`
 
-> **👎 Deprecated:**
-> - This argument is officially deprecated and replaced by `value_1`, but no any schedule to remove this argument currently.
-> - This argument will ignore when argument `value_1` is defined.
-
-🅿 **\[Optional\]** `<string>` IFTTT default ingredient namespace `value1`.
+**🅿 \[Optional\]** `<string>` IFTTT default ingredient namespace `value1`.
 
 #### `value2`
 
-> **👎 Deprecated:**
-> - This argument is officially deprecated and replaced by `value_2`, but no any schedule to remove this argument currently.
-> - This argument will ignore when argument `value_2` is defined.
-
-🅿 **\[Optional\]** `<string>` IFTTT default ingredient namespace `value2`.
+**🅿 \[Optional\]** `<string>` IFTTT default ingredient namespace `value2`.
 
 #### `value3`
 
-> **👎 Deprecated:**
-> - This argument is officially deprecated and replaced by `value_3`, but no any schedule to remove this argument currently.
-> - This argument will ignore when argument `value_3` is defined.
+**🅿 \[Optional\]** `<string>` IFTTT default ingredient namespace `value3`.
 
-🅿 **\[Optional\]** `<string>` IFTTT default ingredient namespace `value3`.
+#### `payload`
+
+**🅿 \[Optional\]** `<object = {}>` Custom payload.
 
 #### `dryrun`
 
@@ -186,16 +159,17 @@ jobs:
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.0"
         with:
           # dryrun:
-          webhook: "${{secrets.IFTTT_WEBHOOK_KEY}}/greeting"
+          webhook_eventname: "greeting"
+          webhook_key: "${{secrets.IFTTT_WEBHOOK_KEY}}"
           # replaceholder_list_external:
           # replaceholder_prefix:
           # replaceholder_replaceundefined:
           # replaceholder_suffix:
           # replaceholder_typetransform:
-          value_1: "Hello, %name%!"
-          # value_2:
-          # value_3:
-          # value_extra:
+          value1: "Hello, world!"
+          # value2:
+          # value3:
+          # payload:
 ```
 
 ### Guide
@@ -208,3 +182,11 @@ jobs:
 
 - [Enabling debug logging](https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging)
 - [Encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+
+#### IFTTT
+
+##### Obtain the webhook key
+
+To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
+
+<img src="https://i.imgur.com/ihnqN5B.png" width="256px"/>

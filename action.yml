@@ -4,7 +4,17 @@ author: "hugoalh"
 description: "Trigger IFTTT webhook applet."
 inputs:
   webhook:
-    description: "{string} IFTTT webhook address; Must be a full URL or a mix of event name and key/token in format `<Key/Token>/<EventName>`."
+    description: "{string} IFTTT webhook address."
+    required: false
+  webhook_custompayload:
+    description: "{boolean} Trigger with a standard payload or a custom payload."
+    required:  false
+    default: "false"
+  webhook_eventname:
+    description: "{string} IFTTT webhook event name."
+    required: false
+  webhook_key:
+    description: "{string} IFTTT webhook key."
     required: false
   replaceholder_list_external:
     description: "{object} External list of the placeholder."
@@ -26,29 +36,6 @@ inputs:
     description: "{boolean} Transform placeholder to the target value's type."
     required: false
     default: "true"
-  value_1:
-    description: "{string} IFTTT default ingredient namespace `value1`."
-    required: false
-  value_2:
-    description: "{string} IFTTT default ingredient namespace `value2`."
-    required: false
-  value_3:
-    description: "{string} IFTTT default ingredient namespace `value3`."
-    required: false
-  value_extra:
-    description: "{object} IFTTT default ingredient namespace `json-payload`."
-    required: false
-    default: "{}"
-  dryrun:
-    description: "{boolean} Dry run this action."
-    required: false
-    default: "false"
-  webhook_eventname:
-    description: "{string} IFTTT webhook event name."
-    required: false
-  webhook_key:
-    description: "{string} IFTTT webhook key/token."
-    required: false
   value1:
     description: "{string} IFTTT default ingredient namespace `value1`."
     required: false
@@ -58,9 +45,17 @@ inputs:
   value3:
     description: "{string} IFTTT default ingredient namespace `value3`."
     required: false
+  payload:
+    description: "{object} Custom payload."
+    required: false
+    default: "{}"
+  dryrun:
+    description: "{boolean} Dry run this action."
+    required: false
+    default: "false"
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "./use/docker/Dockerfile"
 branding:
   icon: "zap"
   color: "blue"

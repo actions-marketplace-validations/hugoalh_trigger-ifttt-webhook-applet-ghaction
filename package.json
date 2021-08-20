@@ -1,6 +1,6 @@
 {
 	"name": "trigger-ifttt-webhook-applet-ghaction",
-	"version": "4.0.0-beta.1",
+	"version": "4.0.0-beta.2",
 	"description": "A GitHub action to trigger IFTTT webhook applet.",
 	"keywords": [
 		"github-action",
