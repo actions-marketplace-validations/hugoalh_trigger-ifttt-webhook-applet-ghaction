@@ -59,10 +59,8 @@ inputs:
     description: "{string} IFTTT default ingredient namespace `value3`."
     required: false
 runs:
-  using: "composite"
-  steps:
-    - run: "${{github.action_path}}/../../ghaction-nodejs.sh"
-      shell: "bash"
+  using: "node12"
+  main: "../../ghaction-nodejs.js"
 branding:
   icon: "zap"
   color: "blue"

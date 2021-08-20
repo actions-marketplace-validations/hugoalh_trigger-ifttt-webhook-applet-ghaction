@@ -33,7 +33,7 @@
 
 ### 🎯 Target
 
-> **🐛 Known Issue:** GitHub Action seems not working as expected currently when using NodeJS as entrypoint, thus Docker is now the default entrypoint until fixed.
+> **🐛 Known Issue:** GitHub Action seems not working as expected currently when using NodeJS as entrypoint, thus Docker is now the default and only entrypoint until fixed.
 
 <table>
   <tr>
