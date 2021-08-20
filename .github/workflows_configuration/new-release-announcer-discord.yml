@@ -25,7 +25,7 @@ embeds:
         value: "%payload.release.html_url%"
         inline: false
       - name: "GitHub Marketplace"
-        value: "https://github.com/marketplace/actions/ifttt-webhook-trigger"
+        value: "https://github.com/marketplace/actions/trigger-ifttt-webhook-applet"
         inline: false
       - name: "Repository"
         value: "%payload.repository.html_url%"
