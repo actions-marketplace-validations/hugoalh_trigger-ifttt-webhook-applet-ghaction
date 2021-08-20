@@ -54,10 +54,9 @@ inputs:
     required: false
     default: "false"
 runs:
-  using: "composite"
-  steps:
-    - run: "${{github.action_path}}/main.sh"
-      shell: "bash"
+  using: "node12"
+  pre: "../../setup.js"
+  main: "../../main.js"
 branding:
   icon: "zap"
   color: "blue"

@@ -9,19 +9,23 @@ on:
       webhook_eventname:
         description: "webhook_eventname"
         required: false
+        default: "test"
       webhook_key:
         description: "webhook_key"
         required: false
+        default: "abcdef123456"
       replaceholder_list_external:
         description: "replaceholder_list_external"
         required: false
-        default: "{}"
+        default: "{\"name\":\"world\"}"
       value1:
         description: "value1"
         required: false
+        default: "Hello, %external.name%!"
       value2:
         description: "value2"
         required: false
+        default: "Goodbye, %external.name%!"
       value3:
         description: "value3"
         required: false
