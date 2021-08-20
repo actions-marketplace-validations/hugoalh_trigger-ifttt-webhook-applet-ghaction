@@ -20,10 +20,11 @@ function argumentDeprecated(keyOld, keyNew) {
  * @returns {string}
  */
 function argumentImport(key) {
-	ghactionCore.info(`Import argument \`${key}\`.`);
+	ghactionCore.debug(`Import argument \`${key}\`.`);
 	return ghactionCore.getInput(key);
 };
 (async () => {
+	ghactionCore.info(`Import argument.`);
 	let dryRun = moreMethod.stringParse(argumentImport("dryrun"));
 	if (typeof dryRun !== "boolean") {
 		throw new TypeError(`Argument \`dryrun\` must be type of boolean!`);
@@ -144,6 +145,7 @@ function argumentImport(key) {
 			title: "foo",
 			userId: 1
 		});
+		ghactionCore.info(`Post network request to test service.`);
 		let response = await nodeFetch(
 			`https://jsonplaceholder.typicode.com/posts`,
 			{
@@ -158,6 +160,7 @@ function argumentImport(key) {
 				redirect: "follow"
 			}
 		);
+		ghactionCore.info(`Receive network response from test service.`);
 		let responseText = await response.text();
 		if (response.ok === true) {
 			ghactionCore.info(`Status Code: ${response.status}\nResponse: ${responseText}`);

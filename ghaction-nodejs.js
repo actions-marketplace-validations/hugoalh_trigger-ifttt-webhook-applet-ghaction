@@ -10,7 +10,7 @@ if (
 };
 const childProcess = require("child_process");
 childProcess.exec(
-	`npm install`,
+	`npm install\nnode main.js`,
 	{
 		cwd: __dirname,
 		encoding: "utf8",

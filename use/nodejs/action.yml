@@ -60,8 +60,7 @@ inputs:
     required: false
 runs:
   using: "node12"
-  pre: "../../setup.js"
-  main: "../../main.js"
+  main: "../../ghaction-nodejs.js"
 branding:
   icon: "zap"
   color: "blue"
