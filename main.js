@@ -5,22 +5,30 @@ const advancedDetermine = require("@hugoalh/advanced-determine"),
 	nodeFetch = require("node-fetch");
 /**
  * @private
- * @function importArgument
+ * @function argumentDeprecated
+ * @param {string} keyOld
+ * @param {string} keyNew
+ * @returns {void}
+ */
+function argumentDeprecated(keyOld, keyNew) {
+	ghactionCore.notice(`Argument \`${keyOld}\` is officially deprecated and replaced by \`${keyNew}\`, but no any schedule to remove this argument currently.`);
+};
+/**
+ * @private
+ * @function argumentImport
  * @param {string} key
  * @returns {string}
  */
-function importArgument(key) {
+function argumentImport(key) {
 	ghactionCore.info(`Import argument \`${key}\`.`);
-	let value = ghactionCore.getInput(key);
-	ghactionCore.debug(`Argument \`${key}\`: ${value}`);
-	return value;
+	return ghactionCore.getInput(key);
 };
 (async () => {
-	let dryRun = moreMethod.stringParse(importArgument("dryrun"));
+	let dryRun = moreMethod.stringParse(argumentImport("dryrun"));
 	if (typeof dryRun !== "boolean") {
 		throw new TypeError(`Argument \`dryrun\` must be type of boolean!`);
 	};
-	let webhook = importArgument("webhook");
+	let webhook = argumentImport("webhook");
 	if (advancedDetermine.isString(webhook) === true) {
 		if (advancedDetermine.isStringSingleLine(webhook) !== true) {
 			throw new TypeError(`Argument \`webhook\` must be type of string (non-nullable)!`);
@@ -42,10 +50,10 @@ function importArgument(key) {
 			throw new SyntaxError(`Argument \`webhook\`'s value is not match the require pattern!`);
 		};
 	} else {
-		let webhookEventName = importArgument("webhook_eventname"),
-			webhookKey = importArgument("webhook_key");
-		ghactionCore.notice(`Argument \`webhook_eventname\` is officially deprecated and replaced by \`webhook\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
-		ghactionCore.notice(`Argument \`webhook_key\` is officially deprecated and replaced by \`webhook\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
+		let webhookEventName = argumentImport("webhook_eventname"),
+			webhookKey = argumentImport("webhook_key");
+		argumentDeprecated("webhook_eventname", "webhook");
+		argumentDeprecated("webhook_key", "webhook");
 		if (
 			advancedDetermine.isString(webhookEventName) !== true ||
 			advancedDetermine.isStringSingleLine(webhookEventName) !== true
@@ -74,13 +82,13 @@ function importArgument(key) {
 	};
 	ghactionCore.setSecret(webhook.key);
 	let replaceholderConfig = {
-			prefix: importArgument("replaceholder_prefix"),
-			replaceUndefined: moreMethod.stringParse(importArgument("replaceholder_replaceundefined")),
-			suffix: importArgument("replaceholder_suffix"),
-			typeTransform: moreMethod.stringParse(importArgument("replaceholder_typetransform"))
+			prefix: argumentImport("replaceholder_prefix"),
+			replaceUndefined: moreMethod.stringParse(argumentImport("replaceholder_replaceundefined")),
+			suffix: argumentImport("replaceholder_suffix"),
+			typeTransform: moreMethod.stringParse(argumentImport("replaceholder_typetransform"))
 		},
 		replaceholderList = {
-			external: moreMethod.stringParse(importArgument("replaceholder_list_external")),
+			external: moreMethod.stringParse(argumentImport("replaceholder_list_external")),
 			payload: ghactionGitHub.context.payload
 		};
 	if (advancedDetermine.isJSON(replaceholderList.external, { strictKey: true }) === false) {
@@ -91,23 +99,29 @@ function importArgument(key) {
 	};
 	let replaceholderService = new moreMethod.Replaceholder(replaceholderList, replaceholderConfig);
 	let data = {
-		value1: importArgument("value_1"),
-		value2: importArgument("value_2"),
-		value3: importArgument("value_3")
+		value1: argumentImport("value_1"),
+		value2: argumentImport("value_2"),
+		value3: argumentImport("value_3")
 	};
 	if (advancedDetermine.isString(data.value1) !== true) {
-		data.value1 = importArgument("value1");
-		ghactionCore.notice(`Argument \`value1\` is officially deprecated and replaced by \`value_1\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
+		data.value1 = argumentImport("value1");
+		if (advancedDetermine.isString(data.value1) === true) {
+			argumentDeprecated("value1", "value_1");
+		};
 	};
 	if (advancedDetermine.isString(data.value2) !== true) {
-		data.value2 = importArgument("value2");
-		ghactionCore.notice(`Argument \`value2\` is officially deprecated and replaced by \`value_2\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
+		data.value2 = argumentImport("value2");
+		if (advancedDetermine.isString(data.value2) === true) {
+			argumentDeprecated("value2", "value_2");
+		};
 	};
 	if (advancedDetermine.isString(data.value3) !== true) {
-		data.value3 = importArgument("value3");
-		ghactionCore.notice(`Argument \`value3\` is officially deprecated and replaced by \`value_3\`, but no any schedule to remove this argument currently.`, { title: "Use Of Deprecated Argument" });
+		data.value3 = argumentImport("value3");
+		if (advancedDetermine.isString(data.value3) === true) {
+			argumentDeprecated("value3", "value_3");
+		};
 	};
-	let dataExtra = moreMethod.stringParse(importArgument("value_extra"));
+	let dataExtra = moreMethod.stringParse(argumentImport("value_extra"));
 	if (advancedDetermine.isJSON(dataExtra) === false) {
 		throw new TypeError(`Argument \`value_extra\` must be type of JSON!`);
 	};
