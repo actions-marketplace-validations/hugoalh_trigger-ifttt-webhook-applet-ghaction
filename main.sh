@@ -1,2 +1,2 @@
-node setup.js
-node main.js
+node /setup.js
+node /main.js
