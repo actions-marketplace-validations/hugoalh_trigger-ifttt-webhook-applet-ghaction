@@ -159,6 +159,8 @@ jobs:
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.0"
         with:
           # dryrun:
+          # webhook:
+          # webhook_custompayload:
           webhook_eventname: "greeting"
           webhook_key: "${{secrets.IFTTT_WEBHOOK_KEY}}"
           # replaceholder_list_external:
