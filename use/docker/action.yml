@@ -8,7 +8,7 @@ inputs:
     required: false
   webhook_custompayload:
     description: "{boolean} Trigger with a standard payload or a custom payload."
-    required:  false
+    required: false
     default: "false"
   webhook_eventname:
     description: "{string} IFTTT webhook event name."
