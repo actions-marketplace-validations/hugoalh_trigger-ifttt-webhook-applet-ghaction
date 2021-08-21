@@ -59,7 +59,7 @@ runs:
 #   main: "../../main.js"
   using: "composite"
   steps:
-    - run: "${{github.action_path}}/main.sh"
+    - run: "${{github.action_path}}/../../main.sh"
       shell: "bash"
 branding:
   icon: "zap"
