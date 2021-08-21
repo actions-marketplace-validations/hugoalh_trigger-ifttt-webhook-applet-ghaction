@@ -31,9 +31,7 @@
 
 > **⚠ Important:** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct version.
 
-### 🎯 Target
-
-> **🐛 Known Issue:** GitHub Action seems not working as expected currently when using NodeJS as entrypoint, thus Docker is now the default and only entrypoint until fixed.
+### 🎯 Entrypoint / Target
 
 <table>
   <tr>
@@ -55,6 +53,8 @@
     </ul></td>
   </tr>
 </table>
+
+> **⚠ Important:** In order to use NodeJS as entrypoint, please ensure the software(s) is already installed and meeted the requirement; Add an extra step before this with `actions/setup-node` is recommended.
 
 ### 📥 Input
 
