@@ -35,18 +35,18 @@
 
 <table>
   <tr>
-    <td align="center"></td>
-    <td align="center"><b>Docker (Default / <code>/use/docker</code>)</b></td>
-    <td align="center"><b>NodeJS (<code>/use/nodejs</code>)</b></td>
-  </tr>
-  <tr>
+    <td align="center"><b>Entrypoint / Target</b></td>
     <td align="center"><b>Operating System</b></td>
-    <td>Linux</td>
-    <td><i>Any</i></td>
+    <td align="center"><b>Software</b></td>
   </tr>
   <tr>
-    <td align="center"><b>Software</b></td>
+    <td align="center">Docker (Default / <code>/use/docker</code>)</td>
+    <td>Linux</td>
     <td>Docker</td>
+  </tr>
+  <tr>
+    <td align="center">NodeJS (<code>/use/nodejs</code>)</td>
+    <td><i>Any</i></td>
     <td><ul>
       <li>NodeJS (>= v14.15.0)</li>
       <li>NPM (>= v6.14.8)</li>
@@ -54,7 +54,7 @@
   </tr>
 </table>
 
-> **⚠ Important:** In order to use NodeJS as entrypoint, please ensure the software(s) is already installed and meeted the requirement; Add an extra step before this with `actions/setup-node` is recommended.
+> **⚠ Important:** In order to use NodeJS as entrypoint, please ensure the software(s) is already installed and meeted the requirement; Add an extra step before this step with [`actions/setup-node`](https://github.com/actions/setup-node) is recommended.
 
 ### 📥 Input
 
