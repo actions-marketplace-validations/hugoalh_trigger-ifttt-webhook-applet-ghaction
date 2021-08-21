@@ -54,15 +54,8 @@ inputs:
     required: false
     default: "false"
 runs:
-#   using: "node12"
-#   pre: "../../setup.js"
-#   main: "../../main.js"
-  using: "composite"
-  steps:
-    - run: |
-        chmod +x ${{github.action_path}}/../../main.sh
-        ${{github.action_path}}/../../main.sh
-      shell: "bash"
+  using: "node12"
+  main: "../../loader.js"
 branding:
   icon: "zap"
   color: "blue"
