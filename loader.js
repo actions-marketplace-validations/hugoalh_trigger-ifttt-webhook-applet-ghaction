@@ -2,7 +2,7 @@ const childProcess = require("child_process"),
 	utility = require("util");
 const execute = utility.promisify(childProcess.exec);
 (async () => {
-	let setup = await execute(
+	let stepSetup = await execute(
 		`node setup.js`,
 		{
 			cwd: __dirname,
@@ -10,13 +10,13 @@ const execute = utility.promisify(childProcess.exec);
 			windowsHide: true
 		}
 	);
-	if (setup.stdout.length > 0) {
-		console.log(setup.stdout);
+	if (stepSetup.stdout.length > 0) {
+		console.log(stepSetup.stdout);
 	};
-	if (setup.stderr.length > 0) {
-		console.error(setup.stderr);
+	if (stepSetup.stderr.length > 0) {
+		throw new Error(stepSetup.stderr);
 	};
-	let main = await execute(
+	let stepMain = await execute(
 		`node main.js`,
 		{
 			cwd: __dirname,
@@ -24,11 +24,11 @@ const execute = utility.promisify(childProcess.exec);
 			windowsHide: true
 		}
 	);
-	if (main.stdout.length > 0) {
-		console.log(main.stdout);
+	if (stepMain.stdout.length > 0) {
+		console.log(stepMain.stdout);
 	};
-	if (main.stderr.length > 0) {
-		console.error(main.stderr);
+	if (stepMain.stderr.length > 0) {
+		throw new Error(stepMain.stderr);
 	};
 })().catch((error) => {
 	throw error;
