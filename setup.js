@@ -1,5 +1,5 @@
-const childProcess = require("child_process"),
-	utility = require("util");
+const childProcess = require("child_process");
+const utility = require("util");
 const execute = utility.promisify(childProcess.exec);
 let nodejsVersion = process.versions.node;
 let [major, minor] = nodejsVersion.split(".");
@@ -22,7 +22,7 @@ if (
 	);
 	let registry = stepVerifyRegistry.stdout.trim();
 	if (registry !== "https://registry.npmjs.org/") {
-		throw new Error(`This action cannot execute on non-NPM registry!\nCurrent NPM Registry: ${registry}`);
+		throw new Error(`This action cannot execute on NPM with non-NPM registry!\nCurrent NPM Registry: ${registry}`);
 	};
 	if (stepVerifyRegistry.stderr.length > 0) {
 		throw new Error(stepVerifyRegistry.stderr);

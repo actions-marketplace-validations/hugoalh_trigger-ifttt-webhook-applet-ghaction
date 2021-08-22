@@ -1,8 +1,8 @@
-const advancedDetermine = require("@hugoalh/advanced-determine"),
-	ghactionCore = require("@actions/core"),
-	ghactionGitHub = require("@actions/github"),
-	moreMethod = require("@hugoalh/more-method"),
-	nodeFetch = require("node-fetch");
+const advancedDetermine = require("@hugoalh/advanced-determine");
+const ghactionCore = require("@actions/core");
+const ghactionGitHub = require("@actions/github");
+const moreMethod = require("@hugoalh/more-method");
+const nodeFetch = require("node-fetch");
 /**
  * @private
  * @function argumentImport
@@ -44,9 +44,9 @@ function argumentImport(key) {
 			throw new SyntaxError(`Argument \`webhook\`'s value is not match the require pattern!`);
 		};
 	} else {
-		let webhookCustomPayload = moreMethod.stringParse(argumentImport("webhook_custompayload")),
-			webhookEventName = argumentImport("webhook_eventname"),
-			webhookKey = argumentImport("webhook_key");
+		let webhookCustomPayload = moreMethod.stringParse(argumentImport("webhook_custompayload"));
+		let webhookEventName = argumentImport("webhook_eventname");
+		let webhookKey = argumentImport("webhook_key");
 		if (typeof webhookCustomPayload !== "boolean") {
 			throw new TypeError(`Argument \`webhook_custompayload\` must be type of boolean!`);
 		};

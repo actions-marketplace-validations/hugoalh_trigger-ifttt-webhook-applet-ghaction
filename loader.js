@@ -1,5 +1,5 @@
-const childProcess = require("child_process"),
-	utility = require("util");
+const childProcess = require("child_process");
+const utility = require("util");
 const execute = utility.promisify(childProcess.exec);
 (async () => {
 	let stepSetup = await execute(
