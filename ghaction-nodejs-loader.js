@@ -22,5 +22,6 @@ const executeConfig = {
 		throw stepMain.stderr;
 	};
 })().catch((error) => {
-	throw error;
+	console.error(error);
+	process.exit(1);
 });
