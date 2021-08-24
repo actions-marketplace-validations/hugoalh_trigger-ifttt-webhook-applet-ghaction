@@ -14,15 +14,15 @@ on:
       replaceholder_list_external:
         description: "replaceholder_list_external"
         required: false
-        default: "{\"name\":\"world\"}"
+        default: "{\"author\":\"world\"}"
       value1:
         description: "value1"
         required: false
-        default: "Hello, %external.name%!"
+        default: "Hello, %external.author%!"
       value2:
         description: "value2"
         required: false
-        default: "Goodbye, %external.name%!"
+        default: "Goodbye, %external.author%!"
       value3:
         description: "value3"
         required: false

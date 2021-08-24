@@ -88,16 +88,17 @@ async function readRepositoryFile(path) {
 /**
  * @private
  * @function parseListMatrix
+ * @async
  * @param {string} key
  * @returns {object}
  */
-function parseListMatrix(key) {
+async function parseListMatrix(key) {
 	let value = argumentImport(key);
 	if (advancedDetermine.isString(value) === null) {
 		return {};
 	};
 	if (value.search(/^.+\.(?:jsonc?|ya?ml)$/giu) === 0) {
-		return readRepositoryFile(value);
+		return await readRepositoryFile(value);
 	};
 	if (advancedDetermine.isStringifyJSON(value) !== false) {
 		return JSON.parse(value);
@@ -150,9 +151,9 @@ function parseListMatrix(key) {
 		replaceholderConfig.replaceUndefined = replaceholderConfig.replaceUndefined.replace(/^\\/giu, "");
 	};
 	let replaceholderList = {
-		external: await parseListMatrix("replaceholder_list_external"),
 		payload: ghactionGitHub.context.payload
 	};
+	replaceholderList.external = await parseListMatrix("replaceholder_list_external");
 	if (advancedDetermine.isJSON(replaceholderList.external, { strictKey: true }) === false) {
 		throw new TypeError(`Argument \`replaceholder_list_external\` must be type of string (non-nullable); or JSON, JSONC, or YAML/YML (no illegal namespace character(s))!`);
 	};
@@ -160,13 +161,16 @@ function parseListMatrix(key) {
 		throw new TypeError(`Argument \`replaceholder_list_payload\` must be type of JSON (no illegal namespace character(s))!`);
 	};
 	let replaceholderService = new moreMethod.Replaceholder(replaceholderList, replaceholderConfig);
-	let payload = (webhookCustomPayload === true)
-		? await parseListMatrix("payload")
-		: {
+	let payload;
+	if (webhookCustomPayload === true) {
+		payload = await parseListMatrix("payload");
+	} else {
+		payload = {
 			value1: argumentImport("value1"),
 			value2: argumentImport("value2"),
 			value3: argumentImport("value3")
 		};
+	};
 	if (advancedDetermine.isJSON(payload) === false) {
 		throw new TypeError(`Argument \`payload\` must be type of JSON!`);
 	};
