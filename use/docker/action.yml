@@ -3,23 +3,19 @@ name: "Trigger IFTTT Webhook Applet"
 author: "hugoalh"
 description: "Trigger IFTTT webhook applet."
 inputs:
-  webhook:
-    description: "{string} IFTTT webhook address."
-    required: false
-  webhook_custompayload:
-    description: "{boolean} Trigger with a standard payload or a custom payload."
-    required: false
-    default: "false"
   webhook_eventname:
     description: "{string} IFTTT webhook event name."
-    required: false
+    required: true
   webhook_key:
     description: "{string} IFTTT webhook key."
+    required: true
+  webhook_custompayload:
+    description: "{boolean} Trigger the webhook applet with a standard payload (IFTTT default ingredient namespace `value1`, `value2`, and `value3`) or a custom payload."
     required: false
+    default: "false"
   replaceholder_list_external:
-    description: "{object} External list of the placeholder."
+    description: "{(object|string)} External list of the placeholder."
     required: false
-    default: "{}"
   replaceholder_prefix:
     description: "{string} Prefix of the placeholder."
     required: false
@@ -46,9 +42,12 @@ inputs:
     description: "{string} IFTTT default ingredient namespace `value3`."
     required: false
   payload:
-    description: "{object} Custom payload."
+    description: "{{object|string}} Custom payload."
     required: false
-    default: "{}"
+  githubtoken:
+    description: "{string} GitHub personal access token."
+    required: false
+    default: "${{github.token}}"
   dryrun:
     description: "{boolean} Dry run this action."
     required: false
