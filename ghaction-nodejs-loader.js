@@ -23,5 +23,5 @@ const executeConfig = {
 	};
 })().catch((error) => {
 	console.error(error);
-	process.exit(21);
+	process.exit(321);
 });

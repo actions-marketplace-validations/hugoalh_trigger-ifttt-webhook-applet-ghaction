@@ -34,5 +34,5 @@ if (
 	};
 })().catch((error) => {
 	console.error(error);
-	process.exit(22);
+	process.exit(322);
 });
