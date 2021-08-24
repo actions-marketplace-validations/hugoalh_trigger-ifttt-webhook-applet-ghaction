@@ -12,14 +12,14 @@ const executeConfig = {
 		console.log(stepSetup.stdout);
 	};
 	if (stepSetup.stderr.length > 0) {
-		throw stepSetup.stderr;
+		console.error(stepSetup.stderr);
 	};
 	let stepMain = await execute(`node main.js`, executeConfig);
 	if (stepMain.stdout.length > 0) {
 		console.log(stepMain.stdout);
 	};
 	if (stepMain.stderr.length > 0) {
-		throw stepMain.stderr;
+		console.error(stepMain.stderr);
 	};
 })().catch((error) => {
 	console.error(error);

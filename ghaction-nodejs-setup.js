@@ -23,14 +23,14 @@ if (
 		throw new Error(`This action cannot execute with NPM which has non-NPM registry!\nCurrent NPM Registry: ${registry}`);
 	};
 	if (stepVerifyRegistry.stderr.length > 0) {
-		throw stepVerifyRegistry.stderr;
+		console.error(stepVerifyRegistry.stderr);
 	};
 	let stepInstall = await execute(`npm install`, executeConfig);
 	if (stepInstall.stdout.length > 0) {
 		console.log(stepInstall.stdout);
 	};
 	if (stepInstall.stderr.length > 0) {
-		throw stepInstall.stderr;
+		console.error(stepInstall.stderr);
 	};
 })().catch((error) => {
 	console.error(error);
