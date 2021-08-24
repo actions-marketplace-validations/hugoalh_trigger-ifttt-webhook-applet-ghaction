@@ -3,9 +3,6 @@ name: "Test"
 on:
   workflow_dispatch:
     inputs:
-      webhook:
-        description: "webhook"
-        required: false
       webhook_eventname:
         description: "webhook_eventname"
         required: false
@@ -43,7 +40,6 @@ jobs:
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
         with:
           dryrun: true
-          webhook: "${{github.event.inputs.webhook}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
           replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
@@ -58,7 +54,6 @@ jobs:
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/docker@main"
         with:
           dryrun: true
-          webhook: "${{github.event.inputs.webhook}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
           replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
@@ -78,7 +73,6 @@ jobs:
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
         with:
           dryrun: true
-          webhook: "${{github.event.inputs.webhook}}"
           webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
           webhook_key: "${{github.event.inputs.webhook_key}}"
           replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"

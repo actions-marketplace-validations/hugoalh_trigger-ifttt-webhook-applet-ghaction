@@ -31,7 +31,7 @@
 
 ## 📚 文檔
 
-> **⚠ Important:** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct version.
+> **⚠ 重要：** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct version.
 
 ### 🎯 進入點／目標
 
@@ -56,7 +56,7 @@
   </tr>
 </table>
 
-> **⚠ Important:** In order to use NodeJS as entrypoint, please ensure the software(s) is already meeted the requirement; Add an extra step before this step with [`actions/setup-node`](https://github.com/actions/setup-node) is recommended.
+> **⚠ 重要：** In order to use NodeJS as entrypoint, please ensure the software(s) is already meeted the requirement; Add an extra step before this step with [`actions/setup-node`](https://github.com/actions/setup-node) is recommended.
 
 ### 📥 Input
 
