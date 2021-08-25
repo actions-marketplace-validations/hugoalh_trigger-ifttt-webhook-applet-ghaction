@@ -141,7 +141,7 @@ When this argument's value is `"true"`, will ignore:
 
 #### `githubtoken`
 
-**［選擇性］** `<string = "${{github.token}}">` GitHub personal access token; Use for fetch external file(s).
+**🔐 ［選擇性］** `<string = "${{github.token}}">` GitHub personal access token; Use for fetch external file(s).
 
 #### `dryrun`
 
