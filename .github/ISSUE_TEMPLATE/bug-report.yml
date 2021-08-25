@@ -22,7 +22,7 @@ body:
       description: "What version(s) is affected? Must be a supported version(s) listed in the \"Security Policy\" (/.github/SECURITY.md)."
       multiple: true
       options:
-        - "v4.0.0-beta.3"
+        - "v4.0.0-beta.4"
         - "v3.1.2"
         - "v3.1.1"
         - "v3.1.0"
