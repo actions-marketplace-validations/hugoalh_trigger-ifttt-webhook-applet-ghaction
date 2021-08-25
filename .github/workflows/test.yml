@@ -31,11 +31,6 @@ jobs:
     name: "Default"
     runs-on: "ubuntu-latest"
     steps:
-#       - name: "Setup NodeJS"
-#         uses: "actions/setup-node@v2.4.0"
-#         with:
-#           node-version: 14
-#           registry-url: "https://registry.npmjs.org/"
       - name: "Execute"
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@main"
         with:
@@ -60,8 +55,8 @@ jobs:
           value1: "${{github.event.inputs.value1}}"
           value2: "${{github.event.inputs.value2}}"
           value3: "${{github.event.inputs.value3}}"
-  nodejs:
-    name: "Use NodeJS"
+  nodejs-standard:
+    name: "Use NodeJS (Standard)"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Setup NodeJS"
@@ -69,6 +64,39 @@ jobs:
         with:
           node-version: 14
           registry-url: "https://registry.npmjs.org/"
+      - name: "Execute"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
+        with:
+          dryrun: true
+          webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
+          webhook_key: "${{github.event.inputs.webhook_key}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
+          value1: "${{github.event.inputs.value1}}"
+          value2: "${{github.event.inputs.value2}}"
+          value3: "${{github.event.inputs.value3}}"
+  nodejs-nosetup:
+    name: "Use NodeJS (No Setup)"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Execute"
+        uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
+        with:
+          dryrun: true
+          webhook_eventname: "${{github.event.inputs.webhook_eventname}}"
+          webhook_key: "${{github.event.inputs.webhook_key}}"
+          replaceholder_list_external: "${{github.event.inputs.replaceholder_list_external}}"
+          value1: "${{github.event.inputs.value1}}"
+          value2: "${{github.event.inputs.value2}}"
+          value3: "${{github.event.inputs.value3}}"
+  nodejs-wrongregistry:
+    name: "Use NodeJS (Wrong Registry)"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Setup NodeJS"
+        uses: "actions/setup-node@v2.4.0"
+        with:
+          node-version: 14
+          registry-url: "https://npm.pkg.github.com/"
       - name: "Execute"
         uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use/nodejs@main"
         with:

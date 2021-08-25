@@ -1,8 +1,4 @@
 const childProcess = require("child_process");
-/*
-const utility = require("util");
-const execute = utility.promisify(childProcess.exec);
-*/
 const executeConfig = {
 	cwd: __dirname,
 	encoding: "utf8",
@@ -18,28 +14,6 @@ if (
 ) {
 	throw new Error(`This action cannot execute with NodeJS which version is lower than v14.15.0!\nCurrent NodeJS Version: v${nodejsVersion}`);
 };
-/*
-(async () => {
-	let stepVerifyRegistry = await execute(`npm config get registry`, executeConfig);
-	let registry = stepVerifyRegistry.stdout.trim();
-	if (registry !== "https://registry.npmjs.org/") {
-		throw new Error(`This action cannot execute with NPM which has non-NPM registry!\nCurrent NPM Registry: ${registry}`);
-	};
-	if (stepVerifyRegistry.stderr.length > 0) {
-		console.error(stepVerifyRegistry.stderr);
-	};
-	let stepInstall = await execute(`npm install`, executeConfig);
-	if (stepInstall.stdout.length > 0) {
-		console.log(stepInstall.stdout);
-	};
-	if (stepInstall.stderr.length > 0) {
-		console.error(stepInstall.stderr);
-	};
-})().catch((error) => {
-	console.error(error);
-	process.exit(322);
-});
-*/
 new Promise((resolve, reject) => {
 	childProcess.exec(
 		`npm config get registry`,
@@ -61,7 +35,7 @@ new Promise((resolve, reject) => {
 	);
 }).catch((error) => {
 	console.error(error);
-	process.exit(7813);
+	process.exit(1);
 }).then(() => {
 	new Promise((resolve, reject) => {
 		childProcess.exec(
@@ -83,6 +57,6 @@ new Promise((resolve, reject) => {
 		);
 	}).catch((error) => {
 		console.error(error);
-		process.exit(7814);
+		process.exit(1);
 	});
 });
