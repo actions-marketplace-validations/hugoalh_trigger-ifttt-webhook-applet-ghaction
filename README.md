@@ -40,7 +40,7 @@
     <td></td>
     <td align="center"><b>Operating System</b></td>
     <td align="center"><b>Software</b></td>
-    <td align="center"><b>Average Execution Time (Second)</b></td>
+    <td align="center"><b>Average Execution Time (Second(s))</b></td>
   </tr>
   <tr>
     <td align="center"><b>Docker (Default / <code>/use/docker</code>)</b></td>
