@@ -22,7 +22,7 @@
 	"dependencies": {
 		"@actions/core": "^1.5.0",
 		"@actions/github": "^5.0.0",
-		"@hugoalh/advanced-determine": "^6.0.7",
+		"@hugoalh/advanced-determine": "^6.1.1",
 		"@hugoalh/more-method": "^0.4.3",
 		"jsonc": "^2.0.0",
 		"node-fetch": "^2.6.1",
