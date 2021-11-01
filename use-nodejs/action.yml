@@ -22,8 +22,8 @@ inputs:
     required: false
     default: "false"
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: "node12"
+  main: "../nodejs-loader.js"
 branding:
   icon: "zap"
   color: "blue"

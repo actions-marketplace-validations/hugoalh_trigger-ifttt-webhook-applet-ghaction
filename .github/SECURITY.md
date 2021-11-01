@@ -4,20 +4,21 @@
 
 > | **Legend** | **Description** |
 > |:-:|:--|
-> | L | **LTS:** This is long term supported. |
-> | ✔ | **Yes:** This is supported. |
-> | 👎 | **Partly:** This is partly supported due to this version(s) is deprecated by a newer version(s). |
-> | ❌ | **No:** This is not supported due to this version(s) is too old. |
-> | ⚠ | **Issue:** This is not supported due to this version(s) is confirmed contains bug(s) and/or issue(s). |
+> | L | **LTS:** Long term supported. |
+> | ✔ | **Yes:** Supported. |
+> | 👎{🐛} | **Partly (Issue):** Partly supported due to confirmed contains bugs and/or issues. |
+> | 👎{🧓} | **Partly (Old):** Partly supported due to deprecated by newer versions. |
+> | ❌{🐛} | **No (Issue):** Not supported due to confirmed contains bugs and/or issues. |
+> | ❌{🧓} | **No (Old):** Not supported due to too old. |
 
 | **Tag / Version** | **Target** | **Support** |
 |:-:|:-:|:-:|
 | v4.X.X | Docker, NodeJS v14.15.0 + NPM v6.14.8 | L |
-| v3.1.X | NodeJS v14.15.0 + NPM v6.14.8 | ✔ |
-| < v3.1.0 | NodeJS v12.13.0 | ❌ |
-| v2.X.X | NodeJS v12.0.0 | ❌ |
-| < v2.0.0 | NodeJS v12.0.0 | ❌ |
-| v1.1.5 \~ v1.1.6 | NodeJS v12.0.0 | ❌⚠ |
+| v3.1.X | NodeJS v14.15.0 + NPM v6.14.8 | 👎{🧓} |
+| < v3.1.0 | NodeJS v12.13.0 | ❌{🧓} |
+| v2.X.X | NodeJS v12.0.0 | ❌{🧓} |
+| < v2.0.0 | NodeJS v12.0.0 | ❌{🧓} |
+| v1.1.5 \~ v1.1.6 | NodeJS v12.0.0 | ❌{🐛🧓} |
 
 ## Report Vulnerability
 
@@ -31,8 +32,8 @@ Send an email to anyone who listed in here (click the link to obtain the email a
 
 - Your GitHub account username (e.g.: `@octocat`)
 - Project identification name
-- Affected version(s) (must be a supported version(s))
-- Affected file(s)
-- Issue(s) to cause this security issue
-- Common Vulnerabilities and Exposures (CVE) identification number(s)
-- Reference of this security issue
+- Affected versions (versions must be listed as supported)
+- Affected files
+- Issues to cause this security issue
+- Common Vulnerabilities and Exposures (CVE) identification numbers
+- References of this security issue
