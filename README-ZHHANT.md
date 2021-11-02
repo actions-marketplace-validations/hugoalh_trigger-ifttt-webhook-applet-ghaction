@@ -73,7 +73,7 @@ jobs:
 
 - NodeJS (>= v14.15.0) + NPM (>= v6.14.8)
 
-#### Powershell (`+powershell`)
+#### PowerShell (`+powershell`)
 
 > **🧪 Experimental:** This entrypoint is in testing.
 
@@ -89,7 +89,7 @@ jobs:
 
 ##### Require Software
 
-- Powershell (>= v7.1.0)
+- PowerShell (>= v7.1.0)
 
 ### 📥 Input
 

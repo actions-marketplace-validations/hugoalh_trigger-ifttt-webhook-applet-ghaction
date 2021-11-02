@@ -20,14 +20,14 @@ function $importInput(key) {
 		throw new TypeError(`Input \`dryrun\` must be type of boolean!`);
 	};
 	let eventName = $importInput("eventname");
-	if (adIsString(eventName, { singleLine: true }) !== true) {
+	if (adIsString(eventName, { pattern: /^[\da-z_-]+$/giu, singleLine: true }) !== true) {
 		throw new TypeError(`Input \`eventname\` must be type of string (non-nullable)!`);
 	};
 	if (adIsString(eventName, { lowerCase: true }) !== true) {
 		ghactionCoreWarning(`Input \`eventname\`'s value is recommended to keep in lower case to prevent issue!`);
 	};
 	let key = $importInput("key");
-	if (adIsString(key, { singleLine: true }) !== true) {
+	if (adIsString(key, { pattern: /^[\da-z_-]+$/giu, singleLine: true }) !== true) {
 		throw new TypeError(`Input \`key\` must be type of string (non-nullable)!`);
 	};
 	let arbitrary = mmStringParse($importInput("arbitrary"));
