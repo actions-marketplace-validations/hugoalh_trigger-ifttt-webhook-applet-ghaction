@@ -22,6 +22,7 @@ body:
         - "v4.0.0-beta.5+default"
         - "v4.0.0-beta.5+docker"
         - "v4.0.0-beta.5+nodejs"
+        - "v4.0.0-beta.5+powershell"
         - "v3.1.2"
         - "v3.1.1"
         - "v3.1.0"

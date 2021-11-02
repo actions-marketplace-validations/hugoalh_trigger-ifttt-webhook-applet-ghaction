@@ -1,5 +1,5 @@
-import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
 import { debug as ghactionCoreDebug, error as ghactionCoreError, getInput as ghactionCoreGetInput, info as ghactionCoreInformation, warning as ghactionCoreWarning } from "@actions/core";
+import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
 import { stringParse as mmStringParse } from "@hugoalh/more-method";
 import nodeFetch from "node-fetch";
 const ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0";
