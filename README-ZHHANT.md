@@ -27,7 +27,7 @@
 
 ## 📚 文檔
 
-> **⚠ 重要：** This documentation is v4.0.0 based. To visit other version's documentation, visit [this tag list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct version.
+> **⚠ Important:** This documentation is v4.0.0-beta.5 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
 
 ### 🎯 進入點／目標
 
@@ -72,6 +72,24 @@ jobs:
 ##### Require Software
 
 - NodeJS (>= v14.15.0) + NPM (>= v6.14.8)
+
+#### Powershell (`+powershell`)
+
+> **🧪 Experimental:** This entrypoint is in testing.
+
+> **⚠ Important:** This entrypoint is suitable for advanced user.
+
+```yml
+jobs:
+  job_id:
+    runs-on: *any*
+    steps:
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-powershell@<tag/version>"
+```
+
+##### Require Software
+
+- Powershell (>= v7.1.0)
 
 ### 📥 Input
 
