@@ -4,7 +4,7 @@ function Import-GHActionInput {
 		[string]$name
 	)
 	Write-Output -InputObject "::debug::Import input ``$name``."
-	(Get-Item -Path "GITHUB_PATH:INPUT_$($name.ToUpper())").Value
+	(Get-Item -Path "env:INPUT_$($name.ToUpper())").Value
 }
 Write-Output -InputObject "Import inputs."
 $dryrun = [bool]::Parse((Import-GHActionInput -name "dryrun"))
