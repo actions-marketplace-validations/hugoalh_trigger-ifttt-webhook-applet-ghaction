@@ -24,7 +24,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: "${{github.action_path}}/main.ps1"
+    - run: "${{github.action_path}}/../main.ps1"
       shell: "pwsh"
 branding:
   icon: "zap"
