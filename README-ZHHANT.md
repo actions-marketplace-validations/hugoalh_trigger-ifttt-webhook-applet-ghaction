@@ -186,4 +186,4 @@ jobs:
 
 To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
 
-<img src="https://i.imgur.com/ihnqN5B.png" width="256px"/>
+<img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>

@@ -14,9 +14,9 @@ if ($dryrun -eq $true) {
 	Write-Output -InputObject "Event Name: $eventName"
 	Write-Output -InputObject "Payload Content: $payloadStringify"
 	Write-Output -InputObject "Payload Length: $($payloadStringify.Length)"
-	$payloadFakeStringify = "{`"body`": `"bar`",`"title`": `"foo`",`"userId`": 1}"
+	$payloadFakeStringify = (ConvertFrom-Json -InputObject "{`"body`": `"bar`",`"title`": `"foo`",`"userId`": 1}" | ConvertTo-Json -Depth 100 -Compress)
 	Write-Output -InputObject "Post network request to test service."
-	Invoke-WebRequest -UseBasicParsing -Uri "https://jsonplaceholder.typicode.com/posts" -UserAgent $ghactionUserAgent -Headers @{ "Content-Length" = $($payloadFakeStringify.Length) } -MaximumRedirection 5 -Method Post -Body $payloadFakeStringify -ContentType "application/json" -SkipHeaderValidation
+	Invoke-WebRequest -UseBasicParsing -Uri "https://jsonplaceholder.typicode.com/posts" -UserAgent $ghactionUserAgent -Headers @{ "Content-Type" = "application/json; charset=utf-8"; "Content-Length" = $($payloadFakeStringify.Length) } -MaximumRedirection 5 -Method Post -Body $payloadFakeStringify -ContentType "application/json; charset=utf-8"
 } else {
 	Write-Output -InputObject "::debug::Event Name: $eventName"
 	Write-Output -InputObject "::debug::Payload Content: $payloadStringify"
@@ -27,5 +27,5 @@ if ($dryrun -eq $true) {
 		$webRequestURL += "/json"
 	}
 	$webRequestURL += "/with/key/$key"
-	Invoke-WebRequest -UseBasicParsing -Uri $webRequestURL -UserAgent $ghactionUserAgent -Headers @{ "Content-Length" = $($payloadFakeStringify.Length) } -MaximumRedirection 5 -Method Post -Body $payloadStringify -ContentType "application/json" -SkipHeaderValidation
+	Invoke-WebRequest -UseBasicParsing -Uri $webRequestURL -UserAgent $ghactionUserAgent -Headers @{ "Content-Type" = "application/json; charset=utf-8"; "Content-Length" = $($payloadFakeStringify.Length) } -MaximumRedirection 5 -Method Post -Body $payloadStringify -ContentType "application/json; charset=utf-8"
 }
