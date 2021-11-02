@@ -24,7 +24,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: "${{github.action_path}}/../main.ps1 -arbitrary \"${{env.INPUT_ARBITRARY}}\" -dryrun \"${{env.INPUT_DRYRUN}}\" -eventName \"${{env.INPUT_EVENTNAME}}\" -key \"${{env.INPUT_KEY}}\" -payload \"${{env.INPUT_PAYLOAD}}\""
+    - run: "${{github.action_path}}/../main.ps1 -arbitrary \"${{inputs.arbitrary}}\" -dryrun \"${{inputs.dryrun}}\" -eventName \"${{inputs.eventname}}\" -key \"${{inputs.key}}\" -payload \"${{inputs.payload}}\""
       shell: "pwsh"
 branding:
   icon: "zap"
