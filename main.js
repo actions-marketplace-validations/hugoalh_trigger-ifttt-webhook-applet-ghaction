@@ -42,7 +42,6 @@ function $importInput(key) {
 	if (dryRun === true) {
 		ghactionCoreInformation(`Event Name: ${eventName}`);
 		ghactionCoreInformation(`Payload Content: ${payloadStringify}`);
-		ghactionCoreInformation(`Payload Length: ${payloadStringify.length}`);
 		let payloadFakeStringify = JSON.stringify({
 			body: "bar",
 			title: "foo",
@@ -56,14 +55,12 @@ function $importInput(key) {
 				follow: 5,
 				headers: {
 					"Content-Type": "application/json",
-					"Content-Length": payloadFakeStringify.length,
 					"User-Agent": ghactionUserAgent
 				},
 				method: "POST",
 				redirect: "follow"
 			}
 		);
-		ghactionCoreInformation(`Receive network response from test service.`);
 		let responseText = await response.text();
 		if (response.ok === true) {
 			ghactionCoreInformation(`Status Code: ${response.status}\nResponse: ${responseText}`);
@@ -73,7 +70,6 @@ function $importInput(key) {
 	} else {
 		ghactionCoreDebug(`Event Name: ${eventName}`);
 		ghactionCoreDebug(`Payload Content: ${payloadStringify}`);
-		ghactionCoreDebug(`Payload Length: ${payloadStringify.length}`);
 		ghactionCoreInformation(`Post network request to IFTTT.`);
 		let response = await nodeFetch(
 			`https://maker.ifttt.com/trigger/${eventName}${(arbitrary === true) ? "/json" : ""}/with/key/${key}`,
@@ -82,14 +78,12 @@ function $importInput(key) {
 				follow: 5,
 				headers: {
 					"Content-Type": "application/json",
-					"Content-Length": payloadStringify.length,
 					"User-Agent": ghactionUserAgent
 				},
 				method: "POST",
 				redirect: "follow"
 			}
 		);
-		ghactionCoreInformation(`Receive network response from IFTTT.`);
 		let responseText = await response.text();
 		if (response.ok === true) {
 			ghactionCoreDebug(`Status Code: ${response.status}\nResponse: ${responseText}`);
