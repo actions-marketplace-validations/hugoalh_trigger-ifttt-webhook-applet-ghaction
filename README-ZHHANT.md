@@ -27,7 +27,7 @@
 
 ## 📚 文檔
 
-> **⚠ Important:** This documentation is v4.0.0-beta.5 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
+> **⚠ Important:** This documentation is v4.0.0 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
 
 ### 🎯 進入點／目標
 
@@ -74,8 +74,6 @@ jobs:
 - NodeJS (>= v14.15.0) + NPM (>= v6.14.8)
 
 #### PowerShell (`+powershell`)
-
-> **🧪 Experimental:** This entrypoint is in testing.
 
 > **⚠ Important:** This entrypoint is suitable for advanced user.
 
