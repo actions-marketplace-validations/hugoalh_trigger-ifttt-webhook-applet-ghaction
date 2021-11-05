@@ -14,7 +14,7 @@
 | **Tag / Version** | **Target** | **Support** |
 |:-:|:-:|:-:|
 | v4.X.X | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.1.0 | L |
-| v3.1.X | NodeJS v14.15.0 + NPM v6.14.8 | 👎{🧓} |
+| v3.1.X | NodeJS v12.13.0 + NPM v6.12.0 | 👎{🧓} |
 | < v3.1.0 | NodeJS v12.13.0 | ❌{🧓} |
 | v2.X.X | NodeJS v12.0.0 | ❌{🧓} |
 | < v2.0.0 | NodeJS v12.0.0 | ❌{🧓} |
