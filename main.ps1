@@ -9,7 +9,7 @@ $arbitraryBoolean = [bool]::Parse($arbitrary)
 $dryRunBoolean = [bool]::Parse($dryRun)
 $payloadStringify = (ConvertFrom-Json -InputObject $payload -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
 $ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0"
-if ($dryrun -eq $true) {
+if ($dryRunBoolean -eq $true) {
 	Write-Output -InputObject "Event Name: $eventName"
 	Write-Output -InputObject "Payload Content: $payloadStringify"
 	$payloadFakeStringify = (ConvertFrom-Json -InputObject '{"body": "bar", "title": "foo", "userId": 1}' -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
@@ -20,7 +20,7 @@ if ($dryrun -eq $true) {
 	Write-Output -InputObject "::debug::Payload Content: $payloadStringify"
 	Write-Output -InputObject "Post network request to IFTTT."
 	$webRequestURL = "https://maker.ifttt.com/trigger/$eventname"
-	if ($arbitrary -eq $true) {
+	if ($arbitraryBoolean -eq $true) {
 		$webRequestURL += "/json"
 	}
 	$webRequestURL += "/with/key/$key"
