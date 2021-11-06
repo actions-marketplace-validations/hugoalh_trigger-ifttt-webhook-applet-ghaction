@@ -1,8 +1,9 @@
-import { debug as ghactionCoreDebug, error as ghactionCoreError, getInput as ghactionCoreGetInput, info as ghactionCoreInformation, warning as ghactionCoreWarning } from "@actions/core";
+import { debug as ghactionDebug, error as ghactionError, getInput as ghactionGetInput, info as ghactionInformation, setSecret as ghactionSetSecret, warning as ghactionWarning } from "@actions/core";
 import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
 import { stringParse as mmStringParse } from "@hugoalh/more-method";
 import nodeFetch from "node-fetch";
 const ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0";
+const reIFTTTMakerURL = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
 /**
  * @private
  * @function $importInput
@@ -10,26 +11,30 @@ const ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.0";
  * @returns {string}
  */
 function $importInput(key) {
-	ghactionCoreDebug(`Import input \`${key}\`.`);
-	return ghactionCoreGetInput(key);
+	ghactionDebug(`Import input \`${key}\`.`);
+	return ghactionGetInput(key);
 };
 (async () => {
-	ghactionCoreInformation(`Import inputs.`);
+	ghactionInformation(`Import inputs.`);
 	let dryRun = mmStringParse($importInput("dryrun"));
 	if (typeof dryRun !== "boolean") {
 		throw new TypeError(`Input \`dryrun\` must be type of boolean!`);
 	};
 	let eventName = $importInput("eventname");
-	if (adIsString(eventName, { pattern: /^[\da-z_-]+$/giu, singleLine: true }) !== true) {
+	if (adIsString(eventName, { pattern: /^[\da-z_-]+$/giu }) !== true) {
 		throw new TypeError(`Input \`eventname\` must be type of string (non-nullable)!`);
 	};
 	if (adIsString(eventName, { lowerCase: true }) !== true) {
-		ghactionCoreWarning(`Input \`eventname\`'s value is recommended to keep in lower case to prevent issue!`);
+		ghactionWarning(`Input \`eventname\`'s value is recommended to keep in lower case to prevent issue!`);
 	};
 	let key = $importInput("key");
-	if (adIsString(key, { pattern: /^[\da-z_-]+$/giu, singleLine: true }) !== true) {
+	if (adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu }) !== true) {
 		throw new TypeError(`Input \`key\` must be type of string (non-nullable)!`);
 	};
+	if (key.search(reIFTTTMakerURL) === 0) {
+		key = key.replace(reIFTTTMakerURL, "$<key>");
+	};
+	ghactionSetSecret(key);
 	let arbitrary = mmStringParse($importInput("arbitrary"));
 	if (typeof arbitrary !== "boolean") {
 		throw new TypeError(`Input \`arbitrary\` must be type of boolean!`);
@@ -40,14 +45,14 @@ function $importInput(key) {
 	};
 	let payloadStringify = JSON.stringify(payload);
 	if (dryRun === true) {
-		ghactionCoreInformation(`Event Name: ${eventName}`);
-		ghactionCoreInformation(`Payload Content: ${payloadStringify}`);
+		ghactionInformation(`Event Name: ${eventName}`);
+		ghactionInformation(`Payload Content: ${payloadStringify}`);
 		let payloadFakeStringify = JSON.stringify({
 			body: "bar",
 			title: "foo",
 			userId: 1
 		});
-		ghactionCoreInformation(`Post network request to test service.`);
+		ghactionInformation(`Post network request to test service.`);
 		let response = await nodeFetch(
 			`https://jsonplaceholder.typicode.com/posts`,
 			{
@@ -63,14 +68,14 @@ function $importInput(key) {
 		);
 		let responseText = await response.text();
 		if (response.ok === true) {
-			ghactionCoreInformation(`Status Code: ${response.status}\nResponse: ${responseText}`);
+			ghactionInformation(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		} else {
 			throw new Error(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		};
 	} else {
-		ghactionCoreDebug(`Event Name: ${eventName}`);
-		ghactionCoreDebug(`Payload Content: ${payloadStringify}`);
-		ghactionCoreInformation(`Post network request to IFTTT.`);
+		ghactionDebug(`Event Name: ${eventName}`);
+		ghactionDebug(`Payload Content: ${payloadStringify}`);
+		ghactionInformation(`Post network request to IFTTT.`);
 		let response = await nodeFetch(
 			`https://maker.ifttt.com/trigger/${eventName}${(arbitrary === true) ? "/json" : ""}/with/key/${key}`,
 			{
@@ -86,12 +91,12 @@ function $importInput(key) {
 		);
 		let responseText = await response.text();
 		if (response.ok === true) {
-			ghactionCoreDebug(`Status Code: ${response.status}\nResponse: ${responseText}`);
+			ghactionDebug(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		} else {
 			throw new Error(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		};
 	};
 })().catch((reason) => {
-	ghactionCoreError(reason);
+	ghactionError(reason);
 	process.exit(1);
 });
