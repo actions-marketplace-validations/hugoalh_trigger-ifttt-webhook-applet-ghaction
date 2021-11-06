@@ -23,25 +23,29 @@
 
 用於觸發IFTTT網絡鉤手小程式的GitHub Action。
 
-*Previous named "\[GitHub Action\] Send To IFTTT".*
+*之前稱為「［GitHub Action］傳送至IFTTT」。*
 
 ## 📚 文檔
 
-> **⚠ Important:** This documentation is v4.0.0-beta.5 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
+> <b>⚠ 重要：</b>此文檔基於v4.0.0-beta.5。如果要查看其他標籤／版本的文檔，瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
 
 ### 🎯 進入點／目標
 
-#### Default (`+default`)
+#### 預設 (`+default`)
 
-> **⚠ Important:** This entrypoint is currently based to <u>Docker (`+docker`)</u>, base can be changed between versions without announcement to ensure the stability.
+> <b>⚠ 重要：</b>此進入點目前是基於<u>Docker (`+docker`)</u>，基底可能在沒有通知的情況下變更以確保正常運作。
 
 ```yml
 jobs:
   job_id:
-    runs-on: # Depend on the base requirement, recommended "ubuntu-________"
+    runs-on: # 取決於基底要求，推薦"ubuntu-________"
     steps:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@<tag/version>"
 ```
+
+##### 需要軟體
+
+*取決於基底要求。*
 
 #### Docker (`+docker`)
 
@@ -53,13 +57,13 @@ jobs:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-docker@<tag/version>"
 ```
 
-##### Require Software
+##### 需要軟體
 
 - Docker
 
 #### NodeJS (`+nodejs`)
 
-> **⚠ Important:** This entrypoint maybe need extra steps to manually setup NodeJS version.
+> <b>⚠ 重要：</b>此進入點可能需要額外的步驟來手動設置NodeJS版本。
 
 ```yml
 jobs:
@@ -69,13 +73,13 @@ jobs:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-nodejs@<tag/version>"
 ```
 
-##### Require Software
+##### 需要軟體
 
 - NodeJS (>= v14.15.0) + NPM (>= v6.14.8)
 
 #### PowerShell (`+powershell`)
 
-> **⚠ Important:** This entrypoint is suitable for advanced user.
+> <b>⚠ 重要：</b>此進入點適合進階用戶。
 
 ```yml
 jobs:
@@ -85,33 +89,33 @@ jobs:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-powershell@<tag/version>"
 ```
 
-##### Require Software
+##### 需要軟體
 
 - PowerShell (>= v7.1.0)
 
-### 📥 Input
+### 📥 輸入
 
 > | **圖解** | **說明** |
 > |:-:|:--|
-> | 🔐 | Should be an encrypted secret. |
+> | 🔐 | 應該是已加密的秘密。 |
 
 #### `eventname`
 
-`<string>` Event name; Recommended to keep in lower case to prevent issue.
+`<字串>` 事件名稱；建議保持小寫以防止出現問題。
 
 #### `key`
 
-**🔐** `<string>` Key.
+**🔐** `<字串>` 密鑰。
 
 #### `arbitrary`
 
-<b>［選擇性］</b>`<boolean = false>` Trigger with an arbitrary JSON payload.
+<b>［選擇性］</b>`<布爾值 = false>` 使用任意JSON負載觸發。
 
 #### `payload`
 
-<b>［選擇性］</b>`<object = {}>` JSON payload.
+<b>［選擇性］</b>`<物件 = {}>` JSON負載。
 
-- **Arbitrary (Input `arbitrary` is `true`):**
+- **任意（輸入`arbitrary`是`true`）：**
   ```yml
   jobs:
     job_id:
@@ -131,7 +135,7 @@ jobs:
                 ]
               }
   ```
-- **Standard (Not Arbitrary)(Input `arbitrary` is `false`):**
+- **標準（輸入`arbitrary`是`false`）：**
   ```yml
   jobs:
     job_id:
@@ -147,9 +151,9 @@ jobs:
 
 #### `dryrun`
 
-<b>［選擇性］</b>`<boolean = false>` Dry run; For debug use.
+<b>［選擇性］</b>`<布爾值 = false>` 試運行；供調試使用。
 
-### 📤 Output
+### 📤 輸出
 
 *不適用*
 
@@ -175,13 +179,13 @@ jobs:
 
 #### GitHub Actions
 
-- [Enabling debug logging](https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging)
-- [Encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+- [啟用調試日誌記錄](https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging)
+- [已加密的秘密](https://docs.github.com/en/actions/reference/encrypted-secrets)
 
 #### IFTTT
 
-##### Obtain the webhook key
+##### 獲取網絡鉤子密鑰
 
-To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
+要獲取網絡鉤子密鑰，請點擊「Menu」 > 「My Services」 > 「Webhooks」 > 「Settings」，密鑰位於「Account Info」 > 「URL」並且在`https://maker.ifttt.com/use/`之後；要重新生成它，請點擊"Edit"。
 
 <img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>

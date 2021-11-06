@@ -43,6 +43,10 @@ jobs:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@<tag/version>"
 ```
 
+##### Require Software
+
+*Depend on the base requirement.*
+
 #### Docker (`+docker`)
 
 ```yml
@@ -131,7 +135,7 @@ jobs:
                 ]
               }
   ```
-- **Standard (Not Arbitrary)(Input `arbitrary` is `false`):**
+- **Standard (Input `arbitrary` is `false`):**
   ```yml
   jobs:
     job_id:
