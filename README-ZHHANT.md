@@ -192,6 +192,6 @@ jobs:
 
 ##### 獲取網絡鉤子密鑰
 
-要獲取網絡鉤子密鑰，請點擊「Menu」 > 「My Services」 > 「Webhooks」 > 「Settings」，密鑰位於「Account Info」 > 「URL」（短格式密鑰緊接著在`https://maker.ifttt.com/use/`之後）；要重新生成它，請點擊"Edit"。
+要獲取網絡鉤子密鑰，請點擊「Menu」 > 「My Services」 > 「Webhooks」 > 「Settings」，密鑰位於「Account Info」 > 「URL」（短格式密鑰在`https://maker.ifttt.com/use/`後面）；要重新生成它，請點擊"Edit"。
 
 <img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>

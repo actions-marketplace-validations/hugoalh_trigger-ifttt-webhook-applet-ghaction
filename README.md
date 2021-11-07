@@ -105,7 +105,7 @@ jobs:
 
 #### `key`
 
-**🔐** `<string>` Key; Both long and short form are acceptable.
+**🔐** `<string>` Key; Both long and short forms are acceptable.
 
 ```
 https://maker.ifttt.com/use/ifttt-webhook-key
@@ -192,6 +192,6 @@ jobs:
 
 ##### Obtain the webhook key
 
-To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" (short form key is tailed after `https://maker.ifttt.com/use/`); To regenerate it, click "Edit".
+To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" (short form key is behind `https://maker.ifttt.com/use/`); To regenerate it, click "Edit".
 
 <img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>
