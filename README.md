@@ -174,7 +174,7 @@ jobs:
       - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.1"
         with:
           eventname: "greeting"
-          key: "${{secrets.IFTTT_WEBHOOK_KEY}}"
+          key: "${{secrets.IFTTT_WEBHOOKS_KEY}}"
           payload: |
             {
               "value1": "Hello, world!"
