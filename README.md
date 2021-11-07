@@ -27,7 +27,7 @@ A GitHub Action to trigger IFTTT webhook applet.
 
 ## 📚 Documentation
 
-> **⚠ Important:** This documentation is v4.0.0-beta.5 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
+> **⚠ Important:** This documentation is v4.0.1 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
 
 ### 🎯 Entrypoint / Target
 
@@ -105,7 +105,13 @@ jobs:
 
 #### `key`
 
-**🔐** `<string>` Key.
+**🔐** `<string>` Key; Both long and short form are acceptable.
+
+```
+https://maker.ifttt.com/use/ifttt-webhook-key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  Long
+                            ^^^^^^^^^^^^^^^^^  Short
+```
 
 #### `arbitrary`
 
@@ -165,7 +171,7 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.0"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.1"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOK_KEY}}"
@@ -186,6 +192,6 @@ jobs:
 
 ##### Obtain the webhook key
 
-To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" and after `https://maker.ifttt.com/use/`; To regenerate it, click "Edit".
+To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" (short form key is tailed after `https://maker.ifttt.com/use/`); To regenerate it, click "Edit".
 
 <img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>

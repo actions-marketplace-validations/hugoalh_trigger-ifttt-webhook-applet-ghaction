@@ -27,7 +27,7 @@
 
 ## 📚 文檔
 
-> <b>⚠ 重要：</b>此文檔基於v4.0.0-beta.5。如果要查看其他標籤／版本的文檔，瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
+> <b>⚠ 重要：</b>此文檔基於v4.0.1。如果要查看其他標籤／版本的文檔，瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
 
 ### 🎯 進入點／目標
 
@@ -105,7 +105,13 @@ jobs:
 
 #### `key`
 
-**🔐** `<字串>` 密鑰。
+**🔐** `<字串>` 密鑰；長格式和短格式都可以接受。
+
+```
+https://maker.ifttt.com/use/ifttt-webhook-key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  長
+                            ^^^^^^^^^^^^^^^^^  短
+```
 
 #### `arbitrary`
 
@@ -165,7 +171,7 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.0"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.1"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOK_KEY}}"
@@ -186,6 +192,6 @@ jobs:
 
 ##### 獲取網絡鉤子密鑰
 
-要獲取網絡鉤子密鑰，請點擊「Menu」 > 「My Services」 > 「Webhooks」 > 「Settings」，密鑰位於「Account Info」 > 「URL」並且在`https://maker.ifttt.com/use/`之後；要重新生成它，請點擊"Edit"。
+要獲取網絡鉤子密鑰，請點擊「Menu」 > 「My Services」 > 「Webhooks」 > 「Settings」，密鑰位於「Account Info」 > 「URL」（短格式密鑰緊接著在`https://maker.ifttt.com/use/`之後）；要重新生成它，請點擊"Edit"。
 
 <img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>
