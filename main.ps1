@@ -5,7 +5,7 @@ param (
 	[Parameter(Mandatory = $true, Position = 1)][ValidatePattern("^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$")][string]$key,
 	[Parameter(Mandatory = $true, Position = 2, ValueFromPipeline = $true)][ValidateNotNullOrEmpty()][string]$payload
 )
-$ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.2"
+$ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.3"
 $reIFTTTMakerURL = "^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$"
 if ($key -cmatch $reIFTTTMakerURL) {
 	$key -creplace $reIFTTTMakerURL,'${key}'
@@ -32,7 +32,7 @@ if ($dryRun -eq $true) {
 		$webRequestURL += "/json"
 	}
 	$webRequestURL += "/with/key/$key"
-	Invoke-WebRequest -UseBasicParsing -Uri $webRequestURL -UserAgent $ghactionUserAgent -MaximumRedirection 5 -Method Post -Body $payloadStringify -ContentType "application/json; charset=utf-8"
+	$response = Invoke-WebRequest -UseBasicParsing -Uri $webRequestURL -UserAgent $ghactionUserAgent -MaximumRedirection 5 -Method Post -Body $payloadStringify -ContentType "application/json; charset=utf-8"
 	$response.PSObject.Properties | ForEach-Object {
 		Write-Output -InputObject "::group::$($_.Name)"
 		Write-Output -InputObject "::debug::$($_.Value | ConvertTo-Json -Depth 100 -Compress)"
