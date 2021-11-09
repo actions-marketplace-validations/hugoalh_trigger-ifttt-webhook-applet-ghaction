@@ -20,7 +20,7 @@ if ($dryRun -eq $true) {
 	$response = Invoke-WebRequest -UseBasicParsing -Uri "https://jsonplaceholder.typicode.com/posts" -UserAgent $ghactionUserAgent -MaximumRedirection 5 -Method Post -Body $payloadFakeStringify -ContentType "application/json; charset=utf-8"
 	$response.PSObject.Properties | ForEach-Object {
 		Write-Output -InputObject "::group::$($_.Name)"
-		Write-Output -InputObject "$($_.Value|ConvertTo-Json -Depth 100 -Compress)"
+		Write-Output -InputObject "$($_.Value | ConvertTo-Json -Depth 100 -Compress)"
 		Write-Output -InputObject "::endgroup::"
 	}
 } else {
@@ -35,7 +35,7 @@ if ($dryRun -eq $true) {
 	Invoke-WebRequest -UseBasicParsing -Uri $webRequestURL -UserAgent $ghactionUserAgent -MaximumRedirection 5 -Method Post -Body $payloadStringify -ContentType "application/json; charset=utf-8"
 	$response.PSObject.Properties | ForEach-Object {
 		Write-Output -InputObject "::group::$($_.Name)"
-		Write-Output -InputObject "::debug::$($_.Value|ConvertTo-Json -Depth 100 -Compress)"
+		Write-Output -InputObject "::debug::$($_.Value | ConvertTo-Json -Depth 100 -Compress)"
 		Write-Output -InputObject "::endgroup::"
 	}
 }
