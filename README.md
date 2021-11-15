@@ -33,7 +33,7 @@ A GitHub Action to trigger IFTTT webhook applet.
 
 #### Default (`+default`)
 
-> **⚠ Important:** This entrypoint is currently based to <u>Docker (`+docker`)</u>, base can be changed between versions without announcement to ensure the stability.
+> **⚠ Important:** This entrypoint is currently based to <kbd>Docker (`+docker`)</kbd>, base can be changed between versions without announcement to ensure the stability.
 
 ```yml
 jobs:

@@ -1,4 +1,7 @@
-const childProcess = require("child_process");
+import { dirname as pathDirectoryName } from "path";
+import { exec as childProcessExecute } from "child_process";
+import { fileURLToPath } from "url";
+const ghactionActionDirectory = pathDirectoryName(fileURLToPath(import.meta.url));
 /**
  * @private
  * @function $execute
@@ -7,10 +10,10 @@ const childProcess = require("child_process");
  */
 function $execute(command) {
 	return new Promise((resolve, reject) => {
-		childProcess.exec(
+		childProcessExecute(
 			command,
 			{
-				cwd: __dirname,
+				cwd: ghactionActionDirectory,
 				encoding: "utf8",
 				windowsHide: true
 			},
@@ -30,8 +33,8 @@ function $execute(command) {
 	});
 };
 (async () => {
-	await $execute("npm install --production");
-	await $execute("node --no-warnings main.js");
+	await $execute("npm ci");
+	await $execute("node main.js");
 })().catch((reason) => {
 	console.error(reason);
 	process.exit(1);

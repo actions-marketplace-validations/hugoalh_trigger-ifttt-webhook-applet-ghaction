@@ -19,6 +19,10 @@ body:
       description: "甚麼版本受到影響？必須是安全政策（/.github/SECURITY.md，英文）中列出的受支持版本。"
       multiple: true
       options:
+        - "v4.0.4+default"
+        - "v4.0.4+docker"
+        - "v4.0.4+nodejs"
+        - "v4.0.4+powershell"
         - "v4.0.3+default"
         - "v4.0.3+docker"
         - "v4.0.3+nodejs"
