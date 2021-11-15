@@ -1,7 +1,4 @@
-import { dirname as pathDirectoryName } from "path";
-import { exec as childProcessExecute } from "child_process";
-import { fileURLToPath } from "url";
-const ghactionActionDirectory = pathDirectoryName(fileURLToPath(import.meta.url));
+const childProcess = require("child_process");
 /**
  * @private
  * @function $execute
@@ -10,10 +7,10 @@ const ghactionActionDirectory = pathDirectoryName(fileURLToPath(import.meta.url)
  */
 function $execute(command) {
 	return new Promise((resolve, reject) => {
-		childProcessExecute(
+		childProcess.exec(
 			command,
 			{
-				cwd: ghactionActionDirectory,
+				cwd: __dirname,
 				encoding: "utf8",
 				windowsHide: true
 			},
