@@ -1,39 +1,39 @@
 param (
-	[Parameter()][boolean]$arbitrary,
-	[Parameter()][boolean]$dryRun,
-	[Parameter(Mandatory = $true, Position = 0)][ValidatePattern("^[\da-zA-Z_-]+$")][string]$eventName,
-	[Parameter(Mandatory = $true, Position = 1)][ValidatePattern("^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$")][string]$key,
-	[Parameter(Mandatory = $true, Position = 2, ValueFromPipeline = $true)][ValidateNotNullOrEmpty()][string]$payload
+	[Parameter()][boolean]$Arbitrary,
+	[Parameter()][boolean]$DryRun,
+	[Parameter(Mandatory = $true, Position = 0)][ValidatePattern("^[\da-zA-Z_-]+$")][string]$EventName,
+	[Parameter(Mandatory = $true, Position = 1)][ValidatePattern("^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$")][string]$Key,
+	[Parameter(Mandatory = $true, Position = 2, ValueFromPipeline = $true)][ValidateNotNullOrEmpty()][string]$Payload
 )
-$ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.3"
-$reIFTTTMakerURL = "^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$"
-if ($key -cmatch $reIFTTTMakerURL) {
-	$key -creplace $reIFTTTMakerURL,'${key}'
+$GHActionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.4"
+$REIFTTTMakerURL = "^https:\/\/maker\.ifttt\.com\/use\/(?<Key>[\da-zA-Z_-]+)$"
+if ($Key -cmatch $REIFTTTMakerURL) {
+	$Key -creplace $REIFTTTMakerURL,'${Key}'
 }
-Write-Output -InputObject "::add-mask::$key"
-$payloadStringify = (ConvertFrom-Json -InputObject $payload -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
-if ($dryRun -eq $true) {
-	Write-Output -InputObject "Event Name: $eventName"
-	Write-Output -InputObject "Payload Content: $payloadStringify"
-	$payloadFakeStringify = (ConvertFrom-Json -InputObject '{"body": "bar", "title": "foo", "userId": 1}' -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
+Write-Output -InputObject "::add-mask::$Key"
+$PayloadStringify = (ConvertFrom-Json -InputObject $Payload -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
+if ($DryRun -eq $true) {
+	Write-Output -InputObject "Event Name: $EventName"
+	Write-Output -InputObject "Payload Content: $PayloadStringify"
+	$PayloadFakeStringify = (ConvertFrom-Json -InputObject '{"body": "bar", "title": "foo", "userId": 1}' -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
 	Write-Output -InputObject "Post network request to test service."
-	$response = Invoke-WebRequest -UseBasicParsing -Uri "https://jsonplaceholder.typicode.com/posts" -UserAgent $ghactionUserAgent -MaximumRedirection 5 -Method Post -Body $payloadFakeStringify -ContentType "application/json; charset=utf-8"
-	$response.PSObject.Properties | ForEach-Object {
+	$Response = Invoke-WebRequest -UseBasicParsing -Uri "https://jsonplaceholder.typicode.com/posts" -UserAgent $GHActionUserAgent -MaximumRedirection 5 -Method Post -Body $PayloadFakeStringify -ContentType "application/json; charset=utf-8"
+	$Response.PSObject.Properties | ForEach-Object {
 		Write-Output -InputObject "::group::$($_.Name)"
 		Write-Output -InputObject "$($_.Value | ConvertTo-Json -Depth 100 -Compress)"
 		Write-Output -InputObject "::endgroup::"
 	}
 } else {
-	Write-Output -InputObject "::debug::Event Name: $eventName"
-	Write-Output -InputObject "::debug::Payload Content: $payloadStringify"
+	Write-Output -InputObject "::debug::Event Name: $EventName"
+	Write-Output -InputObject "::debug::Payload Content: $PayloadStringify"
 	Write-Output -InputObject "Post network request to IFTTT."
-	$webRequestURL = "https://maker.ifttt.com/trigger/$eventname"
-	if ($arbitrary -eq $true) {
-		$webRequestURL += "/json"
+	$WebRequestURL = "https://maker.ifttt.com/trigger/$EventName"
+	if ($Arbitrary -eq $true) {
+		$WebRequestURL += "/json"
 	}
-	$webRequestURL += "/with/key/$key"
-	$response = Invoke-WebRequest -UseBasicParsing -Uri $webRequestURL -UserAgent $ghactionUserAgent -MaximumRedirection 5 -Method Post -Body $payloadStringify -ContentType "application/json; charset=utf-8"
-	$response.PSObject.Properties | ForEach-Object {
+	$WebRequestURL += "/with/key/$Key"
+	$Response = Invoke-WebRequest -UseBasicParsing -Uri $WebRequestURL -UserAgent $GHActionUserAgent -MaximumRedirection 5 -Method Post -Body $PayloadStringify -ContentType "application/json; charset=utf-8"
+	$Response.PSObject.Properties | ForEach-Object {
 		Write-Output -InputObject "::group::$($_.Name)"
 		Write-Output -InputObject "::debug::$($_.Value | ConvertTo-Json -Depth 100 -Compress)"
 		Write-Output -InputObject "::endgroup::"
