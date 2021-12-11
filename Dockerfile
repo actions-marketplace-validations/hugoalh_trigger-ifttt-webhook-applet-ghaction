@@ -1,5 +1,6 @@
-FROM node:lts-fermium
-COPY package*.json /
+FROM node:14.18.2
+COPY main.js package-lock.json package.json /opt/hugoalh/trigger-ifttt-webhook-applet-ghaction/
+WORKDIR /opt/hugoalh/trigger-ifttt-webhook-applet-ghaction/
 RUN ["npm", "ci"]
-COPY main.js /
-CMD ["node", "/main.js"]
+WORKDIR /
+CMD ["node", "/opt/hugoalh/trigger-ifttt-webhook-applet-ghaction/main.js"]

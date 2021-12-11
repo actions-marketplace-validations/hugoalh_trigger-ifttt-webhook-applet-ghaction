@@ -2,7 +2,7 @@ import { debug as ghactionDebug, error as ghactionError, getInput as ghactionGet
 import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
 import { stringParse as mmStringParse } from "@hugoalh/more-method";
 import nodeFetch from "node-fetch";
-const ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.4";
+const ghactionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.1.0";
 const reIFTTTMakerURL = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
 /**
  * @private

@@ -1,6 +1,6 @@
 🌐 | [English](./README.md) / [中文](./README-ZHHANT.md)
 
-# Trigger IFTTT Webhook Applet (GitHub Action Edition)
+# Trigger IFTTT Webhook Applet (GitHub Action)
 
 [`TriggerIFTTTWebhookApplet.GitHubAction`](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction)
 [![GitHub Contributors](https://img.shields.io/github/contributors/hugoalh/trigger-ifttt-webhook-applet-ghaction?label=Contributors&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/graphs/contributors)
@@ -27,7 +27,7 @@ A GitHub Action to trigger IFTTT webhook applet.
 
 ## 📚 Documentation
 
-> **⚠ Important:** This documentation is v4.0.1 based. To view other tag's/version's documentation, visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
+> **⚠ Important:** This documentation is v4.1.0 based; To view other tag's/version's documentation, please visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
 
 ### 🎯 Entrypoint / Target
 
@@ -91,7 +91,7 @@ jobs:
 
 ##### Require Software
 
-- PowerShell (>= v7.1.0)
+- PowerShell (>= v7.2.0)
 
 ### 📥 Input
 
@@ -171,7 +171,7 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.1"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.1.0"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOKS_KEY}}"

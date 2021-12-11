@@ -1,6 +1,6 @@
 🌐 | [English](./README.md) / [中文](./README-ZHHANT.md)
 
-# 觸發IFTTT網絡鉤手小程式（GitHub Action版本）
+# 觸發IFTTT網絡鉤手小程式（GitHub Action）
 
 [`TriggerIFTTTWebhookApplet.GitHubAction`](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction)
 [![GitHub貢獻者](https://img.shields.io/github/contributors/hugoalh/trigger-ifttt-webhook-applet-ghaction?label=%E8%B2%A2%E7%8D%BB%E8%80%85&logo=github&logoColor=ffffff&style=flat-square)](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/graphs/contributors)
@@ -27,7 +27,7 @@
 
 ## 📚 文檔
 
-> <b>⚠ 重要：</b>此文檔基於v4.0.1。如果要查看其他標籤／版本的文檔，瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
+> <b>⚠ 重要：</b>此文檔基於v4.1.0。如果要查看其他標籤／版本的文檔，請瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
 
 ### 🎯 進入點／目標
 
@@ -91,7 +91,7 @@ jobs:
 
 ##### 需要軟體
 
-- PowerShell (>= v7.1.0)
+- PowerShell (>= v7.2.0)
 
 ### 📥 輸入
 
@@ -171,7 +171,7 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.0.1"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.1.0"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOKS_KEY}}"

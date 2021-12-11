@@ -5,7 +5,7 @@ param (
 	[Parameter(Mandatory = $true, Position = 1)][ValidatePattern("^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$")][string]$Key,
 	[Parameter(Mandatory = $true, Position = 2, ValueFromPipeline = $true)][ValidateNotNullOrEmpty()][string]$Payload
 )
-$GHActionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.0.4"
+$GHActionUserAgent = "TriggerIFTTTWebhookApplet.GitHubAction/4.1.0"
 $REIFTTTMakerURL = "^https:\/\/maker\.ifttt\.com\/use\/(?<Key>[\da-zA-Z_-]+)$"
 if ($Key -cmatch $REIFTTTMakerURL) {
 	$Key -creplace $REIFTTTMakerURL,'${Key}'
