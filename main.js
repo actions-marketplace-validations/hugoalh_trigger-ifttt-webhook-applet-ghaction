@@ -21,15 +21,15 @@ function $importInput(key) {
 		throw new TypeError(`Input \`dryrun\` must be type of boolean!`);
 	};
 	let eventName = $importInput("eventname");
-	if (adIsString(eventName, { pattern: /^[\da-z_-]+$/giu }) !== true) {
-		throw new TypeError(`Input \`eventname\` must be type of string (non-nullable)!`);
+	if (!adIsString(eventName, { pattern: /^[\da-z_-]+$/giu })) {
+		throw new TypeError(`Input \`eventname\` must be type of string (non-empty)!`);
 	};
-	if (adIsString(eventName, { lowerCase: true }) !== true) {
+	if (!adIsString(eventName, { lowerCase: true })) {
 		ghactionWarning(`Input \`eventname\`'s value is recommended to keep in lower case to prevent issue!`);
 	};
 	let key = $importInput("key");
-	if (adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu }) !== true) {
-		throw new TypeError(`Input \`key\` must be type of string (non-nullable)!`);
+	if (!adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu })) {
+		throw new TypeError(`Input \`key\` must be type of string (non-empty)!`);
 	};
 	if (key.search(reIFTTTMakerURL) === 0) {
 		key = key.replace(reIFTTTMakerURL, "$<key>");
@@ -40,11 +40,11 @@ function $importInput(key) {
 		throw new TypeError(`Input \`arbitrary\` must be type of boolean!`);
 	};
 	let payload = mmStringParse($importInput("payload"));
-	if (adIsJSON(payload) === false) {
+	if (!adIsJSON(payload)) {
 		throw new TypeError(`Input \`payload\` must be type of JSON!`);
 	};
 	let payloadStringify = JSON.stringify(payload);
-	if (dryRun === true) {
+	if (dryRun) {
 		ghactionInformation(`Event Name: ${eventName}`);
 		ghactionInformation(`Payload Content: ${payloadStringify}`);
 		let payloadFakeStringify = JSON.stringify({
@@ -67,7 +67,7 @@ function $importInput(key) {
 			}
 		);
 		let responseText = await response.text();
-		if (response.ok === true) {
+		if (response.ok) {
 			ghactionInformation(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		} else {
 			throw new Error(`Status Code: ${response.status}\nResponse: ${responseText}`);
@@ -77,7 +77,7 @@ function $importInput(key) {
 		ghactionDebug(`Payload Content: ${payloadStringify}`);
 		ghactionInformation(`Post network request to IFTTT.`);
 		let response = await nodeFetch(
-			`https://maker.ifttt.com/trigger/${eventName}${(arbitrary === true) ? "/json" : ""}/with/key/${key}`,
+			`https://maker.ifttt.com/trigger/${eventName}${arbitrary ? "/json" : ""}/with/key/${key}`,
 			{
 				body: payloadStringify,
 				follow: 5,
@@ -90,7 +90,7 @@ function $importInput(key) {
 			}
 		);
 		let responseText = await response.text();
-		if (response.ok === true) {
+		if (response.ok) {
 			ghactionDebug(`Status Code: ${response.status}\nResponse: ${responseText}`);
 		} else {
 			throw new Error(`Status Code: ${response.status}\nResponse: ${responseText}`);
