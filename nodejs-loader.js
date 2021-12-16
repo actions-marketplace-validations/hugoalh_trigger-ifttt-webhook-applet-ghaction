@@ -26,21 +26,25 @@ function $execute(command) {
 };
 (async () => {
 	let npmCleanInstallResult = await $execute("npm ci");
-	if (npmCleanInstallResult.stdout.length > 0) {
-		console.log(npmCleanInstallResult.stdout);
+	let npmCleanInstallResultStdErr = npmCleanInstallResult.stderr.trim();
+	let npmCleanInstallResultStdOut = npmCleanInstallResult.stdout.trim();
+	if (npmCleanInstallResultStdOut.length > 0) {
+		console.log(npmCleanInstallResultStdOut);
 	};
-	if (npmCleanInstallResult.stderr.length > 0) {
-		console.log(npmCleanInstallResult.stderr);
+	if (npmCleanInstallResultStdErr.length > 0) {
+		console.log(npmCleanInstallResultStdErr);
 	};
 	if (npmCleanInstallResult.error) {
 		throw new Error(`Unable to install action's dependencies! (Error Code: ${npmCleanInstallResult.error.code})`);
 	};
 	let actionResult = await $execute("node main.js");
-	if (actionResult.stdout.length > 0) {
-		console.log(actionResult.stdout);
+	let actionResultStdErr = actionResult.stderr.trim();
+	let actionResultStdOut = actionResult.stdout.trim();
+	if (actionResultStdOut.length > 0) {
+		console.log(actionResultStdOut);
 	};
-	if (actionResult.stderr.length > 0) {
-		console.log(actionResult.stderr);
+	if (actionResultStdErr.length > 0) {
+		console.log(actionResultStdErr);
 	};
 	if (actionResult.error) {
 		throw actionResult.error;
