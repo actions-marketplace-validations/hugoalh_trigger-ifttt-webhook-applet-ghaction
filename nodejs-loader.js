@@ -1,4 +1,4 @@
-const childProcess = require("child_process");
+import { exec as childProcessExec } from "child_process";
 /**
  * @private
  * @function $execute
@@ -7,7 +7,7 @@ const childProcess = require("child_process");
  */
 function $execute(command) {
 	return new Promise((resolve) => {
-		childProcess.exec(
+		childProcessExec(
 			command,
 			{
 				cwd: __dirname,
@@ -37,6 +37,7 @@ function $execute(command) {
 	if (npmCleanInstallResult.error) {
 		throw new Error(`Unable to install action's dependencies! (Error Code: ${npmCleanInstallResult.error.code})`);
 	};
+	return import("./main.js");
 	let actionResult = await $execute("node main.js");
 	let actionResultStdErr = actionResult.stderr.trim();
 	let actionResultStdOut = actionResult.stdout.trim();
