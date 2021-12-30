@@ -33,8 +33,8 @@ if ($DryRun) {
 		$WebRequestURL += '/json'
 	}
 	$WebRequestURL += "/with/key/$Key"
-	[pscustomobject]$Response = Invoke-WebRequest -UseBasicParsing -Uri $WebRequestURL -UserAgent $GHActionUserAgent -MaximumRedirection 5 -Method Post -Body $PayloadStringify -ContentType "application/json; charset=utf-8"
-	$Response.PSObject.Properties | ForEach-Object {
+	[pscustomobject]$Response = Invoke-WebRequest -UseBasicParsing -Uri $WebRequestURL -UserAgent $GHActionUserAgent -MaximumRedirection 5 -Method Post -Body $PayloadStringify -ContentType 'application/json; charset=utf-8'
+	$Response.PSObject.Properties | ForEach-Object -Process {
 		Enter-GHActionsLogGroup -Title $_.Name
 		Write-GHActionsDebug -Message ($_.Value | ConvertTo-Json -Compress -Depth 100)
 		Exit-GHActionsLogGroup
