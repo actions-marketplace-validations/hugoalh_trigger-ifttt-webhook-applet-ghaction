@@ -50,7 +50,7 @@ runs:
       run: "${{github.action_path}}/../main.ps1 -Arbitrary $${{inputs.arbitrary}} -DryRun $${{inputs.dryrun}} -EventName '${{inputs.eventname}}' -Key '${{inputs.key}}' -Payload '${{inputs.payload}}'"
       shell: "pwsh"
     - name: "Revert Modify PowerShell Gallery Installation Policy"
-      if: "${{steps.psgip.outcome == 'success' && always()}}"
+      if: "${{steps.psgip.outputs.installationpolicy != '' && always()}}"
       run: |
         Set-PSRepository -Name PSGallery -InstallationPolicy '${{steps.psgip.outputs.installationpolicy}}'
       shell: "pwsh"
