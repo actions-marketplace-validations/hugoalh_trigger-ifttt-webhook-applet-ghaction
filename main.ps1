@@ -6,7 +6,7 @@ param (
 	[Parameter(Mandatory = $true, Position = 2, ValueFromPipeline = $true)][ValidateNotNullOrEmpty()][string]$Payload
 )
 Import-Module -Name 'hugoalh.GitHubActionsToolkit' -Scope Local
-[string]$GHActionUserAgent = 'TriggerIFTTTWebhookApplet.GitHubAction/4.1.0'
+[string]$GHActionUserAgent = 'TriggerIFTTTWebhookApplet.GitHubAction/4.1.1'
 [string]$REIFTTTMakerURL = '^https:\/\/maker\.ifttt\.com\/use\/(?<Key>[\da-zA-Z_-]+)$'
 if ($Key -cmatch $REIFTTTMakerURL) {
 	$Key -creplace $REIFTTTMakerURL,'${Key}'
