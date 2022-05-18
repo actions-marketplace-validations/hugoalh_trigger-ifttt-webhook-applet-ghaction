@@ -35,7 +35,7 @@ runs:
       shell: "pwsh"
     - name: "Setup Action's Dependencies"
       run: |
-        Install-Module -Name 'hugoalh.GitHubActionsToolkit' -MinimumVersion '0.3.3' -Scope 'AllUsers' -AcceptLicense -Verbose
+        Install-Module -Name 'hugoalh.GitHubActionsToolkit' -MinimumVersion '0.3.3' -Scope 'CurrentUsers' -AcceptLicense -Verbose
       shell: "pwsh"
     - name: "Execute Main Action"
       run: "${{github.action_path}}/../main.ps1 -EventName '${{inputs.eventname}}' -Key '${{inputs.key}}' -Payload '${{inputs.payload}}' -Arbitrary:$${{inputs.arbitrary}}"
