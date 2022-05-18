@@ -157,7 +157,7 @@ https://maker.ifttt.com/use/ifttt-webhook-key
 
 #### `dryrun`
 
-**\[Optional\]** `<boolean = false>` Dry run; For debug use.
+**(< v4.1.2) \[Optional\]** `<boolean = false>` Dry run; For debug use.
 
 ### 📤 Output
 

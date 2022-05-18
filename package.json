@@ -1,6 +1,6 @@
 {
 	"name": "@hugoalh/trigger-ifttt-webhook-applet-ghaction",
-	"version": "4.1.1",
+	"version": "4.1.2",
 	"description": "A GitHub Action to trigger IFTTT webhook applet.",
 	"keywords": [
 		"github-action",
@@ -24,10 +24,10 @@
 		"url": "git+https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction.git"
 	},
 	"dependencies": {
-		"@actions/core": "^1.6.0",
-		"@hugoalh/advanced-determine": "^7.0.0",
+		"@actions/core": "^1.8.2",
+		"@hugoalh/advanced-determine": "^7.0.1",
 		"@hugoalh/more-method": "^0.7.0",
-		"node-fetch": "^3.2.3"
+		"node-fetch": "^3.2.4"
 	},
 	"engines": {
 		"node": ">= 14.15.0",
