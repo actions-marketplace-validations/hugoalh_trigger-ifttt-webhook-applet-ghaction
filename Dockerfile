@@ -1,4 +1,4 @@
-FROM node:lts-fermium
+FROM node:lts-gallium
 COPY main.js package-lock.json package.json /opt/hugoalh/trigger-ifttt-webhook-applet-ghaction/
 WORKDIR /opt/hugoalh/trigger-ifttt-webhook-applet-ghaction/
 RUN ["npm", "ci"]

@@ -31,67 +31,26 @@ A GitHub Action to trigger IFTTT webhook applet.
 
 ### 🎯 Entrypoint / Target
 
-#### Default (`+default`)
-
-> **⚠ Important:** This entrypoint is currently based to <kbd>Docker (`+docker`)</kbd>, base can be changed between versions without announcement to ensure the stability.
-
 ```yml
 jobs:
   job_id:
-    runs-on: # Depend on the base requirement, recommended "ubuntu-________"
+    runs-on: "________"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@<tag/version>"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction________@<tag/version>"
 ```
 
-##### Require Software
+|  | **`jobs.job_id.runs-on`** | **`jobs.job_id.steps[*].uses`** | **Require Software** |
+|:-:|:-:|:-:|:-:|
+| **Default (`+default`)** | `ubuntu-________` | *None* | Docker |
+| **Docker (`+docker`)** | `ubuntu-________` | `/use-docker` | Docker |
+| **NodeJS (`+nodejs`)** | Any | `/use-nodejs` | NodeJS (>= v14.15.0) + NPM (>= v6.14.8) |
+| **PowerShell (`+powershell`)** | Any | `/use-powershell` | PowerShell (>= v7.2.0) |
 
-*Depend on the base requirement.*
-
-#### Docker (`+docker`)
-
-```yml
-jobs:
-  job_id:
-    runs-on: "ubuntu-________"
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-docker@<tag/version>"
-```
-
-##### Require Software
-
-- Docker
-
-#### NodeJS (`+nodejs`)
-
-> **⚠ Important:** This entrypoint maybe need extra steps to manually setup NodeJS version.
-
-```yml
-jobs:
-  job_id:
-    runs-on: *any*
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-nodejs@<tag/version>"
-```
-
-##### Require Software
-
-- NodeJS (>= v14.15.0) + NPM (>= v6.14.8)
-
-#### PowerShell (`+powershell`)
-
-> **⚠ Important:** This entrypoint is suitable for advanced user.
-
-```yml
-jobs:
-  job_id:
-    runs-on: *any*
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-powershell@<tag/version>"
-```
-
-##### Require Software
-
-- PowerShell (>= v7.2.0)
+> **⚠ Important:**
+>
+> - Default entrypoint is currently based to Docker (`+docker`), base can be changed between versions without announcement to ensure the stability.
+> - NodeJS entrypoint maybe need extra steps to manually setup NodeJS version.
+> - PowerShell entrypoint is suitable for advanced user.
 
 ### 📥 Input
 

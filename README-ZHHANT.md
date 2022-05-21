@@ -31,67 +31,26 @@
 
 ### 🎯 進入點／目標
 
-#### 預設 (`+default`)
-
-> <b>⚠ 重要：</b>此進入點目前是基於<kbd>Docker (`+docker`)</kbd>，基底可能在沒有通知的情況下變更以確保正常運作。
-
 ```yml
 jobs:
   job_id:
-    runs-on: # 取決於基底要求，推薦"ubuntu-________"
+    runs-on: "________"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@<tag/version>"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction________@<tag/version>"
 ```
 
-##### 需要軟體
+|  | **`jobs.job_id.runs-on`** | **`jobs.job_id.steps[*].uses`** | **需要軟體** |
+|:-:|:-:|:-:|:-:|
+| **預設（`+default`）** | `ubuntu-________` | *沒有* | Docker |
+| **Docker（`+docker`）** | `ubuntu-________` | `/use-docker` | Docker |
+| **NodeJS（`+nodejs`）** | 任何 | `/use-nodejs` | NodeJS（>= v14.15.0） + NPM（>= v6.14.8） |
+| **PowerShell（`+powershell`）** | 任何 | `/use-powershell` | PowerShell（>= v7.2.0） |
 
-*取決於基底要求。*
-
-#### Docker (`+docker`)
-
-```yml
-jobs:
-  job_id:
-    runs-on: "ubuntu-________"
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-docker@<tag/version>"
-```
-
-##### 需要軟體
-
-- Docker
-
-#### NodeJS (`+nodejs`)
-
-> <b>⚠ 重要：</b>此進入點可能需要額外的步驟來手動設置NodeJS版本。
-
-```yml
-jobs:
-  job_id:
-    runs-on: *any*
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-nodejs@<tag/version>"
-```
-
-##### 需要軟體
-
-- NodeJS (>= v14.15.0) + NPM (>= v6.14.8)
-
-#### PowerShell (`+powershell`)
-
-> <b>⚠ 重要：</b>此進入點適合進階用戶。
-
-```yml
-jobs:
-  job_id:
-    runs-on: *any*
-    steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction/use-powershell@<tag/version>"
-```
-
-##### 需要軟體
-
-- PowerShell (>= v7.2.0)
+> **⚠ 重要：**
+>
+> - 預設進入點目前是基於Docker（`+docker`），基底可能在沒有通知的情況下變更以確保正常運作。
+> - NodeJS進入點可能需要額外的步驟來手動設置NodeJS版本。
+> - PowerShell進入點適合進階用戶。
 
 ### 📥 輸入
 
