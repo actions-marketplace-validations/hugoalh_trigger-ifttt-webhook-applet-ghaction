@@ -1,49 +1,39 @@
-import {
-	endGroup as ghactionEndGroup,
-	error as ghactionError,
-	getInput as ghactionGetInput,
-	info as ghactionInformation,
-	setSecret as ghactionSetSecret,
-	startGroup as ghactionStartGroup,
-	warning as ghactionWarning
-} from "@actions/core";
-import {
-	isJSON as adIsJSON,
-	isString as adIsString
-} from "@hugoalh/advanced-determine";
-import { stringParse as mmStringParse } from "@hugoalh/more-method";
+import { endGroup as ghactionsEndGroup, error as ghactionsError, getBooleanInput as ghactionsGetBooleanInput, getInput as ghactionsGetInput, info as ghactionsInformation, setSecret as ghactionsSetSecret, startGroup as ghactionsStartGroup, warning as ghactionsWarning } from "@actions/core";
+import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
+import chalk from "chalk";
 import nodeFetch from "node-fetch";
+import yaml from "yaml";
 const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
 (async () => {
-	ghactionStartGroup(`Import inputs.`);
-	let eventName = ghactionGetInput("eventname");
+	ghactionsStartGroup(`Import inputs.`);
+	let eventName = ghactionsGetInput("eventname");
 	if (!adIsString(eventName, { pattern: /^[\da-z_-]+$/giu })) {
-		throw new TypeError(`Input \`eventname\` must be type of string and match require pattern!`);
+		throw new TypeError(`\`${eventName}\` is not a valid IFTTT webhook event name!`);
 	};
 	if (!adIsString(eventName, { lowerCase: true })) {
-		ghactionWarning(`Input \`eventname\`'s value is recommended to keep in lower case to prevent issue!`);
+		ghactionsWarning(`Input \`eventname\`'s value \`${eventName}\` is recommended to keep in lower case to prevent issue!`);
 	};
-	let key = ghactionGetInput("key");
+	let key = ghactionsGetInput("key");
 	if (!adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu })) {
-		throw new TypeError(`Input \`key\` must be type of string and match require pattern!`);
+		throw new TypeError(`Input \`key\` is not a valid IFTTT webhook key!`);
 	};
 	if (key.search(IFTTTMakerURLRegExp) === 0) {
 		key = key.replace(IFTTTMakerURLRegExp, "$<key>");
 	};
-	ghactionSetSecret(key);
-	let arbitrary = mmStringParse(ghactionGetInput("arbitrary"));
+	ghactionsSetSecret(key);
+	let arbitrary = ghactionsGetBooleanInput("arbitrary");
 	if (typeof arbitrary !== "boolean") {
 		throw new TypeError(`Input \`arbitrary\` must be type of boolean!`);
 	};
-	let payload = mmStringParse(ghactionGetInput("payload"));
+	let payload = yaml.parse(ghactionsGetInput("payload"));
 	if (!adIsJSON(payload)) {
-		throw new TypeError(`Input \`payload\` must be type of JSON!`);
+		throw new TypeError(`Input \`payload\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
 	};
 	let payloadStringify = JSON.stringify(payload);
-	ghactionInformation(`Event Name: ${eventName}`);
-	ghactionInformation(`Payload Content: ${payloadStringify}`);
-	ghactionEndGroup();
-	ghactionStartGroup(`Post network request to IFTTT.`);
+	ghactionsInformation(`${chalk.bold("Event Name:")} ${eventName}`);
+	ghactionsInformation(`${chalk.bold("Payload Content:")} ${payloadStringify}`);
+	ghactionsEndGroup();
+	ghactionsStartGroup(`Post network request to IFTTT.`);
 	let response = await nodeFetch(
 		`https://maker.ifttt.com/trigger/${eventName}${arbitrary ? "/json" : ""}/with/key/${key}`,
 		{
@@ -51,21 +41,21 @@ const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 			follow: 1,
 			headers: {
 				"Content-Type": "application/json",
-				"User-Agent": "TriggerIFTTTWebhookApplet.GitHubAction/4.1.2"
+				"User-Agent": "TriggerIFTTTWebhookApplet.GitHubAction/4.2.0"
 			},
 			method: "POST",
 			redirect: "follow"
 		}
 	);
 	let responseText = await response.text();
-	let result = `Status Code: ${response.status}\nResponse: ${responseText}`;
+	let result = `${chalk.bold("Status Code:")} ${response.status}\n${chalk.bold("Response:")} ${responseText}`;
 	if (response.ok) {
-		ghactionInformation(result);
+		ghactionsInformation(result);
 	} else {
 		throw new Error(result);
 	};
 })().catch((reason) => {
-	ghactionError(reason);
-	ghactionEndGroup();
+	ghactionsError(reason);
+	ghactionsEndGroup();
 	process.exit(1);
 });

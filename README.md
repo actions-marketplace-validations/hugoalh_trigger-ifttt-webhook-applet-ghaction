@@ -27,7 +27,7 @@ A GitHub Action to trigger IFTTT webhook applet.
 
 ## 📚 Documentation
 
-> **⚠ Important:** This documentation is v4.1.0 based; To view other tag's/version's documentation, please visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
+> **⚠ Important:** This documentation is v4.2.0 based; To view other tag's/version's documentation, please visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
 
 ### 🎯 Entrypoint / Target
 
@@ -74,11 +74,11 @@ https://maker.ifttt.com/use/ifttt-webhook-key
 
 #### `arbitrary`
 
-**\[Optional\]** `<boolean = false>` Trigger with an arbitrary JSON payload.
+**\[Optional\]** `<boolean = false>` Trigger with an arbitrary payload.
 
 #### `payload`
 
-**\[Optional\]** `<object = {}>` JSON payload.
+**\[Optional\]** `<object>` JSON/YAML/YML payload.
 
 - **Arbitrary (Input `arbitrary` is `true`):**
   ```yml
@@ -114,9 +114,7 @@ https://maker.ifttt.com/use/ifttt-webhook-key
               }
   ```
 
-#### `dryrun`
-
-**(< v4.1.2) \[Optional\]** `<boolean = false>` Dry run; For debug use.
+> **⚠ Important:** PowerShell entrypoint only accept JSON payload.
 
 ### 📤 Output
 
@@ -130,14 +128,12 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.1.0"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.2.0"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOKS_KEY}}"
           payload: |
-            {
-              "value1": "Hello, world!"
-            }
+            value1: "Hello, world!"
 ```
 
 ### Guide

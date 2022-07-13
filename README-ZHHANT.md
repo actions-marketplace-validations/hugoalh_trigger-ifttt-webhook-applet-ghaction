@@ -27,7 +27,7 @@
 
 ## 📚 文檔
 
-> <b>⚠ 重要：</b>此文檔基於v4.1.0；如果要查看其他標籤／版本的文檔，請瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
+> <b>⚠ 重要：</b>此文檔基於v4.2.0；如果要查看其他標籤／版本的文檔，請瀏覽[標籤／版本列表](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags)並選擇正確的標籤／版本。
 
 ### 🎯 進入點／目標
 
@@ -74,11 +74,11 @@ https://maker.ifttt.com/use/ifttt-webhook-key
 
 #### `arbitrary`
 
-<b>［選擇性］</b>`<布爾值 = false>` 使用任意JSON負載觸發。
+<b>［選擇性］</b>`<布爾值 = false>` 使用任意負載觸發。
 
 #### `payload`
 
-<b>［選擇性］</b>`<物件 = {}>` JSON負載。
+<b>［選擇性］</b>`<物件 = {}>` JSON／YAML／YML負載。
 
 - **任意（輸入`arbitrary`是`true`）：**
   ```yml
@@ -114,9 +114,7 @@ https://maker.ifttt.com/use/ifttt-webhook-key
               }
   ```
 
-#### `dryrun`
-
-<b>（< v4.1.2）［選擇性］</b>`<布爾值 = false>` 試運行；供調試使用。
+> <b>⚠ 重要：</b>PowerShell進入點只接受JSON負載。
 
 ### 📤 輸出
 
@@ -130,14 +128,12 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.1.0"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.2.0"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOKS_KEY}}"
           payload: |
-            {
-              "value1": "Hello, world!"
-            }
+            value1: "Hello, world!"
 ```
 
 ### 指南

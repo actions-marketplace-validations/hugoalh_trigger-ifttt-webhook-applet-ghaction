@@ -13,9 +13,10 @@
 
 | **Tag / Version** | **Target** | **Support** |
 |:-:|:-:|:-:|
-| v4.X.X | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.2.0 | L |
-| v4.0.X | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.1.0 | ✔ |
-| v4.0.2 | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.1.0 | 👎{🐛} |
+| v4.2.X | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.2.0 | L |
+| v4.1.X | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.2.0 | 👎{🧓} |
+| v4.0.X | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.1.0 | 👎{🧓} |
+| v4.0.2 | Docker, NodeJS v14.15.0 + NPM v6.14.8, PowerShell v7.1.0 | 👎{🐛🧓} |
 | < v4.0.0 | NodeJS <= v12.13.0 + NPM <= v6.12.0 | ❌{🐛🧓} |
 
 ## Report Vulnerability

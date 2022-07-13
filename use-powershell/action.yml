@@ -9,7 +9,7 @@ inputs:
     description: "{string} Key."
     required: true
   arbitrary:
-    description: "{boolean} Trigger with an arbitrary JSON payload."
+    description: "{boolean} Trigger with an arbitrary payload."
     required: false
     default: "false"
   payload:
@@ -35,7 +35,7 @@ runs:
       shell: "pwsh"
     - name: "Setup Action's Dependencies"
       run: |
-        Install-Module -Name 'hugoalh.GitHubActionsToolkit' -MinimumVersion '0.3.3' -Scope 'CurrentUser' -AcceptLicense -Verbose
+        Install-Module -Name 'hugoalh.GitHubActionsToolkit' -MinimumVersion '0.5.0' -Scope 'CurrentUser' -AcceptLicense -Verbose
       shell: "pwsh"
     - name: "Execute Main Action"
       run: "${{github.action_path}}/../main.ps1 -EventName '${{inputs.eventname}}' -Key '${{inputs.key}}' -Payload '${{inputs.payload}}' -Arbitrary:$${{inputs.arbitrary}}"

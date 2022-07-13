@@ -9,16 +9,16 @@ inputs:
     description: "{string} Key."
     required: true
   arbitrary:
-    description: "{boolean} Trigger with an arbitrary JSON payload."
+    description: "{boolean} Trigger with an arbitrary payload."
     required: false
     default: "false"
   payload:
-    description: "{object} JSON payload."
+    description: "{object} JSON/YAML/YML payload."
     required: false
     default: "{}"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/hugoalh/trigger-ifttt-webhook-applet-ghaction:4.1.0"
+  image: "docker://ghcr.io/hugoalh/trigger-ifttt-webhook-applet-ghaction:4.2.0"
 branding:
   icon: "zap"
   color: "blue"
