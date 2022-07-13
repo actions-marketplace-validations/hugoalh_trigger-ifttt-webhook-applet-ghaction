@@ -1,6 +1,6 @@
 Param (
-	[Parameter(Mandatory = $True, Position = 0)][ValidatePattern('^[\da-zA-Z_-]+$')][String]$EventName,
-	[Parameter(Mandatory = $True, Position = 1)][ValidatePattern('^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$')][String]$Key,
+	[Parameter(Mandatory = $True, Position = 0)][ValidatePattern('^[\da-zA-Z_-]+$', ErrorMessage = '`{0}` is not a valid IFTTT webhook event name!')][String]$EventName,
+	[Parameter(Mandatory = $True, Position = 1)][ValidatePattern('^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$', ErrorMessage = 'Input `key` is not a valid IFTTT webhook key.')][String]$Key,
 	[Parameter(Mandatory = $True, Position = 2)][String]$Payload,
 	[Switch]$Arbitrary
 )
@@ -14,7 +14,7 @@ Add-GitHubActionsSecretMask -Value $Key
 Try {
 [String]$PayloadStringify = ($Payload | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
 } Catch {
-	Write-GitHubActionsFail -Message 'Input `Payload` is not a valid JSON payload!'
+	Write-GitHubActionsFail -Message 'Input `payload` is not a valid IFTTT webhook JSON payload!'
 }
 Write-Host -Object "$($PSStyle.Bold)Event Name:$($PSStyle.Reset) $EventName"
 Write-Host -Object "$($PSStyle.Bold)Payload Content:$($PSStyle.Reset) $PayloadStringify"
