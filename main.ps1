@@ -12,7 +12,7 @@ If ($Key -imatch $IFTTTMakerURLRegEx) {
 }
 Add-GitHubActionsSecretMask -Value $Key
 Try {
-[String]$PayloadStringify = ($Payload | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
+	[String]$PayloadStringify = ($Payload | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress)
 } Catch {
 	Write-GitHubActionsFail -Message 'Input `payload` is not a valid IFTTT webhook JSON payload!'
 }
