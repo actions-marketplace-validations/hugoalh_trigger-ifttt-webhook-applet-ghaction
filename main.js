@@ -1,8 +1,9 @@
+import { Chalk } from "chalk";
 import { endGroup as ghactionsEndGroup, error as ghactionsError, getBooleanInput as ghactionsGetBooleanInput, getInput as ghactionsGetInput, info as ghactionsInformation, setSecret as ghactionsSetSecret, startGroup as ghactionsStartGroup, warning as ghactionsWarning } from "@actions/core";
 import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
-import chalk from "chalk";
 import nodeFetch from "node-fetch";
 import yaml from "yaml";
+const ghactionsChalk = new Chalk({ level: 3 });
 const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
 (async () => {
 	ghactionsStartGroup(`Import inputs.`);
@@ -30,8 +31,8 @@ const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 		throw new TypeError(`Input \`payload\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
 	};
 	let payloadStringify = JSON.stringify(payload);
-	ghactionsInformation(`${chalk.bold("Event Name:")} ${eventName}`);
-	ghactionsInformation(`${chalk.bold("Payload Content:")} ${payloadStringify}`);
+	ghactionsInformation(`${ghactionsChalk.bold("Event Name:")} ${eventName}`);
+	ghactionsInformation(`${ghactionsChalk.bold("Payload Content:")} ${payloadStringify}`);
 	ghactionsEndGroup();
 	ghactionsStartGroup(`Post network request to IFTTT.`);
 	let response = await nodeFetch(
@@ -48,7 +49,7 @@ const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 		}
 	);
 	let responseText = await response.text();
-	let result = `${chalk.bold("Status Code:")} ${response.status}\n${chalk.bold("Response:")} ${responseText}`;
+	let result = `${ghactionsChalk.bold("Status Code:")} ${response.status}\n${ghactionsChalk.bold("Response:")} ${responseText}`;
 	if (response.ok) {
 		ghactionsInformation(result);
 	} else {
