@@ -1,3 +1,5 @@
+#Requires -PSEdition Core
+#Requires -Version 7.2
 Param (
 	[Parameter(Mandatory = $True, Position = 0)][ValidatePattern('^[\da-zA-Z_-]+$', ErrorMessage = '`{0}` is not a valid IFTTT webhook event name!')][String]$EventName,
 	[Parameter(Mandatory = $True, Position = 1)][ValidatePattern('^(https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$', ErrorMessage = 'Input `key` is not a valid IFTTT webhook key.')][String]$Key,
