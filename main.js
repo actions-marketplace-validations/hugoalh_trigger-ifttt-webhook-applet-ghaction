@@ -4,7 +4,7 @@ import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-de
 import nodeFetch from "node-fetch";
 import yaml from "yaml";
 const ghactionsChalk = new Chalk({ level: 3 });
-const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
+const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
 (async () => {
 	ghactionsStartGroup(`Import inputs.`);
 	let eventName = ghactionsGetInput("eventname");
@@ -18,8 +18,8 @@ const IFTTTMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 	if (!adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu })) {
 		throw new TypeError(`Input \`key\` is not a valid IFTTT webhook key!`);
 	};
-	if (key.search(IFTTTMakerURLRegExp) === 0) {
-		key = key.replace(IFTTTMakerURLRegExp, "$<key>");
+	if (key.search(iftttMakerURLRegExp) === 0) {
+		key = key.replace(iftttMakerURLRegExp, "$<key>");
 	};
 	ghactionsSetSecret(key);
 	let arbitrary = ghactionsGetBooleanInput("arbitrary");

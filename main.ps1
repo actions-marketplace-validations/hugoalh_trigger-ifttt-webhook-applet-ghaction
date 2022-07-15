@@ -7,10 +7,10 @@ Param (
 	[Switch]$Arbitrary
 )
 Import-Module -Name 'hugoalh.GitHubActionsToolkit' -Scope 'Local'
-[RegEx]$IFTTTMakerURLRegEx = '^https:\/\/maker\.ifttt\.com\/use\/(?<Key>[\da-zA-Z_-]+)$'
+[RegEx]$IftttMakerUriRegEx = '^https:\/\/maker\.ifttt\.com\/use\/(?<Key>[\da-zA-Z_-]+)$'
 Enter-GitHubActionsLogGroup -Title 'Import inputs.'
-If ($Key -imatch $IFTTTMakerURLRegEx) {
-	$Key = $Key -ireplace $IFTTTMakerURLRegEx, '${Key}'
+If ($Key -imatch $IftttMakerUriRegEx) {
+	$Key = $Key -ireplace $IftttMakerUriRegEx, '${Key}'
 }
 Add-GitHubActionsSecretMask -Value $Key
 Try {
