@@ -28,7 +28,7 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 	};
 	let payload = yaml.parse(ghactionsGetInput("payload"));
 	if (!adIsJSON(payload)) {
-		throw new TypeError(`Input \`payload\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
+		throw new TypeError(`\`${payload}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
 	};
 	let payloadStringify = JSON.stringify(payload);
 	ghactionsInformation(`${ghactionsChalk.bold("Event Name:")} ${eventName}`);
