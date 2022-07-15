@@ -50,11 +50,11 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 	);
 	let responseText = await response.text();
 	let result = `${ghactionsChalk.bold("Status Code:")} ${response.status}\n${ghactionsChalk.bold("Response:")} ${responseText}`;
-	if (response.ok) {
-		ghactionsInformation(result);
-	} else {
+	if (!response.ok) {
 		throw new Error(result);
 	};
+	ghactionsInformation(result);
+	ghactionsEndGroup();
 })().catch((reason) => {
 	ghactionsError(reason);
 	ghactionsEndGroup();
