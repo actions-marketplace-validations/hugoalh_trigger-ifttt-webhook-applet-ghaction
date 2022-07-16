@@ -14,6 +14,7 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 	if (!adIsString(eventName, { lowerCase: true })) {
 		ghactionsWarning(`Input \`eventname\`'s value \`${eventName}\` is recommended to keep in lower case to prevent issue!`);
 	};
+	ghactionsInformation(`${ghactionsChalk.bold("Event Name:")} ${eventName}`);
 	let key = ghactionsGetInput("key");
 	if (!adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu })) {
 		throw new TypeError(`Input \`key\` is not a valid IFTTT webhook key!`);
@@ -31,8 +32,7 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 		throw new TypeError(`\`${payload}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
 	};
 	let payloadStringify = JSON.stringify(payload);
-	ghactionsInformation(`${ghactionsChalk.bold("Event Name:")} ${eventName}`);
-	ghactionsInformation(`${ghactionsChalk.bold("Payload Content:")} ${payloadStringify}`);
+	ghactionsInformation(`${ghactionsChalk.bold("Payload:")} ${payloadStringify}`);
 	ghactionsEndGroup();
 	ghactionsStartGroup(`Post network request to IFTTT.`);
 	let response = await nodeFetch(

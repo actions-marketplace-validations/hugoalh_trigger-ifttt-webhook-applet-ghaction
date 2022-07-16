@@ -9,6 +9,7 @@ Param (
 Import-Module -Name 'hugoalh.GitHubActionsToolkit' -Scope 'Local'
 [RegEx]$IftttMakerUriRegEx = '^https:\/\/maker\.ifttt\.com\/use\/(?<Key>[\da-zA-Z_-]+)$'
 Enter-GitHubActionsLogGroup -Title 'Import inputs.'
+Write-Host -Object "$($PSStyle.Bold)Event Name:$($PSStyle.Reset) $EventName"
 If ($Key -imatch $IftttMakerUriRegEx) {
 	$Key = $Key -ireplace $IftttMakerUriRegEx, '${Key}'
 }
@@ -18,8 +19,7 @@ Try {
 } Catch {
 	Write-GitHubActionsFail -Message "``$Payload`` is not a valid IFTTT webhook JSON payload!"
 }
-Write-Host -Object "$($PSStyle.Bold)Event Name:$($PSStyle.Reset) $EventName"
-Write-Host -Object "$($PSStyle.Bold)Payload Content:$($PSStyle.Reset) $PayloadStringify"
+Write-Host -Object "$($PSStyle.Bold)Payload:$($PSStyle.Reset) $PayloadStringify"
 Exit-GitHubActionsLogGroup
 Enter-GitHubActionsLogGroup -Title 'Post network request to IFTTT.'
 Invoke-WebRequest -Uri "https://maker.ifttt.com/trigger/$EventName$($Arbitrary ? '/json' : '')/with/key/$Key" -UseBasicParsing -UserAgent 'TriggerIFTTTWebhookApplet.GitHubAction/4.2.0' -MaximumRedirection 1 -MaximumRetryCount 5 -RetryIntervalSec 5 -Method 'Post' -Body $PayloadStringify -ContentType 'application/json; charset=utf-8' | Format-List -Property '*' | Out-String
