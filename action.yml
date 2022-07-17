@@ -18,7 +18,7 @@ inputs:
     default: "{}"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/hugoalh/trigger-ifttt-webhook-applet-ghaction:4.2.0-beta.2"
+  image: "docker://ghcr.io/hugoalh/trigger-ifttt-webhook-applet-ghaction:4.2.0"
 branding:
   icon: "zap"
   color: "blue"
