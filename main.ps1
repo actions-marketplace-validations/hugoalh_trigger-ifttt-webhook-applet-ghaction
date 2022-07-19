@@ -22,5 +22,5 @@ Try {
 Write-Host -Object "$($PSStyle.Bold)Payload:$($PSStyle.BoldOff) $PayloadStringify"
 Exit-GitHubActionsLogGroup
 Enter-GitHubActionsLogGroup -Title 'Post network request to IFTTT.'
-Invoke-WebRequest -Uri "https://maker.ifttt.com/trigger/$EventName$($Arbitrary ? '/json' : '')/with/key/$Key" -UseBasicParsing -UserAgent 'TriggerIFTTTWebhookApplet.GitHubAction/4.2.0' -MaximumRedirection 1 -MaximumRetryCount 5 -RetryIntervalSec 5 -Method 'Post' -Body $PayloadStringify -ContentType 'application/json; charset=utf-8' | Format-List -Property '*' | Out-String
+Invoke-WebRequest -Uri "https://maker.ifttt.com/trigger/$EventName$($Arbitrary ? '/json' : '')/with/key/$Key" -UseBasicParsing -UserAgent "PowerShell/$($PSVersionTable.PSVersion.ToString()) TriggerIFTTTWebhookApplet.GitHubAction/4.2.1" -MaximumRedirection 1 -MaximumRetryCount 5 -RetryIntervalSec 5 -Method 'Post' -Body $PayloadStringify -ContentType 'application/json; charset=utf-8' | Format-List -Property '*' | Out-String
 Exit-GitHubActionsLogGroup
