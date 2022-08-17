@@ -42,7 +42,7 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 			follow: 1,
 			headers: {
 				"Content-Type": "application/json",
-				"User-Agent": `NodeJS/${process.versions.node} TriggerIFTTTWebhookApplet.GitHubAction/4.2.2`
+				"User-Agent": `NodeJS/${process.versions.node} TriggerIFTTTWebhookApplet.GitHubAction/4.2.3`
 			},
 			method: "POST",
 			redirect: "follow"
