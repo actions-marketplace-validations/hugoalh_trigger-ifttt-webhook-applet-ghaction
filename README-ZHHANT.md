@@ -1,5 +1,7 @@
 🌐 | [English](./README.md) / [中文](./README-ZHHANT.md)
 
+---
+
 # 觸發IFTTT網絡鉤手小程式（GitHub Action）
 
 [`TriggerIFTTTWebhookApplet.GitHubAction`](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction)

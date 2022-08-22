@@ -1,5 +1,7 @@
 🌐 | [English](./README.md) / [中文](./README-ZHHANT.md)
 
+---
+
 # Trigger IFTTT Webhook Applet (GitHub Action)
 
 [`TriggerIFTTTWebhookApplet.GitHubAction`](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction)
