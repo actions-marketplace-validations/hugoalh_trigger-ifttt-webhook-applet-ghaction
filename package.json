@@ -24,7 +24,7 @@
 		"url": "git+https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction.git"
 	},
 	"dependencies": {
-		"@actions/core": "^1.9.1",
+		"@actions/core": "^1.10.0",
 		"@hugoalh/advanced-determine": "^7.1.5",
 		"chalk": "^5.1.0",
 		"node-fetch": "^3.2.10",
