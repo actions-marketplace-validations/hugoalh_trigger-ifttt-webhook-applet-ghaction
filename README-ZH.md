@@ -7,7 +7,7 @@
 [`TriggerIFTTTWebhookApplet.GitHubAction`](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction)
 
 ![GitHub Action](https://img.shields.io/badge/GitHub%20Action-2088FF?logo=github-actions&logoColor=ffffff&style=flat-square "GitHub Action")
-![授權條款](https://img.shields.io/static/v1?label=%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE&message=MIT&style=flat-square "授權條款")]
+![授權條款](https://img.shields.io/static/v1?label=%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE&message=MIT&style=flat-square "授權條款")
 [![GitHub星](https://img.shields.io/github/stars/hugoalh/trigger-ifttt-webhook-applet-ghaction?label=%E6%98%9F&logo=github&logoColor=ffffff&style=flat-square "GitHub星")](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/stargazers)
 [![GitHub貢獻者](https://img.shields.io/github/contributors/hugoalh/trigger-ifttt-webhook-applet-ghaction?label=%E8%B2%A2%E7%8D%BB%E8%80%85&logo=github&logoColor=ffffff&style=flat-square "GitHub貢獻者")](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/graphs/contributors)
 [![GitHub議題](https://img.shields.io/github/issues-raw/hugoalh/trigger-ifttt-webhook-applet-ghaction?label=%E8%AD%B0%E9%A1%8C&logo=github&logoColor=ffffff&style=flat-square "GitHub議題")](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/issues)
