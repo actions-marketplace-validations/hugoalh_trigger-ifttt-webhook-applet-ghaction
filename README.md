@@ -1,4 +1,4 @@
-🌐 | [English](./README.md) / [中文](./README-ZHHANT.md)
+🌐 | [English](./README.md) / [漢語](./README-ZH.md)
 
 ---
 
@@ -23,34 +23,26 @@
 
 A GitHub Action to trigger IFTTT webhook applet.
 
-*Previous named "\[GitHub Action\] Send To IFTTT".*
-
 ## 📚 Documentation
 
-> **⚠ Important:** This documentation is v4.2.0 based; To view other tag's/version's documentation, please visit the [tag/version list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct tag/version.
+> **⚠ Important:** This documentation is v5.0.0 based; To view other release's/tag's/version's documentation, please visit the [releases/tags/versions list](https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction/tags) and select the correct release/tag/version.
 
-### 🎯 Entrypoint / Target
+### Getting Started
+
+#### Install (For Self Host)
+
+- GitHub Actions Runner >= v2.297.0
+  - NodeJS ^ v16.13.0
+
+#### Use
 
 ```yml
 jobs:
   job_id:
-    runs-on: "________"
+    runs-on: "________" # Any
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction________@<tag/version>"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@<tag/version>"
 ```
-
-|  | **`jobs.job_id.runs-on`** | **`jobs.job_id.steps[*].uses`** | **Require Software** |
-|:-:|:-:|:-:|:-:|
-| **Default (`+default`)** | `ubuntu-________` | *None* | Docker |
-| **Docker (`+docker`)** | `ubuntu-________` | `/use-docker` | Docker |
-| **NodeJS (`+nodejs`)** | Any | `/use-nodejs` | NodeJS (>= v14.15.0) + NPM (>= v6.14.8) |
-| **PowerShell (`+powershell`)** | Any | `/use-powershell` | PowerShell (>= v7.2.0) |
-
-> **⚠ Important:**
->
-> - Default entrypoint is currently based to Docker (`+docker`), base can be changed between versions without announcement to ensure the stability.
-> - NodeJS entrypoint maybe need extra steps to manually setup NodeJS version.
-> - PowerShell entrypoint is suitable for advanced user.
 
 ### 📥 Input
 
@@ -73,13 +65,13 @@ https://maker.ifttt.com/use/ifttt-webhook-key  ⬅Long
 
 #### `arbitrary`
 
-**\[Optional\]** `<boolean = false>` Trigger with an arbitrary payload.
+**\[Optional\]** `<boolean = false>` Whether to trigger with an arbitrary payload.
 
 #### `payload`
 
-**\[Optional\]** `<object>` JSON/YAML/YML payload.
+**\[Optional\]** `<object = {}>` JSON/YAML/YML payload.
 
-- **Arbitrary (Input `arbitrary` is `true`):**
+- **Arbitrary (Input [`arbitrary`](#arbitrary) is `true`):**
   ```yml
   jobs:
     job_id:
@@ -99,7 +91,7 @@ https://maker.ifttt.com/use/ifttt-webhook-key  ⬅Long
                 ]
               }
   ```
-- **Standard (Input `arbitrary` is `false`):**
+- **Standard (Input [`arbitrary`](#arbitrary) is `false`):**
   ```yml
   jobs:
     job_id:
@@ -113,8 +105,6 @@ https://maker.ifttt.com/use/ifttt-webhook-key  ⬅Long
               }
   ```
 
-> **⚠ Important:** PowerShell entrypoint only accept JSON payload.
-
 ### 📤 Output
 
 *N/A*
@@ -127,7 +117,7 @@ jobs:
     name: "Trigger IFTTT Webhook Applet"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v4.2.0"
+      - uses: "hugoalh/trigger-ifttt-webhook-applet-ghaction@v5.0.0"
         with:
           eventname: "greeting"
           key: "${{secrets.IFTTT_WEBHOOKS_KEY}}"

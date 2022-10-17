@@ -9,7 +9,7 @@ inputs:
     description: "{string} Key."
     required: true
   arbitrary:
-    description: "{boolean} Trigger with an arbitrary payload."
+    description: "{boolean} Whether to trigger with an arbitrary payload."
     required: false
     default: "false"
   payload:
@@ -17,8 +17,8 @@ inputs:
     required: false
     default: "{}"
 runs:
-  using: "docker"
-  image: "docker://ghcr.io/hugoalh/trigger-ifttt-webhook-applet-ghaction:4.2.3"
+  using: "node16"
+  main: "dist/main.js"
 branding:
   icon: "zap"
   color: "blue"

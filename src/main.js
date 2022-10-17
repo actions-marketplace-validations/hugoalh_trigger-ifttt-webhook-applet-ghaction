@@ -1,36 +1,45 @@
 import { Chalk } from "chalk";
 import { endGroup as ghactionsEndGroup, error as ghactionsError, getBooleanInput as ghactionsGetBooleanInput, getInput as ghactionsGetInput, info as ghactionsInformation, setSecret as ghactionsSetSecret, startGroup as ghactionsStartGroup, warning as ghactionsWarning } from "@actions/core";
-import { isJSON as adIsJSON, isString as adIsString } from "@hugoalh/advanced-determine";
+import { isJSON as adIsJSON, isString as adIsString, isStringifyJSON as adIsStringifyJSON } from "@hugoalh/advanced-determine";
 import nodeFetch from "node-fetch";
 import yaml from "yaml";
 const ghactionsChalk = new Chalk({ level: 3 });
-const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z_-]+)$/gu;
-(async () => {
+const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z])$/gu;
+try {
 	ghactionsStartGroup(`Import inputs.`);
 	let eventName = ghactionsGetInput("eventname");
 	if (!adIsString(eventName, { pattern: /^[\da-z_-]+$/giu })) {
 		throw new TypeError(`\`${eventName}\` is not a valid IFTTT webhook event name!`);
-	};
+	}
 	if (!adIsString(eventName, { lowerCase: true })) {
 		ghactionsWarning(`Input \`eventname\`'s value \`${eventName}\` is recommended to keep in lower case to prevent issue!`);
-	};
+	}
 	ghactionsInformation(`${ghactionsChalk.bold("Event Name:")} ${eventName}`);
-	let key = ghactionsGetInput("key");
-	if (!adIsString(key, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?[\da-zA-Z_-]+$/gu })) {
+	let keyRaw = ghactionsGetInput("key");
+	if (!adIsString(keyRaw, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/gu })) {
 		throw new TypeError(`Input \`key\` is not a valid IFTTT webhook key!`);
-	};
-	if (key.search(iftttMakerURLRegExp) === 0) {
-		key = key.replace(iftttMakerURLRegExp, "$<key>");
-	};
+	}
+	let key;
+	if (keyRaw.search(iftttMakerURLRegExp) === 0) {
+		key = keyRaw.replace(iftttMakerURLRegExp, "$<key>");
+	} else {
+		key = keyRaw;
+	}
 	ghactionsSetSecret(key);
 	let arbitrary = ghactionsGetBooleanInput("arbitrary");
 	if (typeof arbitrary !== "boolean") {
 		throw new TypeError(`Input \`arbitrary\` must be type of boolean!`);
-	};
-	let payload = yaml.parse(ghactionsGetInput("payload"));
+	}
+	let payloadRaw = ghactionsGetInput("payload");
+	let payload;
+	if (adIsStringifyJSON(payloadRaw, { arrayRoot: false })) {
+		payload = JSON.parse(payloadRaw);
+	} else {
+		payload = yaml.parse(payloadRaw);
+	}
 	if (!adIsJSON(payload)) {
 		throw new TypeError(`\`${payload}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
-	};
+	}
 	let payloadStringify = JSON.stringify(payload);
 	ghactionsInformation(`${ghactionsChalk.bold("Payload:")} ${payloadStringify}`);
 	ghactionsEndGroup();
@@ -42,21 +51,21 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>[\da-zA-Z
 			follow: 1,
 			headers: {
 				"Content-Type": "application/json",
-				"User-Agent": `NodeJS/${process.versions.node} TriggerIFTTTWebhookApplet.GitHubAction/4.2.3`
+				"User-Agent": `TriggerIFTTTWebhookApplet.GitHubAction/5.0.0 NodeJS/${process.versions.node}`
 			},
 			method: "POST",
 			redirect: "follow"
 		}
 	);
 	let responseText = await response.text();
-	let result = `${ghactionsChalk.bold("Status Code:")} ${response.status}\n${ghactionsChalk.bold("Response:")} ${responseText}`;
 	if (!response.ok) {
-		throw new Error(result);
-	};
-	ghactionsInformation(result);
+		throw new Error(`Not handleable status \`${response.status} ${response.statusText}\`: ${responseText}`);
+	}
+	ghactionsInformation(`${ghactionsChalk.bold("Status:")} ${response.status} ${response.statusText}`);
+	ghactionsInformation(`${ghactionsChalk.bold("Response:")} ${responseText}`);
 	ghactionsEndGroup();
-})().catch((reason) => {
-	ghactionsError(reason);
+} catch (error) {
+	ghactionsError(error.message);
 	ghactionsEndGroup();
 	process.exit(1);
-});
+}
