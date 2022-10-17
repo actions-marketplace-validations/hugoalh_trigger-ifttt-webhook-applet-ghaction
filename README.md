@@ -107,7 +107,21 @@ https://maker.ifttt.com/use/ifttt-webhook-key  ⬅Long
 
 ### 📤 Output
 
-*N/A*
+#### `response`
+
+`<string>` Request response.
+
+#### `status_code`
+
+`<number>` Request status code.
+
+#### `status_ok`
+
+`<boolean>` Whether the request was successful.
+
+#### `status_text`
+
+`<string>` Request status text.
 
 ### Example
 

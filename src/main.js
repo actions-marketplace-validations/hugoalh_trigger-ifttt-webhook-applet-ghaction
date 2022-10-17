@@ -1,5 +1,5 @@
 import { Chalk } from "chalk";
-import { endGroup as ghactionsEndGroup, error as ghactionsError, getBooleanInput as ghactionsGetBooleanInput, getInput as ghactionsGetInput, info as ghactionsInformation, setSecret as ghactionsSetSecret, startGroup as ghactionsStartGroup, warning as ghactionsWarning } from "@actions/core";
+import { endGroup as ghactionsEndGroup, error as ghactionsError, getBooleanInput as ghactionsGetBooleanInput, getInput as ghactionsGetInput, info as ghactionsInformation, setOutput as ghactionsSetOutput, setSecret as ghactionsSetSecret, startGroup as ghactionsStartGroup, warning as ghactionsWarning } from "@actions/core";
 import { isJSON as adIsJSON, isString as adIsString, isStringifyJSON as adIsStringifyJSON } from "@hugoalh/advanced-determine";
 import nodeFetch from "node-fetch";
 import yaml from "yaml";
@@ -58,6 +58,10 @@ try {
 		}
 	);
 	let responseText = await response.text();
+	ghactionsSetOutput("response", responseText);
+	ghactionsSetOutput("status_code", response.status);
+	ghactionsSetOutput("status_ok", response.ok);
+	ghactionsSetOutput("status_text", response.statusText);
 	if (!response.ok) {
 		throw new Error(`Not handleable status \`${response.status} ${response.statusText}\`: ${responseText}`);
 	}
