@@ -18,7 +18,7 @@ inputs:
     default: "{}"
 outputs:
   response:
-    description: "{string} Request response."
+    description: "{string} Response content."
   status_code:
     description: "{number} Request status code."
   status_ok:

@@ -56,20 +56,22 @@ try {
 			method: "POST",
 			redirect: "follow"
 		}
-	);
+	).catch((reason) => {
+		throw new Error(`Unexpected web request issue: ${reason?.message}`);
+	});
 	let responseText = await response.text();
 	ghactionsSetOutput("response", responseText);
 	ghactionsSetOutput("status_code", response.status);
 	ghactionsSetOutput("status_ok", response.ok);
 	ghactionsSetOutput("status_text", response.statusText);
 	if (!response.ok) {
-		throw new Error(`Not handleable status \`${response.status} ${response.statusText}\`: ${responseText}`);
+		throw new Error(`Unexpected response status \`${response.status} ${response.statusText}\`: ${responseText}`);
 	}
-	ghactionsInformation(`${ghactionsChalk.bold("Status:")} ${response.status} ${response.statusText}`);
-	ghactionsInformation(`${ghactionsChalk.bold("Response:")} ${responseText}`);
+	ghactionsInformation(`${ghactionsChalk.bold("Response Status:")} ${response.status} ${response.statusText}`);
+	ghactionsInformation(`${ghactionsChalk.bold("Response Content:")} ${responseText}`);
 	ghactionsEndGroup();
 } catch (error) {
-	ghactionsError(error.message);
+	ghactionsError(error?.message);
 	ghactionsEndGroup();
 	process.exit(1);
 }

@@ -109,7 +109,7 @@ https://maker.ifttt.com/use/ifttt-webhook-key  ⬅Long
 
 #### `response`
 
-`<string>` Request response.
+`<string>` Response content.
 
 #### `status_code`
 

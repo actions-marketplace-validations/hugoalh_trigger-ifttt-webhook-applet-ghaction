@@ -109,7 +109,7 @@ https://maker.ifttt.com/use/ifttt-webhook-key  ⬅長
 
 #### `response`
 
-`<字串>` 請求響應。
+`<字串>` 響應內容。
 
 #### `status_code`
 
