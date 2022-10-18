@@ -8,7 +8,7 @@ const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>(?:[\da-z
 try {
 	ghactionsStartGroup(`Import inputs.`);
 	let eventName = ghactionsGetInput("eventname");
-	if (!adIsString(eventName, { pattern: /^[\da-z_-]+$/giu })) {
+	if (!adIsString(eventName, { pattern: /^(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/gu })) {
 		throw new TypeError(`\`${eventName}\` is not a valid IFTTT webhook event name!`);
 	}
 	if (!adIsString(eventName, { lowerCase: true })) {
