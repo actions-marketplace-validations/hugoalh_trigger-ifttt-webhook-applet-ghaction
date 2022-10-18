@@ -12,7 +12,7 @@ try {
 		throw new TypeError(`\`${eventName}\` is not a valid IFTTT webhook event name!`);
 	}
 	if (!adIsString(eventName, { lowerCase: true })) {
-		ghactionsWarning(`Input \`eventname\`'s value \`${eventName}\` is recommended to keep in lower case to prevent issue!`);
+		ghactionsWarning(`Input \`eventname\`'s value \`${eventName}\` is recommended to keep in lower case to prevent issues!`);
 	}
 	ghactionsInformation(`${ghactionsChalk.bold("Event Name:")} ${eventName}`);
 	let keyRaw = ghactionsGetInput("key");
