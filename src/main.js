@@ -37,7 +37,7 @@ try {
 	} else {
 		payload = yaml.parse(payloadRaw);
 	}
-	if (!adIsJSON(payload)) {
+	if (!adIsJSON(payload, { arrayRoot: false })) {
 		throw new TypeError(`\`${payload}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
 	}
 	let payloadStringify = JSON.stringify(payload);
