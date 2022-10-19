@@ -143,13 +143,9 @@ jobs:
 
 #### GitHub Actions
 
-- [啟用調試日誌記錄（英文）](https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging)
-- [已加密的秘密（英文）](https://docs.github.com/en/actions/reference/encrypted-secrets)
+- [啟用調試日誌記錄（英文）](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging)
+- [已加密的秘密（英文）](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
 #### IFTTT
 
-##### 獲取網絡鉤子密鑰
-
-要獲取網絡鉤子密鑰，請點擊「Menu」 > 「My Services」 > 「Webhooks」 > 「Settings」，密鑰位於「Account Info」 > 「URL」（短格式密鑰在`https://maker.ifttt.com/use/`後面）；要重新生成它，請點擊"Edit"。
-
-<img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>
+- [網絡鉤子服務常見問題（英文）](https://help.ifttt.com/hc/en-us/articles/115010230347-Webhooks-service-FAQ)

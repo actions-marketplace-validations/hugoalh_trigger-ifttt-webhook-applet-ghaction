@@ -5,38 +5,28 @@ import nodeFetch from "node-fetch";
 import yaml from "yaml";
 try {
 	const chalk = new Chalk({ level: 3 });
-	const iftttMakerURLRegExp = /^https:\/\/maker\.ifttt\.com\/use\/(?<key>(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z])$/gu;
+	const iftttMakerURLRegExp = /^(?:https:\/\/maker\.ifttt\.com\/use\/)?(?<key>(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z])$/u;
 	ghactionsStartGroup(`Import inputs.`);
 	let eventName = ghactionsGetInput("eventname");
-	if (!adIsString(eventName, { pattern: /^(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/gu })) {
+	if (!adIsString(eventName, { pattern: /^(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/u })) {
 		throw new TypeError(`\`${eventName}\` is not a valid IFTTT webhook event name!`);
 	}
-	if (!adIsString(eventName, { lowerCase: true })) {
-		ghactionsWarning(`Input \`eventname\`'s value \`${eventName}\` is recommended to keep in lower case to prevent issues!`);
-	}
 	console.log(`${chalk.bold("Event Name:")} ${eventName}`);
+	if (!adIsString(eventName, { lowerCase: true })) {
+		ghactionsWarning(`Event name \`${eventName}\` is recommended to keep in lower case to prevent issues!`);
+	}
 	let keyRaw = ghactionsGetInput("key");
-	if (!adIsString(keyRaw, { pattern: /^(?:https:\/\/maker\.ifttt\.com\/use\/)?(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/gu })) {
+	if (!adIsString(keyRaw, { pattern: iftttMakerURLRegExp })) {
 		throw new TypeError(`Input \`key\` is not a valid IFTTT webhook key!`);
 	}
-	let key;
-	if (keyRaw.search(iftttMakerURLRegExp) === 0) {
-		key = keyRaw.replace(iftttMakerURLRegExp, "$<key>");
-	} else {
-		key = keyRaw;
-	}
+	let key = keyRaw.match(iftttMakerURLRegExp).groups.key;
 	ghactionsSetSecret(key);
 	let arbitrary = ghactionsGetBooleanInput("arbitrary");
 	if (typeof arbitrary !== "boolean") {
 		throw new TypeError(`Input \`arbitrary\` must be type of boolean!`);
 	}
 	let payloadRaw = ghactionsGetInput("payload");
-	let payload;
-	if (adIsStringifyJSON(payloadRaw, { arrayRoot: false })) {
-		payload = JSON.parse(payloadRaw);
-	} else {
-		payload = yaml.parse(payloadRaw);
-	}
+	let payload = adIsStringifyJSON(payloadRaw, { arrayRoot: false }) ? JSON.parse(payloadRaw) : yaml.parse(payloadRaw);
 	if (!adIsJSON(payload, { arrayRoot: false })) {
 		throw new TypeError(`\`${payload}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
 	}

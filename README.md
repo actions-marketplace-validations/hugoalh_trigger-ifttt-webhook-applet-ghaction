@@ -143,13 +143,9 @@ jobs:
 
 #### GitHub Actions
 
-- [Enabling debug logging](https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging)
-- [Encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+- [Enabling debug logging](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging)
+- [Encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
 #### IFTTT
 
-##### Obtain the webhook key
-
-To obtain the webhook key, click "Menu" > "My Services" > "Webhooks" > "Settings", the key is at "Account Info" > "URL" (short form key is behind `https://maker.ifttt.com/use/`); To regenerate it, click "Edit".
-
-<img src="https://i.imgur.com/ihnqN5B.png" width="384px"/>
+- [Webhooks service FAQ](https://help.ifttt.com/hc/en-us/articles/115010230347-Webhooks-service-FAQ)

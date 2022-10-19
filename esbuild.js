@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-build({
+console.log(await build({
 	bundle: true,
 	charset: "utf8",
 	entryPoints: [
@@ -12,4 +12,4 @@ build({
 	sourcemap: "linked",
 	target: "node16.13",
 	treeShaking: true
-});
+}));
