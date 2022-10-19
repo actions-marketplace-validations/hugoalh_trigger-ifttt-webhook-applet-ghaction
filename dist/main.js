@@ -1,162 +1,17389 @@
-var Gm=Object.create;var co=Object.defineProperty;var Jm=Object.getOwnPropertyDescriptor;var Qm=Object.getOwnPropertyNames;var Xm=Object.getPrototypeOf,Zm=Object.prototype.hasOwnProperty;var V=(t=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(t,{get:(e,r)=>(typeof require<"u"?require:e)[r]}):t)(function(t){if(typeof require<"u")return require.apply(this,arguments);throw new Error('Dynamic require of "'+t+'" is not supported')});var $r=(t,e)=>()=>(t&&(e=t(t=0)),e);var R=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),ey=(t,e)=>{for(var r in e)co(t,r,{get:e[r],enumerable:!0})},ty=(t,e,r,n)=>{if(e&&typeof e=="object"||typeof e=="function")for(let s of Qm(e))!Zm.call(t,s)&&s!==r&&co(t,s,{get:()=>e[s],enumerable:!(n=Jm(e,s))||n.enumerable});return t};var as=(t,e,r)=>(r=t!=null?Gm(Xm(t)):{},ty(e||!t||!t.__esModule?co(r,"default",{value:t,enumerable:!0}):r,t));var cs=R(Xt=>{"use strict";Object.defineProperty(Xt,"__esModule",{value:!0});Xt.toCommandProperties=Xt.toCommandValue=void 0;function hy(t){return t==null?"":typeof t=="string"||t instanceof String?t:JSON.stringify(t)}Xt.toCommandValue=hy;function py(t){return Object.keys(t).length?{title:t.title,file:t.file,line:t.startLine,endLine:t.endLine,col:t.startColumn,endColumn:t.endColumn}:{}}Xt.toCommandProperties=py});var uf=R(_e=>{"use strict";var my=_e&&_e.__createBinding||(Object.create?function(t,e,r,n){n===void 0&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){n===void 0&&(n=r),t[n]=e[r]}),yy=_e&&_e.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),gy=_e&&_e.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var r in t)r!=="default"&&Object.hasOwnProperty.call(t,r)&&my(e,t,r);return yy(e,t),e};Object.defineProperty(_e,"__esModule",{value:!0});_e.issue=_e.issueCommand=void 0;var by=gy(V("os")),af=cs();function lf(t,e,r){let n=new wo(t,e,r);process.stdout.write(n.toString()+by.EOL)}_e.issueCommand=lf;function wy(t,e=""){lf(t,{},e)}_e.issue=wy;var of="::",wo=class{constructor(e,r,n){e||(e="missing.command"),this.command=e,this.properties=r,this.message=n}toString(){let e=of+this.command;if(this.properties&&Object.keys(this.properties).length>0){e+=" ";let r=!0;for(let n in this.properties)if(this.properties.hasOwnProperty(n)){let s=this.properties[n];s&&(r?r=!1:e+=",",e+=`${n}=${_y(s)}`)}}return e+=`${of}${Sy(this.message)}`,e}};function Sy(t){return af.toCommandValue(t).replace(/%/g,"%25").replace(/\r/g,"%0D").replace(/\n/g,"%0A")}function _y(t){return af.toCommandValue(t).replace(/%/g,"%25").replace(/\r/g,"%0D").replace(/\n/g,"%0A").replace(/:/g,"%3A").replace(/,/g,"%2C")}});var _o=R(So=>{"use strict";Object.defineProperty(So,"__esModule",{value:!0});So.default=Ay;var vy=Ey(V("crypto"));function Ey(t){return t&&t.__esModule?t:{default:t}}var hs=new Uint8Array(256),ds=hs.length;function Ay(){return ds>hs.length-16&&(vy.default.randomFillSync(hs),ds=0),hs.slice(ds,ds+=16)}});var ff=R(ps=>{"use strict";Object.defineProperty(ps,"__esModule",{value:!0});ps.default=void 0;var Ty=/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;ps.default=Ty});var Ur=R(ms=>{"use strict";Object.defineProperty(ms,"__esModule",{value:!0});ms.default=void 0;var Ry=Oy(ff());function Oy(t){return t&&t.__esModule?t:{default:t}}function Cy(t){return typeof t=="string"&&Ry.default.test(t)}var Py=Cy;ms.default=Py});var Wr=R(ys=>{"use strict";Object.defineProperty(ys,"__esModule",{value:!0});ys.default=void 0;var ky=Ny(Ur());function Ny(t){return t&&t.__esModule?t:{default:t}}var ne=[];for(let t=0;t<256;++t)ne.push((t+256).toString(16).substr(1));function qy(t,e=0){let r=(ne[t[e+0]]+ne[t[e+1]]+ne[t[e+2]]+ne[t[e+3]]+"-"+ne[t[e+4]]+ne[t[e+5]]+"-"+ne[t[e+6]]+ne[t[e+7]]+"-"+ne[t[e+8]]+ne[t[e+9]]+"-"+ne[t[e+10]]+ne[t[e+11]]+ne[t[e+12]]+ne[t[e+13]]+ne[t[e+14]]+ne[t[e+15]]).toLowerCase();if(!(0,ky.default)(r))throw TypeError("Stringified UUID is invalid");return r}var Iy=qy;ys.default=Iy});var hf=R(gs=>{"use strict";Object.defineProperty(gs,"__esModule",{value:!0});gs.default=void 0;var Ly=df(_o()),By=df(Wr());function df(t){return t&&t.__esModule?t:{default:t}}var cf,vo,Eo=0,Ao=0;function My(t,e,r){let n=e&&r||0,s=e||new Array(16);t=t||{};let o=t.node||cf,l=t.clockseq!==void 0?t.clockseq:vo;if(o==null||l==null){let m=t.random||(t.rng||Ly.default)();o==null&&(o=cf=[m[0]|1,m[1],m[2],m[3],m[4],m[5]]),l==null&&(l=vo=(m[6]<<8|m[7])&16383)}let f=t.msecs!==void 0?t.msecs:Date.now(),c=t.nsecs!==void 0?t.nsecs:Ao+1,d=f-Eo+(c-Ao)/1e4;if(d<0&&t.clockseq===void 0&&(l=l+1&16383),(d<0||f>Eo)&&t.nsecs===void 0&&(c=0),c>=1e4)throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");Eo=f,Ao=c,vo=l,f+=122192928e5;let h=((f&268435455)*1e4+c)%4294967296;s[n++]=h>>>24&255,s[n++]=h>>>16&255,s[n++]=h>>>8&255,s[n++]=h&255;let y=f/4294967296*1e4&268435455;s[n++]=y>>>8&255,s[n++]=y&255,s[n++]=y>>>24&15|16,s[n++]=y>>>16&255,s[n++]=l>>>8|128,s[n++]=l&255;for(let m=0;m<6;++m)s[n+m]=o[m];return e||(0,By.default)(s)}var Dy=My;gs.default=Dy});var To=R(bs=>{"use strict";Object.defineProperty(bs,"__esModule",{value:!0});bs.default=void 0;var $y=Fy(Ur());function Fy(t){return t&&t.__esModule?t:{default:t}}function jy(t){if(!(0,$y.default)(t))throw TypeError("Invalid UUID");let e,r=new Uint8Array(16);return r[0]=(e=parseInt(t.slice(0,8),16))>>>24,r[1]=e>>>16&255,r[2]=e>>>8&255,r[3]=e&255,r[4]=(e=parseInt(t.slice(9,13),16))>>>8,r[5]=e&255,r[6]=(e=parseInt(t.slice(14,18),16))>>>8,r[7]=e&255,r[8]=(e=parseInt(t.slice(19,23),16))>>>8,r[9]=e&255,r[10]=(e=parseInt(t.slice(24,36),16))/1099511627776&255,r[11]=e/4294967296&255,r[12]=e>>>24&255,r[13]=e>>>16&255,r[14]=e>>>8&255,r[15]=e&255,r}var Uy=jy;bs.default=Uy});var Ro=R(Ot=>{"use strict";Object.defineProperty(Ot,"__esModule",{value:!0});Ot.default=Vy;Ot.URL=Ot.DNS=void 0;var Wy=pf(Wr()),xy=pf(To());function pf(t){return t&&t.__esModule?t:{default:t}}function zy(t){t=unescape(encodeURIComponent(t));let e=[];for(let r=0;r<t.length;++r)e.push(t.charCodeAt(r));return e}var mf="6ba7b810-9dad-11d1-80b4-00c04fd430c8";Ot.DNS=mf;var yf="6ba7b811-9dad-11d1-80b4-00c04fd430c8";Ot.URL=yf;function Vy(t,e,r){function n(s,o,l,f){if(typeof s=="string"&&(s=zy(s)),typeof o=="string"&&(o=(0,xy.default)(o)),o.length!==16)throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");let c=new Uint8Array(16+s.length);if(c.set(o),c.set(s,o.length),c=r(c),c[6]=c[6]&15|e,c[8]=c[8]&63|128,l){f=f||0;for(let d=0;d<16;++d)l[f+d]=c[d];return l}return(0,Wy.default)(c)}try{n.name=t}catch{}return n.DNS=mf,n.URL=yf,n}});var gf=R(ws=>{"use strict";Object.defineProperty(ws,"__esModule",{value:!0});ws.default=void 0;var Yy=Ky(V("crypto"));function Ky(t){return t&&t.__esModule?t:{default:t}}function Hy(t){return Array.isArray(t)?t=Buffer.from(t):typeof t=="string"&&(t=Buffer.from(t,"utf8")),Yy.default.createHash("md5").update(t).digest()}var Gy=Hy;ws.default=Gy});var wf=R(Ss=>{"use strict";Object.defineProperty(Ss,"__esModule",{value:!0});Ss.default=void 0;var Jy=bf(Ro()),Qy=bf(gf());function bf(t){return t&&t.__esModule?t:{default:t}}var Xy=(0,Jy.default)("v3",48,Qy.default),Zy=Xy;Ss.default=Zy});var _f=R(_s=>{"use strict";Object.defineProperty(_s,"__esModule",{value:!0});_s.default=void 0;var eg=Sf(_o()),tg=Sf(Wr());function Sf(t){return t&&t.__esModule?t:{default:t}}function rg(t,e,r){t=t||{};let n=t.random||(t.rng||eg.default)();if(n[6]=n[6]&15|64,n[8]=n[8]&63|128,e){r=r||0;for(let s=0;s<16;++s)e[r+s]=n[s];return e}return(0,tg.default)(n)}var ng=rg;_s.default=ng});var vf=R(vs=>{"use strict";Object.defineProperty(vs,"__esModule",{value:!0});vs.default=void 0;var sg=ig(V("crypto"));function ig(t){return t&&t.__esModule?t:{default:t}}function og(t){return Array.isArray(t)?t=Buffer.from(t):typeof t=="string"&&(t=Buffer.from(t,"utf8")),sg.default.createHash("sha1").update(t).digest()}var ag=og;vs.default=ag});var Af=R(Es=>{"use strict";Object.defineProperty(Es,"__esModule",{value:!0});Es.default=void 0;var lg=Ef(Ro()),ug=Ef(vf());function Ef(t){return t&&t.__esModule?t:{default:t}}var fg=(0,lg.default)("v5",80,ug.default),cg=fg;Es.default=cg});var Tf=R(As=>{"use strict";Object.defineProperty(As,"__esModule",{value:!0});As.default=void 0;var dg="00000000-0000-0000-0000-000000000000";As.default=dg});var Rf=R(Ts=>{"use strict";Object.defineProperty(Ts,"__esModule",{value:!0});Ts.default=void 0;var hg=pg(Ur());function pg(t){return t&&t.__esModule?t:{default:t}}function mg(t){if(!(0,hg.default)(t))throw TypeError("Invalid UUID");return parseInt(t.substr(14,1),16)}var yg=mg;Ts.default=yg});var Of=R(qe=>{"use strict";Object.defineProperty(qe,"__esModule",{value:!0});Object.defineProperty(qe,"v1",{enumerable:!0,get:function(){return gg.default}});Object.defineProperty(qe,"v3",{enumerable:!0,get:function(){return bg.default}});Object.defineProperty(qe,"v4",{enumerable:!0,get:function(){return wg.default}});Object.defineProperty(qe,"v5",{enumerable:!0,get:function(){return Sg.default}});Object.defineProperty(qe,"NIL",{enumerable:!0,get:function(){return _g.default}});Object.defineProperty(qe,"version",{enumerable:!0,get:function(){return vg.default}});Object.defineProperty(qe,"validate",{enumerable:!0,get:function(){return Eg.default}});Object.defineProperty(qe,"stringify",{enumerable:!0,get:function(){return Ag.default}});Object.defineProperty(qe,"parse",{enumerable:!0,get:function(){return Tg.default}});var gg=Ge(hf()),bg=Ge(wf()),wg=Ge(_f()),Sg=Ge(Af()),_g=Ge(Tf()),vg=Ge(Rf()),Eg=Ge(Ur()),Ag=Ge(Wr()),Tg=Ge(To());function Ge(t){return t&&t.__esModule?t:{default:t}}});var Nf=R(ve=>{"use strict";var Rg=ve&&ve.__createBinding||(Object.create?function(t,e,r,n){n===void 0&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){n===void 0&&(n=r),t[n]=e[r]}),Og=ve&&ve.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),Pf=ve&&ve.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var r in t)r!=="default"&&Object.hasOwnProperty.call(t,r)&&Rg(e,t,r);return Og(e,t),e};Object.defineProperty(ve,"__esModule",{value:!0});ve.prepareKeyValueMessage=ve.issueFileCommand=void 0;var Cf=Pf(V("fs")),Oo=Pf(V("os")),Cg=Of(),kf=cs();function Pg(t,e){let r=process.env[`GITHUB_${t}`];if(!r)throw new Error(`Unable to find environment variable for file command ${t}`);if(!Cf.existsSync(r))throw new Error(`Missing file at path: ${r}`);Cf.appendFileSync(r,`${kf.toCommandValue(e)}${Oo.EOL}`,{encoding:"utf8"})}ve.issueFileCommand=Pg;function kg(t,e){let r=`ghadelimiter_${Cg.v4()}`,n=kf.toCommandValue(e);if(t.includes(r))throw new Error(`Unexpected input: name should not contain the delimiter "${r}"`);if(n.includes(r))throw new Error(`Unexpected input: value should not contain the delimiter "${r}"`);return`${t}<<${r}${Oo.EOL}${n}${Oo.EOL}${r}`}ve.prepareKeyValueMessage=kg});var If=R(Zt=>{"use strict";Object.defineProperty(Zt,"__esModule",{value:!0});Zt.checkBypass=Zt.getProxyUrl=void 0;function Ng(t){let e=t.protocol==="https:";if(qf(t))return;let r=(()=>e?process.env.https_proxy||process.env.HTTPS_PROXY:process.env.http_proxy||process.env.HTTP_PROXY)();if(r)return new URL(r)}Zt.getProxyUrl=Ng;function qf(t){if(!t.hostname)return!1;let e=process.env.no_proxy||process.env.NO_PROXY||"";if(!e)return!1;let r;t.port?r=Number(t.port):t.protocol==="http:"?r=80:t.protocol==="https:"&&(r=443);let n=[t.hostname.toUpperCase()];typeof r=="number"&&n.push(`${n[0]}:${r}`);for(let s of e.split(",").map(o=>o.trim().toUpperCase()).filter(o=>o))if(n.some(o=>o===s))return!0;return!1}Zt.checkBypass=qf});var Df=R(er=>{"use strict";var mE=V("net"),qg=V("tls"),Co=V("http"),Lf=V("https"),Ig=V("events"),yE=V("assert"),Lg=V("util");er.httpOverHttp=Bg;er.httpsOverHttp=Mg;er.httpOverHttps=Dg;er.httpsOverHttps=$g;function Bg(t){var e=new Je(t);return e.request=Co.request,e}function Mg(t){var e=new Je(t);return e.request=Co.request,e.createSocket=Bf,e.defaultPort=443,e}function Dg(t){var e=new Je(t);return e.request=Lf.request,e}function $g(t){var e=new Je(t);return e.request=Lf.request,e.createSocket=Bf,e.defaultPort=443,e}function Je(t){var e=this;e.options=t||{},e.proxyOptions=e.options.proxy||{},e.maxSockets=e.options.maxSockets||Co.Agent.defaultMaxSockets,e.requests=[],e.sockets=[],e.on("free",function(n,s,o,l){for(var f=Mf(s,o,l),c=0,d=e.requests.length;c<d;++c){var h=e.requests[c];if(h.host===f.host&&h.port===f.port){e.requests.splice(c,1),h.request.onSocket(n);return}}n.destroy(),e.removeSocket(n)})}Lg.inherits(Je,Ig.EventEmitter);Je.prototype.addRequest=function(e,r,n,s){var o=this,l=Po({request:e},o.options,Mf(r,n,s));if(o.sockets.length>=this.maxSockets){o.requests.push(l);return}o.createSocket(l,function(f){f.on("free",c),f.on("close",d),f.on("agentRemove",d),e.onSocket(f);function c(){o.emit("free",f,l)}function d(h){o.removeSocket(f),f.removeListener("free",c),f.removeListener("close",d),f.removeListener("agentRemove",d)}})};Je.prototype.createSocket=function(e,r){var n=this,s={};n.sockets.push(s);var o=Po({},n.proxyOptions,{method:"CONNECT",path:e.host+":"+e.port,agent:!1,headers:{host:e.host+":"+e.port}});e.localAddress&&(o.localAddress=e.localAddress),o.proxyAuth&&(o.headers=o.headers||{},o.headers["Proxy-Authorization"]="Basic "+new Buffer(o.proxyAuth).toString("base64")),ft("making CONNECT request");var l=n.request(o);l.useChunkedEncodingByDefault=!1,l.once("response",f),l.once("upgrade",c),l.once("connect",d),l.once("error",h),l.end();function f(y){y.upgrade=!0}function c(y,m,g){process.nextTick(function(){d(y,m,g)})}function d(y,m,g){if(l.removeAllListeners(),m.removeAllListeners(),y.statusCode!==200){ft("tunneling socket could not be established, statusCode=%d",y.statusCode),m.destroy();var w=new Error("tunneling socket could not be established, statusCode="+y.statusCode);w.code="ECONNRESET",e.request.emit("error",w),n.removeSocket(s);return}if(g.length>0){ft("got illegal response body from proxy"),m.destroy();var w=new Error("got illegal response body from proxy");w.code="ECONNRESET",e.request.emit("error",w),n.removeSocket(s);return}return ft("tunneling connection has established"),n.sockets[n.sockets.indexOf(s)]=m,r(m)}function h(y){l.removeAllListeners(),ft(`tunneling socket could not be established, cause=%s
-`,y.message,y.stack);var m=new Error("tunneling socket could not be established, cause="+y.message);m.code="ECONNRESET",e.request.emit("error",m),n.removeSocket(s)}};Je.prototype.removeSocket=function(e){var r=this.sockets.indexOf(e);if(r!==-1){this.sockets.splice(r,1);var n=this.requests.shift();n&&this.createSocket(n,function(s){n.request.onSocket(s)})}};function Bf(t,e){var r=this;Je.prototype.createSocket.call(r,t,function(n){var s=t.request.getHeader("host"),o=Po({},r.options,{socket:n,servername:s?s.replace(/:.*$/,""):t.host}),l=qg.connect(0,o);r.sockets[r.sockets.indexOf(n)]=l,e(l)})}function Mf(t,e,r){return typeof t=="string"?{host:t,port:e,localAddress:r}:t}function Po(t){for(var e=1,r=arguments.length;e<r;++e){var n=arguments[e];if(typeof n=="object")for(var s=Object.keys(n),o=0,l=s.length;o<l;++o){var f=s[o];n[f]!==void 0&&(t[f]=n[f])}}return t}var ft;process.env.NODE_DEBUG&&/\btunnel\b/.test(process.env.NODE_DEBUG)?ft=function(){var t=Array.prototype.slice.call(arguments);typeof t[0]=="string"?t[0]="TUNNEL: "+t[0]:t.unshift("TUNNEL:"),console.error.apply(console,t)}:ft=function(){};er.debug=ft});var Ff=R((bE,$f)=>{$f.exports=Df()});var Uf=R(W=>{"use strict";var Fg=W&&W.__createBinding||(Object.create?function(t,e,r,n){n===void 0&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){n===void 0&&(n=r),t[n]=e[r]}),jg=W&&W.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),ks=W&&W.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var r in t)r!=="default"&&Object.hasOwnProperty.call(t,r)&&Fg(e,t,r);return jg(e,t),e},X=W&&W.__awaiter||function(t,e,r,n){function s(o){return o instanceof r?o:new r(function(l){l(o)})}return new(r||(r=Promise))(function(o,l){function f(h){try{d(n.next(h))}catch(y){l(y)}}function c(h){try{d(n.throw(h))}catch(y){l(y)}}function d(h){h.done?o(h.value):s(h.value).then(f,c)}d((n=n.apply(t,e||[])).next())})};Object.defineProperty(W,"__esModule",{value:!0});W.HttpClient=W.isHttps=W.HttpClientResponse=W.HttpClientError=W.getProxyUrl=W.MediaTypes=W.Headers=W.HttpCodes=void 0;var Rs=ks(V("http")),ko=ks(V("https")),jf=ks(If()),Os=ks(Ff()),Ie;(function(t){t[t.OK=200]="OK",t[t.MultipleChoices=300]="MultipleChoices",t[t.MovedPermanently=301]="MovedPermanently",t[t.ResourceMoved=302]="ResourceMoved",t[t.SeeOther=303]="SeeOther",t[t.NotModified=304]="NotModified",t[t.UseProxy=305]="UseProxy",t[t.SwitchProxy=306]="SwitchProxy",t[t.TemporaryRedirect=307]="TemporaryRedirect",t[t.PermanentRedirect=308]="PermanentRedirect",t[t.BadRequest=400]="BadRequest",t[t.Unauthorized=401]="Unauthorized",t[t.PaymentRequired=402]="PaymentRequired",t[t.Forbidden=403]="Forbidden",t[t.NotFound=404]="NotFound",t[t.MethodNotAllowed=405]="MethodNotAllowed",t[t.NotAcceptable=406]="NotAcceptable",t[t.ProxyAuthenticationRequired=407]="ProxyAuthenticationRequired",t[t.RequestTimeout=408]="RequestTimeout",t[t.Conflict=409]="Conflict",t[t.Gone=410]="Gone",t[t.TooManyRequests=429]="TooManyRequests",t[t.InternalServerError=500]="InternalServerError",t[t.NotImplemented=501]="NotImplemented",t[t.BadGateway=502]="BadGateway",t[t.ServiceUnavailable=503]="ServiceUnavailable",t[t.GatewayTimeout=504]="GatewayTimeout"})(Ie=W.HttpCodes||(W.HttpCodes={}));var oe;(function(t){t.Accept="accept",t.ContentType="content-type"})(oe=W.Headers||(W.Headers={}));var ct;(function(t){t.ApplicationJson="application/json"})(ct=W.MediaTypes||(W.MediaTypes={}));function Ug(t){let e=jf.getProxyUrl(new URL(t));return e?e.href:""}W.getProxyUrl=Ug;var Wg=[Ie.MovedPermanently,Ie.ResourceMoved,Ie.SeeOther,Ie.TemporaryRedirect,Ie.PermanentRedirect],xg=[Ie.BadGateway,Ie.ServiceUnavailable,Ie.GatewayTimeout],zg=["OPTIONS","GET","DELETE","HEAD"],Vg=10,Yg=5,tr=class extends Error{constructor(e,r){super(e),this.name="HttpClientError",this.statusCode=r,Object.setPrototypeOf(this,tr.prototype)}};W.HttpClientError=tr;var Ps=class{constructor(e){this.message=e}readBody(){return X(this,void 0,void 0,function*(){return new Promise(e=>X(this,void 0,void 0,function*(){let r=Buffer.alloc(0);this.message.on("data",n=>{r=Buffer.concat([r,n])}),this.message.on("end",()=>{e(r.toString())})}))})}};W.HttpClientResponse=Ps;function Kg(t){return new URL(t).protocol==="https:"}W.isHttps=Kg;var No=class{constructor(e,r,n){this._ignoreSslError=!1,this._allowRedirects=!0,this._allowRedirectDowngrade=!1,this._maxRedirects=50,this._allowRetries=!1,this._maxRetries=1,this._keepAlive=!1,this._disposed=!1,this.userAgent=e,this.handlers=r||[],this.requestOptions=n,n&&(n.ignoreSslError!=null&&(this._ignoreSslError=n.ignoreSslError),this._socketTimeout=n.socketTimeout,n.allowRedirects!=null&&(this._allowRedirects=n.allowRedirects),n.allowRedirectDowngrade!=null&&(this._allowRedirectDowngrade=n.allowRedirectDowngrade),n.maxRedirects!=null&&(this._maxRedirects=Math.max(n.maxRedirects,0)),n.keepAlive!=null&&(this._keepAlive=n.keepAlive),n.allowRetries!=null&&(this._allowRetries=n.allowRetries),n.maxRetries!=null&&(this._maxRetries=n.maxRetries))}options(e,r){return X(this,void 0,void 0,function*(){return this.request("OPTIONS",e,null,r||{})})}get(e,r){return X(this,void 0,void 0,function*(){return this.request("GET",e,null,r||{})})}del(e,r){return X(this,void 0,void 0,function*(){return this.request("DELETE",e,null,r||{})})}post(e,r,n){return X(this,void 0,void 0,function*(){return this.request("POST",e,r,n||{})})}patch(e,r,n){return X(this,void 0,void 0,function*(){return this.request("PATCH",e,r,n||{})})}put(e,r,n){return X(this,void 0,void 0,function*(){return this.request("PUT",e,r,n||{})})}head(e,r){return X(this,void 0,void 0,function*(){return this.request("HEAD",e,null,r||{})})}sendStream(e,r,n,s){return X(this,void 0,void 0,function*(){return this.request(e,r,n,s)})}getJson(e,r={}){return X(this,void 0,void 0,function*(){r[oe.Accept]=this._getExistingOrDefaultHeader(r,oe.Accept,ct.ApplicationJson);let n=yield this.get(e,r);return this._processResponse(n,this.requestOptions)})}postJson(e,r,n={}){return X(this,void 0,void 0,function*(){let s=JSON.stringify(r,null,2);n[oe.Accept]=this._getExistingOrDefaultHeader(n,oe.Accept,ct.ApplicationJson),n[oe.ContentType]=this._getExistingOrDefaultHeader(n,oe.ContentType,ct.ApplicationJson);let o=yield this.post(e,s,n);return this._processResponse(o,this.requestOptions)})}putJson(e,r,n={}){return X(this,void 0,void 0,function*(){let s=JSON.stringify(r,null,2);n[oe.Accept]=this._getExistingOrDefaultHeader(n,oe.Accept,ct.ApplicationJson),n[oe.ContentType]=this._getExistingOrDefaultHeader(n,oe.ContentType,ct.ApplicationJson);let o=yield this.put(e,s,n);return this._processResponse(o,this.requestOptions)})}patchJson(e,r,n={}){return X(this,void 0,void 0,function*(){let s=JSON.stringify(r,null,2);n[oe.Accept]=this._getExistingOrDefaultHeader(n,oe.Accept,ct.ApplicationJson),n[oe.ContentType]=this._getExistingOrDefaultHeader(n,oe.ContentType,ct.ApplicationJson);let o=yield this.patch(e,s,n);return this._processResponse(o,this.requestOptions)})}request(e,r,n,s){return X(this,void 0,void 0,function*(){if(this._disposed)throw new Error("Client has already been disposed.");let o=new URL(r),l=this._prepareRequest(e,o,s),f=this._allowRetries&&zg.includes(e)?this._maxRetries+1:1,c=0,d;do{if(d=yield this.requestRaw(l,n),d&&d.message&&d.message.statusCode===Ie.Unauthorized){let y;for(let m of this.handlers)if(m.canHandleAuthentication(d)){y=m;break}return y?y.handleAuthentication(this,l,n):d}let h=this._maxRedirects;for(;d.message.statusCode&&Wg.includes(d.message.statusCode)&&this._allowRedirects&&h>0;){let y=d.message.headers.location;if(!y)break;let m=new URL(y);if(o.protocol==="https:"&&o.protocol!==m.protocol&&!this._allowRedirectDowngrade)throw new Error("Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.");if(yield d.readBody(),m.hostname!==o.hostname)for(let g in s)g.toLowerCase()==="authorization"&&delete s[g];l=this._prepareRequest(e,m,s),d=yield this.requestRaw(l,n),h--}if(!d.message.statusCode||!xg.includes(d.message.statusCode))return d;c+=1,c<f&&(yield d.readBody(),yield this._performExponentialBackoff(c))}while(c<f);return d})}dispose(){this._agent&&this._agent.destroy(),this._disposed=!0}requestRaw(e,r){return X(this,void 0,void 0,function*(){return new Promise((n,s)=>{function o(l,f){l?s(l):f?n(f):s(new Error("Unknown error"))}this.requestRawWithCallback(e,r,o)})})}requestRawWithCallback(e,r,n){typeof r=="string"&&(e.options.headers||(e.options.headers={}),e.options.headers["Content-Length"]=Buffer.byteLength(r,"utf8"));let s=!1;function o(c,d){s||(s=!0,n(c,d))}let l=e.httpModule.request(e.options,c=>{let d=new Ps(c);o(void 0,d)}),f;l.on("socket",c=>{f=c}),l.setTimeout(this._socketTimeout||3*6e4,()=>{f&&f.end(),o(new Error(`Request timeout: ${e.options.path}`))}),l.on("error",function(c){o(c)}),r&&typeof r=="string"&&l.write(r,"utf8"),r&&typeof r!="string"?(r.on("close",function(){l.end()}),r.pipe(l)):l.end()}getAgent(e){let r=new URL(e);return this._getAgent(r)}_prepareRequest(e,r,n){let s={};s.parsedUrl=r;let o=s.parsedUrl.protocol==="https:";s.httpModule=o?ko:Rs;let l=o?443:80;if(s.options={},s.options.host=s.parsedUrl.hostname,s.options.port=s.parsedUrl.port?parseInt(s.parsedUrl.port):l,s.options.path=(s.parsedUrl.pathname||"")+(s.parsedUrl.search||""),s.options.method=e,s.options.headers=this._mergeHeaders(n),this.userAgent!=null&&(s.options.headers["user-agent"]=this.userAgent),s.options.agent=this._getAgent(s.parsedUrl),this.handlers)for(let f of this.handlers)f.prepareRequest(s.options);return s}_mergeHeaders(e){return this.requestOptions&&this.requestOptions.headers?Object.assign({},Cs(this.requestOptions.headers),Cs(e||{})):Cs(e||{})}_getExistingOrDefaultHeader(e,r,n){let s;return this.requestOptions&&this.requestOptions.headers&&(s=Cs(this.requestOptions.headers)[r]),e[r]||s||n}_getAgent(e){let r,n=jf.getProxyUrl(e),s=n&&n.hostname;if(this._keepAlive&&s&&(r=this._proxyAgent),this._keepAlive&&!s&&(r=this._agent),r)return r;let o=e.protocol==="https:",l=100;if(this.requestOptions&&(l=this.requestOptions.maxSockets||Rs.globalAgent.maxSockets),n&&n.hostname){let f={maxSockets:l,keepAlive:this._keepAlive,proxy:Object.assign(Object.assign({},(n.username||n.password)&&{proxyAuth:`${n.username}:${n.password}`}),{host:n.hostname,port:n.port})},c,d=n.protocol==="https:";o?c=d?Os.httpsOverHttps:Os.httpsOverHttp:c=d?Os.httpOverHttps:Os.httpOverHttp,r=c(f),this._proxyAgent=r}if(this._keepAlive&&!r){let f={keepAlive:this._keepAlive,maxSockets:l};r=o?new ko.Agent(f):new Rs.Agent(f),this._agent=r}return r||(r=o?ko.globalAgent:Rs.globalAgent),o&&this._ignoreSslError&&(r.options=Object.assign(r.options||{},{rejectUnauthorized:!1})),r}_performExponentialBackoff(e){return X(this,void 0,void 0,function*(){e=Math.min(Vg,e);let r=Yg*Math.pow(2,e);return new Promise(n=>setTimeout(()=>n(),r))})}_processResponse(e,r){return X(this,void 0,void 0,function*(){return new Promise((n,s)=>X(this,void 0,void 0,function*(){let o=e.message.statusCode||0,l={statusCode:o,result:null,headers:{}};o===Ie.NotFound&&n(l);function f(h,y){if(typeof y=="string"){let m=new Date(y);if(!isNaN(m.valueOf()))return m}return y}let c,d;try{d=yield e.readBody(),d&&d.length>0&&(r&&r.deserializeDates?c=JSON.parse(d,f):c=JSON.parse(d),l.result=c),l.headers=e.message.headers}catch{}if(o>299){let h;c&&c.message?h=c.message:d&&d.length>0?h=d:h=`Failed request: (${o})`;let y=new tr(h,o);y.result=l.result,s(y)}else n(l)}))})}};W.HttpClient=No;var Cs=t=>Object.keys(t).reduce((e,r)=>(e[r.toLowerCase()]=t[r],e),{})});var Wf=R($e=>{"use strict";var Bo=$e&&$e.__awaiter||function(t,e,r,n){function s(o){return o instanceof r?o:new r(function(l){l(o)})}return new(r||(r=Promise))(function(o,l){function f(h){try{d(n.next(h))}catch(y){l(y)}}function c(h){try{d(n.throw(h))}catch(y){l(y)}}function d(h){h.done?o(h.value):s(h.value).then(f,c)}d((n=n.apply(t,e||[])).next())})};Object.defineProperty($e,"__esModule",{value:!0});$e.PersonalAccessTokenCredentialHandler=$e.BearerCredentialHandler=$e.BasicCredentialHandler=void 0;var qo=class{constructor(e,r){this.username=e,this.password=r}prepareRequest(e){if(!e.headers)throw Error("The request has no headers");e.headers.Authorization=`Basic ${Buffer.from(`${this.username}:${this.password}`).toString("base64")}`}canHandleAuthentication(){return!1}handleAuthentication(){return Bo(this,void 0,void 0,function*(){throw new Error("not implemented")})}};$e.BasicCredentialHandler=qo;var Io=class{constructor(e){this.token=e}prepareRequest(e){if(!e.headers)throw Error("The request has no headers");e.headers.Authorization=`Bearer ${this.token}`}canHandleAuthentication(){return!1}handleAuthentication(){return Bo(this,void 0,void 0,function*(){throw new Error("not implemented")})}};$e.BearerCredentialHandler=Io;var Lo=class{constructor(e){this.token=e}prepareRequest(e){if(!e.headers)throw Error("The request has no headers");e.headers.Authorization=`Basic ${Buffer.from(`PAT:${this.token}`).toString("base64")}`}canHandleAuthentication(){return!1}handleAuthentication(){return Bo(this,void 0,void 0,function*(){throw new Error("not implemented")})}};$e.PersonalAccessTokenCredentialHandler=Lo});var Vf=R(rr=>{"use strict";var xf=rr&&rr.__awaiter||function(t,e,r,n){function s(o){return o instanceof r?o:new r(function(l){l(o)})}return new(r||(r=Promise))(function(o,l){function f(h){try{d(n.next(h))}catch(y){l(y)}}function c(h){try{d(n.throw(h))}catch(y){l(y)}}function d(h){h.done?o(h.value):s(h.value).then(f,c)}d((n=n.apply(t,e||[])).next())})};Object.defineProperty(rr,"__esModule",{value:!0});rr.OidcClient=void 0;var Hg=Uf(),Gg=Wf(),zf=Mo(),dt=class{static createHttpClient(e=!0,r=10){let n={allowRetries:e,maxRetries:r};return new Hg.HttpClient("actions/oidc-client",[new Gg.BearerCredentialHandler(dt.getRequestToken())],n)}static getRequestToken(){let e=process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;if(!e)throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable");return e}static getIDTokenUrl(){let e=process.env.ACTIONS_ID_TOKEN_REQUEST_URL;if(!e)throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable");return e}static getCall(e){var r;return xf(this,void 0,void 0,function*(){let o=(r=(yield dt.createHttpClient().getJson(e).catch(l=>{throw new Error(`Failed to get ID Token. 
- 
-        Error Code : ${l.statusCode}
- 
-        Error Message: ${l.result.message}`)})).result)===null||r===void 0?void 0:r.value;if(!o)throw new Error("Response json body do not have ID Token field");return o})}static getIDToken(e){return xf(this,void 0,void 0,function*(){try{let r=dt.getIDTokenUrl();if(e){let s=encodeURIComponent(e);r=`${r}&audience=${s}`}zf.debug(`ID token url is ${r}`);let n=yield dt.getCall(r);return zf.setSecret(n),n}catch(r){throw new Error(`Error message: ${r.message}`)}})}};rr.OidcClient=dt});var jo=R(ue=>{"use strict";var Do=ue&&ue.__awaiter||function(t,e,r,n){function s(o){return o instanceof r?o:new r(function(l){l(o)})}return new(r||(r=Promise))(function(o,l){function f(h){try{d(n.next(h))}catch(y){l(y)}}function c(h){try{d(n.throw(h))}catch(y){l(y)}}function d(h){h.done?o(h.value):s(h.value).then(f,c)}d((n=n.apply(t,e||[])).next())})};Object.defineProperty(ue,"__esModule",{value:!0});ue.summary=ue.markdownSummary=ue.SUMMARY_DOCS_URL=ue.SUMMARY_ENV_VAR=void 0;var Jg=V("os"),$o=V("fs"),{access:Qg,appendFile:Xg,writeFile:Zg}=$o.promises;ue.SUMMARY_ENV_VAR="GITHUB_STEP_SUMMARY";ue.SUMMARY_DOCS_URL="https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary";var Fo=class{constructor(){this._buffer=""}filePath(){return Do(this,void 0,void 0,function*(){if(this._filePath)return this._filePath;let e=process.env[ue.SUMMARY_ENV_VAR];if(!e)throw new Error(`Unable to find environment variable for $${ue.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);try{yield Qg(e,$o.constants.R_OK|$o.constants.W_OK)}catch{throw new Error(`Unable to access summary file: '${e}'. Check if the file has correct read/write permissions.`)}return this._filePath=e,this._filePath})}wrap(e,r,n={}){let s=Object.entries(n).map(([o,l])=>` ${o}="${l}"`).join("");return r?`<${e}${s}>${r}</${e}>`:`<${e}${s}>`}write(e){return Do(this,void 0,void 0,function*(){let r=!!e?.overwrite,n=yield this.filePath();return yield(r?Zg:Xg)(n,this._buffer,{encoding:"utf8"}),this.emptyBuffer()})}clear(){return Do(this,void 0,void 0,function*(){return this.emptyBuffer().write({overwrite:!0})})}stringify(){return this._buffer}isEmptyBuffer(){return this._buffer.length===0}emptyBuffer(){return this._buffer="",this}addRaw(e,r=!1){return this._buffer+=e,r?this.addEOL():this}addEOL(){return this.addRaw(Jg.EOL)}addCodeBlock(e,r){let n=Object.assign({},r&&{lang:r}),s=this.wrap("pre",this.wrap("code",e),n);return this.addRaw(s).addEOL()}addList(e,r=!1){let n=r?"ol":"ul",s=e.map(l=>this.wrap("li",l)).join(""),o=this.wrap(n,s);return this.addRaw(o).addEOL()}addTable(e){let r=e.map(s=>{let o=s.map(l=>{if(typeof l=="string")return this.wrap("td",l);let{header:f,data:c,colspan:d,rowspan:h}=l,y=f?"th":"td",m=Object.assign(Object.assign({},d&&{colspan:d}),h&&{rowspan:h});return this.wrap(y,c,m)}).join("");return this.wrap("tr",o)}).join(""),n=this.wrap("table",r);return this.addRaw(n).addEOL()}addDetails(e,r){let n=this.wrap("details",this.wrap("summary",e)+r);return this.addRaw(n).addEOL()}addImage(e,r,n){let{width:s,height:o}=n||{},l=Object.assign(Object.assign({},s&&{width:s}),o&&{height:o}),f=this.wrap("img",null,Object.assign({src:e,alt:r},l));return this.addRaw(f).addEOL()}addHeading(e,r){let n=`h${r}`,s=["h1","h2","h3","h4","h5","h6"].includes(n)?n:"h1",o=this.wrap(s,e);return this.addRaw(o).addEOL()}addSeparator(){let e=this.wrap("hr",null);return this.addRaw(e).addEOL()}addBreak(){let e=this.wrap("br",null);return this.addRaw(e).addEOL()}addQuote(e,r){let n=Object.assign({},r&&{cite:r}),s=this.wrap("blockquote",e,n);return this.addRaw(s).addEOL()}addLink(e,r){let n=this.wrap("a",e,{href:r});return this.addRaw(n).addEOL()}},Yf=new Fo;ue.markdownSummary=Yf;ue.summary=Yf});var Kf=R(fe=>{"use strict";var eb=fe&&fe.__createBinding||(Object.create?function(t,e,r,n){n===void 0&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){n===void 0&&(n=r),t[n]=e[r]}),tb=fe&&fe.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),rb=fe&&fe.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var r in t)r!=="default"&&Object.hasOwnProperty.call(t,r)&&eb(e,t,r);return tb(e,t),e};Object.defineProperty(fe,"__esModule",{value:!0});fe.toPlatformPath=fe.toWin32Path=fe.toPosixPath=void 0;var nb=rb(V("path"));function sb(t){return t.replace(/[\\]/g,"/")}fe.toPosixPath=sb;function ib(t){return t.replace(/[/]/g,"\\")}fe.toWin32Path=ib;function ob(t){return t.replace(/[/\\]/g,nb.sep)}fe.toPlatformPath=ob});var Mo=R(N=>{"use strict";var ab=N&&N.__createBinding||(Object.create?function(t,e,r,n){n===void 0&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){n===void 0&&(n=r),t[n]=e[r]}),lb=N&&N.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),Hf=N&&N.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(t!=null)for(var r in t)r!=="default"&&Object.hasOwnProperty.call(t,r)&&ab(e,t,r);return lb(e,t),e},Gf=N&&N.__awaiter||function(t,e,r,n){function s(o){return o instanceof r?o:new r(function(l){l(o)})}return new(r||(r=Promise))(function(o,l){function f(h){try{d(n.next(h))}catch(y){l(y)}}function c(h){try{d(n.throw(h))}catch(y){l(y)}}function d(h){h.done?o(h.value):s(h.value).then(f,c)}d((n=n.apply(t,e||[])).next())})};Object.defineProperty(N,"__esModule",{value:!0});N.getIDToken=N.getState=N.saveState=N.group=N.endGroup=N.startGroup=N.info=N.notice=N.warning=N.error=N.debug=N.isDebug=N.setFailed=N.setCommandEcho=N.setOutput=N.getBooleanInput=N.getMultilineInput=N.getInput=N.addPath=N.setSecret=N.exportVariable=N.ExitCode=void 0;var Ee=uf(),Ct=Nf(),nr=cs(),Jf=Hf(V("os")),ub=Hf(V("path")),fb=Vf(),Qf;(function(t){t[t.Success=0]="Success",t[t.Failure=1]="Failure"})(Qf=N.ExitCode||(N.ExitCode={}));function cb(t,e){let r=nr.toCommandValue(e);if(process.env[t]=r,process.env.GITHUB_ENV||"")return Ct.issueFileCommand("ENV",Ct.prepareKeyValueMessage(t,e));Ee.issueCommand("set-env",{name:t},r)}N.exportVariable=cb;function db(t){Ee.issueCommand("add-mask",{},t)}N.setSecret=db;function hb(t){process.env.GITHUB_PATH||""?Ct.issueFileCommand("PATH",t):Ee.issueCommand("add-path",{},t),process.env.PATH=`${t}${ub.delimiter}${process.env.PATH}`}N.addPath=hb;function Uo(t,e){let r=process.env[`INPUT_${t.replace(/ /g,"_").toUpperCase()}`]||"";if(e&&e.required&&!r)throw new Error(`Input required and not supplied: ${t}`);return e&&e.trimWhitespace===!1?r:r.trim()}N.getInput=Uo;function pb(t,e){let r=Uo(t,e).split(`
-`).filter(n=>n!=="");return e&&e.trimWhitespace===!1?r:r.map(n=>n.trim())}N.getMultilineInput=pb;function mb(t,e){let r=["true","True","TRUE"],n=["false","False","FALSE"],s=Uo(t,e);if(r.includes(s))return!0;if(n.includes(s))return!1;throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${t}
-Support boolean input list: \`true | True | TRUE | false | False | FALSE\``)}N.getBooleanInput=mb;function yb(t,e){if(process.env.GITHUB_OUTPUT||"")return Ct.issueFileCommand("OUTPUT",Ct.prepareKeyValueMessage(t,e));process.stdout.write(Jf.EOL),Ee.issueCommand("set-output",{name:t},nr.toCommandValue(e))}N.setOutput=yb;function gb(t){Ee.issue("echo",t?"on":"off")}N.setCommandEcho=gb;function bb(t){process.exitCode=Qf.Failure,Xf(t)}N.setFailed=bb;function wb(){return process.env.RUNNER_DEBUG==="1"}N.isDebug=wb;function Sb(t){Ee.issueCommand("debug",{},t)}N.debug=Sb;function Xf(t,e={}){Ee.issueCommand("error",nr.toCommandProperties(e),t instanceof Error?t.toString():t)}N.error=Xf;function _b(t,e={}){Ee.issueCommand("warning",nr.toCommandProperties(e),t instanceof Error?t.toString():t)}N.warning=_b;function vb(t,e={}){Ee.issueCommand("notice",nr.toCommandProperties(e),t instanceof Error?t.toString():t)}N.notice=vb;function Eb(t){process.stdout.write(t+Jf.EOL)}N.info=Eb;function Zf(t){Ee.issue("group",t)}N.startGroup=Zf;function ec(){Ee.issue("endgroup")}N.endGroup=ec;function Ab(t,e){return Gf(this,void 0,void 0,function*(){Zf(t);let r;try{r=yield e()}finally{ec()}return r})}N.group=Ab;function Tb(t,e){if(process.env.GITHUB_STATE||"")return Ct.issueFileCommand("STATE",Ct.prepareKeyValueMessage(t,e));Ee.issueCommand("save-state",{name:t},nr.toCommandValue(e))}N.saveState=Tb;function Rb(t){return process.env[`STATE_${t}`]||""}N.getState=Rb;function Ob(t){return Gf(this,void 0,void 0,function*(){return yield fb.OidcClient.getIDToken(t)})}N.getIDToken=Ob;var Cb=jo();Object.defineProperty(N,"summary",{enumerable:!0,get:function(){return Cb.summary}});var Pb=jo();Object.defineProperty(N,"markdownSummary",{enumerable:!0,get:function(){return Pb.markdownSummary}});var Wo=Kf();Object.defineProperty(N,"toPosixPath",{enumerable:!0,get:function(){return Wo.toPosixPath}});Object.defineProperty(N,"toWin32Path",{enumerable:!0,get:function(){return Wo.toWin32Path}});Object.defineProperty(N,"toPlatformPath",{enumerable:!0,get:function(){return Wo.toPlatformPath}})});var ic=R((Ls,sc)=>{(function(t,e){typeof Ls=="object"&&typeof sc<"u"?e(Ls):typeof define=="function"&&define.amd?define(["exports"],e):(t=typeof globalThis<"u"?globalThis:t||self,e(t.WebStreamsPolyfill={}))})(Ls,function(t){"use strict";let e=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?Symbol:i=>`Symbol(${i})`;function r(){}function n(){if(typeof self<"u")return self;if(typeof window<"u")return window;if(typeof global<"u")return global}let s=n();function o(i){return typeof i=="object"&&i!==null||typeof i=="function"}let l=r,f=Promise,c=Promise.prototype.then,d=Promise.resolve.bind(f),h=Promise.reject.bind(f);function y(i){return new f(i)}function m(i){return d(i)}function g(i){return h(i)}function w(i,a,u){return c.call(i,a,u)}function S(i,a,u){w(w(i,a,u),void 0,l)}function _(i,a){S(i,a)}function E(i,a){S(i,void 0,a)}function O(i,a,u){return w(i,a,u)}function P(i){w(i,void 0,l)}let A=(()=>{let i=s&&s.queueMicrotask;if(typeof i=="function")return i;let a=m(void 0);return u=>w(a,u)})();function q(i,a,u){if(typeof i!="function")throw new TypeError("Argument is not a function");return Function.prototype.apply.call(i,a,u)}function C(i,a,u){try{return m(q(i,a,u))}catch(p){return g(p)}}let F=16384;class Q{constructor(){this._cursor=0,this._size=0,this._front={_elements:[],_next:void 0},this._back=this._front,this._cursor=0,this._size=0}get length(){return this._size}push(a){let u=this._back,p=u;u._elements.length===F-1&&(p={_elements:[],_next:void 0}),u._elements.push(a),p!==u&&(this._back=p,u._next=p),++this._size}shift(){let a=this._front,u=a,p=this._cursor,b=p+1,v=a._elements,T=v[p];return b===F&&(u=a._next,b=0),--this._size,this._cursor=b,a!==u&&(this._front=u),v[p]=void 0,T}forEach(a){let u=this._cursor,p=this._front,b=p._elements;for(;(u!==b.length||p._next!==void 0)&&!(u===b.length&&(p=p._next,b=p._elements,u=0,b.length===0));)a(b[u]),++u}peek(){let a=this._front,u=this._cursor;return a._elements[u]}}function Dt(i,a){i._ownerReadableStream=a,a._reader=i,a._state==="readable"?Li(i):a._state==="closed"?Ap(i):Nl(i,a._storedError)}function ae(i,a){let u=i._ownerReadableStream;return Pe(u,a)}function ze(i){i._ownerReadableStream._state==="readable"?Bi(i,new TypeError("Reader was released and can no longer be used to monitor the stream's closedness")):Tp(i,new TypeError("Reader was released and can no longer be used to monitor the stream's closedness")),i._ownerReadableStream._reader=void 0,i._ownerReadableStream=void 0}function $t(i){return new TypeError("Cannot "+i+" a stream using a released reader")}function Li(i){i._closedPromise=y((a,u)=>{i._closedPromise_resolve=a,i._closedPromise_reject=u})}function Nl(i,a){Li(i),Bi(i,a)}function Ap(i){Li(i),ql(i)}function Bi(i,a){i._closedPromise_reject!==void 0&&(P(i._closedPromise),i._closedPromise_reject(a),i._closedPromise_resolve=void 0,i._closedPromise_reject=void 0)}function Tp(i,a){Nl(i,a)}function ql(i){i._closedPromise_resolve!==void 0&&(i._closedPromise_resolve(void 0),i._closedPromise_resolve=void 0,i._closedPromise_reject=void 0)}let Il=e("[[AbortSteps]]"),Ll=e("[[ErrorSteps]]"),Mi=e("[[CancelSteps]]"),Di=e("[[PullSteps]]"),Bl=Number.isFinite||function(i){return typeof i=="number"&&isFinite(i)},Rp=Math.trunc||function(i){return i<0?Math.ceil(i):Math.floor(i)};function Op(i){return typeof i=="object"||typeof i=="function"}function Ve(i,a){if(i!==void 0&&!Op(i))throw new TypeError(`${a} is not an object.`)}function Oe(i,a){if(typeof i!="function")throw new TypeError(`${a} is not a function.`)}function Cp(i){return typeof i=="object"&&i!==null||typeof i=="function"}function Ml(i,a){if(!Cp(i))throw new TypeError(`${a} is not an object.`)}function Ye(i,a,u){if(i===void 0)throw new TypeError(`Parameter ${a} is required in '${u}'.`)}function $i(i,a,u){if(i===void 0)throw new TypeError(`${a} is required in '${u}'.`)}function Fi(i){return Number(i)}function Dl(i){return i===0?0:i}function Pp(i){return Dl(Rp(i))}function $l(i,a){let p=Number.MAX_SAFE_INTEGER,b=Number(i);if(b=Dl(b),!Bl(b))throw new TypeError(`${a} is not a finite number`);if(b=Pp(b),b<0||b>p)throw new TypeError(`${a} is outside the accepted range of ${0} to ${p}, inclusive`);return!Bl(b)||b===0?0:b}function ji(i,a){if(!at(i))throw new TypeError(`${a} is not a ReadableStream.`)}function Ft(i){return new Er(i)}function Fl(i,a){i._reader._readRequests.push(a)}function Ui(i,a,u){let b=i._reader._readRequests.shift();u?b._closeSteps():b._chunkSteps(a)}function Pn(i){return i._reader._readRequests.length}function jl(i){let a=i._reader;return!(a===void 0||!nt(a))}class Er{constructor(a){if(Ye(a,1,"ReadableStreamDefaultReader"),ji(a,"First parameter"),lt(a))throw new TypeError("This stream has already been locked for exclusive reading by another reader");Dt(this,a),this._readRequests=new Q}get closed(){return nt(this)?this._closedPromise:g(kn("closed"))}cancel(a=void 0){return nt(this)?this._ownerReadableStream===void 0?g($t("cancel")):ae(this,a):g(kn("cancel"))}read(){if(!nt(this))return g(kn("read"));if(this._ownerReadableStream===void 0)return g($t("read from"));let a,u,p=y((v,T)=>{a=v,u=T});return Ar(this,{_chunkSteps:v=>a({value:v,done:!1}),_closeSteps:()=>a({value:void 0,done:!0}),_errorSteps:v=>u(v)}),p}releaseLock(){if(!nt(this))throw kn("releaseLock");if(this._ownerReadableStream!==void 0){if(this._readRequests.length>0)throw new TypeError("Tried to release a reader lock when that reader has pending read() calls un-settled");ze(this)}}}Object.defineProperties(Er.prototype,{cancel:{enumerable:!0},read:{enumerable:!0},releaseLock:{enumerable:!0},closed:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Er.prototype,e.toStringTag,{value:"ReadableStreamDefaultReader",configurable:!0});function nt(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_readRequests")?!1:i instanceof Er}function Ar(i,a){let u=i._ownerReadableStream;u._disturbed=!0,u._state==="closed"?a._closeSteps():u._state==="errored"?a._errorSteps(u._storedError):u._readableStreamController[Di](a)}function kn(i){return new TypeError(`ReadableStreamDefaultReader.prototype.${i} can only be used on a ReadableStreamDefaultReader`)}let Ul=Object.getPrototypeOf(Object.getPrototypeOf(async function*(){}).prototype);class Wl{constructor(a,u){this._ongoingPromise=void 0,this._isFinished=!1,this._reader=a,this._preventCancel=u}next(){let a=()=>this._nextSteps();return this._ongoingPromise=this._ongoingPromise?O(this._ongoingPromise,a,a):a(),this._ongoingPromise}return(a){let u=()=>this._returnSteps(a);return this._ongoingPromise?O(this._ongoingPromise,u,u):u()}_nextSteps(){if(this._isFinished)return Promise.resolve({value:void 0,done:!0});let a=this._reader;if(a._ownerReadableStream===void 0)return g($t("iterate"));let u,p,b=y((T,k)=>{u=T,p=k});return Ar(a,{_chunkSteps:T=>{this._ongoingPromise=void 0,A(()=>u({value:T,done:!1}))},_closeSteps:()=>{this._ongoingPromise=void 0,this._isFinished=!0,ze(a),u({value:void 0,done:!0})},_errorSteps:T=>{this._ongoingPromise=void 0,this._isFinished=!0,ze(a),p(T)}}),b}_returnSteps(a){if(this._isFinished)return Promise.resolve({value:a,done:!0});this._isFinished=!0;let u=this._reader;if(u._ownerReadableStream===void 0)return g($t("finish iterating"));if(!this._preventCancel){let p=ae(u,a);return ze(u),O(p,()=>({value:a,done:!0}))}return ze(u),m({value:a,done:!0})}}let xl={next(){return zl(this)?this._asyncIteratorImpl.next():g(Vl("next"))},return(i){return zl(this)?this._asyncIteratorImpl.return(i):g(Vl("return"))}};Ul!==void 0&&Object.setPrototypeOf(xl,Ul);function kp(i,a){let u=Ft(i),p=new Wl(u,a),b=Object.create(xl);return b._asyncIteratorImpl=p,b}function zl(i){if(!o(i)||!Object.prototype.hasOwnProperty.call(i,"_asyncIteratorImpl"))return!1;try{return i._asyncIteratorImpl instanceof Wl}catch{return!1}}function Vl(i){return new TypeError(`ReadableStreamAsyncIterator.${i} can only be used on a ReadableSteamAsyncIterator`)}let Yl=Number.isNaN||function(i){return i!==i};function Tr(i){return i.slice()}function Kl(i,a,u,p,b){new Uint8Array(i).set(new Uint8Array(u,p,b),a)}function Bv(i){return i}function Nn(i){return!1}function Hl(i,a,u){if(i.slice)return i.slice(a,u);let p=u-a,b=new ArrayBuffer(p);return Kl(b,0,i,a,p),b}function Np(i){return!(typeof i!="number"||Yl(i)||i<0)}function Gl(i){let a=Hl(i.buffer,i.byteOffset,i.byteOffset+i.byteLength);return new Uint8Array(a)}function Wi(i){let a=i._queue.shift();return i._queueTotalSize-=a.size,i._queueTotalSize<0&&(i._queueTotalSize=0),a.value}function xi(i,a,u){if(!Np(u)||u===1/0)throw new RangeError("Size must be a finite, non-NaN, non-negative number.");i._queue.push({value:a,size:u}),i._queueTotalSize+=u}function qp(i){return i._queue.peek().value}function st(i){i._queue=new Q,i._queueTotalSize=0}class Rr{constructor(){throw new TypeError("Illegal constructor")}get view(){if(!zi(this))throw Hi("view");return this._view}respond(a){if(!zi(this))throw Hi("respond");if(Ye(a,1,"respond"),a=$l(a,"First parameter"),this._associatedReadableByteStreamController===void 0)throw new TypeError("This BYOB request has been invalidated");Nn(this._view.buffer),Mn(this._associatedReadableByteStreamController,a)}respondWithNewView(a){if(!zi(this))throw Hi("respondWithNewView");if(Ye(a,1,"respondWithNewView"),!ArrayBuffer.isView(a))throw new TypeError("You can only respond with array buffer views");if(this._associatedReadableByteStreamController===void 0)throw new TypeError("This BYOB request has been invalidated");Nn(a.buffer),Dn(this._associatedReadableByteStreamController,a)}}Object.defineProperties(Rr.prototype,{respond:{enumerable:!0},respondWithNewView:{enumerable:!0},view:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Rr.prototype,e.toStringTag,{value:"ReadableStreamBYOBRequest",configurable:!0});class jt{constructor(){throw new TypeError("Illegal constructor")}get byobRequest(){if(!_t(this))throw Cr("byobRequest");return Ki(this)}get desiredSize(){if(!_t(this))throw Cr("desiredSize");return nu(this)}close(){if(!_t(this))throw Cr("close");if(this._closeRequested)throw new TypeError("The stream has already been closed; do not close it again!");let a=this._controlledReadableByteStream._state;if(a!=="readable")throw new TypeError(`The stream (in ${a} state) is not in the readable state and cannot be closed`);Or(this)}enqueue(a){if(!_t(this))throw Cr("enqueue");if(Ye(a,1,"enqueue"),!ArrayBuffer.isView(a))throw new TypeError("chunk must be an array buffer view");if(a.byteLength===0)throw new TypeError("chunk must have non-zero byteLength");if(a.buffer.byteLength===0)throw new TypeError("chunk's buffer must have non-zero byteLength");if(this._closeRequested)throw new TypeError("stream is closed or draining");let u=this._controlledReadableByteStream._state;if(u!=="readable")throw new TypeError(`The stream (in ${u} state) is not in the readable state and cannot be enqueued to`);Bn(this,a)}error(a=void 0){if(!_t(this))throw Cr("error");Ce(this,a)}[Mi](a){Jl(this),st(this);let u=this._cancelAlgorithm(a);return Ln(this),u}[Di](a){let u=this._controlledReadableByteStream;if(this._queueTotalSize>0){let b=this._queue.shift();this._queueTotalSize-=b.byteLength,eu(this);let v=new Uint8Array(b.buffer,b.byteOffset,b.byteLength);a._chunkSteps(v);return}let p=this._autoAllocateChunkSize;if(p!==void 0){let b;try{b=new ArrayBuffer(p)}catch(T){a._errorSteps(T);return}let v={buffer:b,bufferByteLength:p,byteOffset:0,byteLength:p,bytesFilled:0,elementSize:1,viewConstructor:Uint8Array,readerType:"default"};this._pendingPullIntos.push(v)}Fl(u,a),vt(this)}}Object.defineProperties(jt.prototype,{close:{enumerable:!0},enqueue:{enumerable:!0},error:{enumerable:!0},byobRequest:{enumerable:!0},desiredSize:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(jt.prototype,e.toStringTag,{value:"ReadableByteStreamController",configurable:!0});function _t(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_controlledReadableByteStream")?!1:i instanceof jt}function zi(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_associatedReadableByteStreamController")?!1:i instanceof Rr}function vt(i){if(!Mp(i))return;if(i._pulling){i._pullAgain=!0;return}i._pulling=!0;let u=i._pullAlgorithm();S(u,()=>{i._pulling=!1,i._pullAgain&&(i._pullAgain=!1,vt(i))},p=>{Ce(i,p)})}function Jl(i){Yi(i),i._pendingPullIntos=new Q}function Vi(i,a){let u=!1;i._state==="closed"&&(u=!0);let p=Ql(a);a.readerType==="default"?Ui(i,p,u):Fp(i,p,u)}function Ql(i){let a=i.bytesFilled,u=i.elementSize;return new i.viewConstructor(i.buffer,i.byteOffset,a/u)}function qn(i,a,u,p){i._queue.push({buffer:a,byteOffset:u,byteLength:p}),i._queueTotalSize+=p}function Xl(i,a){let u=a.elementSize,p=a.bytesFilled-a.bytesFilled%u,b=Math.min(i._queueTotalSize,a.byteLength-a.bytesFilled),v=a.bytesFilled+b,T=v-v%u,k=b,L=!1;T>p&&(k=T-a.bytesFilled,L=!0);let M=i._queue;for(;k>0;){let D=M.peek(),$=Math.min(k,D.byteLength),H=a.byteOffset+a.bytesFilled;Kl(a.buffer,H,D.buffer,D.byteOffset,$),D.byteLength===$?M.shift():(D.byteOffset+=$,D.byteLength-=$),i._queueTotalSize-=$,Zl(i,$,a),k-=$}return L}function Zl(i,a,u){u.bytesFilled+=a}function eu(i){i._queueTotalSize===0&&i._closeRequested?(Ln(i),Mr(i._controlledReadableByteStream)):vt(i)}function Yi(i){i._byobRequest!==null&&(i._byobRequest._associatedReadableByteStreamController=void 0,i._byobRequest._view=null,i._byobRequest=null)}function tu(i){for(;i._pendingPullIntos.length>0;){if(i._queueTotalSize===0)return;let a=i._pendingPullIntos.peek();Xl(i,a)&&(In(i),Vi(i._controlledReadableByteStream,a))}}function Ip(i,a,u){let p=i._controlledReadableByteStream,b=1;a.constructor!==DataView&&(b=a.constructor.BYTES_PER_ELEMENT);let v=a.constructor,T=a.buffer,k={buffer:T,bufferByteLength:T.byteLength,byteOffset:a.byteOffset,byteLength:a.byteLength,bytesFilled:0,elementSize:b,viewConstructor:v,readerType:"byob"};if(i._pendingPullIntos.length>0){i._pendingPullIntos.push(k),ou(p,u);return}if(p._state==="closed"){let L=new v(k.buffer,k.byteOffset,0);u._closeSteps(L);return}if(i._queueTotalSize>0){if(Xl(i,k)){let L=Ql(k);eu(i),u._chunkSteps(L);return}if(i._closeRequested){let L=new TypeError("Insufficient bytes to fill elements in the given buffer");Ce(i,L),u._errorSteps(L);return}}i._pendingPullIntos.push(k),ou(p,u),vt(i)}function Lp(i,a){let u=i._controlledReadableByteStream;if(Gi(u))for(;au(u)>0;){let p=In(i);Vi(u,p)}}function Bp(i,a,u){if(Zl(i,a,u),u.bytesFilled<u.elementSize)return;In(i);let p=u.bytesFilled%u.elementSize;if(p>0){let b=u.byteOffset+u.bytesFilled,v=Hl(u.buffer,b-p,b);qn(i,v,0,v.byteLength)}u.bytesFilled-=p,Vi(i._controlledReadableByteStream,u),tu(i)}function ru(i,a){let u=i._pendingPullIntos.peek();Yi(i),i._controlledReadableByteStream._state==="closed"?Lp(i):Bp(i,a,u),vt(i)}function In(i){return i._pendingPullIntos.shift()}function Mp(i){let a=i._controlledReadableByteStream;return a._state!=="readable"||i._closeRequested||!i._started?!1:!!(jl(a)&&Pn(a)>0||Gi(a)&&au(a)>0||nu(i)>0)}function Ln(i){i._pullAlgorithm=void 0,i._cancelAlgorithm=void 0}function Or(i){let a=i._controlledReadableByteStream;if(!(i._closeRequested||a._state!=="readable")){if(i._queueTotalSize>0){i._closeRequested=!0;return}if(i._pendingPullIntos.length>0&&i._pendingPullIntos.peek().bytesFilled>0){let p=new TypeError("Insufficient bytes to fill elements in the given buffer");throw Ce(i,p),p}Ln(i),Mr(a)}}function Bn(i,a){let u=i._controlledReadableByteStream;if(i._closeRequested||u._state!=="readable")return;let p=a.buffer,b=a.byteOffset,v=a.byteLength,T=p;if(i._pendingPullIntos.length>0){let k=i._pendingPullIntos.peek();Nn(k.buffer),k.buffer=k.buffer}if(Yi(i),jl(u))if(Pn(u)===0)qn(i,T,b,v);else{i._pendingPullIntos.length>0&&In(i);let k=new Uint8Array(T,b,v);Ui(u,k,!1)}else Gi(u)?(qn(i,T,b,v),tu(i)):qn(i,T,b,v);vt(i)}function Ce(i,a){let u=i._controlledReadableByteStream;u._state==="readable"&&(Jl(i),st(i),Ln(i),Nu(u,a))}function Ki(i){if(i._byobRequest===null&&i._pendingPullIntos.length>0){let a=i._pendingPullIntos.peek(),u=new Uint8Array(a.buffer,a.byteOffset+a.bytesFilled,a.byteLength-a.bytesFilled),p=Object.create(Rr.prototype);$p(p,i,u),i._byobRequest=p}return i._byobRequest}function nu(i){let a=i._controlledReadableByteStream._state;return a==="errored"?null:a==="closed"?0:i._strategyHWM-i._queueTotalSize}function Mn(i,a){let u=i._pendingPullIntos.peek();if(i._controlledReadableByteStream._state==="closed"){if(a!==0)throw new TypeError("bytesWritten must be 0 when calling respond() on a closed stream")}else{if(a===0)throw new TypeError("bytesWritten must be greater than 0 when calling respond() on a readable stream");if(u.bytesFilled+a>u.byteLength)throw new RangeError("bytesWritten out of range")}u.buffer=u.buffer,ru(i,a)}function Dn(i,a){let u=i._pendingPullIntos.peek();if(i._controlledReadableByteStream._state==="closed"){if(a.byteLength!==0)throw new TypeError("The view's length must be 0 when calling respondWithNewView() on a closed stream")}else if(a.byteLength===0)throw new TypeError("The view's length must be greater than 0 when calling respondWithNewView() on a readable stream");if(u.byteOffset+u.bytesFilled!==a.byteOffset)throw new RangeError("The region specified by view does not match byobRequest");if(u.bufferByteLength!==a.buffer.byteLength)throw new RangeError("The buffer of view has different capacity than byobRequest");if(u.bytesFilled+a.byteLength>u.byteLength)throw new RangeError("The region specified by view is larger than byobRequest");let b=a.byteLength;u.buffer=a.buffer,ru(i,b)}function su(i,a,u,p,b,v,T){a._controlledReadableByteStream=i,a._pullAgain=!1,a._pulling=!1,a._byobRequest=null,a._queue=a._queueTotalSize=void 0,st(a),a._closeRequested=!1,a._started=!1,a._strategyHWM=v,a._pullAlgorithm=p,a._cancelAlgorithm=b,a._autoAllocateChunkSize=T,a._pendingPullIntos=new Q,i._readableStreamController=a;let k=u();S(m(k),()=>{a._started=!0,vt(a)},L=>{Ce(a,L)})}function Dp(i,a,u){let p=Object.create(jt.prototype),b=()=>{},v=()=>m(void 0),T=()=>m(void 0);a.start!==void 0&&(b=()=>a.start(p)),a.pull!==void 0&&(v=()=>a.pull(p)),a.cancel!==void 0&&(T=L=>a.cancel(L));let k=a.autoAllocateChunkSize;if(k===0)throw new TypeError("autoAllocateChunkSize must be greater than 0");su(i,p,b,v,T,u,k)}function $p(i,a,u){i._associatedReadableByteStreamController=a,i._view=u}function Hi(i){return new TypeError(`ReadableStreamBYOBRequest.prototype.${i} can only be used on a ReadableStreamBYOBRequest`)}function Cr(i){return new TypeError(`ReadableByteStreamController.prototype.${i} can only be used on a ReadableByteStreamController`)}function iu(i){return new Pr(i)}function ou(i,a){i._reader._readIntoRequests.push(a)}function Fp(i,a,u){let b=i._reader._readIntoRequests.shift();u?b._closeSteps(a):b._chunkSteps(a)}function au(i){return i._reader._readIntoRequests.length}function Gi(i){let a=i._reader;return!(a===void 0||!Et(a))}class Pr{constructor(a){if(Ye(a,1,"ReadableStreamBYOBReader"),ji(a,"First parameter"),lt(a))throw new TypeError("This stream has already been locked for exclusive reading by another reader");if(!_t(a._readableStreamController))throw new TypeError("Cannot construct a ReadableStreamBYOBReader for a stream not constructed with a byte source");Dt(this,a),this._readIntoRequests=new Q}get closed(){return Et(this)?this._closedPromise:g($n("closed"))}cancel(a=void 0){return Et(this)?this._ownerReadableStream===void 0?g($t("cancel")):ae(this,a):g($n("cancel"))}read(a){if(!Et(this))return g($n("read"));if(!ArrayBuffer.isView(a))return g(new TypeError("view must be an array buffer view"));if(a.byteLength===0)return g(new TypeError("view must have non-zero byteLength"));if(a.buffer.byteLength===0)return g(new TypeError("view's buffer must have non-zero byteLength"));if(Nn(a.buffer),this._ownerReadableStream===void 0)return g($t("read from"));let u,p,b=y((T,k)=>{u=T,p=k});return lu(this,a,{_chunkSteps:T=>u({value:T,done:!1}),_closeSteps:T=>u({value:T,done:!0}),_errorSteps:T=>p(T)}),b}releaseLock(){if(!Et(this))throw $n("releaseLock");if(this._ownerReadableStream!==void 0){if(this._readIntoRequests.length>0)throw new TypeError("Tried to release a reader lock when that reader has pending read() calls un-settled");ze(this)}}}Object.defineProperties(Pr.prototype,{cancel:{enumerable:!0},read:{enumerable:!0},releaseLock:{enumerable:!0},closed:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Pr.prototype,e.toStringTag,{value:"ReadableStreamBYOBReader",configurable:!0});function Et(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_readIntoRequests")?!1:i instanceof Pr}function lu(i,a,u){let p=i._ownerReadableStream;p._disturbed=!0,p._state==="errored"?u._errorSteps(p._storedError):Ip(p._readableStreamController,a,u)}function $n(i){return new TypeError(`ReadableStreamBYOBReader.prototype.${i} can only be used on a ReadableStreamBYOBReader`)}function kr(i,a){let{highWaterMark:u}=i;if(u===void 0)return a;if(Yl(u)||u<0)throw new RangeError("Invalid highWaterMark");return u}function Fn(i){let{size:a}=i;return a||(()=>1)}function jn(i,a){Ve(i,a);let u=i?.highWaterMark,p=i?.size;return{highWaterMark:u===void 0?void 0:Fi(u),size:p===void 0?void 0:jp(p,`${a} has member 'size' that`)}}function jp(i,a){return Oe(i,a),u=>Fi(i(u))}function Up(i,a){Ve(i,a);let u=i?.abort,p=i?.close,b=i?.start,v=i?.type,T=i?.write;return{abort:u===void 0?void 0:Wp(u,i,`${a} has member 'abort' that`),close:p===void 0?void 0:xp(p,i,`${a} has member 'close' that`),start:b===void 0?void 0:zp(b,i,`${a} has member 'start' that`),write:T===void 0?void 0:Vp(T,i,`${a} has member 'write' that`),type:v}}function Wp(i,a,u){return Oe(i,u),p=>C(i,a,[p])}function xp(i,a,u){return Oe(i,u),()=>C(i,a,[])}function zp(i,a,u){return Oe(i,u),p=>q(i,a,[p])}function Vp(i,a,u){return Oe(i,u),(p,b)=>C(i,a,[p,b])}function uu(i,a){if(!Ut(i))throw new TypeError(`${a} is not a WritableStream.`)}function Yp(i){if(typeof i!="object"||i===null)return!1;try{return typeof i.aborted=="boolean"}catch{return!1}}let Kp=typeof AbortController=="function";function Hp(){if(Kp)return new AbortController}class Nr{constructor(a={},u={}){a===void 0?a=null:Ml(a,"First parameter");let p=jn(u,"Second parameter"),b=Up(a,"First parameter");if(cu(this),b.type!==void 0)throw new RangeError("Invalid type is specified");let T=Fn(p),k=kr(p,1);lm(this,b,k,T)}get locked(){if(!Ut(this))throw Vn("locked");return Wt(this)}abort(a=void 0){return Ut(this)?Wt(this)?g(new TypeError("Cannot abort a stream that already has a writer")):Un(this,a):g(Vn("abort"))}close(){return Ut(this)?Wt(this)?g(new TypeError("Cannot close a stream that already has a writer")):De(this)?g(new TypeError("Cannot close an already-closing stream")):du(this):g(Vn("close"))}getWriter(){if(!Ut(this))throw Vn("getWriter");return fu(this)}}Object.defineProperties(Nr.prototype,{abort:{enumerable:!0},close:{enumerable:!0},getWriter:{enumerable:!0},locked:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Nr.prototype,e.toStringTag,{value:"WritableStream",configurable:!0});function fu(i){return new qr(i)}function Gp(i,a,u,p,b=1,v=()=>1){let T=Object.create(Nr.prototype);cu(T);let k=Object.create(xt.prototype);return bu(T,k,i,a,u,p,b,v),T}function cu(i){i._state="writable",i._storedError=void 0,i._writer=void 0,i._writableStreamController=void 0,i._writeRequests=new Q,i._inFlightWriteRequest=void 0,i._closeRequest=void 0,i._inFlightCloseRequest=void 0,i._pendingAbortRequest=void 0,i._backpressure=!1}function Ut(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_writableStreamController")?!1:i instanceof Nr}function Wt(i){return i._writer!==void 0}function Un(i,a){var u;if(i._state==="closed"||i._state==="errored")return m(void 0);i._writableStreamController._abortReason=a,(u=i._writableStreamController._abortController)===null||u===void 0||u.abort();let p=i._state;if(p==="closed"||p==="errored")return m(void 0);if(i._pendingAbortRequest!==void 0)return i._pendingAbortRequest._promise;let b=!1;p==="erroring"&&(b=!0,a=void 0);let v=y((T,k)=>{i._pendingAbortRequest={_promise:void 0,_resolve:T,_reject:k,_reason:a,_wasAlreadyErroring:b}});return i._pendingAbortRequest._promise=v,b||Qi(i,a),v}function du(i){let a=i._state;if(a==="closed"||a==="errored")return g(new TypeError(`The stream (in ${a} state) is not in the writable state and cannot be closed`));let u=y((b,v)=>{let T={_resolve:b,_reject:v};i._closeRequest=T}),p=i._writer;return p!==void 0&&i._backpressure&&a==="writable"&&oo(p),um(i._writableStreamController),u}function Jp(i){return y((u,p)=>{let b={_resolve:u,_reject:p};i._writeRequests.push(b)})}function Ji(i,a){if(i._state==="writable"){Qi(i,a);return}Xi(i)}function Qi(i,a){let u=i._writableStreamController;i._state="erroring",i._storedError=a;let p=i._writer;p!==void 0&&pu(p,a),!tm(i)&&u._started&&Xi(i)}function Xi(i){i._state="errored",i._writableStreamController[Ll]();let a=i._storedError;if(i._writeRequests.forEach(b=>{b._reject(a)}),i._writeRequests=new Q,i._pendingAbortRequest===void 0){Wn(i);return}let u=i._pendingAbortRequest;if(i._pendingAbortRequest=void 0,u._wasAlreadyErroring){u._reject(a),Wn(i);return}let p=i._writableStreamController[Il](u._reason);S(p,()=>{u._resolve(),Wn(i)},b=>{u._reject(b),Wn(i)})}function Qp(i){i._inFlightWriteRequest._resolve(void 0),i._inFlightWriteRequest=void 0}function Xp(i,a){i._inFlightWriteRequest._reject(a),i._inFlightWriteRequest=void 0,Ji(i,a)}function Zp(i){i._inFlightCloseRequest._resolve(void 0),i._inFlightCloseRequest=void 0,i._state==="erroring"&&(i._storedError=void 0,i._pendingAbortRequest!==void 0&&(i._pendingAbortRequest._resolve(),i._pendingAbortRequest=void 0)),i._state="closed";let u=i._writer;u!==void 0&&vu(u)}function em(i,a){i._inFlightCloseRequest._reject(a),i._inFlightCloseRequest=void 0,i._pendingAbortRequest!==void 0&&(i._pendingAbortRequest._reject(a),i._pendingAbortRequest=void 0),Ji(i,a)}function De(i){return!(i._closeRequest===void 0&&i._inFlightCloseRequest===void 0)}function tm(i){return!(i._inFlightWriteRequest===void 0&&i._inFlightCloseRequest===void 0)}function rm(i){i._inFlightCloseRequest=i._closeRequest,i._closeRequest=void 0}function nm(i){i._inFlightWriteRequest=i._writeRequests.shift()}function Wn(i){i._closeRequest!==void 0&&(i._closeRequest._reject(i._storedError),i._closeRequest=void 0);let a=i._writer;a!==void 0&&so(a,i._storedError)}function Zi(i,a){let u=i._writer;u!==void 0&&a!==i._backpressure&&(a?ym(u):oo(u)),i._backpressure=a}class qr{constructor(a){if(Ye(a,1,"WritableStreamDefaultWriter"),uu(a,"First parameter"),Wt(a))throw new TypeError("This stream has already been locked for exclusive writing by another writer");this._ownerWritableStream=a,a._writer=this;let u=a._state;if(u==="writable")!De(a)&&a._backpressure?Kn(this):Eu(this),Yn(this);else if(u==="erroring")io(this,a._storedError),Yn(this);else if(u==="closed")Eu(this),pm(this);else{let p=a._storedError;io(this,p),_u(this,p)}}get closed(){return At(this)?this._closedPromise:g(Tt("closed"))}get desiredSize(){if(!At(this))throw Tt("desiredSize");if(this._ownerWritableStream===void 0)throw Ir("desiredSize");return am(this)}get ready(){return At(this)?this._readyPromise:g(Tt("ready"))}abort(a=void 0){return At(this)?this._ownerWritableStream===void 0?g(Ir("abort")):sm(this,a):g(Tt("abort"))}close(){if(!At(this))return g(Tt("close"));let a=this._ownerWritableStream;return a===void 0?g(Ir("close")):De(a)?g(new TypeError("Cannot close an already-closing stream")):hu(this)}releaseLock(){if(!At(this))throw Tt("releaseLock");this._ownerWritableStream!==void 0&&mu(this)}write(a=void 0){return At(this)?this._ownerWritableStream===void 0?g(Ir("write to")):yu(this,a):g(Tt("write"))}}Object.defineProperties(qr.prototype,{abort:{enumerable:!0},close:{enumerable:!0},releaseLock:{enumerable:!0},write:{enumerable:!0},closed:{enumerable:!0},desiredSize:{enumerable:!0},ready:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(qr.prototype,e.toStringTag,{value:"WritableStreamDefaultWriter",configurable:!0});function At(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_ownerWritableStream")?!1:i instanceof qr}function sm(i,a){let u=i._ownerWritableStream;return Un(u,a)}function hu(i){let a=i._ownerWritableStream;return du(a)}function im(i){let a=i._ownerWritableStream,u=a._state;return De(a)||u==="closed"?m(void 0):u==="errored"?g(a._storedError):hu(i)}function om(i,a){i._closedPromiseState==="pending"?so(i,a):mm(i,a)}function pu(i,a){i._readyPromiseState==="pending"?Au(i,a):gm(i,a)}function am(i){let a=i._ownerWritableStream,u=a._state;return u==="errored"||u==="erroring"?null:u==="closed"?0:wu(a._writableStreamController)}function mu(i){let a=i._ownerWritableStream,u=new TypeError("Writer was released and can no longer be used to monitor the stream's closedness");pu(i,u),om(i,u),a._writer=void 0,i._ownerWritableStream=void 0}function yu(i,a){let u=i._ownerWritableStream,p=u._writableStreamController,b=fm(p,a);if(u!==i._ownerWritableStream)return g(Ir("write to"));let v=u._state;if(v==="errored")return g(u._storedError);if(De(u)||v==="closed")return g(new TypeError("The stream is closing or closed and cannot be written to"));if(v==="erroring")return g(u._storedError);let T=Jp(u);return cm(p,a,b),T}let gu={};class xt{constructor(){throw new TypeError("Illegal constructor")}get abortReason(){if(!eo(this))throw no("abortReason");return this._abortReason}get signal(){if(!eo(this))throw no("signal");if(this._abortController===void 0)throw new TypeError("WritableStreamDefaultController.prototype.signal is not supported");return this._abortController.signal}error(a=void 0){if(!eo(this))throw no("error");this._controlledWritableStream._state==="writable"&&Su(this,a)}[Il](a){let u=this._abortAlgorithm(a);return xn(this),u}[Ll](){st(this)}}Object.defineProperties(xt.prototype,{abortReason:{enumerable:!0},signal:{enumerable:!0},error:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(xt.prototype,e.toStringTag,{value:"WritableStreamDefaultController",configurable:!0});function eo(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_controlledWritableStream")?!1:i instanceof xt}function bu(i,a,u,p,b,v,T,k){a._controlledWritableStream=i,i._writableStreamController=a,a._queue=void 0,a._queueTotalSize=void 0,st(a),a._abortReason=void 0,a._abortController=Hp(),a._started=!1,a._strategySizeAlgorithm=k,a._strategyHWM=T,a._writeAlgorithm=p,a._closeAlgorithm=b,a._abortAlgorithm=v;let L=ro(a);Zi(i,L);let M=u(),D=m(M);S(D,()=>{a._started=!0,zn(a)},$=>{a._started=!0,Ji(i,$)})}function lm(i,a,u,p){let b=Object.create(xt.prototype),v=()=>{},T=()=>m(void 0),k=()=>m(void 0),L=()=>m(void 0);a.start!==void 0&&(v=()=>a.start(b)),a.write!==void 0&&(T=M=>a.write(M,b)),a.close!==void 0&&(k=()=>a.close()),a.abort!==void 0&&(L=M=>a.abort(M)),bu(i,b,v,T,k,L,u,p)}function xn(i){i._writeAlgorithm=void 0,i._closeAlgorithm=void 0,i._abortAlgorithm=void 0,i._strategySizeAlgorithm=void 0}function um(i){xi(i,gu,0),zn(i)}function fm(i,a){try{return i._strategySizeAlgorithm(a)}catch(u){return to(i,u),1}}function wu(i){return i._strategyHWM-i._queueTotalSize}function cm(i,a,u){try{xi(i,a,u)}catch(b){to(i,b);return}let p=i._controlledWritableStream;if(!De(p)&&p._state==="writable"){let b=ro(i);Zi(p,b)}zn(i)}function zn(i){let a=i._controlledWritableStream;if(!i._started||a._inFlightWriteRequest!==void 0)return;if(a._state==="erroring"){Xi(a);return}if(i._queue.length===0)return;let p=qp(i);p===gu?dm(i):hm(i,p)}function to(i,a){i._controlledWritableStream._state==="writable"&&Su(i,a)}function dm(i){let a=i._controlledWritableStream;rm(a),Wi(i);let u=i._closeAlgorithm();xn(i),S(u,()=>{Zp(a)},p=>{em(a,p)})}function hm(i,a){let u=i._controlledWritableStream;nm(u);let p=i._writeAlgorithm(a);S(p,()=>{Qp(u);let b=u._state;if(Wi(i),!De(u)&&b==="writable"){let v=ro(i);Zi(u,v)}zn(i)},b=>{u._state==="writable"&&xn(i),Xp(u,b)})}function ro(i){return wu(i)<=0}function Su(i,a){let u=i._controlledWritableStream;xn(i),Qi(u,a)}function Vn(i){return new TypeError(`WritableStream.prototype.${i} can only be used on a WritableStream`)}function no(i){return new TypeError(`WritableStreamDefaultController.prototype.${i} can only be used on a WritableStreamDefaultController`)}function Tt(i){return new TypeError(`WritableStreamDefaultWriter.prototype.${i} can only be used on a WritableStreamDefaultWriter`)}function Ir(i){return new TypeError("Cannot "+i+" a stream using a released writer")}function Yn(i){i._closedPromise=y((a,u)=>{i._closedPromise_resolve=a,i._closedPromise_reject=u,i._closedPromiseState="pending"})}function _u(i,a){Yn(i),so(i,a)}function pm(i){Yn(i),vu(i)}function so(i,a){i._closedPromise_reject!==void 0&&(P(i._closedPromise),i._closedPromise_reject(a),i._closedPromise_resolve=void 0,i._closedPromise_reject=void 0,i._closedPromiseState="rejected")}function mm(i,a){_u(i,a)}function vu(i){i._closedPromise_resolve!==void 0&&(i._closedPromise_resolve(void 0),i._closedPromise_resolve=void 0,i._closedPromise_reject=void 0,i._closedPromiseState="resolved")}function Kn(i){i._readyPromise=y((a,u)=>{i._readyPromise_resolve=a,i._readyPromise_reject=u}),i._readyPromiseState="pending"}function io(i,a){Kn(i),Au(i,a)}function Eu(i){Kn(i),oo(i)}function Au(i,a){i._readyPromise_reject!==void 0&&(P(i._readyPromise),i._readyPromise_reject(a),i._readyPromise_resolve=void 0,i._readyPromise_reject=void 0,i._readyPromiseState="rejected")}function ym(i){Kn(i)}function gm(i,a){io(i,a)}function oo(i){i._readyPromise_resolve!==void 0&&(i._readyPromise_resolve(void 0),i._readyPromise_resolve=void 0,i._readyPromise_reject=void 0,i._readyPromiseState="fulfilled")}let Tu=typeof DOMException<"u"?DOMException:void 0;function bm(i){if(!(typeof i=="function"||typeof i=="object"))return!1;try{return new i,!0}catch{return!1}}function wm(){let i=function(u,p){this.message=u||"",this.name=p||"Error",Error.captureStackTrace&&Error.captureStackTrace(this,this.constructor)};return i.prototype=Object.create(Error.prototype),Object.defineProperty(i.prototype,"constructor",{value:i,writable:!0,configurable:!0}),i}let Sm=bm(Tu)?Tu:wm();function Ru(i,a,u,p,b,v){let T=Ft(i),k=fu(a);i._disturbed=!0;let L=!1,M=m(void 0);return y((D,$)=>{let H;if(v!==void 0){if(H=()=>{let I=new Sm("Aborted","AbortError"),B=[];p||B.push(()=>a._state==="writable"?Un(a,I):m(void 0)),b||B.push(()=>i._state==="readable"?Pe(i,I):m(void 0)),le(()=>Promise.all(B.map(x=>x())),!0,I)},v.aborted){H();return}v.addEventListener("abort",H)}function ke(){return y((I,B)=>{function x(be){be?I():w(Yt(),x,B)}x(!1)})}function Yt(){return L?m(!0):w(k._readyPromise,()=>y((I,B)=>{Ar(T,{_chunkSteps:x=>{M=w(yu(k,x),void 0,r),I(!1)},_closeSteps:()=>I(!0),_errorSteps:B})}))}if(Ke(i,T._closedPromise,I=>{p?we(!0,I):le(()=>Un(a,I),!0,I)}),Ke(a,k._closedPromise,I=>{b?we(!0,I):le(()=>Pe(i,I),!0,I)}),ie(i,T._closedPromise,()=>{u?we():le(()=>im(k))}),De(a)||a._state==="closed"){let I=new TypeError("the destination writable stream closed before all data could be piped to it");b?we(!0,I):le(()=>Pe(i,I),!0,I)}P(ke());function ut(){let I=M;return w(M,()=>I!==M?ut():void 0)}function Ke(I,B,x){I._state==="errored"?x(I._storedError):E(B,x)}function ie(I,B,x){I._state==="closed"?x():_(B,x)}function le(I,B,x){if(L)return;L=!0,a._state==="writable"&&!De(a)?_(ut(),be):be();function be(){S(I(),()=>He(B,x),Kt=>He(!0,Kt))}}function we(I,B){L||(L=!0,a._state==="writable"&&!De(a)?_(ut(),()=>He(I,B)):He(I,B))}function He(I,B){mu(k),ze(T),v!==void 0&&v.removeEventListener("abort",H),I?$(B):D(void 0)}})}class zt{constructor(){throw new TypeError("Illegal constructor")}get desiredSize(){if(!Hn(this))throw Qn("desiredSize");return ao(this)}close(){if(!Hn(this))throw Qn("close");if(!Vt(this))throw new TypeError("The stream is not in a state that permits close");Br(this)}enqueue(a=void 0){if(!Hn(this))throw Qn("enqueue");if(!Vt(this))throw new TypeError("The stream is not in a state that permits enqueue");return Jn(this,a)}error(a=void 0){if(!Hn(this))throw Qn("error");it(this,a)}[Mi](a){st(this);let u=this._cancelAlgorithm(a);return Gn(this),u}[Di](a){let u=this._controlledReadableStream;if(this._queue.length>0){let p=Wi(this);this._closeRequested&&this._queue.length===0?(Gn(this),Mr(u)):Lr(this),a._chunkSteps(p)}else Fl(u,a),Lr(this)}}Object.defineProperties(zt.prototype,{close:{enumerable:!0},enqueue:{enumerable:!0},error:{enumerable:!0},desiredSize:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(zt.prototype,e.toStringTag,{value:"ReadableStreamDefaultController",configurable:!0});function Hn(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_controlledReadableStream")?!1:i instanceof zt}function Lr(i){if(!Ou(i))return;if(i._pulling){i._pullAgain=!0;return}i._pulling=!0;let u=i._pullAlgorithm();S(u,()=>{i._pulling=!1,i._pullAgain&&(i._pullAgain=!1,Lr(i))},p=>{it(i,p)})}function Ou(i){let a=i._controlledReadableStream;return!Vt(i)||!i._started?!1:!!(lt(a)&&Pn(a)>0||ao(i)>0)}function Gn(i){i._pullAlgorithm=void 0,i._cancelAlgorithm=void 0,i._strategySizeAlgorithm=void 0}function Br(i){if(!Vt(i))return;let a=i._controlledReadableStream;i._closeRequested=!0,i._queue.length===0&&(Gn(i),Mr(a))}function Jn(i,a){if(!Vt(i))return;let u=i._controlledReadableStream;if(lt(u)&&Pn(u)>0)Ui(u,a,!1);else{let p;try{p=i._strategySizeAlgorithm(a)}catch(b){throw it(i,b),b}try{xi(i,a,p)}catch(b){throw it(i,b),b}}Lr(i)}function it(i,a){let u=i._controlledReadableStream;u._state==="readable"&&(st(i),Gn(i),Nu(u,a))}function ao(i){let a=i._controlledReadableStream._state;return a==="errored"?null:a==="closed"?0:i._strategyHWM-i._queueTotalSize}function _m(i){return!Ou(i)}function Vt(i){let a=i._controlledReadableStream._state;return!i._closeRequested&&a==="readable"}function Cu(i,a,u,p,b,v,T){a._controlledReadableStream=i,a._queue=void 0,a._queueTotalSize=void 0,st(a),a._started=!1,a._closeRequested=!1,a._pullAgain=!1,a._pulling=!1,a._strategySizeAlgorithm=T,a._strategyHWM=v,a._pullAlgorithm=p,a._cancelAlgorithm=b,i._readableStreamController=a;let k=u();S(m(k),()=>{a._started=!0,Lr(a)},L=>{it(a,L)})}function vm(i,a,u,p){let b=Object.create(zt.prototype),v=()=>{},T=()=>m(void 0),k=()=>m(void 0);a.start!==void 0&&(v=()=>a.start(b)),a.pull!==void 0&&(T=()=>a.pull(b)),a.cancel!==void 0&&(k=L=>a.cancel(L)),Cu(i,b,v,T,k,u,p)}function Qn(i){return new TypeError(`ReadableStreamDefaultController.prototype.${i} can only be used on a ReadableStreamDefaultController`)}function Em(i,a){return _t(i._readableStreamController)?Tm(i):Am(i)}function Am(i,a){let u=Ft(i),p=!1,b=!1,v=!1,T=!1,k,L,M,D,$,H=y(ie=>{$=ie});function ke(){return p?(b=!0,m(void 0)):(p=!0,Ar(u,{_chunkSteps:le=>{A(()=>{b=!1;let we=le,He=le;v||Jn(M._readableStreamController,we),T||Jn(D._readableStreamController,He),p=!1,b&&ke()})},_closeSteps:()=>{p=!1,v||Br(M._readableStreamController),T||Br(D._readableStreamController),(!v||!T)&&$(void 0)},_errorSteps:()=>{p=!1}}),m(void 0))}function Yt(ie){if(v=!0,k=ie,T){let le=Tr([k,L]),we=Pe(i,le);$(we)}return H}function ut(ie){if(T=!0,L=ie,v){let le=Tr([k,L]),we=Pe(i,le);$(we)}return H}function Ke(){}return M=lo(Ke,ke,Yt),D=lo(Ke,ke,ut),E(u._closedPromise,ie=>{it(M._readableStreamController,ie),it(D._readableStreamController,ie),(!v||!T)&&$(void 0)}),[M,D]}function Tm(i){let a=Ft(i),u=!1,p=!1,b=!1,v=!1,T=!1,k,L,M,D,$,H=y(I=>{$=I});function ke(I){E(I._closedPromise,B=>{I===a&&(Ce(M._readableStreamController,B),Ce(D._readableStreamController,B),(!v||!T)&&$(void 0))})}function Yt(){Et(a)&&(ze(a),a=Ft(i),ke(a)),Ar(a,{_chunkSteps:B=>{A(()=>{p=!1,b=!1;let x=B,be=B;if(!v&&!T)try{be=Gl(B)}catch(Kt){Ce(M._readableStreamController,Kt),Ce(D._readableStreamController,Kt),$(Pe(i,Kt));return}v||Bn(M._readableStreamController,x),T||Bn(D._readableStreamController,be),u=!1,p?Ke():b&&ie()})},_closeSteps:()=>{u=!1,v||Or(M._readableStreamController),T||Or(D._readableStreamController),M._readableStreamController._pendingPullIntos.length>0&&Mn(M._readableStreamController,0),D._readableStreamController._pendingPullIntos.length>0&&Mn(D._readableStreamController,0),(!v||!T)&&$(void 0)},_errorSteps:()=>{u=!1}})}function ut(I,B){nt(a)&&(ze(a),a=iu(i),ke(a));let x=B?D:M,be=B?M:D;lu(a,I,{_chunkSteps:Ht=>{A(()=>{p=!1,b=!1;let Gt=B?T:v;if(B?v:T)Gt||Dn(x._readableStreamController,Ht);else{let zu;try{zu=Gl(Ht)}catch(fo){Ce(x._readableStreamController,fo),Ce(be._readableStreamController,fo),$(Pe(i,fo));return}Gt||Dn(x._readableStreamController,Ht),Bn(be._readableStreamController,zu)}u=!1,p?Ke():b&&ie()})},_closeSteps:Ht=>{u=!1;let Gt=B?T:v,os=B?v:T;Gt||Or(x._readableStreamController),os||Or(be._readableStreamController),Ht!==void 0&&(Gt||Dn(x._readableStreamController,Ht),!os&&be._readableStreamController._pendingPullIntos.length>0&&Mn(be._readableStreamController,0)),(!Gt||!os)&&$(void 0)},_errorSteps:()=>{u=!1}})}function Ke(){if(u)return p=!0,m(void 0);u=!0;let I=Ki(M._readableStreamController);return I===null?Yt():ut(I._view,!1),m(void 0)}function ie(){if(u)return b=!0,m(void 0);u=!0;let I=Ki(D._readableStreamController);return I===null?Yt():ut(I._view,!0),m(void 0)}function le(I){if(v=!0,k=I,T){let B=Tr([k,L]),x=Pe(i,B);$(x)}return H}function we(I){if(T=!0,L=I,v){let B=Tr([k,L]),x=Pe(i,B);$(x)}return H}function He(){}return M=ku(He,Ke,le),D=ku(He,ie,we),ke(a),[M,D]}function Rm(i,a){Ve(i,a);let u=i,p=u?.autoAllocateChunkSize,b=u?.cancel,v=u?.pull,T=u?.start,k=u?.type;return{autoAllocateChunkSize:p===void 0?void 0:$l(p,`${a} has member 'autoAllocateChunkSize' that`),cancel:b===void 0?void 0:Om(b,u,`${a} has member 'cancel' that`),pull:v===void 0?void 0:Cm(v,u,`${a} has member 'pull' that`),start:T===void 0?void 0:Pm(T,u,`${a} has member 'start' that`),type:k===void 0?void 0:km(k,`${a} has member 'type' that`)}}function Om(i,a,u){return Oe(i,u),p=>C(i,a,[p])}function Cm(i,a,u){return Oe(i,u),p=>C(i,a,[p])}function Pm(i,a,u){return Oe(i,u),p=>q(i,a,[p])}function km(i,a){if(i=`${i}`,i!=="bytes")throw new TypeError(`${a} '${i}' is not a valid enumeration value for ReadableStreamType`);return i}function Nm(i,a){Ve(i,a);let u=i?.mode;return{mode:u===void 0?void 0:qm(u,`${a} has member 'mode' that`)}}function qm(i,a){if(i=`${i}`,i!=="byob")throw new TypeError(`${a} '${i}' is not a valid enumeration value for ReadableStreamReaderMode`);return i}function Im(i,a){Ve(i,a);let u=i?.preventCancel;return{preventCancel:Boolean(u)}}function Pu(i,a){Ve(i,a);let u=i?.preventAbort,p=i?.preventCancel,b=i?.preventClose,v=i?.signal;return v!==void 0&&Lm(v,`${a} has member 'signal' that`),{preventAbort:Boolean(u),preventCancel:Boolean(p),preventClose:Boolean(b),signal:v}}function Lm(i,a){if(!Yp(i))throw new TypeError(`${a} is not an AbortSignal.`)}function Bm(i,a){Ve(i,a);let u=i?.readable;$i(u,"readable","ReadableWritablePair"),ji(u,`${a} has member 'readable' that`);let p=i?.writable;return $i(p,"writable","ReadableWritablePair"),uu(p,`${a} has member 'writable' that`),{readable:u,writable:p}}class ot{constructor(a={},u={}){a===void 0?a=null:Ml(a,"First parameter");let p=jn(u,"Second parameter"),b=Rm(a,"First parameter");if(uo(this),b.type==="bytes"){if(p.size!==void 0)throw new RangeError("The strategy for a byte stream cannot have a size function");let v=kr(p,0);Dp(this,b,v)}else{let v=Fn(p),T=kr(p,1);vm(this,b,T,v)}}get locked(){if(!at(this))throw Rt("locked");return lt(this)}cancel(a=void 0){return at(this)?lt(this)?g(new TypeError("Cannot cancel a stream that already has a reader")):Pe(this,a):g(Rt("cancel"))}getReader(a=void 0){if(!at(this))throw Rt("getReader");return Nm(a,"First parameter").mode===void 0?Ft(this):iu(this)}pipeThrough(a,u={}){if(!at(this))throw Rt("pipeThrough");Ye(a,1,"pipeThrough");let p=Bm(a,"First parameter"),b=Pu(u,"Second parameter");if(lt(this))throw new TypeError("ReadableStream.prototype.pipeThrough cannot be used on a locked ReadableStream");if(Wt(p.writable))throw new TypeError("ReadableStream.prototype.pipeThrough cannot be used on a locked WritableStream");let v=Ru(this,p.writable,b.preventClose,b.preventAbort,b.preventCancel,b.signal);return P(v),p.readable}pipeTo(a,u={}){if(!at(this))return g(Rt("pipeTo"));if(a===void 0)return g("Parameter 1 is required in 'pipeTo'.");if(!Ut(a))return g(new TypeError("ReadableStream.prototype.pipeTo's first argument must be a WritableStream"));let p;try{p=Pu(u,"Second parameter")}catch(b){return g(b)}return lt(this)?g(new TypeError("ReadableStream.prototype.pipeTo cannot be used on a locked ReadableStream")):Wt(a)?g(new TypeError("ReadableStream.prototype.pipeTo cannot be used on a locked WritableStream")):Ru(this,a,p.preventClose,p.preventAbort,p.preventCancel,p.signal)}tee(){if(!at(this))throw Rt("tee");let a=Em(this);return Tr(a)}values(a=void 0){if(!at(this))throw Rt("values");let u=Im(a,"First parameter");return kp(this,u.preventCancel)}}Object.defineProperties(ot.prototype,{cancel:{enumerable:!0},getReader:{enumerable:!0},pipeThrough:{enumerable:!0},pipeTo:{enumerable:!0},tee:{enumerable:!0},values:{enumerable:!0},locked:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(ot.prototype,e.toStringTag,{value:"ReadableStream",configurable:!0}),typeof e.asyncIterator=="symbol"&&Object.defineProperty(ot.prototype,e.asyncIterator,{value:ot.prototype.values,writable:!0,configurable:!0});function lo(i,a,u,p=1,b=()=>1){let v=Object.create(ot.prototype);uo(v);let T=Object.create(zt.prototype);return Cu(v,T,i,a,u,p,b),v}function ku(i,a,u){let p=Object.create(ot.prototype);uo(p);let b=Object.create(jt.prototype);return su(p,b,i,a,u,0,void 0),p}function uo(i){i._state="readable",i._reader=void 0,i._storedError=void 0,i._disturbed=!1}function at(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_readableStreamController")?!1:i instanceof ot}function lt(i){return i._reader!==void 0}function Pe(i,a){if(i._disturbed=!0,i._state==="closed")return m(void 0);if(i._state==="errored")return g(i._storedError);Mr(i);let u=i._reader;u!==void 0&&Et(u)&&(u._readIntoRequests.forEach(b=>{b._closeSteps(void 0)}),u._readIntoRequests=new Q);let p=i._readableStreamController[Mi](a);return O(p,r)}function Mr(i){i._state="closed";let a=i._reader;a!==void 0&&(ql(a),nt(a)&&(a._readRequests.forEach(u=>{u._closeSteps()}),a._readRequests=new Q))}function Nu(i,a){i._state="errored",i._storedError=a;let u=i._reader;u!==void 0&&(Bi(u,a),nt(u)?(u._readRequests.forEach(p=>{p._errorSteps(a)}),u._readRequests=new Q):(u._readIntoRequests.forEach(p=>{p._errorSteps(a)}),u._readIntoRequests=new Q))}function Rt(i){return new TypeError(`ReadableStream.prototype.${i} can only be used on a ReadableStream`)}function qu(i,a){Ve(i,a);let u=i?.highWaterMark;return $i(u,"highWaterMark","QueuingStrategyInit"),{highWaterMark:Fi(u)}}let Iu=i=>i.byteLength;try{Object.defineProperty(Iu,"name",{value:"size",configurable:!0})}catch{}class Xn{constructor(a){Ye(a,1,"ByteLengthQueuingStrategy"),a=qu(a,"First parameter"),this._byteLengthQueuingStrategyHighWaterMark=a.highWaterMark}get highWaterMark(){if(!Bu(this))throw Lu("highWaterMark");return this._byteLengthQueuingStrategyHighWaterMark}get size(){if(!Bu(this))throw Lu("size");return Iu}}Object.defineProperties(Xn.prototype,{highWaterMark:{enumerable:!0},size:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Xn.prototype,e.toStringTag,{value:"ByteLengthQueuingStrategy",configurable:!0});function Lu(i){return new TypeError(`ByteLengthQueuingStrategy.prototype.${i} can only be used on a ByteLengthQueuingStrategy`)}function Bu(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_byteLengthQueuingStrategyHighWaterMark")?!1:i instanceof Xn}let Mu=()=>1;try{Object.defineProperty(Mu,"name",{value:"size",configurable:!0})}catch{}class Zn{constructor(a){Ye(a,1,"CountQueuingStrategy"),a=qu(a,"First parameter"),this._countQueuingStrategyHighWaterMark=a.highWaterMark}get highWaterMark(){if(!$u(this))throw Du("highWaterMark");return this._countQueuingStrategyHighWaterMark}get size(){if(!$u(this))throw Du("size");return Mu}}Object.defineProperties(Zn.prototype,{highWaterMark:{enumerable:!0},size:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Zn.prototype,e.toStringTag,{value:"CountQueuingStrategy",configurable:!0});function Du(i){return new TypeError(`CountQueuingStrategy.prototype.${i} can only be used on a CountQueuingStrategy`)}function $u(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_countQueuingStrategyHighWaterMark")?!1:i instanceof Zn}function Mm(i,a){Ve(i,a);let u=i?.flush,p=i?.readableType,b=i?.start,v=i?.transform,T=i?.writableType;return{flush:u===void 0?void 0:Dm(u,i,`${a} has member 'flush' that`),readableType:p,start:b===void 0?void 0:$m(b,i,`${a} has member 'start' that`),transform:v===void 0?void 0:Fm(v,i,`${a} has member 'transform' that`),writableType:T}}function Dm(i,a,u){return Oe(i,u),p=>C(i,a,[p])}function $m(i,a,u){return Oe(i,u),p=>q(i,a,[p])}function Fm(i,a,u){return Oe(i,u),(p,b)=>C(i,a,[p,b])}class es{constructor(a={},u={},p={}){a===void 0&&(a=null);let b=jn(u,"Second parameter"),v=jn(p,"Third parameter"),T=Mm(a,"First parameter");if(T.readableType!==void 0)throw new RangeError("Invalid readableType specified");if(T.writableType!==void 0)throw new RangeError("Invalid writableType specified");let k=kr(v,0),L=Fn(v),M=kr(b,1),D=Fn(b),$,H=y(ke=>{$=ke});jm(this,H,M,D,k,L),Wm(this,T),T.start!==void 0?$(T.start(this._transformStreamController)):$(void 0)}get readable(){if(!Fu(this))throw xu("readable");return this._readable}get writable(){if(!Fu(this))throw xu("writable");return this._writable}}Object.defineProperties(es.prototype,{readable:{enumerable:!0},writable:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(es.prototype,e.toStringTag,{value:"TransformStream",configurable:!0});function jm(i,a,u,p,b,v){function T(){return a}function k(H){return Vm(i,H)}function L(H){return Ym(i,H)}function M(){return Km(i)}i._writable=Gp(T,k,M,L,u,p);function D(){return Hm(i)}function $(H){return rs(i,H),m(void 0)}i._readable=lo(T,D,$,b,v),i._backpressure=void 0,i._backpressureChangePromise=void 0,i._backpressureChangePromise_resolve=void 0,ns(i,!0),i._transformStreamController=void 0}function Fu(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_transformStreamController")?!1:i instanceof es}function ts(i,a){it(i._readable._readableStreamController,a),rs(i,a)}function rs(i,a){ju(i._transformStreamController),to(i._writable._writableStreamController,a),i._backpressure&&ns(i,!1)}function ns(i,a){i._backpressureChangePromise!==void 0&&i._backpressureChangePromise_resolve(),i._backpressureChangePromise=y(u=>{i._backpressureChangePromise_resolve=u}),i._backpressure=a}class Dr{constructor(){throw new TypeError("Illegal constructor")}get desiredSize(){if(!ss(this))throw is("desiredSize");let a=this._controlledTransformStream._readable._readableStreamController;return ao(a)}enqueue(a=void 0){if(!ss(this))throw is("enqueue");Uu(this,a)}error(a=void 0){if(!ss(this))throw is("error");xm(this,a)}terminate(){if(!ss(this))throw is("terminate");zm(this)}}Object.defineProperties(Dr.prototype,{enqueue:{enumerable:!0},error:{enumerable:!0},terminate:{enumerable:!0},desiredSize:{enumerable:!0}}),typeof e.toStringTag=="symbol"&&Object.defineProperty(Dr.prototype,e.toStringTag,{value:"TransformStreamDefaultController",configurable:!0});function ss(i){return!o(i)||!Object.prototype.hasOwnProperty.call(i,"_controlledTransformStream")?!1:i instanceof Dr}function Um(i,a,u,p){a._controlledTransformStream=i,i._transformStreamController=a,a._transformAlgorithm=u,a._flushAlgorithm=p}function Wm(i,a){let u=Object.create(Dr.prototype),p=v=>{try{return Uu(u,v),m(void 0)}catch(T){return g(T)}},b=()=>m(void 0);a.transform!==void 0&&(p=v=>a.transform(v,u)),a.flush!==void 0&&(b=()=>a.flush(u)),Um(i,u,p,b)}function ju(i){i._transformAlgorithm=void 0,i._flushAlgorithm=void 0}function Uu(i,a){let u=i._controlledTransformStream,p=u._readable._readableStreamController;if(!Vt(p))throw new TypeError("Readable side is not in a state that permits enqueue");try{Jn(p,a)}catch(v){throw rs(u,v),u._readable._storedError}_m(p)!==u._backpressure&&ns(u,!0)}function xm(i,a){ts(i._controlledTransformStream,a)}function Wu(i,a){let u=i._transformAlgorithm(a);return O(u,void 0,p=>{throw ts(i._controlledTransformStream,p),p})}function zm(i){let a=i._controlledTransformStream,u=a._readable._readableStreamController;Br(u);let p=new TypeError("TransformStream terminated");rs(a,p)}function Vm(i,a){let u=i._transformStreamController;if(i._backpressure){let p=i._backpressureChangePromise;return O(p,()=>{let b=i._writable;if(b._state==="erroring")throw b._storedError;return Wu(u,a)})}return Wu(u,a)}function Ym(i,a){return ts(i,a),m(void 0)}function Km(i){let a=i._readable,u=i._transformStreamController,p=u._flushAlgorithm();return ju(u),O(p,()=>{if(a._state==="errored")throw a._storedError;Br(a._readableStreamController)},b=>{throw ts(i,b),a._storedError})}function Hm(i){return ns(i,!1),i._backpressureChangePromise}function is(i){return new TypeError(`TransformStreamDefaultController.prototype.${i} can only be used on a TransformStreamDefaultController`)}function xu(i){return new TypeError(`TransformStream.prototype.${i} can only be used on a TransformStream`)}t.ByteLengthQueuingStrategy=Xn,t.CountQueuingStrategy=Zn,t.ReadableByteStreamController=jt,t.ReadableStream=ot,t.ReadableStreamBYOBReader=Pr,t.ReadableStreamBYOBRequest=Rr,t.ReadableStreamDefaultController=zt,t.ReadableStreamDefaultReader=Er,t.TransformStream=es,t.TransformStreamDefaultController=Dr,t.WritableStream=Nr,t.WritableStreamDefaultController=xt,t.WritableStreamDefaultWriter=qr,Object.defineProperty(t,"__esModule",{value:!0})})});var oc=R(()=>{if(!globalThis.ReadableStream)try{let t=V("node:process"),{emitWarning:e}=t;try{t.emitWarning=()=>{},Object.assign(globalThis,V("node:stream/web")),t.emitWarning=e}catch(r){throw t.emitWarning=e,r}}catch{Object.assign(globalThis,ic())}try{let{Blob:t}=V("buffer");t&&!t.prototype.stream&&(t.prototype.stream=function(r){let n=0,s=this;return new ReadableStream({type:"bytes",async pull(o){let f=await s.slice(n,Math.min(s.size,n+65536)).arrayBuffer();n+=f.byteLength,o.enqueue(new Uint8Array(f)),n===s.size&&o.close()}})})}catch{}});async function*Vo(t,e=!0){for(let r of t)if("stream"in r)yield*r.stream();else if(ArrayBuffer.isView(r))if(e){let n=r.byteOffset,s=r.byteOffset+r.byteLength;for(;n!==s;){let o=Math.min(s-n,ac),l=r.buffer.slice(n,n+o);n+=l.byteLength,yield new Uint8Array(l)}}else yield r;else{let n=0,s=r;for(;n!==s.size;){let l=await s.slice(n,Math.min(s.size,n+ac)).arrayBuffer();n+=l.byteLength,yield new Uint8Array(l)}}}var sT,ac,lc,xb,Qe,Vr=$r(()=>{sT=as(oc(),1);ac=65536;lc=class Yo{#e=[];#t="";#r=0;#n="transparent";constructor(e=[],r={}){if(typeof e!="object"||e===null)throw new TypeError("Failed to construct 'Blob': The provided value cannot be converted to a sequence.");if(typeof e[Symbol.iterator]!="function")throw new TypeError("Failed to construct 'Blob': The object must have a callable @@iterator property.");if(typeof r!="object"&&typeof r!="function")throw new TypeError("Failed to construct 'Blob': parameter 2 cannot convert to dictionary.");r===null&&(r={});let n=new TextEncoder;for(let o of e){let l;ArrayBuffer.isView(o)?l=new Uint8Array(o.buffer.slice(o.byteOffset,o.byteOffset+o.byteLength)):o instanceof ArrayBuffer?l=new Uint8Array(o.slice(0)):o instanceof Yo?l=o:l=n.encode(`${o}`),this.#r+=ArrayBuffer.isView(l)?l.byteLength:l.size,this.#e.push(l)}this.#n=`${r.endings===void 0?"transparent":r.endings}`;let s=r.type===void 0?"":String(r.type);this.#t=/^[\x20-\x7E]*$/.test(s)?s:""}get size(){return this.#r}get type(){return this.#t}async text(){let e=new TextDecoder,r="";for await(let n of Vo(this.#e,!1))r+=e.decode(n,{stream:!0});return r+=e.decode(),r}async arrayBuffer(){let e=new Uint8Array(this.size),r=0;for await(let n of Vo(this.#e,!1))e.set(n,r),r+=n.length;return e.buffer}stream(){let e=Vo(this.#e,!0);return new globalThis.ReadableStream({type:"bytes",async pull(r){let n=await e.next();n.done?r.close():r.enqueue(n.value)},async cancel(){await e.return()}})}slice(e=0,r=this.size,n=""){let{size:s}=this,o=e<0?Math.max(s+e,0):Math.min(e,s),l=r<0?Math.max(s+r,0):Math.min(r,s),f=Math.max(l-o,0),c=this.#e,d=[],h=0;for(let m of c){if(h>=f)break;let g=ArrayBuffer.isView(m)?m.byteLength:m.size;if(o&&g<=o)o-=g,l-=g;else{let w;ArrayBuffer.isView(m)?(w=m.subarray(o,Math.min(g,l)),h+=w.byteLength):(w=m.slice(o,Math.min(g,l)),h+=w.size),l-=g,d.push(w),o=0}}let y=new Yo([],{type:String(n).toLowerCase()});return y.#r=f,y.#e=d,y}get[Symbol.toStringTag](){return"Blob"}static[Symbol.hasInstance](e){return e&&typeof e=="object"&&typeof e.constructor=="function"&&(typeof e.stream=="function"||typeof e.arrayBuffer=="function")&&/^(Blob|File)$/.test(e[Symbol.toStringTag])}};Object.defineProperties(lc.prototype,{size:{enumerable:!0},type:{enumerable:!0},slice:{enumerable:!0}});xb=lc,Qe=xb});var zb,Vb,sr,Ko=$r(()=>{Vr();zb=class extends Qe{#e=0;#t="";constructor(e,r,n={}){if(arguments.length<2)throw new TypeError(`Failed to construct 'File': 2 arguments required, but only ${arguments.length} present.`);super(e,n),n===null&&(n={});let s=n.lastModified===void 0?Date.now():Number(n.lastModified);Number.isNaN(s)||(this.#e=s),this.#t=String(r)}get name(){return this.#t}get lastModified(){return this.#e}get[Symbol.toStringTag](){return"File"}static[Symbol.hasInstance](e){return!!e&&e instanceof Qe&&/^(File)$/.test(e[Symbol.toStringTag])}},Vb=zb,sr=Vb});function cc(t,e=Qe){var r=`${uc()}${uc()}`.replace(/\./g,"").slice(-28).padStart(32,"-"),n=[],s=`--${r}\r
-Content-Disposition: form-data; name="`;return t.forEach((o,l)=>typeof o=="string"?n.push(s+Ho(l)+`"\r
-\r
-${o.replace(/\r(?!\n)|(?<!\r)\n/g,`\r
-`)}\r
-`):n.push(s+Ho(l)+`"; filename="${Ho(o.name,1)}"\r
-Content-Type: ${o.type||"application/octet-stream"}\r
-\r
-`,o,`\r
-`)),n.push(`--${r}--`),new e(n,{type:"multipart/form-data; boundary="+r})}var Yr,Yb,Kb,uc,Hb,fc,Ho,Pt,kt,Bs=$r(()=>{Vr();Ko();({toStringTag:Yr,iterator:Yb,hasInstance:Kb}=Symbol),uc=Math.random,Hb="append,set,get,getAll,delete,keys,values,entries,forEach,constructor".split(","),fc=(t,e,r)=>(t+="",/^(Blob|File)$/.test(e&&e[Yr])?[(r=r!==void 0?r+"":e[Yr]=="File"?e.name:"blob",t),e.name!==r||e[Yr]=="blob"?new sr([e],r,e):e]:[t,e+""]),Ho=(t,e)=>(e?t:t.replace(/\r?\n|\r/g,`\r
-`)).replace(/\n/g,"%0A").replace(/\r/g,"%0D").replace(/"/g,"%22"),Pt=(t,e,r)=>{if(e.length<r)throw new TypeError(`Failed to execute '${t}' on 'FormData': ${r} arguments required, but only ${e.length} present.`)},kt=class{#e=[];constructor(...e){if(e.length)throw new TypeError("Failed to construct 'FormData': parameter 1 is not of type 'HTMLFormElement'.")}get[Yr](){return"FormData"}[Yb](){return this.entries()}static[Kb](e){return e&&typeof e=="object"&&e[Yr]==="FormData"&&!Hb.some(r=>typeof e[r]!="function")}append(...e){Pt("append",arguments,2),this.#e.push(fc(...e))}delete(e){Pt("delete",arguments,1),e+="",this.#e=this.#e.filter(([r])=>r!==e)}get(e){Pt("get",arguments,1),e+="";for(var r=this.#e,n=r.length,s=0;s<n;s++)if(r[s][0]===e)return r[s][1];return null}getAll(e,r){return Pt("getAll",arguments,1),r=[],e+="",this.#e.forEach(n=>n[0]===e&&r.push(n[1])),r}has(e){return Pt("has",arguments,1),e+="",this.#e.some(r=>r[0]===e)}forEach(e,r){Pt("forEach",arguments,1);for(var[n,s]of this)e.call(r,s,n,this)}set(...e){Pt("set",arguments,2);var r=[],n=!0;e=fc(...e),this.#e.forEach(s=>{s[0]===e[0]?n&&(n=!r.push(e)):r.push(s)}),n&&r.push(e),this.#e=r}*entries(){yield*this.#e}*keys(){for(var[e]of this)yield e}*values(){for(var[,e]of this)yield e}}});var yc=R((gT,mc)=>{if(!globalThis.DOMException)try{let{MessageChannel:t}=V("worker_threads"),e=new t().port1,r=new ArrayBuffer;e.postMessage(r,[r,r])}catch(t){t.constructor.name==="DOMException"&&(globalThis.DOMException=t.constructor)}mc.exports=globalThis.DOMException});import{statSync as wT,createReadStream as Gb,promises as Jb}from"node:fs";var gc,Qb,Ds,Jo=$r(()=>{gc=as(yc(),1);Ko();Vr();({stat:Qb}=Jb),Ds=class{#e;#t;constructor(e){this.#e=e.path,this.#t=e.start,this.size=e.size,this.lastModified=e.lastModified}slice(e,r){return new Ds({path:this.#e,lastModified:this.lastModified,size:r-e,start:this.#t+e})}async*stream(){let{mtimeMs:e}=await Qb(this.#e);if(e>this.lastModified)throw new gc.default("The requested file could not be read, typically due to permission problems that have occurred after a reference to a file was acquired.","NotReadableError");yield*Gb(this.#e,{start:this.#t,end:this.#t+this.size-1})}get[Symbol.toStringTag](){return"Blob"}}});var wc={};ey(wc,{toFormData:()=>sw});function nw(t){let e=t.match(/\bfilename=("(.*?)"|([^()<>@,;:\\"/[\]?={}\s\t]+))($|;\s)/i);if(!e)return;let r=e[2]||e[3]||"",n=r.slice(r.lastIndexOf("\\")+1);return n=n.replace(/%22/g,'"'),n=n.replace(/&#(\d{4});/g,(s,o)=>String.fromCharCode(o)),n}async function sw(t,e){if(!/multipart/i.test(e))throw new TypeError("Failed to fetch");let r=e.match(/boundary=(?:"([^"]+)"|([^;]+))/i);if(!r)throw new TypeError("no or bad content-type header, no multipart boundary");let n=new Qo(r[1]||r[2]),s,o,l,f,c,d,h=[],y=new kt,m=E=>{l+=_.decode(E,{stream:!0})},g=E=>{h.push(E)},w=()=>{let E=new sr(h,d,{type:c});y.append(f,E)},S=()=>{y.append(f,l)},_=new TextDecoder("utf-8");_.decode(),n.onPartBegin=function(){n.onPartData=m,n.onPartEnd=S,s="",o="",l="",f="",c="",d=null,h.length=0},n.onHeaderField=function(E){s+=_.decode(E,{stream:!0})},n.onHeaderValue=function(E){o+=_.decode(E,{stream:!0})},n.onHeaderEnd=function(){if(o+=_.decode(),s=s.toLowerCase(),s==="content-disposition"){let E=o.match(/\bname=("([^"]*)"|([^()<>@,;:\\"/[\]?={}\s\t]+))/i);E&&(f=E[2]||E[3]||""),d=nw(o),d&&(n.onPartData=g,n.onPartEnd=w)}else s==="content-type"&&(c=o);o="",s=""};for await(let E of t)n.write(E);return n.end(),y}var Fe,z,bc,ht,$s,Fs,Xb,Hr,Zb,ew,tw,rw,Nt,Qo,Sc=$r(()=>{Jo();Bs();Fe=0,z={START_BOUNDARY:Fe++,HEADER_FIELD_START:Fe++,HEADER_FIELD:Fe++,HEADER_VALUE_START:Fe++,HEADER_VALUE:Fe++,HEADER_VALUE_ALMOST_DONE:Fe++,HEADERS_ALMOST_DONE:Fe++,PART_DATA_START:Fe++,PART_DATA:Fe++,END:Fe++},bc=1,ht={PART_BOUNDARY:bc,LAST_BOUNDARY:bc*=2},$s=10,Fs=13,Xb=32,Hr=45,Zb=58,ew=97,tw=122,rw=t=>t|32,Nt=()=>{},Qo=class{constructor(e){this.index=0,this.flags=0,this.onHeaderEnd=Nt,this.onHeaderField=Nt,this.onHeadersEnd=Nt,this.onHeaderValue=Nt,this.onPartBegin=Nt,this.onPartData=Nt,this.onPartEnd=Nt,this.boundaryChars={},e=`\r
---`+e;let r=new Uint8Array(e.length);for(let n=0;n<e.length;n++)r[n]=e.charCodeAt(n),this.boundaryChars[r[n]]=!0;this.boundary=r,this.lookbehind=new Uint8Array(this.boundary.length+8),this.state=z.START_BOUNDARY}write(e){let r=0,n=e.length,s=this.index,{lookbehind:o,boundary:l,boundaryChars:f,index:c,state:d,flags:h}=this,y=this.boundary.length,m=y-1,g=e.length,w,S,_=A=>{this[A+"Mark"]=r},E=A=>{delete this[A+"Mark"]},O=(A,q,C,F)=>{(q===void 0||q!==C)&&this[A](F&&F.subarray(q,C))},P=(A,q)=>{let C=A+"Mark";C in this&&(q?(O(A,this[C],r,e),delete this[C]):(O(A,this[C],e.length,e),this[C]=0))};for(r=0;r<n;r++)switch(w=e[r],d){case z.START_BOUNDARY:if(c===l.length-2){if(w===Hr)h|=ht.LAST_BOUNDARY;else if(w!==Fs)return;c++;break}else if(c-1===l.length-2){if(h&ht.LAST_BOUNDARY&&w===Hr)d=z.END,h=0;else if(!(h&ht.LAST_BOUNDARY)&&w===$s)c=0,O("onPartBegin"),d=z.HEADER_FIELD_START;else return;break}w!==l[c+2]&&(c=-2),w===l[c+2]&&c++;break;case z.HEADER_FIELD_START:d=z.HEADER_FIELD,_("onHeaderField"),c=0;case z.HEADER_FIELD:if(w===Fs){E("onHeaderField"),d=z.HEADERS_ALMOST_DONE;break}if(c++,w===Hr)break;if(w===Zb){if(c===1)return;P("onHeaderField",!0),d=z.HEADER_VALUE_START;break}if(S=rw(w),S<ew||S>tw)return;break;case z.HEADER_VALUE_START:if(w===Xb)break;_("onHeaderValue"),d=z.HEADER_VALUE;case z.HEADER_VALUE:w===Fs&&(P("onHeaderValue",!0),O("onHeaderEnd"),d=z.HEADER_VALUE_ALMOST_DONE);break;case z.HEADER_VALUE_ALMOST_DONE:if(w!==$s)return;d=z.HEADER_FIELD_START;break;case z.HEADERS_ALMOST_DONE:if(w!==$s)return;O("onHeadersEnd"),d=z.PART_DATA_START;break;case z.PART_DATA_START:d=z.PART_DATA,_("onPartData");case z.PART_DATA:if(s=c,c===0){for(r+=m;r<g&&!(e[r]in f);)r+=y;r-=m,w=e[r]}if(c<l.length)l[c]===w?(c===0&&P("onPartData",!0),c++):c=0;else if(c===l.length)c++,w===Fs?h|=ht.PART_BOUNDARY:w===Hr?h|=ht.LAST_BOUNDARY:c=0;else if(c-1===l.length)if(h&ht.PART_BOUNDARY){if(c=0,w===$s){h&=~ht.PART_BOUNDARY,O("onPartEnd"),O("onPartBegin"),d=z.HEADER_FIELD_START;break}}else h&ht.LAST_BOUNDARY&&w===Hr?(O("onPartEnd"),d=z.END,h=0):c=0;if(c>0)o[c-1]=w;else if(s>0){let A=new Uint8Array(o.buffer,o.byteOffset,o.byteLength);O("onPartData",0,s,A),s=0,_("onPartData"),r--}break;case z.END:break;default:throw new Error(`Unexpected state entered: ${d}`)}P("onHeaderField"),P("onHeaderValue"),P("onPartData"),this.index=c,this.state=d,this.flags=h}end(){if(this.state===z.HEADER_FIELD_START&&this.index===0||this.state===z.PART_DATA&&this.index===this.boundary.length)this.onPartEnd();else if(this.state!==z.END)throw new Error("MultipartParser.end(): stream ended unexpectedly")}}});var j=R(re=>{"use strict";var ra=Symbol.for("yaml.alias"),Dc=Symbol.for("yaml.document"),Ks=Symbol.for("yaml.map"),$c=Symbol.for("yaml.pair"),na=Symbol.for("yaml.scalar"),Hs=Symbol.for("yaml.seq"),Ue=Symbol.for("yaml.node.type"),bw=t=>!!t&&typeof t=="object"&&t[Ue]===ra,ww=t=>!!t&&typeof t=="object"&&t[Ue]===Dc,Sw=t=>!!t&&typeof t=="object"&&t[Ue]===Ks,_w=t=>!!t&&typeof t=="object"&&t[Ue]===$c,Fc=t=>!!t&&typeof t=="object"&&t[Ue]===na,vw=t=>!!t&&typeof t=="object"&&t[Ue]===Hs;function jc(t){if(t&&typeof t=="object")switch(t[Ue]){case Ks:case Hs:return!0}return!1}function Ew(t){if(t&&typeof t=="object")switch(t[Ue]){case ra:case Ks:case na:case Hs:return!0}return!1}var Aw=t=>(Fc(t)||jc(t))&&!!t.anchor,ta=class{constructor(e){Object.defineProperty(this,Ue,{value:e})}clone(){let e=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return this.range&&(e.range=this.range.slice()),e}};re.ALIAS=ra;re.DOC=Dc;re.MAP=Ks;re.NODE_TYPE=Ue;re.NodeBase=ta;re.PAIR=$c;re.SCALAR=na;re.SEQ=Hs;re.hasAnchor=Aw;re.isAlias=bw;re.isCollection=jc;re.isDocument=ww;re.isMap=Sw;re.isNode=Ew;re.isPair=_w;re.isScalar=Fc;re.isSeq=vw});var Jr=R(sa=>{"use strict";var ee=j(),me=Symbol("break visit"),Uc=Symbol("skip children"),We=Symbol("remove node");function Gs(t,e){let r=Wc(e);ee.isDocument(t)?ur(null,t.contents,r,Object.freeze([t]))===We&&(t.contents=null):ur(null,t,r,Object.freeze([]))}Gs.BREAK=me;Gs.SKIP=Uc;Gs.REMOVE=We;function ur(t,e,r,n){let s=xc(t,e,r,n);if(ee.isNode(s)||ee.isPair(s))return zc(t,n,s),ur(t,s,r,n);if(typeof s!="symbol"){if(ee.isCollection(e)){n=Object.freeze(n.concat(e));for(let o=0;o<e.items.length;++o){let l=ur(o,e.items[o],r,n);if(typeof l=="number")o=l-1;else{if(l===me)return me;l===We&&(e.items.splice(o,1),o-=1)}}}else if(ee.isPair(e)){n=Object.freeze(n.concat(e));let o=ur("key",e.key,r,n);if(o===me)return me;o===We&&(e.key=null);let l=ur("value",e.value,r,n);if(l===me)return me;l===We&&(e.value=null)}}return s}async function Js(t,e){let r=Wc(e);ee.isDocument(t)?await fr(null,t.contents,r,Object.freeze([t]))===We&&(t.contents=null):await fr(null,t,r,Object.freeze([]))}Js.BREAK=me;Js.SKIP=Uc;Js.REMOVE=We;async function fr(t,e,r,n){let s=await xc(t,e,r,n);if(ee.isNode(s)||ee.isPair(s))return zc(t,n,s),fr(t,s,r,n);if(typeof s!="symbol"){if(ee.isCollection(e)){n=Object.freeze(n.concat(e));for(let o=0;o<e.items.length;++o){let l=await fr(o,e.items[o],r,n);if(typeof l=="number")o=l-1;else{if(l===me)return me;l===We&&(e.items.splice(o,1),o-=1)}}}else if(ee.isPair(e)){n=Object.freeze(n.concat(e));let o=await fr("key",e.key,r,n);if(o===me)return me;o===We&&(e.key=null);let l=await fr("value",e.value,r,n);if(l===me)return me;l===We&&(e.value=null)}}return s}function Wc(t){return typeof t=="object"&&(t.Collection||t.Node||t.Value)?Object.assign({Alias:t.Node,Map:t.Node,Scalar:t.Node,Seq:t.Node},t.Value&&{Map:t.Value,Scalar:t.Value,Seq:t.Value},t.Collection&&{Map:t.Collection,Seq:t.Collection},t):t}function xc(t,e,r,n){if(typeof r=="function")return r(t,e,n);if(ee.isMap(e))return r.Map?.(t,e,n);if(ee.isSeq(e))return r.Seq?.(t,e,n);if(ee.isPair(e))return r.Pair?.(t,e,n);if(ee.isScalar(e))return r.Scalar?.(t,e,n);if(ee.isAlias(e))return r.Alias?.(t,e,n)}function zc(t,e,r){let n=e[e.length-1];if(ee.isCollection(n))n.items[t]=r;else if(ee.isPair(n))t==="key"?n.key=r:n.value=r;else if(ee.isDocument(n))n.contents=r;else{let s=ee.isAlias(n)?"alias":"scalar";throw new Error(`Cannot replace node with ${s} parent`)}}sa.visit=Gs;sa.visitAsync=Js});var ia=R(Yc=>{"use strict";var Vc=j(),Tw=Jr(),Rw={"!":"%21",",":"%2C","[":"%5B","]":"%5D","{":"%7B","}":"%7D"},Ow=t=>t.replace(/[!,[\]{}]/g,e=>Rw[e]),ye=class{constructor(e,r){this.docStart=null,this.docEnd=!1,this.yaml=Object.assign({},ye.defaultYaml,e),this.tags=Object.assign({},ye.defaultTags,r)}clone(){let e=new ye(this.yaml,this.tags);return e.docStart=this.docStart,e}atDocument(){let e=new ye(this.yaml,this.tags);switch(this.yaml.version){case"1.1":this.atNextDocument=!0;break;case"1.2":this.atNextDocument=!1,this.yaml={explicit:ye.defaultYaml.explicit,version:"1.2"},this.tags=Object.assign({},ye.defaultTags);break}return e}add(e,r){this.atNextDocument&&(this.yaml={explicit:ye.defaultYaml.explicit,version:"1.1"},this.tags=Object.assign({},ye.defaultTags),this.atNextDocument=!1);let n=e.trim().split(/[ \t]+/),s=n.shift();switch(s){case"%TAG":{if(n.length!==2&&(r(0,"%TAG directive should contain exactly two parts"),n.length<2))return!1;let[o,l]=n;return this.tags[o]=l,!0}case"%YAML":{if(this.yaml.explicit=!0,n.length!==1)return r(0,"%YAML directive should contain exactly one part"),!1;let[o]=n;if(o==="1.1"||o==="1.2")return this.yaml.version=o,!0;{let l=/^\d+\.\d+$/.test(o);return r(6,`Unsupported YAML version ${o}`,l),!1}}default:return r(0,`Unknown directive ${s}`,!0),!1}}tagName(e,r){if(e==="!")return"!";if(e[0]!=="!")return r(`Not a valid tag: ${e}`),null;if(e[1]==="<"){let l=e.slice(2,-1);return l==="!"||l==="!!"?(r(`Verbatim tags aren't resolved, so ${e} is invalid.`),null):(e[e.length-1]!==">"&&r("Verbatim tags must end with a >"),l)}let[,n,s]=e.match(/^(.*!)([^!]*)$/);s||r(`The ${e} tag has no suffix`);let o=this.tags[n];return o?o+decodeURIComponent(s):n==="!"?e:(r(`Could not resolve tag: ${e}`),null)}tagString(e){for(let[r,n]of Object.entries(this.tags))if(e.startsWith(n))return r+Ow(e.substring(n.length));return e[0]==="!"?e:`!<${e}>`}toString(e){let r=this.yaml.explicit?[`%YAML ${this.yaml.version||"1.2"}`]:[],n=Object.entries(this.tags),s;if(e&&n.length>0&&Vc.isNode(e.contents)){let o={};Tw.visit(e.contents,(l,f)=>{Vc.isNode(f)&&f.tag&&(o[f.tag]=!0)}),s=Object.keys(o)}else s=[];for(let[o,l]of n)o==="!!"&&l==="tag:yaml.org,2002:"||(!e||s.some(f=>f.startsWith(l)))&&r.push(`%TAG ${o} ${l}`);return r.join(`
-`)}};ye.defaultYaml={explicit:!1,version:"1.2"};ye.defaultTags={"!!":"tag:yaml.org,2002:"};Yc.Directives=ye});var Qs=R(Qr=>{"use strict";var Kc=j(),Cw=Jr();function Pw(t){if(/[\x00-\x19\s,[\]{}]/.test(t)){let r=`Anchor must not contain whitespace or control characters: ${JSON.stringify(t)}`;throw new Error(r)}return!0}function Hc(t){let e=new Set;return Cw.visit(t,{Value(r,n){n.anchor&&e.add(n.anchor)}}),e}function Gc(t,e){for(let r=1;;++r){let n=`${t}${r}`;if(!e.has(n))return n}}function kw(t,e){let r=[],n=new Map,s=null;return{onAnchor:o=>{r.push(o),s||(s=Hc(t));let l=Gc(e,s);return s.add(l),l},setAnchors:()=>{for(let o of r){let l=n.get(o);if(typeof l=="object"&&l.anchor&&(Kc.isScalar(l.node)||Kc.isCollection(l.node)))l.node.anchor=l.anchor;else{let f=new Error("Failed to resolve repeated object (this should not happen)");throw f.source=o,f}}},sourceObjects:n}}Qr.anchorIsValid=Pw;Qr.anchorNames=Hc;Qr.createNodeAnchors=kw;Qr.findNewAnchor=Gc});var Zr=R(Qc=>{"use strict";var Nw=Qs(),Jc=Jr(),Xr=j(),oa=class extends Xr.NodeBase{constructor(e){super(Xr.ALIAS),this.source=e,Object.defineProperty(this,"tag",{set(){throw new Error("Alias nodes cannot have tags")}})}resolve(e){let r;return Jc.visit(e,{Node:(n,s)=>{if(s===this)return Jc.visit.BREAK;s.anchor===this.source&&(r=s)}}),r}toJSON(e,r){if(!r)return{source:this.source};let{anchors:n,doc:s,maxAliasCount:o}=r,l=this.resolve(s);if(!l){let c=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new ReferenceError(c)}let f=n.get(l);if(!f||f.res===void 0){let c="This should not happen: Alias anchor was not resolved?";throw new ReferenceError(c)}if(o>=0&&(f.count+=1,f.aliasCount===0&&(f.aliasCount=Xs(s,l,n)),f.count*f.aliasCount>o)){let c="Excessive alias count indicates a resource exhaustion attack";throw new ReferenceError(c)}return f.res}toString(e,r,n){let s=`*${this.source}`;if(e){if(Nw.anchorIsValid(this.source),e.options.verifyAliasOrder&&!e.anchors.has(this.source)){let o=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new Error(o)}if(e.implicitKey)return`${s} `}return s}};function Xs(t,e,r){if(Xr.isAlias(e)){let n=e.resolve(t),s=r&&n&&r.get(n);return s?s.count*s.aliasCount:0}else if(Xr.isCollection(e)){let n=0;for(let s of e.items){let o=Xs(t,s,r);o>n&&(n=o)}return n}else if(Xr.isPair(e)){let n=Xs(t,e.key,r),s=Xs(t,e.value,r);return Math.max(n,s)}return 1}Qc.Alias=oa});var cr=R(Zc=>{"use strict";var qw=j();function Xc(t,e,r){if(Array.isArray(t))return t.map((n,s)=>Xc(n,String(s),r));if(t&&typeof t.toJSON=="function"){if(!r||!qw.hasAnchor(t))return t.toJSON(e,r);let n={aliasCount:0,count:1,res:void 0};r.anchors.set(t,n),r.onCreate=o=>{n.res=o,delete r.onCreate};let s=t.toJSON(e,r);return r.onCreate&&r.onCreate(s),s}return typeof t=="bigint"&&!r?.keep?Number(t):t}Zc.toJS=Xc});var J=R(aa=>{"use strict";var ed=j(),Iw=cr(),Lw=t=>!t||typeof t!="function"&&typeof t!="object",mt=class extends ed.NodeBase{constructor(e){super(ed.SCALAR),this.value=e}toJSON(e,r){return r?.keep?this.value:Iw.toJS(this.value,e,r)}toString(){return String(this.value)}};mt.BLOCK_FOLDED="BLOCK_FOLDED";mt.BLOCK_LITERAL="BLOCK_LITERAL";mt.PLAIN="PLAIN";mt.QUOTE_DOUBLE="QUOTE_DOUBLE";mt.QUOTE_SINGLE="QUOTE_SINGLE";aa.Scalar=mt;aa.isScalarValue=Lw});var en=R(rd=>{"use strict";var Bw=Zr(),qt=j(),td=J(),Mw="tag:yaml.org,2002:";function Dw(t,e,r){if(e){let n=r.filter(o=>o.tag===e),s=n.find(o=>!o.format)??n[0];if(!s)throw new Error(`Tag ${e} not found`);return s}return r.find(n=>n.identify?.(t)&&!n.format)}function $w(t,e,r){if(qt.isDocument(t)&&(t=t.contents),qt.isNode(t))return t;if(qt.isPair(t)){let y=r.schema[qt.MAP].createNode?.(r.schema,null,r);return y.items.push(t),y}(t instanceof String||t instanceof Number||t instanceof Boolean||typeof BigInt<"u"&&t instanceof BigInt)&&(t=t.valueOf());let{aliasDuplicateObjects:n,onAnchor:s,onTagObj:o,schema:l,sourceObjects:f}=r,c;if(n&&t&&typeof t=="object"){if(c=f.get(t),c)return c.anchor||(c.anchor=s(t)),new Bw.Alias(c.anchor);c={anchor:null,node:null},f.set(t,c)}e?.startsWith("!!")&&(e=Mw+e.slice(2));let d=Dw(t,e,l.tags);if(!d){if(t&&typeof t.toJSON=="function"&&(t=t.toJSON()),!t||typeof t!="object"){let y=new td.Scalar(t);return c&&(c.node=y),y}d=t instanceof Map?l[qt.MAP]:Symbol.iterator in Object(t)?l[qt.SEQ]:l[qt.MAP]}o&&(o(d),delete r.onTagObj);let h=d?.createNode?d.createNode(r.schema,t,r):new td.Scalar(t);return e&&(h.tag=e),c&&(c.node=h),h}rd.createNode=$w});var tn=R(ei=>{"use strict";var Fw=en(),Be=j();function la(t,e,r){let n=r;for(let s=e.length-1;s>=0;--s){let o=e[s];if(typeof o=="number"&&Number.isInteger(o)&&o>=0){let l=[];l[o]=n,n=l}else n=new Map([[o,n]])}return Fw.createNode(n,void 0,{aliasDuplicateObjects:!1,keepUndefined:!1,onAnchor:()=>{throw new Error("This should not happen, please report a bug.")},schema:t,sourceObjects:new Map})}var nd=t=>t==null||typeof t=="object"&&!!t[Symbol.iterator]().next().done,Zs=class extends Be.NodeBase{constructor(e,r){super(e),Object.defineProperty(this,"schema",{value:r,configurable:!0,enumerable:!1,writable:!0})}clone(e){let r=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return e&&(r.schema=e),r.items=r.items.map(n=>Be.isNode(n)||Be.isPair(n)?n.clone(e):n),this.range&&(r.range=this.range.slice()),r}addIn(e,r){if(nd(e))this.add(r);else{let[n,...s]=e,o=this.get(n,!0);if(Be.isCollection(o))o.addIn(s,r);else if(o===void 0&&this.schema)this.set(n,la(this.schema,s,r));else throw new Error(`Expected YAML collection at ${n}. Remaining path: ${s}`)}}deleteIn(e){let[r,...n]=e;if(n.length===0)return this.delete(r);let s=this.get(r,!0);if(Be.isCollection(s))return s.deleteIn(n);throw new Error(`Expected YAML collection at ${r}. Remaining path: ${n}`)}getIn(e,r){let[n,...s]=e,o=this.get(n,!0);return s.length===0?!r&&Be.isScalar(o)?o.value:o:Be.isCollection(o)?o.getIn(s,r):void 0}hasAllNullValues(e){return this.items.every(r=>{if(!Be.isPair(r))return!1;let n=r.value;return n==null||e&&Be.isScalar(n)&&n.value==null&&!n.commentBefore&&!n.comment&&!n.tag})}hasIn(e){let[r,...n]=e;if(n.length===0)return this.has(r);let s=this.get(r,!0);return Be.isCollection(s)?s.hasIn(n):!1}setIn(e,r){let[n,...s]=e;if(s.length===0)this.set(n,r);else{let o=this.get(n,!0);if(Be.isCollection(o))o.setIn(s,r);else if(o===void 0&&this.schema)this.set(n,la(this.schema,s,r));else throw new Error(`Expected YAML collection at ${n}. Remaining path: ${s}`)}}};Zs.maxFlowStringSingleLineLength=60;ei.Collection=Zs;ei.collectionFromPath=la;ei.isEmptyPath=nd});var rn=R(ti=>{"use strict";var jw=t=>t.replace(/^(?!$)(?: $)?/gm,"#");function ua(t,e){return/^\n+$/.test(t)?t.substring(1):e?t.replace(/^(?! *$)/gm,e):t}var Uw=(t,e,r)=>t.endsWith(`
-`)?ua(r,e):r.includes(`
-`)?`
-`+ua(r,e):(t.endsWith(" ")?"":" ")+r;ti.indentComment=ua;ti.lineComment=Uw;ti.stringifyComment=jw});var id=R(nn=>{"use strict";var Ww="flow",fa="block",ri="quoted";function xw(t,e,r="flow",{indentAtStart:n,lineWidth:s=80,minContentWidth:o=20,onFold:l,onOverflow:f}={}){if(!s||s<0)return t;let c=Math.max(1+o,1+s-e.length);if(t.length<=c)return t;let d=[],h={},y=s-e.length;typeof n=="number"&&(n>s-Math.max(2,o)?d.push(0):y=s-n);let m,g,w=!1,S=-1,_=-1,E=-1;r===fa&&(S=sd(t,S),S!==-1&&(y=S+c));for(let P;P=t[S+=1];){if(r===ri&&P==="\\"){switch(_=S,t[S+1]){case"x":S+=3;break;case"u":S+=5;break;case"U":S+=9;break;default:S+=1}E=S}if(P===`
-`)r===fa&&(S=sd(t,S)),y=S+c,m=void 0;else{if(P===" "&&g&&g!==" "&&g!==`
-`&&g!=="	"){let A=t[S+1];A&&A!==" "&&A!==`
-`&&A!=="	"&&(m=S)}if(S>=y)if(m)d.push(m),y=m+c,m=void 0;else if(r===ri){for(;g===" "||g==="	";)g=P,P=t[S+=1],w=!0;let A=S>E+1?S-2:_-1;if(h[A])return t;d.push(A),h[A]=!0,y=A+c,m=void 0}else w=!0}g=P}if(w&&f&&f(),d.length===0)return t;l&&l();let O=t.slice(0,d[0]);for(let P=0;P<d.length;++P){let A=d[P],q=d[P+1]||t.length;A===0?O=`
-${e}${t.slice(0,q)}`:(r===ri&&h[A]&&(O+=`${t[A]}\\`),O+=`
-${e}${t.slice(A+1,q)}`)}return O}function sd(t,e){let r=t[e+1];for(;r===" "||r==="	";){do r=t[e+=1];while(r&&r!==`
-`);r=t[e+1]}return e}nn.FOLD_BLOCK=fa;nn.FOLD_FLOW=Ww;nn.FOLD_QUOTED=ri;nn.foldFlowLines=xw});var an=R(od=>{"use strict";var xe=J(),yt=id(),si=t=>({indentAtStart:t.indentAtStart,lineWidth:t.options.lineWidth,minContentWidth:t.options.minContentWidth}),ii=t=>/^(%|---|\.\.\.)/m.test(t);function zw(t,e,r){if(!e||e<0)return!1;let n=e-r,s=t.length;if(s<=n)return!1;for(let o=0,l=0;o<s;++o)if(t[o]===`
-`){if(o-l>n)return!0;if(l=o+1,s-l<=n)return!1}return!0}function sn(t,e){let r=JSON.stringify(t);if(e.options.doubleQuotedAsJSON)return r;let{implicitKey:n}=e,s=e.options.doubleQuotedMinMultiLineLength,o=e.indent||(ii(t)?"  ":""),l="",f=0;for(let c=0,d=r[c];d;d=r[++c])if(d===" "&&r[c+1]==="\\"&&r[c+2]==="n"&&(l+=r.slice(f,c)+"\\ ",c+=1,f=c,d="\\"),d==="\\")switch(r[c+1]){case"u":{l+=r.slice(f,c);let h=r.substr(c+2,4);switch(h){case"0000":l+="\\0";break;case"0007":l+="\\a";break;case"000b":l+="\\v";break;case"001b":l+="\\e";break;case"0085":l+="\\N";break;case"00a0":l+="\\_";break;case"2028":l+="\\L";break;case"2029":l+="\\P";break;default:h.substr(0,2)==="00"?l+="\\x"+h.substr(2):l+=r.substr(c,6)}c+=5,f=c+1}break;case"n":if(n||r[c+2]==='"'||r.length<s)c+=1;else{for(l+=r.slice(f,c)+`
+import require$$0 from'os';import require$$0$1 from'fs';import require$$0$2 from'path';import require$$2$1 from'http';import require$$3 from'https';import'net';import require$$1 from'tls';import require$$4 from'events';import'assert';import require$$6 from'util';import'node:assert';import {types,promisify,deprecate}from'node:util';import http$1 from'node:http';import https$1 from'node:https';import zlib from'node:zlib';import Stream,{PassThrough,pipeline as pipeline$1}from'node:stream';import {Buffer as Buffer$1}from'node:buffer';import {format}from'node:url';import {isIP}from'node:net';import'node:fs';import'node:path';const ANSI_BACKGROUND_OFFSET = 10;
 
-`;r[c+2]==="\\"&&r[c+3]==="n"&&r[c+4]!=='"';)l+=`
-`,c+=2;l+=o,r[c+2]===" "&&(l+="\\"),c+=1,f=c+1}break;default:c+=1}return l=f?l+r.slice(f):r,n?l:yt.foldFlowLines(l,o,yt.FOLD_QUOTED,si(e))}function ca(t,e){if(e.options.singleQuote===!1||e.implicitKey&&t.includes(`
-`)||/[ \t]\n|\n[ \t]/.test(t))return sn(t,e);let r=e.indent||(ii(t)?"  ":""),n="'"+t.replace(/'/g,"''").replace(/\n+/g,`$&
-${r}`)+"'";return e.implicitKey?n:yt.foldFlowLines(n,r,yt.FOLD_FLOW,si(e))}function on(t,e){let{singleQuote:r}=e.options,n;if(r===!1)n=sn;else{let s=t.includes('"'),o=t.includes("'");s&&!o?n=ca:o&&!s?n=sn:n=r?ca:sn}return n(t,e)}function ni({comment:t,type:e,value:r},n,s,o){let{blockQuote:l,commentString:f,lineWidth:c}=n.options;if(!l||/\n[\t ]+$/.test(r)||/^\s*$/.test(r))return on(r,n);let d=n.indent||(n.forceBlockIndent||ii(r)?"  ":""),h=l==="literal"?!0:l==="folded"||e===xe.Scalar.BLOCK_FOLDED?!1:e===xe.Scalar.BLOCK_LITERAL?!0:!zw(r,c,d.length);if(!r)return h?`|
-`:`>
-`;let y,m;for(m=r.length;m>0;--m){let C=r[m-1];if(C!==`
-`&&C!=="	"&&C!==" ")break}let g=r.substring(m),w=g.indexOf(`
-`);w===-1?y="-":r===g||w!==g.length-1?(y="+",o&&o()):y="",g&&(r=r.slice(0,-g.length),g[g.length-1]===`
-`&&(g=g.slice(0,-1)),g=g.replace(/\n+(?!\n|$)/g,`$&${d}`));let S=!1,_,E=-1;for(_=0;_<r.length;++_){let C=r[_];if(C===" ")S=!0;else if(C===`
-`)E=_;else break}let O=r.substring(0,E<_?E+1:_);O&&(r=r.substring(O.length),O=O.replace(/\n+/g,`$&${d}`));let A=(h?"|":">")+(S?d?"2":"1":"")+y;if(t&&(A+=" "+f(t.replace(/ ?[\r\n]+/g," ")),s&&s()),h)return r=r.replace(/\n+/g,`$&${d}`),`${A}
-${d}${O}${r}${g}`;r=r.replace(/\n+/g,`
-$&`).replace(/(?:^|\n)([\t ].*)(?:([\n\t ]*)\n(?![\n\t ]))?/g,"$1$2").replace(/\n+/g,`$&${d}`);let q=yt.foldFlowLines(`${O}${r}${g}`,d,yt.FOLD_BLOCK,si(n));return`${A}
-${d}${q}`}function Vw(t,e,r,n){let{type:s,value:o}=t,{actualString:l,implicitKey:f,indent:c,inFlow:d}=e;if(f&&/[\n[\]{},]/.test(o)||d&&/[[\]{},]/.test(o))return on(o,e);if(!o||/^[\n\t ,[\]{}#&*!|>'"%@`]|^[?-]$|^[?-][ \t]|[\n:][ \t]|[ \t]\n|[\n\t ]#|[\n\t :]$/.test(o))return f||d||!o.includes(`
-`)?on(o,e):ni(t,e,r,n);if(!f&&!d&&s!==xe.Scalar.PLAIN&&o.includes(`
-`))return ni(t,e,r,n);if(c===""&&ii(o))return e.forceBlockIndent=!0,ni(t,e,r,n);let h=o.replace(/\n+/g,`$&
-${c}`);if(l){let y=w=>w.default&&w.tag!=="tag:yaml.org,2002:str"&&w.test?.test(h),{compat:m,tags:g}=e.doc.schema;if(g.some(y)||m?.some(y))return on(o,e)}return f?h:yt.foldFlowLines(h,c,yt.FOLD_FLOW,si(e))}function Yw(t,e,r,n){let{implicitKey:s,inFlow:o}=e,l=typeof t.value=="string"?t:Object.assign({},t,{value:String(t.value)}),{type:f}=t;f!==xe.Scalar.QUOTE_DOUBLE&&/[\x00-\x08\x0b-\x1f\x7f-\x9f\u{D800}-\u{DFFF}]/u.test(l.value)&&(f=xe.Scalar.QUOTE_DOUBLE);let c=h=>{switch(h){case xe.Scalar.BLOCK_FOLDED:case xe.Scalar.BLOCK_LITERAL:return s||o?on(l.value,e):ni(l,e,r,n);case xe.Scalar.QUOTE_DOUBLE:return sn(l.value,e);case xe.Scalar.QUOTE_SINGLE:return ca(l.value,e);case xe.Scalar.PLAIN:return Vw(l,e,r,n);default:return null}},d=c(f);if(d===null){let{defaultKeyType:h,defaultStringType:y}=e.options,m=s&&h||y;if(d=c(m),d===null)throw new Error(`Unsupported default string type ${m}`)}return d}od.stringifyString=Yw});var dr=R(da=>{"use strict";var Kw=Qs(),gt=j(),Hw=rn(),Gw=an();function Jw(t,e){let r=Object.assign({blockQuote:!0,commentString:Hw.stringifyComment,defaultKeyType:null,defaultStringType:"PLAIN",directives:null,doubleQuotedAsJSON:!1,doubleQuotedMinMultiLineLength:40,falseStr:"false",indentSeq:!0,lineWidth:80,minContentWidth:20,nullStr:"null",simpleKeys:!1,singleQuote:null,trueStr:"true",verifyAliasOrder:!0},t.schema.toStringOptions,e),n;switch(r.collectionStyle){case"block":n=!1;break;case"flow":n=!0;break;default:n=null}return{anchors:new Set,doc:t,indent:"",indentStep:typeof r.indent=="number"?" ".repeat(r.indent):"  ",inFlow:n,options:r}}function Qw(t,e){if(e.tag){let s=t.filter(o=>o.tag===e.tag);if(s.length>0)return s.find(o=>o.format===e.format)??s[0]}let r,n;if(gt.isScalar(e)){n=e.value;let s=t.filter(o=>o.identify?.(n));r=s.find(o=>o.format===e.format)??s.find(o=>!o.format)}else n=e,r=t.find(s=>s.nodeClass&&n instanceof s.nodeClass);if(!r){let s=n?.constructor?.name??typeof n;throw new Error(`Tag not resolved for ${s} value`)}return r}function Xw(t,e,{anchors:r,doc:n}){if(!n.directives)return"";let s=[],o=(gt.isScalar(t)||gt.isCollection(t))&&t.anchor;o&&Kw.anchorIsValid(o)&&(r.add(o),s.push(`&${o}`));let l=t.tag?t.tag:e.default?null:e.tag;return l&&s.push(n.directives.tagString(l)),s.join(" ")}function Zw(t,e,r,n){if(gt.isPair(t))return t.toString(e,r,n);if(gt.isAlias(t)){if(e.doc.directives)return t.toString(e);if(e.resolvedAliases?.has(t))throw new TypeError("Cannot stringify circular structure without alias nodes");e.resolvedAliases?e.resolvedAliases.add(t):e.resolvedAliases=new Set([t]),t=t.resolve(e.doc)}let s,o=gt.isNode(t)?t:e.doc.createNode(t,{onTagObj:c=>s=c});s||(s=Qw(e.doc.schema.tags,o));let l=Xw(o,s,e);l.length>0&&(e.indentAtStart=(e.indentAtStart??0)+l.length+1);let f=typeof s.stringify=="function"?s.stringify(o,e,r,n):gt.isScalar(o)?Gw.stringifyString(o,e,r,n):o.toString(e,r,n);return l?gt.isScalar(o)||f[0]==="{"||f[0]==="["?`${l} ${f}`:`${l}
-${e.indent}${f}`:f}da.createStringifyContext=Jw;da.stringify=Zw});var fd=R(ud=>{"use strict";var bt=j(),ad=J(),ld=dr(),ln=rn();function eS({key:t,value:e},r,n,s){let{allNullValues:o,doc:l,indent:f,indentStep:c,options:{commentString:d,indentSeq:h,simpleKeys:y}}=r,m=bt.isNode(t)&&t.comment||null;if(y){if(m)throw new Error("With simple keys, key nodes cannot have comments");if(bt.isCollection(t)){let C="With simple keys, collection cannot be used as a key value";throw new Error(C)}}let g=!y&&(!t||m&&e==null&&!r.inFlow||bt.isCollection(t)||(bt.isScalar(t)?t.type===ad.Scalar.BLOCK_FOLDED||t.type===ad.Scalar.BLOCK_LITERAL:typeof t=="object"));r=Object.assign({},r,{allNullValues:!1,implicitKey:!g&&(y||!o),indent:f+c});let w=!1,S=!1,_=ld.stringify(t,r,()=>w=!0,()=>S=!0);if(!g&&!r.inFlow&&_.length>1024){if(y)throw new Error("With simple keys, single line scalar must not span more than 1024 characters");g=!0}if(r.inFlow){if(o||e==null)return w&&n&&n(),_===""?"?":g?`? ${_}`:_}else if(o&&!y||e==null&&g)return _=`? ${_}`,m&&!w?_+=ln.lineComment(_,r.indent,d(m)):S&&s&&s(),_;w&&(m=null),g?(m&&(_+=ln.lineComment(_,r.indent,d(m))),_=`? ${_}
-${f}:`):(_=`${_}:`,m&&(_+=ln.lineComment(_,r.indent,d(m))));let E="",O=null;if(bt.isNode(e)){if(e.spaceBefore&&(E=`
-`),e.commentBefore){let C=d(e.commentBefore);E+=`
-${ln.indentComment(C,r.indent)}`}O=e.comment}else e&&typeof e=="object"&&(e=l.createNode(e));r.implicitKey=!1,!g&&!m&&bt.isScalar(e)&&(r.indentAtStart=_.length+1),S=!1,!h&&c.length>=2&&!r.inFlow&&!g&&bt.isSeq(e)&&!e.flow&&!e.tag&&!e.anchor&&(r.indent=r.indent.substr(2));let P=!1,A=ld.stringify(e,r,()=>P=!0,()=>S=!0),q=" ";return E||m?A===""&&!r.inFlow?q=E===`
-`?`
+const wrapAnsi16 = (offset = 0) => code => `\u001B[${code + offset}m`;
 
-`:E:q=`${E}
-${r.indent}`:!g&&bt.isCollection(e)?(!(A[0]==="["||A[0]==="{")||A.includes(`
-`))&&(q=`
-${r.indent}`):(A===""||A[0]===`
-`)&&(q=""),_+=q+A,r.inFlow?P&&n&&n():O&&!P?_+=ln.lineComment(_,r.indent,d(O)):S&&s&&s(),_}ud.stringifyPair=eS});var pa=R(ha=>{"use strict";function tS(t,...e){t==="debug"&&console.log(...e)}function rS(t,e){(t==="debug"||t==="warn")&&(typeof process<"u"&&process.emitWarning?process.emitWarning(e):console.warn(e))}ha.debug=tS;ha.warn=rS});var ga=R(dd=>{"use strict";var nS=pa(),sS=dr(),hr=j(),iS=J(),ma=cr(),cd="<<";function oS(t,e,{key:r,value:n}){if(t?.doc.schema.merge&&aS(r))if(n=hr.isAlias(n)?n.resolve(t.doc):n,hr.isSeq(n))for(let s of n.items)ya(t,e,s);else if(Array.isArray(n))for(let s of n)ya(t,e,s);else ya(t,e,n);else{let s=ma.toJS(r,"",t);if(e instanceof Map)e.set(s,ma.toJS(n,s,t));else if(e instanceof Set)e.add(s);else{let o=lS(r,s,t),l=ma.toJS(n,o,t);o in e?Object.defineProperty(e,o,{value:l,writable:!0,enumerable:!0,configurable:!0}):e[o]=l}}return e}var aS=t=>t===cd||hr.isScalar(t)&&t.value===cd&&(!t.type||t.type===iS.Scalar.PLAIN);function ya(t,e,r){let n=t&&hr.isAlias(r)?r.resolve(t.doc):r;if(!hr.isMap(n))throw new Error("Merge sources must be maps or map aliases");let s=n.toJSON(null,t,Map);for(let[o,l]of s)e instanceof Map?e.has(o)||e.set(o,l):e instanceof Set?e.add(o):Object.prototype.hasOwnProperty.call(e,o)||Object.defineProperty(e,o,{value:l,writable:!0,enumerable:!0,configurable:!0});return e}function lS(t,e,r){if(e===null)return"";if(typeof e!="object")return String(e);if(hr.isNode(t)&&r&&r.doc){let n=sS.createStringifyContext(r.doc,{});n.anchors=new Set;for(let o of r.anchors.keys())n.anchors.add(o.anchor);n.inFlow=!0,n.inStringifyKey=!0;let s=t.toString(n);if(!r.mapKeyWarned){let o=JSON.stringify(s);o.length>40&&(o=o.substring(0,36)+'..."'),nS.warn(r.doc.options.logLevel,`Keys with collection values will be stringified due to JS Object restrictions: ${o}. Set mapAsMap: true to use object keys.`),r.mapKeyWarned=!0}return s}return JSON.stringify(e)}dd.addPairToJSMap=oS});var et=R(ba=>{"use strict";var hd=en(),uS=fd(),fS=ga(),oi=j();function cS(t,e,r){let n=hd.createNode(t,void 0,r),s=hd.createNode(e,void 0,r);return new pr(n,s)}var pr=class{constructor(e,r=null){Object.defineProperty(this,oi.NODE_TYPE,{value:oi.PAIR}),this.key=e,this.value=r}clone(e){let{key:r,value:n}=this;return oi.isNode(r)&&(r=r.clone(e)),oi.isNode(n)&&(n=n.clone(e)),new pr(r,n)}toJSON(e,r){let n=r?.mapAsMap?new Map:{};return fS.addPairToJSMap(r,n,this)}toString(e,r,n){return e?.doc?uS.stringifyPair(this,e,r,n):JSON.stringify(this)}};ba.Pair=pr;ba.createPair=cS});var wa=R(md=>{"use strict";var dS=tn(),It=j(),pd=dr(),un=rn();function hS(t,e,r){return(e.inFlow??t.flow?mS:pS)(t,e,r)}function pS({comment:t,items:e},r,{blockItemPrefix:n,flowChars:s,itemIndent:o,onChompKeep:l,onComment:f}){let{indent:c,options:{commentString:d}}=r,h=Object.assign({},r,{indent:o,type:null}),y=!1,m=[];for(let w=0;w<e.length;++w){let S=e[w],_=null;if(It.isNode(S))!y&&S.spaceBefore&&m.push(""),ai(r,m,S.commentBefore,y),S.comment&&(_=S.comment);else if(It.isPair(S)){let O=It.isNode(S.key)?S.key:null;O&&(!y&&O.spaceBefore&&m.push(""),ai(r,m,O.commentBefore,y))}y=!1;let E=pd.stringify(S,h,()=>_=null,()=>y=!0);_&&(E+=un.lineComment(E,o,d(_))),y&&_&&(y=!1),m.push(n+E)}let g;if(m.length===0)g=s.start+s.end;else{g=m[0];for(let w=1;w<m.length;++w){let S=m[w];g+=S?`
-${c}${S}`:`
-`}}return t?(g+=`
-`+un.indentComment(d(t),c),f&&f()):y&&l&&l(),g}function mS({comment:t,items:e},r,{flowChars:n,itemIndent:s,onComment:o}){let{indent:l,indentStep:f,options:{commentString:c}}=r;s+=f;let d=Object.assign({},r,{indent:s,inFlow:!0,type:null}),h=!1,y=0,m=[];for(let _=0;_<e.length;++_){let E=e[_],O=null;if(It.isNode(E))E.spaceBefore&&m.push(""),ai(r,m,E.commentBefore,!1),E.comment&&(O=E.comment);else if(It.isPair(E)){let A=It.isNode(E.key)?E.key:null;A&&(A.spaceBefore&&m.push(""),ai(r,m,A.commentBefore,!1),A.comment&&(h=!0));let q=It.isNode(E.value)?E.value:null;q?(q.comment&&(O=q.comment),q.commentBefore&&(h=!0)):E.value==null&&A&&A.comment&&(O=A.comment)}O&&(h=!0);let P=pd.stringify(E,d,()=>O=null);_<e.length-1&&(P+=","),O&&(P+=un.lineComment(P,s,c(O))),!h&&(m.length>y||P.includes(`
-`))&&(h=!0),m.push(P),y=m.length}let g,{start:w,end:S}=n;if(m.length===0)g=w+S;else if(h||(h=m.reduce((E,O)=>E+O.length+2,2)>dS.Collection.maxFlowStringSingleLineLength),h){g=w;for(let _ of m)g+=_?`
-${f}${l}${_}`:`
-`;g+=`
-${l}${S}`}else g=`${w} ${m.join(" ")} ${S}`;return t&&(g+=un.lineComment(g,c(t),l),o&&o()),g}function ai({indent:t,options:{commentString:e}},r,n,s){if(n&&s&&(n=n.replace(/^\n+/,"")),n){let o=un.indentComment(e(n),t);r.push(o.trimStart())}}md.stringifyCollection=hS});var Lt=R(va=>{"use strict";var yS=wa(),gS=ga(),bS=tn(),wt=j(),Sa=et(),wS=J();function fn(t,e){let r=wt.isScalar(e)?e.value:e;for(let n of t)if(wt.isPair(n)&&(n.key===e||n.key===r||wt.isScalar(n.key)&&n.key.value===r))return n}var _a=class extends bS.Collection{constructor(e){super(wt.MAP,e),this.items=[]}static get tagName(){return"tag:yaml.org,2002:map"}add(e,r){let n;wt.isPair(e)?n=e:!e||typeof e!="object"||!("key"in e)?n=new Sa.Pair(e,e?.value):n=new Sa.Pair(e.key,e.value);let s=fn(this.items,n.key),o=this.schema?.sortMapEntries;if(s){if(!r)throw new Error(`Key ${n.key} already set`);wt.isScalar(s.value)&&wS.isScalarValue(n.value)?s.value.value=n.value:s.value=n.value}else if(o){let l=this.items.findIndex(f=>o(n,f)<0);l===-1?this.items.push(n):this.items.splice(l,0,n)}else this.items.push(n)}delete(e){let r=fn(this.items,e);return r?this.items.splice(this.items.indexOf(r),1).length>0:!1}get(e,r){let s=fn(this.items,e)?.value;return(!r&&wt.isScalar(s)?s.value:s)??void 0}has(e){return!!fn(this.items,e)}set(e,r){this.add(new Sa.Pair(e,r),!0)}toJSON(e,r,n){let s=n?new n:r?.mapAsMap?new Map:{};r?.onCreate&&r.onCreate(s);for(let o of this.items)gS.addPairToJSMap(r,s,o);return s}toString(e,r,n){if(!e)return JSON.stringify(this);for(let s of this.items)if(!wt.isPair(s))throw new Error(`Map items must all be pairs; found ${JSON.stringify(s)} instead`);return!e.allNullValues&&this.hasAllNullValues(!1)&&(e=Object.assign({},e,{allNullValues:!0})),yS.stringifyCollection(this,e,{blockItemPrefix:"",flowChars:{start:"{",end:"}"},itemIndent:e.indent||"",onChompKeep:n,onComment:r})}};va.YAMLMap=_a;va.findPair=fn});var mr=R(gd=>{"use strict";var SS=j(),_S=et(),yd=Lt();function vS(t,e,r){let{keepUndefined:n,replacer:s}=r,o=new yd.YAMLMap(t),l=(f,c)=>{if(typeof s=="function")c=s.call(e,f,c);else if(Array.isArray(s)&&!s.includes(f))return;(c!==void 0||n)&&o.items.push(_S.createPair(f,c,r))};if(e instanceof Map)for(let[f,c]of e)l(f,c);else if(e&&typeof e=="object")for(let f of Object.keys(e))l(f,e[f]);return typeof t.sortMapEntries=="function"&&o.items.sort(t.sortMapEntries),o}var ES={collection:"map",createNode:vS,default:!0,nodeClass:yd.YAMLMap,tag:"tag:yaml.org,2002:map",resolve(t,e){return SS.isMap(t)||e("Expected a mapping for this tag"),t}};gd.map=ES});var Bt=R(bd=>{"use strict";var AS=wa(),TS=tn(),ui=j(),RS=J(),OS=cr(),Ea=class extends TS.Collection{constructor(e){super(ui.SEQ,e),this.items=[]}static get tagName(){return"tag:yaml.org,2002:seq"}add(e){this.items.push(e)}delete(e){let r=li(e);return typeof r!="number"?!1:this.items.splice(r,1).length>0}get(e,r){let n=li(e);if(typeof n!="number")return;let s=this.items[n];return!r&&ui.isScalar(s)?s.value:s}has(e){let r=li(e);return typeof r=="number"&&r<this.items.length}set(e,r){let n=li(e);if(typeof n!="number")throw new Error(`Expected a valid index, not ${e}.`);let s=this.items[n];ui.isScalar(s)&&RS.isScalarValue(r)?s.value=r:this.items[n]=r}toJSON(e,r){let n=[];r?.onCreate&&r.onCreate(n);let s=0;for(let o of this.items)n.push(OS.toJS(o,String(s++),r));return n}toString(e,r,n){return e?AS.stringifyCollection(this,e,{blockItemPrefix:"- ",flowChars:{start:"[",end:"]"},itemIndent:(e.indent||"")+"  ",onChompKeep:n,onComment:r}):JSON.stringify(this)}};function li(t){let e=ui.isScalar(t)?t.value:t;return e&&typeof e=="string"&&(e=Number(e)),typeof e=="number"&&Number.isInteger(e)&&e>=0?e:null}bd.YAMLSeq=Ea});var yr=R(Sd=>{"use strict";var CS=en(),PS=j(),wd=Bt();function kS(t,e,r){let{replacer:n}=r,s=new wd.YAMLSeq(t);if(e&&Symbol.iterator in Object(e)){let o=0;for(let l of e){if(typeof n=="function"){let f=e instanceof Set?l:String(o++);l=n.call(e,f,l)}s.items.push(CS.createNode(l,void 0,r))}}return s}var NS={collection:"seq",createNode:kS,default:!0,nodeClass:wd.YAMLSeq,tag:"tag:yaml.org,2002:seq",resolve(t,e){return PS.isSeq(t)||e("Expected a sequence for this tag"),t}};Sd.seq=NS});var cn=R(_d=>{"use strict";var qS=an(),IS={identify:t=>typeof t=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:t=>t,stringify(t,e,r,n){return e=Object.assign({actualString:!0},e),qS.stringifyString(t,e,r,n)}};_d.string=IS});var fi=R(Ad=>{"use strict";var vd=J(),Ed={identify:t=>t==null,createNode:()=>new vd.Scalar(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^(?:~|[Nn]ull|NULL)?$/,resolve:()=>new vd.Scalar(null),stringify:({source:t},e)=>typeof t=="string"&&Ed.test.test(t)?t:e.options.nullStr};Ad.nullTag=Ed});var Aa=R(Rd=>{"use strict";var LS=J(),Td={identify:t=>typeof t=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:[Tt]rue|TRUE|[Ff]alse|FALSE)$/,resolve:t=>new LS.Scalar(t[0]==="t"||t[0]==="T"),stringify({source:t,value:e},r){if(t&&Td.test.test(t)){let n=t[0]==="t"||t[0]==="T";if(e===n)return t}return e?r.options.trueStr:r.options.falseStr}};Rd.boolTag=Td});var gr=R(Od=>{"use strict";function BS({format:t,minFractionDigits:e,tag:r,value:n}){if(typeof n=="bigint")return String(n);let s=typeof n=="number"?n:Number(n);if(!isFinite(s))return isNaN(s)?".nan":s<0?"-.inf":".inf";let o=JSON.stringify(n);if(!t&&e&&(!r||r==="tag:yaml.org,2002:float")&&/^\d/.test(o)){let l=o.indexOf(".");l<0&&(l=o.length,o+=".");let f=e-(o.length-l-1);for(;f-- >0;)o+="0"}return o}Od.stringifyNumber=BS});var Ra=R(ci=>{"use strict";var MS=J(),Ta=gr(),DS={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\.(?:inf|Inf|INF|nan|NaN|NAN))$/,resolve:t=>t.slice(-3).toLowerCase()==="nan"?NaN:t[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:Ta.stringifyNumber},$S={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:\.[0-9]+|[0-9]+(?:\.[0-9]*)?)[eE][-+]?[0-9]+$/,resolve:t=>parseFloat(t),stringify(t){let e=Number(t.value);return isFinite(e)?e.toExponential():Ta.stringifyNumber(t)}},FS={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:\.[0-9]+|[0-9]+\.[0-9]*)$/,resolve(t){let e=new MS.Scalar(parseFloat(t)),r=t.indexOf(".");return r!==-1&&t[t.length-1]==="0"&&(e.minFractionDigits=t.length-r-1),e},stringify:Ta.stringifyNumber};ci.float=FS;ci.floatExp=$S;ci.floatNaN=DS});var Ca=R(hi=>{"use strict";var Cd=gr(),di=t=>typeof t=="bigint"||Number.isInteger(t),Oa=(t,e,r,{intAsBigInt:n})=>n?BigInt(t):parseInt(t.substring(e),r);function Pd(t,e,r){let{value:n}=t;return di(n)&&n>=0?r+n.toString(e):Cd.stringifyNumber(t)}var jS={identify:t=>di(t)&&t>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^0o[0-7]+$/,resolve:(t,e,r)=>Oa(t,2,8,r),stringify:t=>Pd(t,8,"0o")},US={identify:di,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9]+$/,resolve:(t,e,r)=>Oa(t,0,10,r),stringify:Cd.stringifyNumber},WS={identify:t=>di(t)&&t>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^0x[0-9a-fA-F]+$/,resolve:(t,e,r)=>Oa(t,2,16,r),stringify:t=>Pd(t,16,"0x")};hi.int=US;hi.intHex=WS;hi.intOct=jS});var Nd=R(kd=>{"use strict";var xS=mr(),zS=fi(),VS=yr(),YS=cn(),KS=Aa(),Pa=Ra(),ka=Ca(),HS=[xS.map,VS.seq,YS.string,zS.nullTag,KS.boolTag,ka.intOct,ka.int,ka.intHex,Pa.floatNaN,Pa.floatExp,Pa.float];kd.schema=HS});var Ld=R(Id=>{"use strict";var GS=J(),JS=mr(),QS=yr();function qd(t){return typeof t=="bigint"||Number.isInteger(t)}var pi=({value:t})=>JSON.stringify(t),XS=[{identify:t=>typeof t=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:t=>t,stringify:pi},{identify:t=>t==null,createNode:()=>new GS.Scalar(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^null$/,resolve:()=>null,stringify:pi},{identify:t=>typeof t=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^true|false$/,resolve:t=>t==="true",stringify:pi},{identify:qd,default:!0,tag:"tag:yaml.org,2002:int",test:/^-?(?:0|[1-9][0-9]*)$/,resolve:(t,e,{intAsBigInt:r})=>r?BigInt(t):parseInt(t,10),stringify:({value:t})=>qd(t)?t.toString():JSON.stringify(t)},{identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^-?(?:0|[1-9][0-9]*)(?:\.[0-9]*)?(?:[eE][-+]?[0-9]+)?$/,resolve:t=>parseFloat(t),stringify:pi}],ZS={default:!0,tag:"",test:/^/,resolve(t,e){return e(`Unresolved plain scalar ${JSON.stringify(t)}`),t}},e_=[JS.map,QS.seq].concat(XS,ZS);Id.schema=e_});var qa=R(Bd=>{"use strict";var Na=J(),t_=an(),r_={identify:t=>t instanceof Uint8Array,default:!1,tag:"tag:yaml.org,2002:binary",resolve(t,e){if(typeof Buffer=="function")return Buffer.from(t,"base64");if(typeof atob=="function"){let r=atob(t.replace(/[\n\r]/g,"")),n=new Uint8Array(r.length);for(let s=0;s<r.length;++s)n[s]=r.charCodeAt(s);return n}else return e("This environment does not support reading binary tags; either Buffer or atob is required"),t},stringify({comment:t,type:e,value:r},n,s,o){let l=r,f;if(typeof Buffer=="function")f=l instanceof Buffer?l.toString("base64"):Buffer.from(l.buffer).toString("base64");else if(typeof btoa=="function"){let c="";for(let d=0;d<l.length;++d)c+=String.fromCharCode(l[d]);f=btoa(c)}else throw new Error("This environment does not support writing binary tags; either Buffer or btoa is required");if(e||(e=Na.Scalar.BLOCK_LITERAL),e!==Na.Scalar.QUOTE_DOUBLE){let c=Math.max(n.options.lineWidth-n.indent.length,n.options.minContentWidth),d=Math.ceil(f.length/c),h=new Array(d);for(let y=0,m=0;y<d;++y,m+=c)h[y]=f.substr(m,c);f=h.join(e===Na.Scalar.BLOCK_LITERAL?`
-`:" ")}return t_.stringifyString({comment:t,type:e,value:f},n,s,o)}};Bd.binary=r_});var gi=R(yi=>{"use strict";var mi=j(),Ia=et(),n_=J(),s_=Bt();function Md(t,e){if(mi.isSeq(t))for(let r=0;r<t.items.length;++r){let n=t.items[r];if(!mi.isPair(n)){if(mi.isMap(n)){n.items.length>1&&e("Each pair must have its own sequence indicator");let s=n.items[0]||new Ia.Pair(new n_.Scalar(null));if(n.commentBefore&&(s.key.commentBefore=s.key.commentBefore?`${n.commentBefore}
-${s.key.commentBefore}`:n.commentBefore),n.comment){let o=s.value??s.key;o.comment=o.comment?`${n.comment}
-${o.comment}`:n.comment}n=s}t.items[r]=mi.isPair(n)?n:new Ia.Pair(n)}}else e("Expected a sequence for this tag");return t}function Dd(t,e,r){let{replacer:n}=r,s=new s_.YAMLSeq(t);s.tag="tag:yaml.org,2002:pairs";let o=0;if(e&&Symbol.iterator in Object(e))for(let l of e){typeof n=="function"&&(l=n.call(e,String(o++),l));let f,c;if(Array.isArray(l))if(l.length===2)f=l[0],c=l[1];else throw new TypeError(`Expected [key, value] tuple: ${l}`);else if(l&&l instanceof Object){let d=Object.keys(l);if(d.length===1)f=d[0],c=l[f];else throw new TypeError(`Expected { key: value } tuple: ${l}`)}else f=l;s.items.push(Ia.createPair(f,c,r))}return s}var i_={collection:"seq",default:!1,tag:"tag:yaml.org,2002:pairs",resolve:Md,createNode:Dd};yi.createPairs=Dd;yi.pairs=i_;yi.resolvePairs=Md});var Ma=R(Ba=>{"use strict";var o_=Bt(),La=cr(),Fd=j(),dn=Lt(),$d=gi(),tt=class extends o_.YAMLSeq{constructor(){super(),this.add=dn.YAMLMap.prototype.add.bind(this),this.delete=dn.YAMLMap.prototype.delete.bind(this),this.get=dn.YAMLMap.prototype.get.bind(this),this.has=dn.YAMLMap.prototype.has.bind(this),this.set=dn.YAMLMap.prototype.set.bind(this),this.tag=tt.tag}toJSON(e,r){if(!r)return super.toJSON(e);let n=new Map;r?.onCreate&&r.onCreate(n);for(let s of this.items){let o,l;if(Fd.isPair(s)?(o=La.toJS(s.key,"",r),l=La.toJS(s.value,o,r)):o=La.toJS(s,"",r),n.has(o))throw new Error("Ordered maps must not include duplicate keys");n.set(o,l)}return n}};tt.tag="tag:yaml.org,2002:omap";var a_={collection:"seq",identify:t=>t instanceof Map,nodeClass:tt,default:!1,tag:"tag:yaml.org,2002:omap",resolve(t,e){let r=$d.resolvePairs(t,e),n=[];for(let{key:s}of r.items)Fd.isScalar(s)&&(n.includes(s.value)?e(`Ordered maps must not include duplicate keys: ${s.value}`):n.push(s.value));return Object.assign(new tt,r)},createNode(t,e,r){let n=$d.createPairs(t,e,r),s=new tt;return s.items=n.items,s}};Ba.YAMLOMap=tt;Ba.omap=a_});var zd=R(Da=>{"use strict";var jd=J();function Ud({value:t,source:e},r){return e&&(t?Wd:xd).test.test(e)?e:t?r.options.trueStr:r.options.falseStr}var Wd={identify:t=>t===!0,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:Y|y|[Yy]es|YES|[Tt]rue|TRUE|[Oo]n|ON)$/,resolve:()=>new jd.Scalar(!0),stringify:Ud},xd={identify:t=>t===!1,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:N|n|[Nn]o|NO|[Ff]alse|FALSE|[Oo]ff|OFF)$/i,resolve:()=>new jd.Scalar(!1),stringify:Ud};Da.falseTag=xd;Da.trueTag=Wd});var Vd=R(bi=>{"use strict";var l_=J(),$a=gr(),u_={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?\.(?:inf|Inf|INF|nan|NaN|NAN)$/,resolve:t=>t.slice(-3).toLowerCase()==="nan"?NaN:t[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:$a.stringifyNumber},f_={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:[0-9][0-9_]*)?(?:\.[0-9_]*)?[eE][-+]?[0-9]+$/,resolve:t=>parseFloat(t.replace(/_/g,"")),stringify(t){let e=Number(t.value);return isFinite(e)?e.toExponential():$a.stringifyNumber(t)}},c_={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:[0-9][0-9_]*)?\.[0-9_]*$/,resolve(t){let e=new l_.Scalar(parseFloat(t.replace(/_/g,""))),r=t.indexOf(".");if(r!==-1){let n=t.substring(r+1).replace(/_/g,"");n[n.length-1]==="0"&&(e.minFractionDigits=n.length)}return e},stringify:$a.stringifyNumber};bi.float=c_;bi.floatExp=f_;bi.floatNaN=u_});var Kd=R(pn=>{"use strict";var Yd=gr(),hn=t=>typeof t=="bigint"||Number.isInteger(t);function wi(t,e,r,{intAsBigInt:n}){let s=t[0];if((s==="-"||s==="+")&&(e+=1),t=t.substring(e).replace(/_/g,""),n){switch(r){case 2:t=`0b${t}`;break;case 8:t=`0o${t}`;break;case 16:t=`0x${t}`;break}let l=BigInt(t);return s==="-"?BigInt(-1)*l:l}let o=parseInt(t,r);return s==="-"?-1*o:o}function Fa(t,e,r){let{value:n}=t;if(hn(n)){let s=n.toString(e);return n<0?"-"+r+s.substr(1):r+s}return Yd.stringifyNumber(t)}var d_={identify:hn,default:!0,tag:"tag:yaml.org,2002:int",format:"BIN",test:/^[-+]?0b[0-1_]+$/,resolve:(t,e,r)=>wi(t,2,2,r),stringify:t=>Fa(t,2,"0b")},h_={identify:hn,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^[-+]?0[0-7_]+$/,resolve:(t,e,r)=>wi(t,1,8,r),stringify:t=>Fa(t,8,"0")},p_={identify:hn,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9][0-9_]*$/,resolve:(t,e,r)=>wi(t,0,10,r),stringify:Yd.stringifyNumber},m_={identify:hn,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^[-+]?0x[0-9a-fA-F_]+$/,resolve:(t,e,r)=>wi(t,2,16,r),stringify:t=>Fa(t,16,"0x")};pn.int=p_;pn.intBin=d_;pn.intHex=m_;pn.intOct=h_});var Ua=R(ja=>{"use strict";var _i=j(),vi=et(),Si=Lt(),rt=class extends Si.YAMLMap{constructor(e){super(e),this.tag=rt.tag}add(e){let r;_i.isPair(e)?r=e:e&&typeof e=="object"&&"key"in e&&"value"in e&&e.value===null?r=new vi.Pair(e.key,null):r=new vi.Pair(e,null),Si.findPair(this.items,r.key)||this.items.push(r)}get(e,r){let n=Si.findPair(this.items,e);return!r&&_i.isPair(n)?_i.isScalar(n.key)?n.key.value:n.key:n}set(e,r){if(typeof r!="boolean")throw new Error(`Expected boolean value for set(key, value) in a YAML set, not ${typeof r}`);let n=Si.findPair(this.items,e);n&&!r?this.items.splice(this.items.indexOf(n),1):!n&&r&&this.items.push(new vi.Pair(e))}toJSON(e,r){return super.toJSON(e,r,Set)}toString(e,r,n){if(!e)return JSON.stringify(this);if(this.hasAllNullValues(!0))return super.toString(Object.assign({},e,{allNullValues:!0}),r,n);throw new Error("Set items must all have null values")}};rt.tag="tag:yaml.org,2002:set";var y_={collection:"map",identify:t=>t instanceof Set,nodeClass:rt,default:!1,tag:"tag:yaml.org,2002:set",resolve(t,e){if(_i.isMap(t)){if(t.hasAllNullValues(!0))return Object.assign(new rt,t);e("Set items must all have null values")}else e("Expected a mapping for this tag");return t},createNode(t,e,r){let{replacer:n}=r,s=new rt(t);if(e&&Symbol.iterator in Object(e))for(let o of e)typeof n=="function"&&(o=n.call(e,o,o)),s.items.push(vi.createPair(o,null,r));return s}};ja.YAMLSet=rt;ja.set=y_});var xa=R(Ei=>{"use strict";var g_=gr();function Wa(t,e){let r=t[0],n=r==="-"||r==="+"?t.substring(1):t,s=l=>e?BigInt(l):Number(l),o=n.replace(/_/g,"").split(":").reduce((l,f)=>l*s(60)+s(f),s(0));return r==="-"?s(-1)*o:o}function Hd(t){let{value:e}=t,r=l=>l;if(typeof e=="bigint")r=l=>BigInt(l);else if(isNaN(e)||!isFinite(e))return g_.stringifyNumber(t);let n="";e<0&&(n="-",e*=r(-1));let s=r(60),o=[e%s];return e<60?o.unshift(0):(e=(e-o[0])/s,o.unshift(e%s),e>=60&&(e=(e-o[0])/s,o.unshift(e))),n+o.map(l=>l<10?"0"+String(l):String(l)).join(":").replace(/000000\d*$/,"")}var b_={identify:t=>typeof t=="bigint"||Number.isInteger(t),default:!0,tag:"tag:yaml.org,2002:int",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+$/,resolve:(t,e,{intAsBigInt:r})=>Wa(t,r),stringify:Hd},w_={identify:t=>typeof t=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\.[0-9_]*$/,resolve:t=>Wa(t,!1),stringify:Hd},Gd={identify:t=>t instanceof Date,default:!0,tag:"tag:yaml.org,2002:timestamp",test:RegExp("^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})(?:(?:t|T|[ \\t]+)([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}(\\.[0-9]+)?)(?:[ \\t]*(Z|[-+][012]?[0-9](?::[0-9]{2})?))?)?$"),resolve(t){let e=t.match(Gd.test);if(!e)throw new Error("!!timestamp expects a date, starting with yyyy-mm-dd");let[,r,n,s,o,l,f]=e.map(Number),c=e[7]?Number((e[7]+"00").substr(1,3)):0,d=Date.UTC(r,n-1,s,o||0,l||0,f||0,c),h=e[8];if(h&&h!=="Z"){let y=Wa(h,!1);Math.abs(y)<30&&(y*=60),d-=6e4*y}return new Date(d)},stringify:({value:t})=>t.toISOString().replace(/((T00:00)?:00)?\.000Z$/,"")};Ei.floatTime=w_;Ei.intTime=b_;Ei.timestamp=Gd});var Xd=R(Qd=>{"use strict";var S_=mr(),__=fi(),v_=yr(),E_=cn(),A_=qa(),Jd=zd(),za=Vd(),Ai=Kd(),T_=Ma(),R_=gi(),O_=Ua(),Va=xa(),C_=[S_.map,v_.seq,E_.string,__.nullTag,Jd.trueTag,Jd.falseTag,Ai.intBin,Ai.intOct,Ai.int,Ai.intHex,za.floatNaN,za.floatExp,za.float,A_.binary,T_.omap,R_.pairs,O_.set,Va.intTime,Va.floatTime,Va.timestamp];Qd.schema=C_});var lh=R(Ha=>{"use strict";var rh=mr(),P_=fi(),nh=yr(),k_=cn(),N_=Aa(),Ya=Ra(),Ka=Ca(),q_=Nd(),I_=Ld(),sh=qa(),ih=Ma(),oh=gi(),Zd=Xd(),ah=Ua(),Ti=xa(),eh=new Map([["core",q_.schema],["failsafe",[rh.map,nh.seq,k_.string]],["json",I_.schema],["yaml11",Zd.schema],["yaml-1.1",Zd.schema]]),th={binary:sh.binary,bool:N_.boolTag,float:Ya.float,floatExp:Ya.floatExp,floatNaN:Ya.floatNaN,floatTime:Ti.floatTime,int:Ka.int,intHex:Ka.intHex,intOct:Ka.intOct,intTime:Ti.intTime,map:rh.map,null:P_.nullTag,omap:ih.omap,pairs:oh.pairs,seq:nh.seq,set:ah.set,timestamp:Ti.timestamp},L_={"tag:yaml.org,2002:binary":sh.binary,"tag:yaml.org,2002:omap":ih.omap,"tag:yaml.org,2002:pairs":oh.pairs,"tag:yaml.org,2002:set":ah.set,"tag:yaml.org,2002:timestamp":Ti.timestamp};function B_(t,e){let r=eh.get(e);if(!r)if(Array.isArray(t))r=[];else{let n=Array.from(eh.keys()).filter(s=>s!=="yaml11").map(s=>JSON.stringify(s)).join(", ");throw new Error(`Unknown schema "${e}"; use one of ${n} or define customTags array`)}if(Array.isArray(t))for(let n of t)r=r.concat(n);else typeof t=="function"&&(r=t(r.slice()));return r.map(n=>{if(typeof n!="string")return n;let s=th[n];if(s)return s;let o=Object.keys(th).map(l=>JSON.stringify(l)).join(", ");throw new Error(`Unknown custom tag "${n}"; use one of ${o}`)})}Ha.coreKnownTags=L_;Ha.getTags=B_});var Ja=R(uh=>{"use strict";var Ga=j(),M_=mr(),D_=yr(),$_=cn(),Ri=lh(),F_=(t,e)=>t.key<e.key?-1:t.key>e.key?1:0,mn=class{constructor({compat:e,customTags:r,merge:n,resolveKnownTags:s,schema:o,sortMapEntries:l,toStringDefaults:f}){this.compat=Array.isArray(e)?Ri.getTags(e,"compat"):e?Ri.getTags(null,e):null,this.merge=!!n,this.name=typeof o=="string"&&o||"core",this.knownTags=s?Ri.coreKnownTags:{},this.tags=Ri.getTags(r,this.name),this.toStringOptions=f??null,Object.defineProperty(this,Ga.MAP,{value:M_.map}),Object.defineProperty(this,Ga.SCALAR,{value:$_.string}),Object.defineProperty(this,Ga.SEQ,{value:D_.seq}),this.sortMapEntries=typeof l=="function"?l:l===!0?F_:null}clone(){let e=Object.create(mn.prototype,Object.getOwnPropertyDescriptors(this));return e.tags=this.tags.slice(),e}};uh.Schema=mn});var ch=R(fh=>{"use strict";var j_=j(),Qa=dr(),yn=rn();function U_(t,e){let r=[],n=e.directives===!0;if(e.directives!==!1&&t.directives){let c=t.directives.toString(t);c?(r.push(c),n=!0):t.directives.docStart&&(n=!0)}n&&r.push("---");let s=Qa.createStringifyContext(t,e),{commentString:o}=s.options;if(t.commentBefore){r.length!==1&&r.unshift("");let c=o(t.commentBefore);r.unshift(yn.indentComment(c,""))}let l=!1,f=null;if(t.contents){if(j_.isNode(t.contents)){if(t.contents.spaceBefore&&n&&r.push(""),t.contents.commentBefore){let h=o(t.contents.commentBefore);r.push(yn.indentComment(h,""))}s.forceBlockIndent=!!t.comment,f=t.contents.comment}let c=f?void 0:()=>l=!0,d=Qa.stringify(t.contents,s,()=>f=null,c);f&&(d+=yn.lineComment(d,"",o(f))),(d[0]==="|"||d[0]===">")&&r[r.length-1]==="---"?r[r.length-1]=`--- ${d}`:r.push(d)}else r.push(Qa.stringify(t.contents,s));if(t.directives?.docEnd)if(t.comment){let c=o(t.comment);c.includes(`
-`)?(r.push("..."),r.push(yn.indentComment(c,""))):r.push(`... ${c}`)}else r.push("...");else{let c=t.comment;c&&l&&(c=c.replace(/^\n+/,"")),c&&((!l||f)&&r[r.length-1]!==""&&r.push(""),r.push(yn.indentComment(o(c),"")))}return r.join(`
-`)+`
-`}fh.stringifyDocument=U_});var hh=R(dh=>{"use strict";function gn(t,e,r,n){if(n&&typeof n=="object")if(Array.isArray(n))for(let s=0,o=n.length;s<o;++s){let l=n[s],f=gn(t,n,String(s),l);f===void 0?delete n[s]:f!==l&&(n[s]=f)}else if(n instanceof Map)for(let s of Array.from(n.keys())){let o=n.get(s),l=gn(t,n,s,o);l===void 0?n.delete(s):l!==o&&n.set(s,l)}else if(n instanceof Set)for(let s of Array.from(n)){let o=gn(t,n,s,s);o===void 0?n.delete(s):o!==s&&(n.delete(s),n.add(o))}else for(let[s,o]of Object.entries(n)){let l=gn(t,n,s,o);l===void 0?delete n[s]:l!==o&&(n[s]=l)}return t.call(e,r,n)}dh.applyReviver=gn});var wn=R(ph=>{"use strict";var W_=Zr(),br=tn(),Te=j(),x_=et(),z_=cr(),V_=Ja(),Y_=dr(),K_=ch(),Xa=Qs(),H_=hh(),G_=en(),Za=ia(),bn=class{constructor(e,r,n){this.commentBefore=null,this.comment=null,this.errors=[],this.warnings=[],Object.defineProperty(this,Te.NODE_TYPE,{value:Te.DOC});let s=null;typeof r=="function"||Array.isArray(r)?s=r:n===void 0&&r&&(n=r,r=void 0);let o=Object.assign({intAsBigInt:!1,keepSourceTokens:!1,logLevel:"warn",prettyErrors:!0,strict:!0,uniqueKeys:!0,version:"1.2"},n);this.options=o;let{version:l}=o;n?._directives?(this.directives=n._directives.atDocument(),this.directives.yaml.explicit&&(l=this.directives.yaml.version)):this.directives=new Za.Directives({version:l}),this.setSchema(l,n),e===void 0?this.contents=null:this.contents=this.createNode(e,s,n)}clone(){let e=Object.create(bn.prototype,{[Te.NODE_TYPE]:{value:Te.DOC}});return e.commentBefore=this.commentBefore,e.comment=this.comment,e.errors=this.errors.slice(),e.warnings=this.warnings.slice(),e.options=Object.assign({},this.options),this.directives&&(e.directives=this.directives.clone()),e.schema=this.schema.clone(),e.contents=Te.isNode(this.contents)?this.contents.clone(e.schema):this.contents,this.range&&(e.range=this.range.slice()),e}add(e){wr(this.contents)&&this.contents.add(e)}addIn(e,r){wr(this.contents)&&this.contents.addIn(e,r)}createAlias(e,r){if(!e.anchor){let n=Xa.anchorNames(this);e.anchor=!r||n.has(r)?Xa.findNewAnchor(r||"a",n):r}return new W_.Alias(e.anchor)}createNode(e,r,n){let s;if(typeof r=="function")e=r.call({"":e},"",e),s=r;else if(Array.isArray(r)){let _=O=>typeof O=="number"||O instanceof String||O instanceof Number,E=r.filter(_).map(String);E.length>0&&(r=r.concat(E)),s=r}else n===void 0&&r&&(n=r,r=void 0);let{aliasDuplicateObjects:o,anchorPrefix:l,flow:f,keepUndefined:c,onTagObj:d,tag:h}=n??{},{onAnchor:y,setAnchors:m,sourceObjects:g}=Xa.createNodeAnchors(this,l||"a"),w={aliasDuplicateObjects:o??!0,keepUndefined:c??!1,onAnchor:y,onTagObj:d,replacer:s,schema:this.schema,sourceObjects:g},S=G_.createNode(e,h,w);return f&&Te.isCollection(S)&&(S.flow=!0),m(),S}createPair(e,r,n={}){let s=this.createNode(e,null,n),o=this.createNode(r,null,n);return new x_.Pair(s,o)}delete(e){return wr(this.contents)?this.contents.delete(e):!1}deleteIn(e){return br.isEmptyPath(e)?this.contents==null?!1:(this.contents=null,!0):wr(this.contents)?this.contents.deleteIn(e):!1}get(e,r){return Te.isCollection(this.contents)?this.contents.get(e,r):void 0}getIn(e,r){return br.isEmptyPath(e)?!r&&Te.isScalar(this.contents)?this.contents.value:this.contents:Te.isCollection(this.contents)?this.contents.getIn(e,r):void 0}has(e){return Te.isCollection(this.contents)?this.contents.has(e):!1}hasIn(e){return br.isEmptyPath(e)?this.contents!==void 0:Te.isCollection(this.contents)?this.contents.hasIn(e):!1}set(e,r){this.contents==null?this.contents=br.collectionFromPath(this.schema,[e],r):wr(this.contents)&&this.contents.set(e,r)}setIn(e,r){br.isEmptyPath(e)?this.contents=r:this.contents==null?this.contents=br.collectionFromPath(this.schema,Array.from(e),r):wr(this.contents)&&this.contents.setIn(e,r)}setSchema(e,r={}){typeof e=="number"&&(e=String(e));let n;switch(e){case"1.1":this.directives?this.directives.yaml.version="1.1":this.directives=new Za.Directives({version:"1.1"}),n={merge:!0,resolveKnownTags:!1,schema:"yaml-1.1"};break;case"1.2":case"next":this.directives?this.directives.yaml.version=e:this.directives=new Za.Directives({version:e}),n={merge:!1,resolveKnownTags:!0,schema:"core"};break;case null:this.directives&&delete this.directives,n=null;break;default:{let s=JSON.stringify(e);throw new Error(`Expected '1.1', '1.2' or null as first argument, but found: ${s}`)}}if(r.schema instanceof Object)this.schema=r.schema;else if(n)this.schema=new V_.Schema(Object.assign(n,r));else throw new Error("With a null YAML version, the { schema: Schema } option is required")}toJS({json:e,jsonArg:r,mapAsMap:n,maxAliasCount:s,onAnchor:o,reviver:l}={}){let f={anchors:new Map,doc:this,keep:!e,mapAsMap:n===!0,mapKeyWarned:!1,maxAliasCount:typeof s=="number"?s:100,stringify:Y_.stringify},c=z_.toJS(this.contents,r??"",f);if(typeof o=="function")for(let{count:d,res:h}of f.anchors.values())o(h,d);return typeof l=="function"?H_.applyReviver(l,{"":c},"",c):c}toJSON(e,r){return this.toJS({json:!0,jsonArg:e,mapAsMap:!1,onAnchor:r})}toString(e={}){if(this.errors.length>0)throw new Error("Document with errors cannot be stringified");if("indent"in e&&(!Number.isInteger(e.indent)||Number(e.indent)<=0)){let r=JSON.stringify(e.indent);throw new Error(`"indent" option must be a positive integer, not ${r}`)}return K_.stringifyDocument(this,e)}};function wr(t){if(Te.isCollection(t))return!0;throw new Error("Expected a YAML collection as document contents")}ph.Document=bn});var vn=R(_n=>{"use strict";var Sn=class extends Error{constructor(e,r,n,s){super(),this.name=e,this.code=n,this.message=s,this.pos=r}},el=class extends Sn{constructor(e,r,n){super("YAMLParseError",e,r,n)}},tl=class extends Sn{constructor(e,r,n){super("YAMLWarning",e,r,n)}},J_=(t,e)=>r=>{if(r.pos[0]===-1)return;r.linePos=r.pos.map(f=>e.linePos(f));let{line:n,col:s}=r.linePos[0];r.message+=` at line ${n}, column ${s}`;let o=s-1,l=t.substring(e.lineStarts[n-1],e.lineStarts[n]).replace(/[\n\r]+$/,"");if(o>=60&&l.length>80){let f=Math.min(o-39,l.length-79);l="…"+l.substring(f),o-=f-1}if(l.length>80&&(l=l.substring(0,79)+"…"),n>1&&/^ *$/.test(l.substring(0,o))){let f=t.substring(e.lineStarts[n-2],e.lineStarts[n-1]);f.length>80&&(f=f.substring(0,79)+`…
-`),l=f+l}if(/[^ ]/.test(l)){let f=1,c=r.linePos[1];c&&c.line===n&&c.col>s&&(f=Math.min(c.col-s,80-o));let d=" ".repeat(o)+"^".repeat(f);r.message+=`:
+const wrapAnsi256 = (offset = 0) => code => `\u001B[${38 + offset};5;${code}m`;
 
-${l}
-${d}
-`}};_n.YAMLError=Sn;_n.YAMLParseError=el;_n.YAMLWarning=tl;_n.prettifyError=J_});var En=R(mh=>{"use strict";function Q_(t,{flow:e,indicator:r,next:n,offset:s,onError:o,startOnNewline:l}){let f=!1,c=l,d=l,h="",y="",m=!1,g=!1,w=!1,S=null,_=null,E=null,O=null,P=null;for(let C of t)switch(w&&(C.type!=="space"&&C.type!=="newline"&&C.type!=="comma"&&o(C.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),w=!1),C.type){case"space":!e&&c&&r!=="doc-start"&&C.source[0]==="	"&&o(C,"TAB_AS_INDENT","Tabs are not allowed as indentation"),d=!0;break;case"comment":{d||o(C,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");let F=C.source.substring(1)||" ";h?h+=y+F:h=F,y="",c=!1;break}case"newline":c?h?h+=C.source:f=!0:y+=C.source,c=!0,m=!0,(S||_)&&(g=!0),d=!0;break;case"anchor":S&&o(C,"MULTIPLE_ANCHORS","A node can have at most one anchor"),C.source.endsWith(":")&&o(C.offset+C.source.length-1,"BAD_ALIAS","Anchor ending in : is ambiguous",!0),S=C,P===null&&(P=C.offset),c=!1,d=!1,w=!0;break;case"tag":{_&&o(C,"MULTIPLE_TAGS","A node can have at most one tag"),_=C,P===null&&(P=C.offset),c=!1,d=!1,w=!0;break}case r:(S||_)&&o(C,"BAD_PROP_ORDER",`Anchors and tags must be after the ${C.source} indicator`),O&&o(C,"UNEXPECTED_TOKEN",`Unexpected ${C.source} in ${e??"collection"}`),O=C,c=!1,d=!1;break;case"comma":if(e){E&&o(C,"UNEXPECTED_TOKEN",`Unexpected , in ${e}`),E=C,c=!1,d=!1;break}default:o(C,"UNEXPECTED_TOKEN",`Unexpected ${C.type} token`),c=!1,d=!1}let A=t[t.length-1],q=A?A.offset+A.source.length:s;return w&&n&&n.type!=="space"&&n.type!=="newline"&&n.type!=="comma"&&(n.type!=="scalar"||n.source!=="")&&o(n.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),{comma:E,found:O,spaceBefore:f,comment:h,hasNewline:m,hasNewlineAfterProp:g,anchor:S,tag:_,end:q,start:P??q}}mh.resolveProps=Q_});var Oi=R(yh=>{"use strict";function rl(t){if(!t)return null;switch(t.type){case"alias":case"scalar":case"double-quoted-scalar":case"single-quoted-scalar":if(t.source.includes(`
-`))return!0;if(t.end){for(let e of t.end)if(e.type==="newline")return!0}return!1;case"flow-collection":for(let e of t.items){for(let r of e.start)if(r.type==="newline")return!0;if(e.sep){for(let r of e.sep)if(r.type==="newline")return!0}if(rl(e.key)||rl(e.value))return!0}return!1;default:return!0}}yh.containsNewline=rl});var nl=R(gh=>{"use strict";var X_=Oi();function Z_(t,e,r){if(e?.type==="flow-collection"){let n=e.end[0];n.indent===t&&(n.source==="]"||n.source==="}")&&X_.containsNewline(e)&&r(n,"BAD_INDENT","Flow end indicator should be more indented than parent",!0)}}gh.flowIndentCheck=Z_});var sl=R(wh=>{"use strict";var bh=j();function e0(t,e,r){let{uniqueKeys:n}=t.options;if(n===!1)return!1;let s=typeof n=="function"?n:(o,l)=>o===l||bh.isScalar(o)&&bh.isScalar(l)&&o.value===l.value&&!(o.value==="<<"&&t.schema.merge);return e.some(o=>s(o.key,r))}wh.mapIncludes=e0});var Th=R(Ah=>{"use strict";var Sh=et(),t0=Lt(),_h=En(),r0=Oi(),vh=nl(),n0=sl(),Eh="All mapping items must start at the same column";function s0({composeNode:t,composeEmptyNode:e},r,n,s){let o=new t0.YAMLMap(r.schema);r.atRoot&&(r.atRoot=!1);let l=n.offset,f=null;for(let c of n.items){let{start:d,key:h,sep:y,value:m}=c,g=_h.resolveProps(d,{indicator:"explicit-key-ind",next:h??y?.[0],offset:l,onError:s,startOnNewline:!0}),w=!g.found;if(w){if(h&&(h.type==="block-seq"?s(l,"BLOCK_AS_IMPLICIT_KEY","A block sequence may not be used as an implicit map key"):"indent"in h&&h.indent!==n.indent&&s(l,"BAD_INDENT",Eh)),!g.anchor&&!g.tag&&!y){f=g.end,g.comment&&(o.comment?o.comment+=`
-`+g.comment:o.comment=g.comment);continue}(g.hasNewlineAfterProp||r0.containsNewline(h))&&s(h??d[d.length-1],"MULTILINE_IMPLICIT_KEY","Implicit keys need to be on a single line")}else g.found?.indent!==n.indent&&s(l,"BAD_INDENT",Eh);let S=g.end,_=h?t(r,h,g,s):e(r,S,d,null,g,s);r.schema.compat&&vh.flowIndentCheck(n.indent,h,s),n0.mapIncludes(r,o.items,_)&&s(S,"DUPLICATE_KEY","Map keys must be unique");let E=_h.resolveProps(y??[],{indicator:"map-value-ind",next:m,offset:_.range[2],onError:s,startOnNewline:!h||h.type==="block-scalar"});if(l=E.end,E.found){w&&(m?.type==="block-map"&&!E.hasNewline&&s(l,"BLOCK_AS_IMPLICIT_KEY","Nested mappings are not allowed in compact mappings"),r.options.strict&&g.start<E.found.offset-1024&&s(_.range,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit block mapping key"));let O=m?t(r,m,E,s):e(r,l,y,null,E,s);r.schema.compat&&vh.flowIndentCheck(n.indent,m,s),l=O.range[2];let P=new Sh.Pair(_,O);r.options.keepSourceTokens&&(P.srcToken=c),o.items.push(P)}else{w&&s(_.range,"MISSING_CHAR","Implicit map keys need to be followed by map values"),E.comment&&(_.comment?_.comment+=`
-`+E.comment:_.comment=E.comment);let O=new Sh.Pair(_);r.options.keepSourceTokens&&(O.srcToken=c),o.items.push(O)}}return f&&f<l&&s(f,"IMPOSSIBLE","Map comment with trailing content"),o.range=[n.offset,l,f??l],o}Ah.resolveBlockMap=s0});var Oh=R(Rh=>{"use strict";var i0=Bt(),o0=En(),a0=nl();function l0({composeNode:t,composeEmptyNode:e},r,n,s){let o=new i0.YAMLSeq(r.schema);r.atRoot&&(r.atRoot=!1);let l=n.offset,f=null;for(let{start:c,value:d}of n.items){let h=o0.resolveProps(c,{indicator:"seq-item-ind",next:d,offset:l,onError:s,startOnNewline:!0});if(!h.found)if(h.anchor||h.tag||d)d&&d.type==="block-seq"?s(h.end,"BAD_INDENT","All sequence items must start at the same column"):s(l,"MISSING_CHAR","Sequence item without - indicator");else{f=h.end,h.comment&&(o.comment=h.comment);continue}let y=d?t(r,d,h,s):e(r,h.end,c,null,h,s);r.schema.compat&&a0.flowIndentCheck(n.indent,d,s),l=y.range[2],o.items.push(y)}return o.range=[n.offset,l,f??l],o}Rh.resolveBlockSeq=l0});var Sr=R(Ch=>{"use strict";function u0(t,e,r,n){let s="";if(t){let o=!1,l="";for(let f of t){let{source:c,type:d}=f;switch(d){case"space":o=!0;break;case"comment":{r&&!o&&n(f,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");let h=c.substring(1)||" ";s?s+=l+h:s=h,l="";break}case"newline":s&&(l+=c),o=!0;break;default:n(f,"UNEXPECTED_TOKEN",`Unexpected ${d} at node end`)}e+=c.length}}return{comment:s,offset:e}}Ch.resolveEnd=u0});var qh=R(Nh=>{"use strict";var f0=j(),c0=et(),Ph=Lt(),d0=Bt(),h0=Sr(),kh=En(),p0=Oi(),m0=sl(),il="Block collections are not allowed within flow collections",ol=t=>t&&(t.type==="block-map"||t.type==="block-seq");function y0({composeNode:t,composeEmptyNode:e},r,n,s){let o=n.start.source==="{",l=o?"flow map":"flow sequence",f=o?new Ph.YAMLMap(r.schema):new d0.YAMLSeq(r.schema);f.flow=!0;let c=r.atRoot;c&&(r.atRoot=!1);let d=n.offset+n.start.source.length;for(let w=0;w<n.items.length;++w){let S=n.items[w],{start:_,key:E,sep:O,value:P}=S,A=kh.resolveProps(_,{flow:l,indicator:"explicit-key-ind",next:E??O?.[0],offset:d,onError:s,startOnNewline:!1});if(!A.found){if(!A.anchor&&!A.tag&&!O&&!P){w===0&&A.comma?s(A.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${l}`):w<n.items.length-1&&s(A.start,"UNEXPECTED_TOKEN",`Unexpected empty item in ${l}`),A.comment&&(f.comment?f.comment+=`
-`+A.comment:f.comment=A.comment),d=A.end;continue}!o&&r.options.strict&&p0.containsNewline(E)&&s(E,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line")}if(w===0)A.comma&&s(A.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${l}`);else if(A.comma||s(A.start,"MISSING_CHAR",`Missing , between ${l} items`),A.comment){let q="";e:for(let C of _)switch(C.type){case"comma":case"space":break;case"comment":q=C.source.substring(1);break e;default:break e}if(q){let C=f.items[f.items.length-1];f0.isPair(C)&&(C=C.value??C.key),C.comment?C.comment+=`
-`+q:C.comment=q,A.comment=A.comment.substring(q.length+1)}}if(!o&&!O&&!A.found){let q=P?t(r,P,A,s):e(r,A.end,O,null,A,s);f.items.push(q),d=q.range[2],ol(P)&&s(q.range,"BLOCK_IN_FLOW",il)}else{let q=A.end,C=E?t(r,E,A,s):e(r,q,_,null,A,s);ol(E)&&s(C.range,"BLOCK_IN_FLOW",il);let F=kh.resolveProps(O??[],{flow:l,indicator:"map-value-ind",next:P,offset:C.range[2],onError:s,startOnNewline:!1});if(F.found){if(!o&&!A.found&&r.options.strict){if(O)for(let ae of O){if(ae===F.found)break;if(ae.type==="newline"){s(ae,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line");break}}A.start<F.found.offset-1024&&s(F.found,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit flow sequence key")}}else P&&("source"in P&&P.source&&P.source[0]===":"?s(P,"MISSING_CHAR",`Missing space after : in ${l}`):s(F.start,"MISSING_CHAR",`Missing , or : between ${l} items`));let Q=P?t(r,P,F,s):F.found?e(r,F.end,O,null,F,s):null;Q?ol(P)&&s(Q.range,"BLOCK_IN_FLOW",il):F.comment&&(C.comment?C.comment+=`
-`+F.comment:C.comment=F.comment);let Dt=new c0.Pair(C,Q);if(r.options.keepSourceTokens&&(Dt.srcToken=S),o){let ae=f;m0.mapIncludes(r,ae.items,C)&&s(q,"DUPLICATE_KEY","Map keys must be unique"),ae.items.push(Dt)}else{let ae=new Ph.YAMLMap(r.schema);ae.flow=!0,ae.items.push(Dt),f.items.push(ae)}d=Q?Q.range[2]:F.end}}let h=o?"}":"]",[y,...m]=n.end,g=d;if(y&&y.source===h)g=y.offset+y.source.length;else{let w=l[0].toUpperCase()+l.substring(1),S=c?`${w} must end with a ${h}`:`${w} in block collection must be sufficiently indented and end with a ${h}`;s(d,c?"MISSING_CHAR":"BAD_INDENT",S),y&&y.source.length!==1&&m.unshift(y)}if(m.length>0){let w=h0.resolveEnd(m,g,r.options.strict,s);w.comment&&(f.comment?f.comment+=`
-`+w.comment:f.comment=w.comment),f.range=[n.offset,g,w.offset]}else f.range=[n.offset,g,g];return f}Nh.resolveFlowCollection=y0});var Bh=R(Lh=>{"use strict";var Ih=j(),g0=J(),b0=Th(),w0=Oh(),S0=qh();function _0(t,e,r,n,s){let o;switch(r.type){case"block-map":{o=b0.resolveBlockMap(t,e,r,s);break}case"block-seq":{o=w0.resolveBlockSeq(t,e,r,s);break}case"flow-collection":{o=S0.resolveFlowCollection(t,e,r,s);break}}if(!n)return o;let l=e.directives.tagName(n.source,m=>s(n,"TAG_RESOLVE_FAILED",m));if(!l)return o;let f=o.constructor;if(l==="!"||l===f.tagName)return o.tag=f.tagName,o;let c=Ih.isMap(o)?"map":"seq",d=e.schema.tags.find(m=>m.collection===c&&m.tag===l);if(!d){let m=e.schema.knownTags[l];if(m&&m.collection===c)e.schema.tags.push(Object.assign({},m,{default:!1})),d=m;else return s(n,"TAG_RESOLVE_FAILED",`Unresolved tag: ${l}`,!0),o.tag=l,o}let h=d.resolve(o,m=>s(n,"TAG_RESOLVE_FAILED",m),e.options),y=Ih.isNode(h)?h:new g0.Scalar(h);return y.range=o.range,y.tag=l,d?.format&&(y.format=d.format),y}Lh.composeCollection=_0});var ll=R(Mh=>{"use strict";var al=J();function v0(t,e,r){let n=t.offset,s=E0(t,e,r);if(!s)return{value:"",type:null,comment:"",range:[n,n,n]};let o=s.mode===">"?al.Scalar.BLOCK_FOLDED:al.Scalar.BLOCK_LITERAL,l=t.source?A0(t.source):[],f=l.length;for(let S=l.length-1;S>=0;--S){let _=l[S][1];if(_===""||_==="\r")f=S;else break}if(f===0){let S=s.chomp==="+"&&l.length>0?`
-`.repeat(Math.max(1,l.length-1)):"",_=n+s.length;return t.source&&(_+=t.source.length),{value:S,type:o,comment:s.comment,range:[n,_,_]}}let c=t.indent+s.indent,d=t.offset+s.length,h=0;for(let S=0;S<f;++S){let[_,E]=l[S];if(E===""||E==="\r")s.indent===0&&_.length>c&&(c=_.length);else{if(_.length<c){let O="Block scalars with more-indented leading empty lines must use an explicit indentation indicator";r(d+_.length,"MISSING_CHAR",O)}s.indent===0&&(c=_.length),h=S;break}d+=_.length+E.length+1}for(let S=l.length-1;S>=f;--S)l[S][0].length>c&&(f=S+1);let y="",m="",g=!1;for(let S=0;S<h;++S)y+=l[S][0].slice(c)+`
-`;for(let S=h;S<f;++S){let[_,E]=l[S];d+=_.length+E.length+1;let O=E[E.length-1]==="\r";if(O&&(E=E.slice(0,-1)),E&&_.length<c){let A=`Block scalar lines must not be less indented than their ${s.indent?"explicit indentation indicator":"first line"}`;r(d-E.length-(O?2:1),"BAD_INDENT",A),_=""}o===al.Scalar.BLOCK_LITERAL?(y+=m+_.slice(c)+E,m=`
-`):_.length>c||E[0]==="	"?(m===" "?m=`
-`:!g&&m===`
-`&&(m=`
+const wrapAnsi16m = (offset = 0) => (red, green, blue) => `\u001B[${38 + offset};2;${red};${green};${blue}m`;
 
-`),y+=m+_.slice(c)+E,m=`
-`,g=!0):E===""?m===`
-`?y+=`
-`:m=`
-`:(y+=m+E,m=" ",g=!1)}switch(s.chomp){case"-":break;case"+":for(let S=f;S<l.length;++S)y+=`
-`+l[S][0].slice(c);y[y.length-1]!==`
-`&&(y+=`
-`);break;default:y+=`
-`}let w=n+s.length+t.source.length;return{value:y,type:o,comment:s.comment,range:[n,w,w]}}function E0({offset:t,props:e},r,n){if(e[0].type!=="block-scalar-header")return n(e[0],"IMPOSSIBLE","Block scalar header not found"),null;let{source:s}=e[0],o=s[0],l=0,f="",c=-1;for(let m=1;m<s.length;++m){let g=s[m];if(!f&&(g==="-"||g==="+"))f=g;else{let w=Number(g);!l&&w?l=w:c===-1&&(c=t+m)}}c!==-1&&n(c,"UNEXPECTED_TOKEN",`Block scalar header includes extra characters: ${s}`);let d=!1,h="",y=s.length;for(let m=1;m<e.length;++m){let g=e[m];switch(g.type){case"space":d=!0;case"newline":y+=g.source.length;break;case"comment":r&&!d&&n(g,"MISSING_CHAR","Comments must be separated from other tokens by white space characters"),y+=g.source.length,h=g.source.substring(1);break;case"error":n(g,"UNEXPECTED_TOKEN",g.message),y+=g.source.length;break;default:{let w=`Unexpected token in block scalar header: ${g.type}`;n(g,"UNEXPECTED_TOKEN",w);let S=g.source;S&&typeof S=="string"&&(y+=S.length)}}}return{mode:o,indent:l,chomp:f,comment:h,length:y}}function A0(t){let e=t.split(/\n( *)/),r=e[0],n=r.match(/^( *)/),o=[n?.[1]?[n[1],r.slice(n[1].length)]:["",r]];for(let l=1;l<e.length;l+=2)o.push([e[l],e[l+1]]);return o}Mh.resolveBlockScalar=v0});var fl=R($h=>{"use strict";var ul=J(),T0=Sr();function R0(t,e,r){let{offset:n,type:s,source:o,end:l}=t,f,c,d=(m,g,w)=>r(n+m,g,w);switch(s){case"scalar":f=ul.Scalar.PLAIN,c=O0(o,d);break;case"single-quoted-scalar":f=ul.Scalar.QUOTE_SINGLE,c=C0(o,d);break;case"double-quoted-scalar":f=ul.Scalar.QUOTE_DOUBLE,c=P0(o,d);break;default:return r(t,"UNEXPECTED_TOKEN",`Expected a flow scalar value, but found: ${s}`),{value:"",type:null,comment:"",range:[n,n+o.length,n+o.length]}}let h=n+o.length,y=T0.resolveEnd(l,h,e,r);return{value:c,type:f,comment:y.comment,range:[n,h,y.offset]}}function O0(t,e){let r="";switch(t[0]){case"	":r="a tab character";break;case",":r="flow indicator character ,";break;case"%":r="directive indicator character %";break;case"|":case">":{r=`block scalar indicator ${t[0]}`;break}case"@":case"`":{r=`reserved character ${t[0]}`;break}}return r&&e(0,"BAD_SCALAR_START",`Plain value cannot start with ${r}`),Dh(t)}function C0(t,e){return(t[t.length-1]!=="'"||t.length===1)&&e(t.length,"MISSING_CHAR","Missing closing 'quote"),Dh(t.slice(1,-1)).replace(/''/g,"'")}function Dh(t){let e,r;try{e=new RegExp(`(.*?)(?<![ 	])[ 	]*\r?
-`,"sy"),r=new RegExp(`[ 	]*(.*?)(?:(?<![ 	])[ 	]*)?\r?
-`,"sy")}catch{e=/(.*?)[ \t]*\r?\n/sy,r=/[ \t]*(.*?)[ \t]*\r?\n/sy}let n=e.exec(t);if(!n)return t;let s=n[1],o=" ",l=e.lastIndex;for(r.lastIndex=l;n=r.exec(t);)n[1]===""?o===`
-`?s+=o:o=`
-`:(s+=o+n[1],o=" "),l=r.lastIndex;let f=/[ \t]*(.*)/sy;return f.lastIndex=l,n=f.exec(t),s+o+(n?.[1]??"")}function P0(t,e){let r="";for(let n=1;n<t.length-1;++n){let s=t[n];if(!(s==="\r"&&t[n+1]===`
-`))if(s===`
-`){let{fold:o,offset:l}=k0(t,n);r+=o,n=l}else if(s==="\\"){let o=t[++n],l=N0[o];if(l)r+=l;else if(o===`
-`)for(o=t[n+1];o===" "||o==="	";)o=t[++n+1];else if(o==="\r"&&t[n+1]===`
-`)for(o=t[++n+1];o===" "||o==="	";)o=t[++n+1];else if(o==="x"||o==="u"||o==="U"){let f={x:2,u:4,U:8}[o];r+=q0(t,n+1,f,e),n+=f}else{let f=t.substr(n-1,2);e(n-1,"BAD_DQ_ESCAPE",`Invalid escape sequence ${f}`),r+=f}}else if(s===" "||s==="	"){let o=n,l=t[n+1];for(;l===" "||l==="	";)l=t[++n+1];l!==`
-`&&!(l==="\r"&&t[n+2]===`
-`)&&(r+=n>o?t.slice(o,n+1):s)}else r+=s}return(t[t.length-1]!=='"'||t.length===1)&&e(t.length,"MISSING_CHAR",'Missing closing "quote'),r}function k0(t,e){let r="",n=t[e+1];for(;(n===" "||n==="	"||n===`
-`||n==="\r")&&!(n==="\r"&&t[e+2]!==`
-`);)n===`
-`&&(r+=`
-`),e+=1,n=t[e+1];return r||(r=" "),{fold:r,offset:e}}var N0={0:"\0",a:"\x07",b:"\b",e:"\x1B",f:"\f",n:`
-`,r:"\r",t:"	",v:"\v",N:"",_:" ",L:"\u2028",P:"\u2029"," ":" ",'"':'"',"/":"/","\\":"\\","	":"	"};function q0(t,e,r,n){let s=t.substr(e,r),l=s.length===r&&/^[0-9a-fA-F]+$/.test(s)?parseInt(s,16):NaN;if(isNaN(l)){let f=t.substr(e-2,r+2);return n(e-2,"BAD_DQ_ESCAPE",`Invalid escape sequence ${f}`),f}return String.fromCodePoint(l)}$h.resolveFlowScalar=R0});var Uh=R(jh=>{"use strict";var _r=j(),Fh=J(),I0=ll(),L0=fl();function B0(t,e,r,n){let{value:s,type:o,comment:l,range:f}=e.type==="block-scalar"?I0.resolveBlockScalar(e,t.options.strict,n):L0.resolveFlowScalar(e,t.options.strict,n),c=r?t.directives.tagName(r.source,y=>n(r,"TAG_RESOLVE_FAILED",y)):null,d=r&&c?M0(t.schema,s,c,r,n):e.type==="scalar"?D0(t,s,e,n):t.schema[_r.SCALAR],h;try{let y=d.resolve(s,m=>n(r??e,"TAG_RESOLVE_FAILED",m),t.options);h=_r.isScalar(y)?y:new Fh.Scalar(y)}catch(y){let m=y instanceof Error?y.message:String(y);n(r??e,"TAG_RESOLVE_FAILED",m),h=new Fh.Scalar(s)}return h.range=f,h.source=s,o&&(h.type=o),c&&(h.tag=c),d.format&&(h.format=d.format),l&&(h.comment=l),h}function M0(t,e,r,n,s){if(r==="!")return t[_r.SCALAR];let o=[];for(let f of t.tags)if(!f.collection&&f.tag===r)if(f.default&&f.test)o.push(f);else return f;for(let f of o)if(f.test?.test(e))return f;let l=t.knownTags[r];return l&&!l.collection?(t.tags.push(Object.assign({},l,{default:!1,test:void 0})),l):(s(n,"TAG_RESOLVE_FAILED",`Unresolved tag: ${r}`,r!=="tag:yaml.org,2002:str"),t[_r.SCALAR])}function D0({directives:t,schema:e},r,n,s){let o=e.tags.find(l=>l.default&&l.test?.test(r))||e[_r.SCALAR];if(e.compat){let l=e.compat.find(f=>f.default&&f.test?.test(r))??e[_r.SCALAR];if(o.tag!==l.tag){let f=t.tagString(o.tag),c=t.tagString(l.tag),d=`Value may be parsed as either ${f} or ${c}`;s(n,"TAG_RESOLVE_FAILED",d,!0)}}return o}jh.composeScalar=B0});var xh=R(Wh=>{"use strict";function $0(t,e,r){if(e){r===null&&(r=e.length);for(let n=r-1;n>=0;--n){let s=e[n];switch(s.type){case"space":case"comment":case"newline":t-=s.source.length;continue}for(s=e[++n];s?.type==="space";)t+=s.source.length,s=e[++n];break}}return t}Wh.emptyScalarPosition=$0});var Yh=R(dl=>{"use strict";var F0=Zr(),j0=Bh(),zh=Uh(),U0=Sr(),W0=xh(),x0={composeNode:Vh,composeEmptyNode:cl};function Vh(t,e,r,n){let{spaceBefore:s,comment:o,anchor:l,tag:f}=r,c,d=!0;switch(e.type){case"alias":c=z0(t,e,n),(l||f)&&n(e,"ALIAS_PROPS","An alias node must not specify any properties");break;case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"block-scalar":c=zh.composeScalar(t,e,f,n),l&&(c.anchor=l.source.substring(1));break;case"block-map":case"block-seq":case"flow-collection":c=j0.composeCollection(x0,t,e,f,n),l&&(c.anchor=l.source.substring(1));break;default:{let h=e.type==="error"?e.message:`Unsupported token (type: ${e.type})`;n(e,"UNEXPECTED_TOKEN",h),c=cl(t,e.offset,void 0,null,r,n),d=!1}}return l&&c.anchor===""&&n(l,"BAD_ALIAS","Anchor cannot be an empty string"),s&&(c.spaceBefore=!0),o&&(e.type==="scalar"&&e.source===""?c.comment=o:c.commentBefore=o),t.options.keepSourceTokens&&d&&(c.srcToken=e),c}function cl(t,e,r,n,{spaceBefore:s,comment:o,anchor:l,tag:f,end:c},d){let h={type:"scalar",offset:W0.emptyScalarPosition(e,r,n),indent:-1,source:""},y=zh.composeScalar(t,h,f,d);return l&&(y.anchor=l.source.substring(1),y.anchor===""&&d(l,"BAD_ALIAS","Anchor cannot be an empty string")),s&&(y.spaceBefore=!0),o&&(y.comment=o,y.range[2]=c),y}function z0({options:t},{offset:e,source:r,end:n},s){let o=new F0.Alias(r.substring(1));o.source===""&&s(e,"BAD_ALIAS","Alias cannot be an empty string"),o.source.endsWith(":")&&s(e+r.length-1,"BAD_ALIAS","Alias ending in : is ambiguous",!0);let l=e+r.length,f=U0.resolveEnd(n,l,t.strict,s);return o.range=[e,l,f.offset],f.comment&&(o.comment=f.comment),o}dl.composeEmptyNode=cl;dl.composeNode=Vh});var Gh=R(Hh=>{"use strict";var V0=wn(),Kh=Yh(),Y0=Sr(),K0=En();function H0(t,e,{offset:r,start:n,value:s,end:o},l){let f=Object.assign({_directives:e},t),c=new V0.Document(void 0,f),d={atRoot:!0,directives:c.directives,options:c.options,schema:c.schema},h=K0.resolveProps(n,{indicator:"doc-start",next:s??o?.[0],offset:r,onError:l,startOnNewline:!0});h.found&&(c.directives.docStart=!0,s&&(s.type==="block-map"||s.type==="block-seq")&&!h.hasNewline&&l(h.end,"MISSING_CHAR","Block collection cannot start on same line with directives-end marker")),c.contents=s?Kh.composeNode(d,s,h,l):Kh.composeEmptyNode(d,h.end,n,null,h,l);let y=c.contents.range[2],m=Y0.resolveEnd(o,y,!1,l);return m.comment&&(c.comment=m.comment),c.range=[r,y,m.offset],c}Hh.composeDoc=H0});var pl=R(Xh=>{"use strict";var G0=ia(),J0=wn(),An=vn(),Jh=j(),Q0=Gh(),X0=Sr();function Tn(t){if(typeof t=="number")return[t,t+1];if(Array.isArray(t))return t.length===2?t:[t[0],t[1]];let{offset:e,source:r}=t;return[e,e+(typeof r=="string"?r.length:1)]}function Qh(t){let e="",r=!1,n=!1;for(let s=0;s<t.length;++s){let o=t[s];switch(o[0]){case"#":e+=(e===""?"":n?`
+const styles$1 = {
+	modifier: {
+		reset: [0, 0],
+		// 21 isn't widely supported and 22 does the same thing
+		bold: [1, 22],
+		dim: [2, 22],
+		italic: [3, 23],
+		underline: [4, 24],
+		overline: [53, 55],
+		inverse: [7, 27],
+		hidden: [8, 28],
+		strikethrough: [9, 29],
+	},
+	color: {
+		black: [30, 39],
+		red: [31, 39],
+		green: [32, 39],
+		yellow: [33, 39],
+		blue: [34, 39],
+		magenta: [35, 39],
+		cyan: [36, 39],
+		white: [37, 39],
 
-`:`
-`)+(o.substring(1)||" "),r=!0,n=!1;break;case"%":t[s+1]?.[0]!=="#"&&(s+=1),r=!1;break;default:r||(n=!0),r=!1}}return{comment:e,afterEmptyLine:n}}var hl=class{constructor(e={}){this.doc=null,this.atDirectives=!1,this.prelude=[],this.errors=[],this.warnings=[],this.onError=(r,n,s,o)=>{let l=Tn(r);o?this.warnings.push(new An.YAMLWarning(l,n,s)):this.errors.push(new An.YAMLParseError(l,n,s))},this.directives=new G0.Directives({version:e.version||"1.2"}),this.options=e}decorate(e,r){let{comment:n,afterEmptyLine:s}=Qh(this.prelude);if(n){let o=e.contents;if(r)e.comment=e.comment?`${e.comment}
-${n}`:n;else if(s||e.directives.docStart||!o)e.commentBefore=n;else if(Jh.isCollection(o)&&!o.flow&&o.items.length>0){let l=o.items[0];Jh.isPair(l)&&(l=l.key);let f=l.commentBefore;l.commentBefore=f?`${n}
-${f}`:n}else{let l=o.commentBefore;o.commentBefore=l?`${n}
-${l}`:n}}r?(Array.prototype.push.apply(e.errors,this.errors),Array.prototype.push.apply(e.warnings,this.warnings)):(e.errors=this.errors,e.warnings=this.warnings),this.prelude=[],this.errors=[],this.warnings=[]}streamInfo(){return{comment:Qh(this.prelude).comment,directives:this.directives,errors:this.errors,warnings:this.warnings}}*compose(e,r=!1,n=-1){for(let s of e)yield*this.next(s);yield*this.end(r,n)}*next(e){switch(process.env.LOG_STREAM&&console.dir(e,{depth:null}),e.type){case"directive":this.directives.add(e.source,(r,n,s)=>{let o=Tn(e);o[0]+=r,this.onError(o,"BAD_DIRECTIVE",n,s)}),this.prelude.push(e.source),this.atDirectives=!0;break;case"document":{let r=Q0.composeDoc(this.options,this.directives,e,this.onError);this.atDirectives&&!r.directives.docStart&&this.onError(e,"MISSING_CHAR","Missing directives-end/doc-start indicator line"),this.decorate(r,!1),this.doc&&(yield this.doc),this.doc=r,this.atDirectives=!1;break}case"byte-order-mark":case"space":break;case"comment":case"newline":this.prelude.push(e.source);break;case"error":{let r=e.source?`${e.message}: ${JSON.stringify(e.source)}`:e.message,n=new An.YAMLParseError(Tn(e),"UNEXPECTED_TOKEN",r);this.atDirectives||!this.doc?this.errors.push(n):this.doc.errors.push(n);break}case"doc-end":{if(!this.doc){let n="Unexpected doc-end without preceding document";this.errors.push(new An.YAMLParseError(Tn(e),"UNEXPECTED_TOKEN",n));break}this.doc.directives.docEnd=!0;let r=X0.resolveEnd(e.end,e.offset+e.source.length,this.doc.options.strict,this.onError);if(this.decorate(this.doc,!0),r.comment){let n=this.doc.comment;this.doc.comment=n?`${n}
-${r.comment}`:r.comment}this.doc.range[2]=r.offset;break}default:this.errors.push(new An.YAMLParseError(Tn(e),"UNEXPECTED_TOKEN",`Unsupported token ${e.type}`))}}*end(e=!1,r=-1){if(this.doc)this.decorate(this.doc,!0),yield this.doc,this.doc=null;else if(e){let n=Object.assign({_directives:this.directives},this.options),s=new J0.Document(void 0,n);this.atDirectives&&this.onError(r,"MISSING_CHAR","Missing directives-end indicator line"),s.range=[0,r,r],this.decorate(s,!1),yield s}}};Xh.Composer=hl});var tp=R(Ci=>{"use strict";var Z0=ll(),ev=fl(),tv=vn(),Zh=an();function rv(t,e=!0,r){if(t){let n=(s,o,l)=>{let f=typeof s=="number"?s:Array.isArray(s)?s[0]:s.offset;if(r)r(f,o,l);else throw new tv.YAMLParseError([f,f+1],o,l)};switch(t.type){case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return ev.resolveFlowScalar(t,e,n);case"block-scalar":return Z0.resolveBlockScalar(t,e,n)}}return null}function nv(t,e){let{implicitKey:r=!1,indent:n,inFlow:s=!1,offset:o=-1,type:l="PLAIN"}=e,f=Zh.stringifyString({type:l,value:t},{implicitKey:r,indent:n>0?" ".repeat(n):"",inFlow:s,options:{blockQuote:!0,lineWidth:-1}}),c=e.end??[{type:"newline",offset:-1,indent:n,source:`
-`}];switch(f[0]){case"|":case">":{let d=f.indexOf(`
-`),h=f.substring(0,d),y=f.substring(d+1)+`
-`,m=[{type:"block-scalar-header",offset:o,indent:n,source:h}];return ep(m,c)||m.push({type:"newline",offset:-1,indent:n,source:`
-`}),{type:"block-scalar",offset:o,indent:n,props:m,source:y}}case'"':return{type:"double-quoted-scalar",offset:o,indent:n,source:f,end:c};case"'":return{type:"single-quoted-scalar",offset:o,indent:n,source:f,end:c};default:return{type:"scalar",offset:o,indent:n,source:f,end:c}}}function sv(t,e,r={}){let{afterKey:n=!1,implicitKey:s=!1,inFlow:o=!1,type:l}=r,f="indent"in t?t.indent:null;if(n&&typeof f=="number"&&(f+=2),!l)switch(t.type){case"single-quoted-scalar":l="QUOTE_SINGLE";break;case"double-quoted-scalar":l="QUOTE_DOUBLE";break;case"block-scalar":{let d=t.props[0];if(d.type!=="block-scalar-header")throw new Error("Invalid block scalar header");l=d.source[0]===">"?"BLOCK_FOLDED":"BLOCK_LITERAL";break}default:l="PLAIN"}let c=Zh.stringifyString({type:l,value:e},{implicitKey:s||f===null,indent:f!==null&&f>0?" ".repeat(f):"",inFlow:o,options:{blockQuote:!0,lineWidth:-1}});switch(c[0]){case"|":case">":iv(t,c);break;case'"':ml(t,c,"double-quoted-scalar");break;case"'":ml(t,c,"single-quoted-scalar");break;default:ml(t,c,"scalar")}}function iv(t,e){let r=e.indexOf(`
-`),n=e.substring(0,r),s=e.substring(r+1)+`
-`;if(t.type==="block-scalar"){let o=t.props[0];if(o.type!=="block-scalar-header")throw new Error("Invalid block scalar header");o.source=n,t.source=s}else{let{offset:o}=t,l="indent"in t?t.indent:-1,f=[{type:"block-scalar-header",offset:o,indent:l,source:n}];ep(f,"end"in t?t.end:void 0)||f.push({type:"newline",offset:-1,indent:l,source:`
-`});for(let c of Object.keys(t))c!=="type"&&c!=="offset"&&delete t[c];Object.assign(t,{type:"block-scalar",indent:l,props:f,source:s})}}function ep(t,e){if(e)for(let r of e)switch(r.type){case"space":case"comment":t.push(r);break;case"newline":return t.push(r),!0}return!1}function ml(t,e,r){switch(t.type){case"scalar":case"double-quoted-scalar":case"single-quoted-scalar":t.type=r,t.source=e;break;case"block-scalar":{let n=t.props.slice(1),s=e.length;t.props[0].type==="block-scalar-header"&&(s-=t.props[0].source.length);for(let o of n)o.offset+=s;delete t.props,Object.assign(t,{type:r,source:e,end:n});break}case"block-map":case"block-seq":{let n=t.offset+e.length,s={type:"newline",offset:n,indent:t.indent,source:`
-`};delete t.items,Object.assign(t,{type:r,source:e,end:[s]});break}default:{let n="indent"in t?t.indent:-1,s="end"in t&&Array.isArray(t.end)?t.end.filter(o=>o.type==="space"||o.type==="comment"||o.type==="newline"):[];for(let o of Object.keys(t))o!=="type"&&o!=="offset"&&delete t[o];Object.assign(t,{type:r,indent:n,source:e,end:s})}}}Ci.createScalarToken=nv;Ci.resolveAsScalar=rv;Ci.setScalarValue=sv});var np=R(rp=>{"use strict";var ov=t=>"type"in t?ki(t):Pi(t);function ki(t){switch(t.type){case"block-scalar":{let e="";for(let r of t.props)e+=ki(r);return e+t.source}case"block-map":case"block-seq":{let e="";for(let r of t.items)e+=Pi(r);return e}case"flow-collection":{let e=t.start.source;for(let r of t.items)e+=Pi(r);for(let r of t.end)e+=r.source;return e}case"document":{let e=Pi(t);if(t.end)for(let r of t.end)e+=r.source;return e}default:{let e=t.source;if("end"in t&&t.end)for(let r of t.end)e+=r.source;return e}}}function Pi({start:t,key:e,sep:r,value:n}){let s="";for(let o of t)s+=o.source;if(e&&(s+=ki(e)),r)for(let o of r)s+=o.source;return n&&(s+=ki(n)),s}rp.stringify=ov});var ap=R(op=>{"use strict";var yl=Symbol("break visit"),av=Symbol("skip children"),sp=Symbol("remove item");function Mt(t,e){"type"in t&&t.type==="document"&&(t={start:t.start,value:t.value}),ip(Object.freeze([]),t,e)}Mt.BREAK=yl;Mt.SKIP=av;Mt.REMOVE=sp;Mt.itemAtPath=(t,e)=>{let r=t;for(let[n,s]of e){let o=r?.[n];if(o&&"items"in o)r=o.items[s];else return}return r};Mt.parentCollection=(t,e)=>{let r=Mt.itemAtPath(t,e.slice(0,-1)),n=e[e.length-1][0],s=r?.[n];if(s&&"items"in s)return s;throw new Error("Parent collection not found")};function ip(t,e,r){let n=r(e,t);if(typeof n=="symbol")return n;for(let s of["key","value"]){let o=e[s];if(o&&"items"in o){for(let l=0;l<o.items.length;++l){let f=ip(Object.freeze(t.concat([[s,l]])),o.items[l],r);if(typeof f=="number")l=f-1;else{if(f===yl)return yl;f===sp&&(o.items.splice(l,1),l-=1)}}typeof n=="function"&&s==="key"&&(n=n(e,t))}}return typeof n=="function"?n(e,t):n}op.visit=Mt});var Ni=R(ge=>{"use strict";var gl=tp(),lv=np(),uv=ap(),bl="\uFEFF",wl="",Sl="",_l="",fv=t=>!!t&&"items"in t,cv=t=>!!t&&(t.type==="scalar"||t.type==="single-quoted-scalar"||t.type==="double-quoted-scalar"||t.type==="block-scalar");function dv(t){switch(t){case bl:return"<BOM>";case wl:return"<DOC>";case Sl:return"<FLOW_END>";case _l:return"<SCALAR>";default:return JSON.stringify(t)}}function hv(t){switch(t){case bl:return"byte-order-mark";case wl:return"doc-mode";case Sl:return"flow-error-end";case _l:return"scalar";case"---":return"doc-start";case"...":return"doc-end";case"":case`
-`:case`\r
-`:return"newline";case"-":return"seq-item-ind";case"?":return"explicit-key-ind";case":":return"map-value-ind";case"{":return"flow-map-start";case"}":return"flow-map-end";case"[":return"flow-seq-start";case"]":return"flow-seq-end";case",":return"comma"}switch(t[0]){case" ":case"	":return"space";case"#":return"comment";case"%":return"directive-line";case"*":return"alias";case"&":return"anchor";case"!":return"tag";case"'":return"single-quoted-scalar";case'"':return"double-quoted-scalar";case"|":case">":return"block-scalar-header"}return null}ge.createScalarToken=gl.createScalarToken;ge.resolveAsScalar=gl.resolveAsScalar;ge.setScalarValue=gl.setScalarValue;ge.stringify=lv.stringify;ge.visit=uv.visit;ge.BOM=bl;ge.DOCUMENT=wl;ge.FLOW_END=Sl;ge.SCALAR=_l;ge.isCollection=fv;ge.isScalar=cv;ge.prettyToken=dv;ge.tokenType=hv});var Tl=R(up=>{"use strict";var Rn=Ni();function Re(t){switch(t){case void 0:case" ":case`
-`:case"\r":case"	":return!0;default:return!1}}var lp="0123456789ABCDEFabcdef".split(""),pv="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-#;/?:@&=+$_.!~*'()".split(""),vl=",[]{}".split(""),mv=` ,[]{}
-\r	`.split(""),El=t=>!t||mv.includes(t),Al=class{constructor(){this.atEnd=!1,this.blockScalarIndent=-1,this.blockScalarKeep=!1,this.buffer="",this.flowKey=!1,this.flowLevel=0,this.indentNext=0,this.indentValue=0,this.lineEndPos=null,this.next=null,this.pos=0}*lex(e,r=!1){e&&(this.buffer=this.buffer?this.buffer+e:e,this.lineEndPos=null),this.atEnd=!r;let n=this.next??"stream";for(;n&&(r||this.hasChars(1));)n=yield*this.parseNext(n)}atLineEnd(){let e=this.pos,r=this.buffer[e];for(;r===" "||r==="	";)r=this.buffer[++e];return!r||r==="#"||r===`
-`?!0:r==="\r"?this.buffer[e+1]===`
-`:!1}charAt(e){return this.buffer[this.pos+e]}continueScalar(e){let r=this.buffer[e];if(this.indentNext>0){let n=0;for(;r===" ";)r=this.buffer[++n+e];if(r==="\r"){let s=this.buffer[n+e+1];if(s===`
-`||!s&&!this.atEnd)return e+n+1}return r===`
-`||n>=this.indentNext||!r&&!this.atEnd?e+n:-1}if(r==="-"||r==="."){let n=this.buffer.substr(e,3);if((n==="---"||n==="...")&&Re(this.buffer[e+3]))return-1}return e}getLine(){let e=this.lineEndPos;return(typeof e!="number"||e!==-1&&e<this.pos)&&(e=this.buffer.indexOf(`
-`,this.pos),this.lineEndPos=e),e===-1?this.atEnd?this.buffer.substring(this.pos):null:(this.buffer[e-1]==="\r"&&(e-=1),this.buffer.substring(this.pos,e))}hasChars(e){return this.pos+e<=this.buffer.length}setNext(e){return this.buffer=this.buffer.substring(this.pos),this.pos=0,this.lineEndPos=null,this.next=e,null}peek(e){return this.buffer.substr(this.pos,e)}*parseNext(e){switch(e){case"stream":return yield*this.parseStream();case"line-start":return yield*this.parseLineStart();case"block-start":return yield*this.parseBlockStart();case"doc":return yield*this.parseDocument();case"flow":return yield*this.parseFlowCollection();case"quoted-scalar":return yield*this.parseQuotedScalar();case"block-scalar":return yield*this.parseBlockScalar();case"plain-scalar":return yield*this.parsePlainScalar()}}*parseStream(){let e=this.getLine();if(e===null)return this.setNext("stream");if(e[0]===Rn.BOM&&(yield*this.pushCount(1),e=e.substring(1)),e[0]==="%"){let r=e.length,n=e.indexOf("#");if(n!==-1){let o=e[n-1];(o===" "||o==="	")&&(r=n-1)}for(;;){let o=e[r-1];if(o===" "||o==="	")r-=1;else break}let s=(yield*this.pushCount(r))+(yield*this.pushSpaces(!0));return yield*this.pushCount(e.length-s),this.pushNewline(),"stream"}if(this.atLineEnd()){let r=yield*this.pushSpaces(!0);return yield*this.pushCount(e.length-r),yield*this.pushNewline(),"stream"}return yield Rn.DOCUMENT,yield*this.parseLineStart()}*parseLineStart(){let e=this.charAt(0);if(!e&&!this.atEnd)return this.setNext("line-start");if(e==="-"||e==="."){if(!this.atEnd&&!this.hasChars(4))return this.setNext("line-start");let r=this.peek(3);if(r==="---"&&Re(this.charAt(3)))return yield*this.pushCount(3),this.indentValue=0,this.indentNext=0,"doc";if(r==="..."&&Re(this.charAt(3)))return yield*this.pushCount(3),"stream"}return this.indentValue=yield*this.pushSpaces(!1),this.indentNext>this.indentValue&&!Re(this.charAt(1))&&(this.indentNext=this.indentValue),yield*this.parseBlockStart()}*parseBlockStart(){let[e,r]=this.peek(2);if(!r&&!this.atEnd)return this.setNext("block-start");if((e==="-"||e==="?"||e===":")&&Re(r)){let n=(yield*this.pushCount(1))+(yield*this.pushSpaces(!0));return this.indentNext=this.indentValue+1,this.indentValue+=n,yield*this.parseBlockStart()}return"doc"}*parseDocument(){yield*this.pushSpaces(!0);let e=this.getLine();if(e===null)return this.setNext("doc");let r=yield*this.pushIndicators();switch(e[r]){case"#":yield*this.pushCount(e.length-r);case void 0:return yield*this.pushNewline(),yield*this.parseLineStart();case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel=1,"flow";case"}":case"]":return yield*this.pushCount(1),"doc";case"*":return yield*this.pushUntil(El),"doc";case'"':case"'":return yield*this.parseQuotedScalar();case"|":case">":return r+=yield*this.parseBlockScalarHeader(),r+=yield*this.pushSpaces(!0),yield*this.pushCount(e.length-r),yield*this.pushNewline(),yield*this.parseBlockScalar();default:return yield*this.parsePlainScalar()}}*parseFlowCollection(){let e,r,n=-1;do e=yield*this.pushNewline(),e>0?(r=yield*this.pushSpaces(!1),this.indentValue=n=r):r=0,r+=yield*this.pushSpaces(!0);while(e+r>0);let s=this.getLine();if(s===null)return this.setNext("flow");if((n!==-1&&n<this.indentNext&&s[0]!=="#"||n===0&&(s.startsWith("---")||s.startsWith("..."))&&Re(s[3]))&&!(n===this.indentNext-1&&this.flowLevel===1&&(s[0]==="]"||s[0]==="}")))return this.flowLevel=0,yield Rn.FLOW_END,yield*this.parseLineStart();let o=0;for(;s[o]===",";)o+=yield*this.pushCount(1),o+=yield*this.pushSpaces(!0),this.flowKey=!1;switch(o+=yield*this.pushIndicators(),s[o]){case void 0:return"flow";case"#":return yield*this.pushCount(s.length-o),"flow";case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel+=1,"flow";case"}":case"]":return yield*this.pushCount(1),this.flowKey=!0,this.flowLevel-=1,this.flowLevel?"flow":"doc";case"*":return yield*this.pushUntil(El),"flow";case'"':case"'":return this.flowKey=!0,yield*this.parseQuotedScalar();case":":{let l=this.charAt(1);if(this.flowKey||Re(l)||l===",")return this.flowKey=!1,yield*this.pushCount(1),yield*this.pushSpaces(!0),"flow"}default:return this.flowKey=!1,yield*this.parsePlainScalar()}}*parseQuotedScalar(){let e=this.charAt(0),r=this.buffer.indexOf(e,this.pos+1);if(e==="'")for(;r!==-1&&this.buffer[r+1]==="'";)r=this.buffer.indexOf("'",r+2);else for(;r!==-1;){let o=0;for(;this.buffer[r-1-o]==="\\";)o+=1;if(o%2===0)break;r=this.buffer.indexOf('"',r+1)}let n=this.buffer.substring(0,r),s=n.indexOf(`
-`,this.pos);if(s!==-1){for(;s!==-1;){let o=this.continueScalar(s+1);if(o===-1)break;s=n.indexOf(`
-`,o)}s!==-1&&(r=s-(n[s-1]==="\r"?2:1))}if(r===-1){if(!this.atEnd)return this.setNext("quoted-scalar");r=this.buffer.length}return yield*this.pushToIndex(r+1,!1),this.flowLevel?"flow":"doc"}*parseBlockScalarHeader(){this.blockScalarIndent=-1,this.blockScalarKeep=!1;let e=this.pos;for(;;){let r=this.buffer[++e];if(r==="+")this.blockScalarKeep=!0;else if(r>"0"&&r<="9")this.blockScalarIndent=Number(r)-1;else if(r!=="-")break}return yield*this.pushUntil(r=>Re(r)||r==="#")}*parseBlockScalar(){let e=this.pos-1,r=0,n;e:for(let s=this.pos;n=this.buffer[s];++s)switch(n){case" ":r+=1;break;case`
-`:e=s,r=0;break;case"\r":{let o=this.buffer[s+1];if(!o&&!this.atEnd)return this.setNext("block-scalar");if(o===`
-`)break}default:break e}if(!n&&!this.atEnd)return this.setNext("block-scalar");if(r>=this.indentNext){this.blockScalarIndent===-1?this.indentNext=r:this.indentNext+=this.blockScalarIndent;do{let s=this.continueScalar(e+1);if(s===-1)break;e=this.buffer.indexOf(`
-`,s)}while(e!==-1);if(e===-1){if(!this.atEnd)return this.setNext("block-scalar");e=this.buffer.length}}if(!this.blockScalarKeep)do{let s=e-1,o=this.buffer[s];o==="\r"&&(o=this.buffer[--s]);let l=s;for(;o===" "||o==="	";)o=this.buffer[--s];if(o===`
-`&&s>=this.pos&&s+1+r>l)e=s;else break}while(!0);return yield Rn.SCALAR,yield*this.pushToIndex(e+1,!0),yield*this.parseLineStart()}*parsePlainScalar(){let e=this.flowLevel>0,r=this.pos-1,n=this.pos-1,s;for(;s=this.buffer[++n];)if(s===":"){let o=this.buffer[n+1];if(Re(o)||e&&o===",")break;r=n}else if(Re(s)){let o=this.buffer[n+1];if(s==="\r"&&(o===`
-`?(n+=1,s=`
-`,o=this.buffer[n+1]):r=n),o==="#"||e&&vl.includes(o))break;if(s===`
-`){let l=this.continueScalar(n+1);if(l===-1)break;n=Math.max(n,l-2)}}else{if(e&&vl.includes(s))break;r=n}return!s&&!this.atEnd?this.setNext("plain-scalar"):(yield Rn.SCALAR,yield*this.pushToIndex(r+1,!0),e?"flow":"doc")}*pushCount(e){return e>0?(yield this.buffer.substr(this.pos,e),this.pos+=e,e):0}*pushToIndex(e,r){let n=this.buffer.slice(this.pos,e);return n?(yield n,this.pos+=n.length,n.length):(r&&(yield""),0)}*pushIndicators(){switch(this.charAt(0)){case"!":return(yield*this.pushTag())+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"&":return(yield*this.pushUntil(El))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"-":case"?":case":":{let e=this.flowLevel>0,r=this.charAt(1);if(Re(r)||e&&vl.includes(r))return e?this.flowKey&&(this.flowKey=!1):this.indentNext=this.indentValue+1,(yield*this.pushCount(1))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators())}}return 0}*pushTag(){if(this.charAt(1)==="<"){let e=this.pos+2,r=this.buffer[e];for(;!Re(r)&&r!==">";)r=this.buffer[++e];return yield*this.pushToIndex(r===">"?e+1:e,!1)}else{let e=this.pos+1,r=this.buffer[e];for(;r;)if(pv.includes(r))r=this.buffer[++e];else if(r==="%"&&lp.includes(this.buffer[e+1])&&lp.includes(this.buffer[e+2]))r=this.buffer[e+=3];else break;return yield*this.pushToIndex(e,!1)}}*pushNewline(){let e=this.buffer[this.pos];return e===`
-`?yield*this.pushCount(1):e==="\r"&&this.charAt(1)===`
-`?yield*this.pushCount(2):0}*pushSpaces(e){let r=this.pos-1,n;do n=this.buffer[++r];while(n===" "||e&&n==="	");let s=r-this.pos;return s>0&&(yield this.buffer.substr(this.pos,s),this.pos=r),s}*pushUntil(e){let r=this.pos,n=this.buffer[r];for(;!e(n);)n=this.buffer[++r];return yield*this.pushToIndex(r,!1)}};up.Lexer=Al});var Ol=R(fp=>{"use strict";var Rl=class{constructor(){this.lineStarts=[],this.addNewLine=e=>this.lineStarts.push(e),this.linePos=e=>{let r=0,n=this.lineStarts.length;for(;r<n;){let o=r+n>>1;this.lineStarts[o]<e?r=o+1:n=o}if(this.lineStarts[r]===e)return{line:r+1,col:1};if(r===0)return{line:0,col:e};let s=this.lineStarts[r-1];return{line:r,col:e-s+1}}}};fp.LineCounter=Rl});var Pl=R(mp=>{"use strict";var cp=Ni(),yv=Tl();function Me(t,e){for(let r=0;r<t.length;++r)if(t[r].type===e)return!0;return!1}function dp(t){for(let e=0;e<t.length;++e)switch(t[e].type){case"space":case"comment":case"newline":break;default:return e}return-1}function pp(t){switch(t?.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"flow-collection":return!0;default:return!1}}function qi(t){switch(t.type){case"document":return t.start;case"block-map":{let e=t.items[t.items.length-1];return e.sep??e.start}case"block-seq":return t.items[t.items.length-1].start;default:return[]}}function vr(t){if(t.length===0)return[];let e=t.length;e:for(;--e>=0;)switch(t[e].type){case"doc-start":case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":case"newline":break e}for(;t[++e]?.type==="space";);return t.splice(e,t.length)}function hp(t){if(t.start.type==="flow-seq-start")for(let e of t.items)e.sep&&!e.value&&!Me(e.start,"explicit-key-ind")&&!Me(e.sep,"map-value-ind")&&(e.key&&(e.value=e.key),delete e.key,pp(e.value)?e.value.end?Array.prototype.push.apply(e.value.end,e.sep):e.value.end=e.sep:Array.prototype.push.apply(e.start,e.sep),delete e.sep)}var Cl=class{constructor(e){this.atNewLine=!0,this.atScalar=!1,this.indent=0,this.offset=0,this.onKeyLine=!1,this.stack=[],this.source="",this.type="",this.lexer=new yv.Lexer,this.onNewLine=e}*parse(e,r=!1){this.onNewLine&&this.offset===0&&this.onNewLine(0);for(let n of this.lexer.lex(e,r))yield*this.next(n);r||(yield*this.end())}*next(e){if(this.source=e,process.env.LOG_TOKENS&&console.log("|",cp.prettyToken(e)),this.atScalar){this.atScalar=!1,yield*this.step(),this.offset+=e.length;return}let r=cp.tokenType(e);if(r)if(r==="scalar")this.atNewLine=!1,this.atScalar=!0,this.type="scalar";else{switch(this.type=r,yield*this.step(),r){case"newline":this.atNewLine=!0,this.indent=0,this.onNewLine&&this.onNewLine(this.offset+e.length);break;case"space":this.atNewLine&&e[0]===" "&&(this.indent+=e.length);break;case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":this.atNewLine&&(this.indent+=e.length);break;case"doc-mode":case"flow-error-end":return;default:this.atNewLine=!1}this.offset+=e.length}else{let n=`Not a YAML token: ${e}`;yield*this.pop({type:"error",offset:this.offset,message:n,source:e}),this.offset+=e.length}}*end(){for(;this.stack.length>0;)yield*this.pop()}get sourceToken(){return{type:this.type,offset:this.offset,indent:this.indent,source:this.source}}*step(){let e=this.peek(1);if(this.type==="doc-end"&&(!e||e.type!=="doc-end")){for(;this.stack.length>0;)yield*this.pop();this.stack.push({type:"doc-end",offset:this.offset,source:this.source});return}if(!e)return yield*this.stream();switch(e.type){case"document":return yield*this.document(e);case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return yield*this.scalar(e);case"block-scalar":return yield*this.blockScalar(e);case"block-map":return yield*this.blockMap(e);case"block-seq":return yield*this.blockSequence(e);case"flow-collection":return yield*this.flowCollection(e);case"doc-end":return yield*this.documentEnd(e)}yield*this.pop()}peek(e){return this.stack[this.stack.length-e]}*pop(e){let r=e??this.stack.pop();if(r)if(this.stack.length===0)yield r;else{let n=this.peek(1);switch(r.type==="block-scalar"?r.indent="indent"in n?n.indent:0:r.type==="flow-collection"&&n.type==="document"&&(r.indent=0),r.type==="flow-collection"&&hp(r),n.type){case"document":n.value=r;break;case"block-scalar":n.props.push(r);break;case"block-map":{let s=n.items[n.items.length-1];if(s.value){n.items.push({start:[],key:r,sep:[]}),this.onKeyLine=!0;return}else if(s.sep)s.value=r;else{Object.assign(s,{key:r,sep:[]}),this.onKeyLine=!Me(s.start,"explicit-key-ind");return}break}case"block-seq":{let s=n.items[n.items.length-1];s.value?n.items.push({start:[],value:r}):s.value=r;break}case"flow-collection":{let s=n.items[n.items.length-1];!s||s.value?n.items.push({start:[],key:r,sep:[]}):s.sep?s.value=r:Object.assign(s,{key:r,sep:[]});return}default:yield*this.pop(),yield*this.pop(r)}if((n.type==="document"||n.type==="block-map"||n.type==="block-seq")&&(r.type==="block-map"||r.type==="block-seq")){let s=r.items[r.items.length-1];s&&!s.sep&&!s.value&&s.start.length>0&&dp(s.start)===-1&&(r.indent===0||s.start.every(o=>o.type!=="comment"||o.indent<r.indent))&&(n.type==="document"?n.end=s.start:n.items.push({start:s.start}),r.items.splice(-1,1))}}else{let n="Tried to pop an empty stack";yield{type:"error",offset:this.offset,source:"",message:n}}}*stream(){switch(this.type){case"directive-line":yield{type:"directive",offset:this.offset,source:this.source};return;case"byte-order-mark":case"space":case"comment":case"newline":yield this.sourceToken;return;case"doc-mode":case"doc-start":{let e={type:"document",offset:this.offset,start:[]};this.type==="doc-start"&&e.start.push(this.sourceToken),this.stack.push(e);return}}yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML stream`,source:this.source}}*document(e){if(e.value)return yield*this.lineEnd(e);switch(this.type){case"doc-start":{dp(e.start)!==-1?(yield*this.pop(),yield*this.step()):e.start.push(this.sourceToken);return}case"anchor":case"tag":case"space":case"comment":case"newline":e.start.push(this.sourceToken);return}let r=this.startBlockValue(e);r?this.stack.push(r):yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML document`,source:this.source}}*scalar(e){if(this.type==="map-value-ind"){let r=qi(this.peek(2)),n=vr(r),s;e.end?(s=e.end,s.push(this.sourceToken),delete e.end):s=[this.sourceToken];let o={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:n,key:e,sep:s}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=o}else yield*this.lineEnd(e)}*blockScalar(e){switch(this.type){case"space":case"comment":case"newline":e.props.push(this.sourceToken);return;case"scalar":if(e.source=this.source,this.atNewLine=!0,this.indent=0,this.onNewLine){let r=this.source.indexOf(`
-`)+1;for(;r!==0;)this.onNewLine(this.offset+r),r=this.source.indexOf(`
-`,r)+1}yield*this.pop();break;default:yield*this.pop(),yield*this.step()}}*blockMap(e){let r=e.items[e.items.length-1];switch(this.type){case"newline":if(this.onKeyLine=!1,r.value){let n="end"in r.value?r.value.end:void 0;(Array.isArray(n)?n[n.length-1]:void 0)?.type==="comment"?n?.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else r.sep?r.sep.push(this.sourceToken):r.start.push(this.sourceToken);return;case"space":case"comment":if(r.value)e.items.push({start:[this.sourceToken]});else if(r.sep)r.sep.push(this.sourceToken);else{if(this.atIndentedComment(r.start,e.indent)){let s=e.items[e.items.length-2]?.value?.end;if(Array.isArray(s)){Array.prototype.push.apply(s,r.start),s.push(this.sourceToken),e.items.pop();return}}r.start.push(this.sourceToken)}return}if(this.indent>=e.indent){let n=!this.onKeyLine&&this.indent===e.indent&&r.sep,s=[];if(n&&r.sep&&!r.value){let o=[];for(let l=0;l<r.sep.length;++l){let f=r.sep[l];switch(f.type){case"newline":o.push(l);break;case"space":break;case"comment":f.indent>e.indent&&(o.length=0);break;default:o.length=0}}o.length>=2&&(s=r.sep.splice(o[1]))}switch(this.type){case"anchor":case"tag":n||r.value?(s.push(this.sourceToken),e.items.push({start:s}),this.onKeyLine=!0):r.sep?r.sep.push(this.sourceToken):r.start.push(this.sourceToken);return;case"explicit-key-ind":!r.sep&&!Me(r.start,"explicit-key-ind")?r.start.push(this.sourceToken):n||r.value?(s.push(this.sourceToken),e.items.push({start:s})):this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken]}]}),this.onKeyLine=!0;return;case"map-value-ind":if(Me(r.start,"explicit-key-ind"))if(r.sep)if(r.value)e.items.push({start:[],key:null,sep:[this.sourceToken]});else if(Me(r.sep,"map-value-ind"))this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:s,key:null,sep:[this.sourceToken]}]});else if(pp(r.key)&&!Me(r.sep,"newline")){let o=vr(r.start),l=r.key,f=r.sep;f.push(this.sourceToken),delete r.key,delete r.sep,this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:o,key:l,sep:f}]})}else s.length>0?r.sep=r.sep.concat(s,this.sourceToken):r.sep.push(this.sourceToken);else if(Me(r.start,"newline"))Object.assign(r,{key:null,sep:[this.sourceToken]});else{let o=vr(r.start);this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:o,key:null,sep:[this.sourceToken]}]})}else r.sep?r.value||n?e.items.push({start:s,key:null,sep:[this.sourceToken]}):Me(r.sep,"map-value-ind")?this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[],key:null,sep:[this.sourceToken]}]}):r.sep.push(this.sourceToken):Object.assign(r,{key:null,sep:[this.sourceToken]});this.onKeyLine=!0;return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{let o=this.flowScalar(this.type);n||r.value?(e.items.push({start:s,key:o,sep:[]}),this.onKeyLine=!0):r.sep?this.stack.push(o):(Object.assign(r,{key:o,sep:[]}),this.onKeyLine=!0);return}default:{let o=this.startBlockValue(e);if(o){n&&o.type!=="block-seq"&&Me(r.start,"explicit-key-ind")&&e.items.push({start:s}),this.stack.push(o);return}}}}yield*this.pop(),yield*this.step()}*blockSequence(e){let r=e.items[e.items.length-1];switch(this.type){case"newline":if(r.value){let n="end"in r.value?r.value.end:void 0;(Array.isArray(n)?n[n.length-1]:void 0)?.type==="comment"?n?.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else r.start.push(this.sourceToken);return;case"space":case"comment":if(r.value)e.items.push({start:[this.sourceToken]});else{if(this.atIndentedComment(r.start,e.indent)){let s=e.items[e.items.length-2]?.value?.end;if(Array.isArray(s)){Array.prototype.push.apply(s,r.start),s.push(this.sourceToken),e.items.pop();return}}r.start.push(this.sourceToken)}return;case"anchor":case"tag":if(r.value||this.indent<=e.indent)break;r.start.push(this.sourceToken);return;case"seq-item-ind":if(this.indent!==e.indent)break;r.value||Me(r.start,"seq-item-ind")?e.items.push({start:[this.sourceToken]}):r.start.push(this.sourceToken);return}if(this.indent>e.indent){let n=this.startBlockValue(e);if(n){this.stack.push(n);return}}yield*this.pop(),yield*this.step()}*flowCollection(e){let r=e.items[e.items.length-1];if(this.type==="flow-error-end"){let n;do yield*this.pop(),n=this.peek(1);while(n&&n.type==="flow-collection")}else if(e.end.length===0){switch(this.type){case"comma":case"explicit-key-ind":!r||r.sep?e.items.push({start:[this.sourceToken]}):r.start.push(this.sourceToken);return;case"map-value-ind":!r||r.value?e.items.push({start:[],key:null,sep:[this.sourceToken]}):r.sep?r.sep.push(this.sourceToken):Object.assign(r,{key:null,sep:[this.sourceToken]});return;case"space":case"comment":case"newline":case"anchor":case"tag":!r||r.value?e.items.push({start:[this.sourceToken]}):r.sep?r.sep.push(this.sourceToken):r.start.push(this.sourceToken);return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{let s=this.flowScalar(this.type);!r||r.value?e.items.push({start:[],key:s,sep:[]}):r.sep?this.stack.push(s):Object.assign(r,{key:s,sep:[]});return}case"flow-map-end":case"flow-seq-end":e.end.push(this.sourceToken);return}let n=this.startBlockValue(e);n?this.stack.push(n):(yield*this.pop(),yield*this.step())}else{let n=this.peek(2);if(n.type==="block-map"&&(this.type==="map-value-ind"&&n.indent===e.indent||this.type==="newline"&&!n.items[n.items.length-1].sep))yield*this.pop(),yield*this.step();else if(this.type==="map-value-ind"&&n.type!=="flow-collection"){let s=qi(n),o=vr(s);hp(e);let l=e.end.splice(1,e.end.length);l.push(this.sourceToken);let f={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:o,key:e,sep:l}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=f}else yield*this.lineEnd(e)}}flowScalar(e){if(this.onNewLine){let r=this.source.indexOf(`
-`)+1;for(;r!==0;)this.onNewLine(this.offset+r),r=this.source.indexOf(`
-`,r)+1}return{type:e,offset:this.offset,indent:this.indent,source:this.source}}startBlockValue(e){switch(this.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return this.flowScalar(this.type);case"block-scalar-header":return{type:"block-scalar",offset:this.offset,indent:this.indent,props:[this.sourceToken],source:""};case"flow-map-start":case"flow-seq-start":return{type:"flow-collection",offset:this.offset,indent:this.indent,start:this.sourceToken,items:[],end:[]};case"seq-item-ind":return{type:"block-seq",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken]}]};case"explicit-key-ind":{this.onKeyLine=!0;let r=qi(e),n=vr(r);return n.push(this.sourceToken),{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:n}]}}case"map-value-ind":{this.onKeyLine=!0;let r=qi(e),n=vr(r);return{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:n,key:null,sep:[this.sourceToken]}]}}}return null}atIndentedComment(e,r){return this.type!=="comment"||this.indent<=r?!1:e.every(n=>n.type==="newline"||n.type==="space")}*documentEnd(e){this.type!=="doc-mode"&&(e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop()))}*lineEnd(e){switch(this.type){case"comma":case"doc-start":case"doc-end":case"flow-seq-end":case"flow-map-end":case"map-value-ind":yield*this.pop(),yield*this.step();break;case"newline":this.onKeyLine=!1;case"space":case"comment":default:e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop())}}};mp.Parser=Cl});var Sp=R(Cn=>{"use strict";var yp=pl(),gv=wn(),On=vn(),bv=pa(),wv=Ol(),gp=Pl();function bp(t){let e=t.prettyErrors!==!1;return{lineCounter:t.lineCounter||e&&new wv.LineCounter||null,prettyErrors:e}}function Sv(t,e={}){let{lineCounter:r,prettyErrors:n}=bp(e),s=new gp.Parser(r?.addNewLine),o=new yp.Composer(e),l=Array.from(o.compose(s.parse(t)));if(n&&r)for(let f of l)f.errors.forEach(On.prettifyError(t,r)),f.warnings.forEach(On.prettifyError(t,r));return l.length>0?l:Object.assign([],{empty:!0},o.streamInfo())}function wp(t,e={}){let{lineCounter:r,prettyErrors:n}=bp(e),s=new gp.Parser(r?.addNewLine),o=new yp.Composer(e),l=null;for(let f of o.compose(s.parse(t),!0,t.length))if(!l)l=f;else if(l.options.logLevel!=="silent"){l.errors.push(new On.YAMLParseError(f.range.slice(0,2),"MULTIPLE_DOCS","Source contains multiple documents; please use YAML.parseAllDocuments()"));break}return n&&r&&(l.errors.forEach(On.prettifyError(t,r)),l.warnings.forEach(On.prettifyError(t,r))),l}function _v(t,e,r){let n;typeof e=="function"?n=e:r===void 0&&e&&typeof e=="object"&&(r=e);let s=wp(t,r);if(!s)return null;if(s.warnings.forEach(o=>bv.warn(s.options.logLevel,o)),s.errors.length>0){if(s.options.logLevel!=="silent")throw s.errors[0];s.errors=[]}return s.toJS(Object.assign({reviver:n},r))}function vv(t,e,r){let n=null;if(typeof e=="function"||Array.isArray(e)?n=e:r===void 0&&e&&(r=e),typeof r=="string"&&(r=r.length),typeof r=="number"){let s=Math.round(r);r=s<1?void 0:s>8?{indent:8}:{indent:s}}if(t===void 0){let{keepUndefined:s}=r??e??{};if(!s)return}return new gv.Document(t,n,r).toString(r)}Cn.parse=_v;Cn.parseAllDocuments=Sv;Cn.parseDocument=wp;Cn.stringify=vv});var vp=R(U=>{"use strict";var Ev=pl(),Av=wn(),Tv=Ja(),kl=vn(),Rv=Zr(),St=j(),Ov=et(),Cv=J(),Pv=Lt(),kv=Bt(),Nv=Ni(),qv=Tl(),Iv=Ol(),Lv=Pl(),Ii=Sp(),_p=Jr();U.Composer=Ev.Composer;U.Document=Av.Document;U.Schema=Tv.Schema;U.YAMLError=kl.YAMLError;U.YAMLParseError=kl.YAMLParseError;U.YAMLWarning=kl.YAMLWarning;U.Alias=Rv.Alias;U.isAlias=St.isAlias;U.isCollection=St.isCollection;U.isDocument=St.isDocument;U.isMap=St.isMap;U.isNode=St.isNode;U.isPair=St.isPair;U.isScalar=St.isScalar;U.isSeq=St.isSeq;U.Pair=Ov.Pair;U.Scalar=Cv.Scalar;U.YAMLMap=Pv.YAMLMap;U.YAMLSeq=kv.YAMLSeq;U.CST=Nv;U.Lexer=qv.Lexer;U.LineCounter=Iv.LineCounter;U.Parser=Lv.Parser;U.parse=Ii.parse;U.parseAllDocuments=Ii.parseAllDocuments;U.parseDocument=Ii.parseDocument;U.stringify=Ii.stringify;U.visit=_p.visit;U.visitAsync=_p.visitAsync});var Vu=(t=0)=>e=>`\x1B[${e+t}m`,Yu=(t=0)=>e=>`\x1B[${38+t};5;${e}m`,Ku=(t=0)=>(e,r,n)=>`\x1B[${38+t};2;${e};${r};${n}m`,Y={modifier:{reset:[0,0],bold:[1,22],dim:[2,22],italic:[3,23],underline:[4,24],overline:[53,55],inverse:[7,27],hidden:[8,28],strikethrough:[9,29]},color:{black:[30,39],red:[31,39],green:[32,39],yellow:[33,39],blue:[34,39],magenta:[35,39],cyan:[36,39],white:[37,39],blackBright:[90,39],gray:[90,39],grey:[90,39],redBright:[91,39],greenBright:[92,39],yellowBright:[93,39],blueBright:[94,39],magentaBright:[95,39],cyanBright:[96,39],whiteBright:[97,39]},bgColor:{bgBlack:[40,49],bgRed:[41,49],bgGreen:[42,49],bgYellow:[43,49],bgBlue:[44,49],bgMagenta:[45,49],bgCyan:[46,49],bgWhite:[47,49],bgBlackBright:[100,49],bgGray:[100,49],bgGrey:[100,49],bgRedBright:[101,49],bgGreenBright:[102,49],bgYellowBright:[103,49],bgBlueBright:[104,49],bgMagentaBright:[105,49],bgCyanBright:[106,49],bgWhiteBright:[107,49]}},Hu=Object.keys(Y.modifier),ho=Object.keys(Y.color),po=Object.keys(Y.bgColor),Gu=[...ho,...po];function ry(){let t=new Map;for(let[e,r]of Object.entries(Y)){for(let[n,s]of Object.entries(r))Y[n]={open:`\x1B[${s[0]}m`,close:`\x1B[${s[1]}m`},r[n]=Y[n],t.set(s[0],s[1]);Object.defineProperty(Y,e,{value:r,enumerable:!1})}return Object.defineProperty(Y,"codes",{value:t,enumerable:!1}),Y.color.close="\x1B[39m",Y.bgColor.close="\x1B[49m",Y.color.ansi=Vu(),Y.color.ansi256=Yu(),Y.color.ansi16m=Ku(),Y.bgColor.ansi=Vu(10),Y.bgColor.ansi256=Yu(10),Y.bgColor.ansi16m=Ku(10),Object.defineProperties(Y,{rgbToAnsi256:{value(e,r,n){return e===r&&r===n?e<8?16:e>248?231:Math.round((e-8)/247*24)+232:16+36*Math.round(e/255*5)+6*Math.round(r/255*5)+Math.round(n/255*5)},enumerable:!1},hexToRgb:{value(e){let r=/[a-f\d]{6}|[a-f\d]{3}/i.exec(e.toString(16));if(!r)return[0,0,0];let[n]=r;n.length===3&&(n=[...n].map(o=>o+o).join(""));let s=Number.parseInt(n,16);return[s>>16&255,s>>8&255,s&255]},enumerable:!1},hexToAnsi256:{value:e=>Y.rgbToAnsi256(...Y.hexToRgb(e)),enumerable:!1},ansi256ToAnsi:{value(e){if(e<8)return 30+e;if(e<16)return 90+(e-8);let r,n,s;if(e>=232)r=((e-232)*10+8)/255,n=r,s=r;else{e-=16;let f=e%36;r=Math.floor(e/36)/5,n=Math.floor(f/6)/5,s=f%6/5}let o=Math.max(r,n,s)*2;if(o===0)return 30;let l=30+(Math.round(s)<<2|Math.round(n)<<1|Math.round(r));return o===2&&(l+=60),l},enumerable:!1},rgbToAnsi:{value:(e,r,n)=>Y.ansi256ToAnsi(Y.rgbToAnsi256(e,r,n)),enumerable:!1},hexToAnsi:{value:e=>Y.ansi256ToAnsi(Y.hexToAnsi256(e)),enumerable:!1}}),Y}var ny=ry(),Ne=ny;import mo from"node:process";import sy from"node:os";import Ju from"node:tty";function Se(t,e=mo.argv){let r=t.startsWith("-")?"":t.length===1?"-":"--",n=e.indexOf(r+t),s=e.indexOf("--");return n!==-1&&(s===-1||n<s)}var{env:G}=mo,ls;Se("no-color")||Se("no-colors")||Se("color=false")||Se("color=never")?ls=0:(Se("color")||Se("colors")||Se("color=true")||Se("color=always"))&&(ls=1);function iy(){if("FORCE_COLOR"in G)return G.FORCE_COLOR==="true"?1:G.FORCE_COLOR==="false"?0:G.FORCE_COLOR.length===0?1:Math.min(Number.parseInt(G.FORCE_COLOR,10),3)}function oy(t){return t===0?!1:{level:t,hasBasic:!0,has256:t>=2,has16m:t>=3}}function ay(t,{streamIsTTY:e,sniffFlags:r=!0}={}){let n=iy();n!==void 0&&(ls=n);let s=r?ls:n;if(s===0)return 0;if(r){if(Se("color=16m")||Se("color=full")||Se("color=truecolor"))return 3;if(Se("color=256"))return 2}if(t&&!e&&s===void 0)return 0;let o=s||0;if(G.TERM==="dumb")return o;if(mo.platform==="win32"){let l=sy.release().split(".");return Number(l[0])>=10&&Number(l[2])>=10586?Number(l[2])>=14931?3:2:1}if("CI"in G)return["TRAVIS","CIRCLECI","APPVEYOR","GITLAB_CI","GITHUB_ACTIONS","BUILDKITE","DRONE"].some(l=>l in G)||G.CI_NAME==="codeship"?1:o;if("TEAMCITY_VERSION"in G)return/^(9\.(0*[1-9]\d*)\.|\d{2,}\.)/.test(G.TEAMCITY_VERSION)?1:0;if("TF_BUILD"in G&&"AGENT_NAME"in G)return 1;if(G.COLORTERM==="truecolor")return 3;if("TERM_PROGRAM"in G){let l=Number.parseInt((G.TERM_PROGRAM_VERSION||"").split(".")[0],10);switch(G.TERM_PROGRAM){case"iTerm.app":return l>=3?3:2;case"Apple_Terminal":return 2}}return/-256(color)?$/i.test(G.TERM)?2:/^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/i.test(G.TERM)||"COLORTERM"in G?1:o}function Qu(t,e={}){let r=ay(t,{streamIsTTY:t&&t.isTTY,...e});return oy(r)}var ly={stdout:Qu({isTTY:Ju.isatty(1)}),stderr:Qu({isTTY:Ju.isatty(2)})},Xu=ly;function Zu(t,e,r){let n=t.indexOf(e);if(n===-1)return t;let s=e.length,o=0,l="";do l+=t.slice(o,n)+e+r,o=n+s,n=t.indexOf(e,o);while(n!==-1);return l+=t.slice(o),l}function ef(t,e,r,n){let s=0,o="";do{let l=t[n-1]==="\r";o+=t.slice(s,l?n-1:n)+e+(l?`\r
-`:`
-`)+r,s=n+1,n=t.indexOf(`
-`,s)}while(n!==-1);return o+=t.slice(s),o}var{stdout:tf,stderr:rf}=Xu,yo=Symbol("GENERATOR"),Jt=Symbol("STYLER"),Fr=Symbol("IS_EMPTY"),nf=["ansi","ansi","ansi256","ansi16m"],Qt=Object.create(null),uy=(t,e={})=>{if(e.level&&!(Number.isInteger(e.level)&&e.level>=0&&e.level<=3))throw new Error("The `level` option should be an integer from 0 to 3");let r=tf?tf.level:0;t.level=e.level===void 0?r:e.level},us=class{constructor(e){return sf(e)}},sf=t=>{let e=(...r)=>r.join(" ");return uy(e,t),Object.setPrototypeOf(e,jr.prototype),e};function jr(t){return sf(t)}Object.setPrototypeOf(jr.prototype,Function.prototype);for(let[t,e]of Object.entries(Ne))Qt[t]={get(){let r=fs(this,bo(e.open,e.close,this[Jt]),this[Fr]);return Object.defineProperty(this,t,{value:r}),r}};Qt.visible={get(){let t=fs(this,this[Jt],!0);return Object.defineProperty(this,"visible",{value:t}),t}};var go=(t,e,r,...n)=>t==="rgb"?e==="ansi16m"?Ne[r].ansi16m(...n):e==="ansi256"?Ne[r].ansi256(Ne.rgbToAnsi256(...n)):Ne[r].ansi(Ne.rgbToAnsi(...n)):t==="hex"?go("rgb",e,r,...Ne.hexToRgb(...n)):Ne[r][t](...n),fy=["rgb","hex","ansi256"];for(let t of fy){Qt[t]={get(){let{level:r}=this;return function(...n){let s=bo(go(t,nf[r],"color",...n),Ne.color.close,this[Jt]);return fs(this,s,this[Fr])}}};let e="bg"+t[0].toUpperCase()+t.slice(1);Qt[e]={get(){let{level:r}=this;return function(...n){let s=bo(go(t,nf[r],"bgColor",...n),Ne.bgColor.close,this[Jt]);return fs(this,s,this[Fr])}}}}var cy=Object.defineProperties(()=>{},{...Qt,level:{enumerable:!0,get(){return this[yo].level},set(t){this[yo].level=t}}}),bo=(t,e,r)=>{let n,s;return r===void 0?(n=t,s=e):(n=r.openAll+t,s=e+r.closeAll),{open:t,close:e,openAll:n,closeAll:s,parent:r}},fs=(t,e,r)=>{let n=(...s)=>dy(n,s.length===1?""+s[0]:s.join(" "));return Object.setPrototypeOf(n,cy),n[yo]=t,n[Jt]=e,n[Fr]=r,n},dy=(t,e)=>{if(t.level<=0||!e)return t[Fr]?"":e;let r=t[Jt];if(r===void 0)return e;let{openAll:n,closeAll:s}=r;if(e.includes("\x1B"))for(;r!==void 0;)e=Zu(e,r.close,r.open),r=r.parent;let o=e.indexOf(`
-`);return o!==-1&&(e=ef(e,s,n,o)),n+e+s};Object.defineProperties(jr.prototype,Qt);var Yv=jr(),Kv=jr({level:rf?rf.level:0});var K=as(Mo(),1);function kb(t){return typeof t=="object"&&!Array.isArray(t)&&t!==null&&!(t instanceof RegExp)}var Ns=kb;function Nb(t,{configurableEntries:e,enumerableEntries:r,getterEntries:n,maximumEntries:s=1/0,minimumEntries:o=0,setterEntries:l,symbolKeys:f,writableEntries:c}={}){if(!Ns(t)||!(t instanceof Object)||t.constructor.name!=="Object"||Object.prototype.toString.call(t)!=="[object Object]")return!1;let d=Object.getPrototypeOf(t);if(d!==null&&d!==Object.prototype)return!1;let h=t;for(;Object.getPrototypeOf(h)!==null;)h=Object.getPrototypeOf(h);if(d!==h)return!1;let y=Object.getOwnPropertySymbols(t).length;if(f===!1&&y>0||f===!0&&y===0)return!1;let m=Object.getOwnPropertyDescriptors(t),g=0,w=0,S=0,_=0,E=0,O=0,P=0,A=0,q=0;for(let C in m)if(Object.prototype.hasOwnProperty.call(m,C)){let F=m[C];F.configurable?g+=1:E+=1,F.enumerable?w+=1:O+=1,typeof F.get<"u"?S+=1:typeof F.set<"u"?A+=1:_+=1,F.writable?q+=1:P+=1}return!(Object.entries(t).length!==w||g+E!==w+O||w+O!==S+_+A||S+_+A!==P+q||g+E!==P+q||s<S+_+A+y||S+_+A+y<o||e===!1&&g>0||e===!0&&E>0||r===!1&&w>0||r===!0&&O>0||n===!1&&S>0||l===!1&&A>0||(n===!0||l===!0)&&_>0||c===!1&&q>0||c===!0&&P>0)}var qs=Nb;function Ib(t){let e=1n;for(;;){let r=t/e+e>>1n;if(e===r||e===r-1n)return e;e=r}}function Lb(t){let e=typeof t=="bigint"?t:BigInt(t);if(e===2n||e===3n||e===5n||e===7n)return!0;if(e<2n||e%2n===0n||e%3n===0n||e%5n===0n||e%7n===0n)return!1;for(let r=3n;r<=Ib(e)+1n;r+=2n)if(e%r===0n)return!1;return!0}var Is=Lb;function Bb(t,{even:e,exclusiveMaximum:r=!1,exclusiveMinimum:n=!1,finite:s,float:o,infinite:l,integer:f,maximum:c=1/0,minimum:d=-1/0,negative:h,odd:y,positive:m,prime:g,safe:w,unsafe:S}={}){let _=Number.isFinite(t),E=Number.isInteger(t),O=Number.isSafeInteger(t);return!(typeof t!="number"||Number.isNaN(t)||e===!1&&O&&t%2===0||e===!0&&(!O||t%2!==0)||r&&c<=t||!r&&c<t||n&&t<=d||!n&&t<d||(s===!0||l===!1)&&!_||(l===!0||s===!1)&&_||(o===!0||f===!1)&&E||(f===!0||o===!1)&&!E||(h===!0||m===!1)&&t>=0||(m===!0||h===!1)&&t<0||y===!1&&O&&t%2!==0||y===!0&&(!O||t%2===0)||g===!1&&O&&Is(t)||g===!0&&(!O||!Is(t))||(w===!0||S===!1)&&(t<Number.MIN_SAFE_INTEGER||t>Number.MAX_SAFE_INTEGER)||(S===!0||w===!1)&&t>=Number.MIN_SAFE_INTEGER&&t<=Number.MAX_SAFE_INTEGER)}var ce=Bb;function Mb(...t){for(let e of t)if(typeof e<"u")return e}var Z=Mb;function Db(t,{empty:e,maximumLength:r,minimumLength:n,strict:s,unique:o=!1,...l}={}){if(typeof e!="boolean"&&typeof e<"u")throw new TypeError("Argument `empty` must be type of boolean or undefined!");if(r=Z(r,l.maxLength,l.maximumElements,l.maxElements,1/0),r!==1/0&&!ce(r,{integer:!0,positive:!0,safe:!0}))throw new TypeError("Argument `maximumLength` must be `Infinity` or type of number (integer, positive, and safe)!");if(n=Z(n,l.minLength,l.minimumElements,l.minElements,0),!ce(n,{integer:!0,maximum:r,positive:!0,safe:!0}))throw new TypeError(`Argument \`minimumLength\` must be type of number (integer, positive, and safe) and <= ${r}!`);if(s=Z(s,l.super,!1),typeof s!="boolean")throw new TypeError("Argument `strict` must be type of boolean!");if(typeof o!="boolean")throw new TypeError("Argument `unique` must be type of boolean!");if(e===!1?(r=1/0,n=1):e===!0&&(r=0,n=0),!Array.isArray(t)||!(t instanceof Array)||t.constructor.name!=="Array"||Object.prototype.toString.call(t)!=="[object Array]"||Object.entries(t).length!==t.length)return!1;if(s){let f=Object.getPrototypeOf(t);if(f!==null&&f!==Array.prototype||Object.getOwnPropertySymbols(t).length>0)return!1;let c=Object.getOwnPropertyDescriptors(t);for(let d in c)if(Object.prototype.hasOwnProperty.call(c,d))if(d.search(/^(?:0|[1-9]\d*)$/gu)===0&&Number(d)<4294967296){let h=c[d];if(!h.configurable||!h.enumerable||typeof h.get<"u"||typeof h.set<"u"||!h.writable)return!1}else if(d==="length"){let h=c[d];if(h.configurable||h.enumerable||typeof h.get<"u"||typeof h.set<"u"||!h.writable)return!1}else return!1}return!(r<t.length||t.length<n||o&&Array.from(new Set(t).values()).length<t.length)}var xo=Db;var jE=BigInt(Number.MAX_SAFE_INTEGER),UE=BigInt(Number.MIN_SAFE_INTEGER);var xE=-128n;var zE=-32768n;var VE=-2147483648n;var YE=-9223372036854775808n;function tc(t,{keysPattern:e}={}){return!!(typeof t=="boolean"||rc(t,{keysPattern:e})||t===null||ce(t)||typeof t=="string")}function rc(t,{keysPattern:e}={}){if(xo(t,{strict:!0})){for(let r of t)if(!tc(r,{keysPattern:e}))return!1;return!0}if(qs(t,{configurableEntries:!0,enumerableEntries:!0,getterEntries:!1,setterEntries:!1,symbolKeys:!1,writableEntries:!0})){try{JSON.stringify(t)}catch{return!1}for(let r of Object.keys(t))if(e instanceof RegExp&&r.search(e)===-1||!tc(t[r],e))return!1;return!0}return!1}function Fb(t,{arrayRoot:e,empty:r,keysPattern:n,maximumEntries:s,minimumEntries:o,strict:l=!1,strictKeys:f=!1,...c}={}){if(typeof e!="boolean"&&typeof e<"u")throw new TypeError("Argument `arrayRoot` must be type of boolean or undefined!");if(typeof r!="boolean"&&typeof r<"u")throw new TypeError("Argument `empty` must be type of boolean or undefined!");if(!(n instanceof RegExp)&&typeof n<"u")throw new TypeError("Argument `keysPattern` must be type of regular expression or undefined!");if(s=Z(s,c.maxEntries,1/0),s!==1/0&&!ce(s,{integer:!0,positive:!0,safe:!0}))throw new TypeError("Argument `maximumEntries` must be `Infinity` or type of number (integer, positive, and safe)!");if(o=Z(o,c.minEntries,0),!ce(o,{integer:!0,maximum:s,positive:!0,safe:!0}))throw new TypeError(`Argument \`minimumEntries\` must be type of number (integer, positive, and safe) and <= ${s}!`);if(typeof l!="boolean")throw new TypeError("Argument `strict` must be type of boolean!");if(typeof f!="boolean")throw new TypeError("Argument `strictKeys` must be type of boolean!");r===!1?(s=1/0,o=1):r===!0&&(s=0,o=0),l&&(e=!1,f=!0),f&&(n=/^[$_a-z][$\d_a-z]*$/giu);let d=Object.entries(t).length,h=Array.isArray(t);return!(!rc(t,{keysPattern:n})||e===!1&&h||e===!0&&!h||s<d||d<o)}var xr=Fb;function jb(t,{ascii:e=!1,empty:r,lowerCase:n,maximumLength:s,minimumLength:o,multipleLine:l,pattern:f,preTrim:c=!1,singleLine:d,upperCase:h,...y}={}){if(typeof e!="boolean")throw new TypeError("Argument `ascii` must be type of boolean!");if(typeof r!="boolean"&&typeof r<"u")throw new TypeError("Argument `empty` must be type of boolean or undefined!");if(typeof n!="boolean"&&typeof n<"u")throw new TypeError("Argument `lowerCase` must be type of boolean or undefined!");if(s=Z(s,y.maxLength,y.maximumCharacters,y.maxCharacters,1/0),s!==1/0&&!ce(s,{integer:!0,positive:!0,safe:!0}))throw new TypeError("Argument `maximumLength` must be `Infinity` or type of number (integer, positive, and safe)!");if(o=Z(o,y.minLength,y.minimumCharacters,y.minCharacters,0),!ce(o,{integer:!0,maximum:s,positive:!0,safe:!0}))throw new TypeError(`Argument \`minimumLength\` must be type of number (integer, positive, and safe) and <= ${s}!`);if(l=Z(l,y.multiLine,y.multiline),typeof l!="boolean"&&typeof l<"u")throw new TypeError("Argument `multipleLine` must be type of boolean or undefined!");if(!(f instanceof RegExp)&&typeof f<"u")throw new TypeError("Argument `pattern` must be type of regular expression or undefined!");if(typeof c!="boolean")throw new TypeError("Argument `preTrim` must be type of boolean!");if(typeof d!="boolean"&&typeof d<"u")throw new TypeError("Argument `singleLine` must be type of boolean or undefined!");if(typeof h!="boolean"&&typeof h<"u")throw new TypeError("Argument `upperCase` must be type of boolean or undefined!");if(r===!1?(s=1/0,o=1):r===!0&&(s=0,o=0),typeof t!="string")return!1;let m=c?t.trim():t;if(e){for(let g of m)if(g.charCodeAt(0)>127)return!1}return!(s<m.length||m.length<o||f instanceof RegExp&&m.search(f)===-1||(n===!0||h===!1)&&m!==m.toLowerCase()||(h===!0||n===!1)&&m!==m.toUpperCase()||(l===!0||d===!1)&&m.search(/[\n\r]/gu)===-1||(d===!0||l===!1)&&m.search(/[\n\r]/gu)!==-1)}var zr=jb;function Ub(t,{arrayRoot:e,empty:r,keysPattern:n,maximumEntries:s,minimumEntries:o,strict:l=!1,strictKeys:f=!1,...c}={}){if(typeof t!="string")return!1;let d;try{d=JSON.parse(t)}catch{return!1}return xr(d,{arrayRoot:e,empty:r,keysPattern:n,maximumEntries:s,minimumEntries:o,strict:l,strictKeys:f,...c})}var zo=Ub;import pw from"node:http";import mw from"node:https";import ar from"node:zlib";import Bc,{PassThrough as Mc,pipeline as lr}from"node:stream";import{Buffer as Vs}from"node:buffer";function Wb(t){if(!/^data:/i.test(t))throw new TypeError('`uri` does not appear to be a Data URI (must begin with "data:")');t=t.replace(/\r?\n/g,"");let e=t.indexOf(",");if(e===-1||e<=4)throw new TypeError("malformed data: URI");let r=t.substring(5,e).split(";"),n="",s=!1,o=r[0]||"text/plain",l=o;for(let h=1;h<r.length;h++)r[h]==="base64"?s=!0:(l+=`;${r[h]}`,r[h].indexOf("charset=")===0&&(n=r[h].substring(8)));!r[0]&&!n.length&&(l+=";charset=US-ASCII",n="US-ASCII");let f=s?"base64":"ascii",c=unescape(t.substring(e+1)),d=Buffer.from(c,f);return d.type=o,d.typeFull=l,d.charset=n,d}var nc=Wb;Vr();Bs();import pt,{PassThrough as _c}from"node:stream";import{types as vc,deprecate as Zo,promisify as iw}from"node:util";import{Buffer as Ae}from"node:buffer";var Xe=class extends Error{constructor(e,r){super(e),Error.captureStackTrace(this,this.constructor),this.type=r}get name(){return this.constructor.name}get[Symbol.toStringTag](){return this.constructor.name}};var de=class extends Xe{constructor(e,r,n){super(e,r),n&&(this.code=this.errno=n.code,this.erroredSysCall=n.syscall)}};var Ms=Symbol.toStringTag,Go=t=>typeof t=="object"&&typeof t.append=="function"&&typeof t.delete=="function"&&typeof t.get=="function"&&typeof t.getAll=="function"&&typeof t.has=="function"&&typeof t.set=="function"&&typeof t.sort=="function"&&t[Ms]==="URLSearchParams",Kr=t=>t&&typeof t=="object"&&typeof t.arrayBuffer=="function"&&typeof t.type=="string"&&typeof t.stream=="function"&&typeof t.constructor=="function"&&/^(Blob|File)$/.test(t[Ms]),dc=t=>typeof t=="object"&&(t[Ms]==="AbortSignal"||t[Ms]==="EventTarget"),hc=(t,e)=>{let r=new URL(e).hostname,n=new URL(t).hostname;return r===n||r.endsWith(`.${n}`)},pc=(t,e)=>{let r=new URL(e).protocol,n=new URL(t).protocol;return r===n};var ow=iw(pt.pipeline),he=Symbol("Body internals"),je=class{constructor(e,{size:r=0}={}){let n=null;e===null?e=null:Go(e)?e=Ae.from(e.toString()):Kr(e)||Ae.isBuffer(e)||(vc.isAnyArrayBuffer(e)?e=Ae.from(e):ArrayBuffer.isView(e)?e=Ae.from(e.buffer,e.byteOffset,e.byteLength):e instanceof pt||(e instanceof kt?(e=cc(e),n=e.type.split("=")[1]):e=Ae.from(String(e))));let s=e;Ae.isBuffer(e)?s=pt.Readable.from(e):Kr(e)&&(s=pt.Readable.from(e.stream())),this[he]={body:e,stream:s,boundary:n,disturbed:!1,error:null},this.size=r,e instanceof pt&&e.on("error",o=>{let l=o instanceof Xe?o:new de(`Invalid response body while trying to fetch ${this.url}: ${o.message}`,"system",o);this[he].error=l})}get body(){return this[he].stream}get bodyUsed(){return this[he].disturbed}async arrayBuffer(){let{buffer:e,byteOffset:r,byteLength:n}=await Xo(this);return e.slice(r,r+n)}async formData(){let e=this.headers.get("content-type");if(e.startsWith("application/x-www-form-urlencoded")){let n=new kt,s=new URLSearchParams(await this.text());for(let[o,l]of s)n.append(o,l);return n}let{toFormData:r}=await Promise.resolve().then(()=>(Sc(),wc));return r(this.body,e)}async blob(){let e=this.headers&&this.headers.get("content-type")||this[he].body&&this[he].body.type||"",r=await this.arrayBuffer();return new Qe([r],{type:e})}async json(){let e=await this.text();return JSON.parse(e)}async text(){let e=await Xo(this);return new TextDecoder().decode(e)}buffer(){return Xo(this)}};je.prototype.buffer=Zo(je.prototype.buffer,"Please use 'response.arrayBuffer()' instead of 'response.buffer()'","node-fetch#buffer");Object.defineProperties(je.prototype,{body:{enumerable:!0},bodyUsed:{enumerable:!0},arrayBuffer:{enumerable:!0},blob:{enumerable:!0},json:{enumerable:!0},text:{enumerable:!0},data:{get:Zo(()=>{},"data doesn't exist, use json(), text(), arrayBuffer(), or body instead","https://github.com/node-fetch/node-fetch/issues/1000 (response)")}});async function Xo(t){if(t[he].disturbed)throw new TypeError(`body used already for: ${t.url}`);if(t[he].disturbed=!0,t[he].error)throw t[he].error;let{body:e}=t;if(e===null)return Ae.alloc(0);if(!(e instanceof pt))return Ae.alloc(0);let r=[],n=0;try{for await(let s of e){if(t.size>0&&n+s.length>t.size){let o=new de(`content size at ${t.url} over limit: ${t.size}`,"max-size");throw e.destroy(o),o}n+=s.length,r.push(s)}}catch(s){throw s instanceof Xe?s:new de(`Invalid response body while trying to fetch ${t.url}: ${s.message}`,"system",s)}if(e.readableEnded===!0||e._readableState.ended===!0)try{return r.every(s=>typeof s=="string")?Ae.from(r.join("")):Ae.concat(r,n)}catch(s){throw new de(`Could not create Buffer from response body for ${t.url}: ${s.message}`,"system",s)}else throw new de(`Premature close of server response while trying to fetch ${t.url}`)}var ir=(t,e)=>{let r,n,{body:s}=t[he];if(t.bodyUsed)throw new Error("cannot clone body after it is used");return s instanceof pt&&typeof s.getBoundary!="function"&&(r=new _c({highWaterMark:e}),n=new _c({highWaterMark:e}),s.pipe(r),s.pipe(n),t[he].stream=r,s=n),s},aw=Zo(t=>t.getBoundary(),"form-data doesn't follow the spec and requires special treatment. Use alternative package","https://github.com/node-fetch/node-fetch/issues/1167"),js=(t,e)=>t===null?null:typeof t=="string"?"text/plain;charset=UTF-8":Go(t)?"application/x-www-form-urlencoded;charset=UTF-8":Kr(t)?t.type||null:Ae.isBuffer(t)||vc.isAnyArrayBuffer(t)||ArrayBuffer.isView(t)?null:t instanceof kt?`multipart/form-data; boundary=${e[he].boundary}`:t&&typeof t.getBoundary=="function"?`multipart/form-data;boundary=${aw(t)}`:t instanceof pt?null:"text/plain;charset=UTF-8",Ec=t=>{let{body:e}=t[he];return e===null?0:Kr(e)?e.size:Ae.isBuffer(e)?e.length:e&&typeof e.getLengthSync=="function"&&e.hasKnownLength&&e.hasKnownLength()?e.getLengthSync():null},Ac=async(t,{body:e})=>{e===null?t.end():await ow(e,t)};import{types as Tc}from"node:util";import Ws from"node:http";var Us=typeof Ws.validateHeaderName=="function"?Ws.validateHeaderName:t=>{if(!/^[\^`\-\w!#$%&'*+.|~]+$/.test(t)){let e=new TypeError(`Header name must be a valid HTTP token [${t}]`);throw Object.defineProperty(e,"code",{value:"ERR_INVALID_HTTP_TOKEN"}),e}},ea=typeof Ws.validateHeaderValue=="function"?Ws.validateHeaderValue:(t,e)=>{if(/[^\t\u0020-\u007E\u0080-\u00FF]/.test(e)){let r=new TypeError(`Invalid character in header content ["${t}"]`);throw Object.defineProperty(r,"code",{value:"ERR_INVALID_CHAR"}),r}},pe=class extends URLSearchParams{constructor(e){let r=[];if(e instanceof pe){let n=e.raw();for(let[s,o]of Object.entries(n))r.push(...o.map(l=>[s,l]))}else if(e!=null)if(typeof e=="object"&&!Tc.isBoxedPrimitive(e)){let n=e[Symbol.iterator];if(n==null)r.push(...Object.entries(e));else{if(typeof n!="function")throw new TypeError("Header pairs must be iterable");r=[...e].map(s=>{if(typeof s!="object"||Tc.isBoxedPrimitive(s))throw new TypeError("Each header pair must be an iterable object");return[...s]}).map(s=>{if(s.length!==2)throw new TypeError("Each header pair must be a name/value tuple");return[...s]})}}else throw new TypeError("Failed to construct 'Headers': The provided value is not of type '(sequence<sequence<ByteString>> or record<ByteString, ByteString>)");return r=r.length>0?r.map(([n,s])=>(Us(n),ea(n,String(s)),[String(n).toLowerCase(),String(s)])):void 0,super(r),new Proxy(this,{get(n,s,o){switch(s){case"append":case"set":return(l,f)=>(Us(l),ea(l,String(f)),URLSearchParams.prototype[s].call(n,String(l).toLowerCase(),String(f)));case"delete":case"has":case"getAll":return l=>(Us(l),URLSearchParams.prototype[s].call(n,String(l).toLowerCase()));case"keys":return()=>(n.sort(),new Set(URLSearchParams.prototype.keys.call(n)).keys());default:return Reflect.get(n,s,o)}}})}get[Symbol.toStringTag](){return this.constructor.name}toString(){return Object.prototype.toString.call(this)}get(e){let r=this.getAll(e);if(r.length===0)return null;let n=r.join(", ");return/^content-encoding$/i.test(e)&&(n=n.toLowerCase()),n}forEach(e,r=void 0){for(let n of this.keys())Reflect.apply(e,r,[this.get(n),n,this])}*values(){for(let e of this.keys())yield this.get(e)}*entries(){for(let e of this.keys())yield[e,this.get(e)]}[Symbol.iterator](){return this.entries()}raw(){return[...this.keys()].reduce((e,r)=>(e[r]=this.getAll(r),e),{})}[Symbol.for("nodejs.util.inspect.custom")](){return[...this.keys()].reduce((e,r)=>{let n=this.getAll(r);return r==="host"?e[r]=n[0]:e[r]=n.length>1?n:n[0],e},{})}};Object.defineProperties(pe.prototype,["get","entries","forEach","values"].reduce((t,e)=>(t[e]={enumerable:!0},t),{}));function Rc(t=[]){return new pe(t.reduce((e,r,n,s)=>(n%2===0&&e.push(s.slice(n,n+2)),e),[]).filter(([e,r])=>{try{return Us(e),ea(e,String(r)),!0}catch{return!1}}))}var lw=new Set([301,302,303,307,308]),xs=t=>lw.has(t);var Le=Symbol("Response internals"),se=class extends je{constructor(e=null,r={}){super(e,r);let n=r.status!=null?r.status:200,s=new pe(r.headers);if(e!==null&&!s.has("Content-Type")){let o=js(e,this);o&&s.append("Content-Type",o)}this[Le]={type:"default",url:r.url,status:n,statusText:r.statusText||"",headers:s,counter:r.counter,highWaterMark:r.highWaterMark}}get type(){return this[Le].type}get url(){return this[Le].url||""}get status(){return this[Le].status}get ok(){return this[Le].status>=200&&this[Le].status<300}get redirected(){return this[Le].counter>0}get statusText(){return this[Le].statusText}get headers(){return this[Le].headers}get highWaterMark(){return this[Le].highWaterMark}clone(){return new se(ir(this,this.highWaterMark),{type:this.type,url:this.url,status:this.status,statusText:this.statusText,headers:this.headers,ok:this.ok,redirected:this.redirected,size:this.size,highWaterMark:this.highWaterMark})}static redirect(e,r=302){if(!xs(r))throw new RangeError('Failed to execute "redirect" on "response": Invalid status code');return new se(null,{headers:{location:new URL(e).toString()},status:r})}static error(){let e=new se(null,{status:0,statusText:""});return e[Le].type="error",e}get[Symbol.toStringTag](){return"Response"}};Object.defineProperties(se.prototype,{type:{enumerable:!0},url:{enumerable:!0},status:{enumerable:!0},ok:{enumerable:!0},redirected:{enumerable:!0},statusText:{enumerable:!0},headers:{enumerable:!0},clone:{enumerable:!0}});import{format as cw}from"node:url";import{deprecate as dw}from"node:util";var Oc=t=>{if(t.search)return t.search;let e=t.href.length-1,r=t.hash||(t.href[e]==="#"?"#":"");return t.href[e-r.length]==="?"?"?":""};import{isIP as uw}from"node:net";function Cc(t,e=!1){return t==null||(t=new URL(t),/^(about|blob|data):$/.test(t.protocol))?"no-referrer":(t.username="",t.password="",t.hash="",e&&(t.pathname="",t.search=""),t)}var Pc=new Set(["","no-referrer","no-referrer-when-downgrade","same-origin","origin","strict-origin","origin-when-cross-origin","strict-origin-when-cross-origin","unsafe-url"]),kc="strict-origin-when-cross-origin";function Nc(t){if(!Pc.has(t))throw new TypeError(`Invalid referrerPolicy: ${t}`);return t}function fw(t){if(/^(http|ws)s:$/.test(t.protocol))return!0;let e=t.host.replace(/(^\[)|(]$)/g,""),r=uw(e);return r===4&&/^127\./.test(e)||r===6&&/^(((0+:){7})|(::(0+:){0,6}))0*1$/.test(e)?!0:t.host==="localhost"||t.host.endsWith(".localhost")?!1:t.protocol==="file:"}function or(t){return/^about:(blank|srcdoc)$/.test(t)||t.protocol==="data:"||/^(blob|filesystem):$/.test(t.protocol)?!0:fw(t)}function qc(t,{referrerURLCallback:e,referrerOriginCallback:r}={}){if(t.referrer==="no-referrer"||t.referrerPolicy==="")return null;let n=t.referrerPolicy;if(t.referrer==="about:client")return"no-referrer";let s=t.referrer,o=Cc(s),l=Cc(s,!0);o.toString().length>4096&&(o=l),e&&(o=e(o)),r&&(l=r(l));let f=new URL(t.url);switch(n){case"no-referrer":return"no-referrer";case"origin":return l;case"unsafe-url":return o;case"strict-origin":return or(o)&&!or(f)?"no-referrer":l.toString();case"strict-origin-when-cross-origin":return o.origin===f.origin?o:or(o)&&!or(f)?"no-referrer":l;case"same-origin":return o.origin===f.origin?o:"no-referrer";case"origin-when-cross-origin":return o.origin===f.origin?o:l;case"no-referrer-when-downgrade":return or(o)&&!or(f)?"no-referrer":o;default:throw new TypeError(`Invalid referrerPolicy: ${n}`)}}function Ic(t){let e=(t.get("referrer-policy")||"").split(/[,\s]+/),r="";for(let n of e)n&&Pc.has(n)&&(r=n);return r}var te=Symbol("Request internals"),Gr=t=>typeof t=="object"&&typeof t[te]=="object",hw=dw(()=>{},".data is not a valid RequestInit property, use .body instead","https://github.com/node-fetch/node-fetch/issues/1000 (request)"),Ze=class extends je{constructor(e,r={}){let n;if(Gr(e)?n=new URL(e.url):(n=new URL(e),e={}),n.username!==""||n.password!=="")throw new TypeError(`${n} is an url with embedded credentials.`);let s=r.method||e.method||"GET";if(/^(delete|get|head|options|post|put)$/i.test(s)&&(s=s.toUpperCase()),!Gr(r)&&"data"in r&&hw(),(r.body!=null||Gr(e)&&e.body!==null)&&(s==="GET"||s==="HEAD"))throw new TypeError("Request with GET/HEAD method cannot have body");let o=r.body?r.body:Gr(e)&&e.body!==null?ir(e):null;super(o,{size:r.size||e.size||0});let l=new pe(r.headers||e.headers||{});if(o!==null&&!l.has("Content-Type")){let d=js(o,this);d&&l.set("Content-Type",d)}let f=Gr(e)?e.signal:null;if("signal"in r&&(f=r.signal),f!=null&&!dc(f))throw new TypeError("Expected signal to be an instanceof AbortSignal or EventTarget");let c=r.referrer==null?e.referrer:r.referrer;if(c==="")c="no-referrer";else if(c){let d=new URL(c);c=/^about:(\/\/)?client$/.test(d)?"client":d}else c=void 0;this[te]={method:s,redirect:r.redirect||e.redirect||"follow",headers:l,parsedURL:n,signal:f,referrer:c},this.follow=r.follow===void 0?e.follow===void 0?20:e.follow:r.follow,this.compress=r.compress===void 0?e.compress===void 0?!0:e.compress:r.compress,this.counter=r.counter||e.counter||0,this.agent=r.agent||e.agent,this.highWaterMark=r.highWaterMark||e.highWaterMark||16384,this.insecureHTTPParser=r.insecureHTTPParser||e.insecureHTTPParser||!1,this.referrerPolicy=r.referrerPolicy||e.referrerPolicy||""}get method(){return this[te].method}get url(){return cw(this[te].parsedURL)}get headers(){return this[te].headers}get redirect(){return this[te].redirect}get signal(){return this[te].signal}get referrer(){if(this[te].referrer==="no-referrer")return"";if(this[te].referrer==="client")return"about:client";if(this[te].referrer)return this[te].referrer.toString()}get referrerPolicy(){return this[te].referrerPolicy}set referrerPolicy(e){this[te].referrerPolicy=Nc(e)}clone(){return new Ze(this)}get[Symbol.toStringTag](){return"Request"}};Object.defineProperties(Ze.prototype,{method:{enumerable:!0},url:{enumerable:!0},headers:{enumerable:!0},redirect:{enumerable:!0},clone:{enumerable:!0},signal:{enumerable:!0},referrer:{enumerable:!0},referrerPolicy:{enumerable:!0}});var Lc=t=>{let{parsedURL:e}=t[te],r=new pe(t[te].headers);r.has("Accept")||r.set("Accept","*/*");let n=null;if(t.body===null&&/^(post|put)$/i.test(t.method)&&(n="0"),t.body!==null){let f=Ec(t);typeof f=="number"&&!Number.isNaN(f)&&(n=String(f))}n&&r.set("Content-Length",n),t.referrerPolicy===""&&(t.referrerPolicy=kc),t.referrer&&t.referrer!=="no-referrer"?t[te].referrer=qc(t):t[te].referrer="no-referrer",t[te].referrer instanceof URL&&r.set("Referer",t.referrer),r.has("User-Agent")||r.set("User-Agent","node-fetch"),t.compress&&!r.has("Accept-Encoding")&&r.set("Accept-Encoding","gzip, deflate, br");let{agent:s}=t;typeof s=="function"&&(s=s(e)),!r.has("Connection")&&!s&&r.set("Connection","close");let o=Oc(e),l={path:e.pathname+o,method:t.method,headers:r[Symbol.for("nodejs.util.inspect.custom")](),insecureHTTPParser:t.insecureHTTPParser,agent:s};return{parsedURL:e,options:l}};var zs=class extends Xe{constructor(e,r="aborted"){super(e,r)}};Bs();Jo();var yw=new Set(["data:","http:","https:"]);async function Ys(t,e){return new Promise((r,n)=>{let s=new Ze(t,e),{parsedURL:o,options:l}=Lc(s);if(!yw.has(o.protocol))throw new TypeError(`node-fetch cannot load ${t}. URL scheme "${o.protocol.replace(/:$/,"")}" is not supported.`);if(o.protocol==="data:"){let w=nc(s.url),S=new se(w,{headers:{"Content-Type":w.typeFull}});r(S);return}let f=(o.protocol==="https:"?mw:pw).request,{signal:c}=s,d=null,h=()=>{let w=new zs("The operation was aborted.");n(w),s.body&&s.body instanceof Bc.Readable&&s.body.destroy(w),!(!d||!d.body)&&d.body.emit("error",w)};if(c&&c.aborted){h();return}let y=()=>{h(),g()},m=f(o.toString(),l);c&&c.addEventListener("abort",y);let g=()=>{m.abort(),c&&c.removeEventListener("abort",y)};m.on("error",w=>{n(new de(`request to ${s.url} failed, reason: ${w.message}`,"system",w)),g()}),gw(m,w=>{d&&d.body&&d.body.destroy(w)}),process.version<"v14"&&m.on("socket",w=>{let S;w.prependListener("end",()=>{S=w._eventsCount}),w.prependListener("close",_=>{if(d&&S<w._eventsCount&&!_){let E=new Error("Premature close");E.code="ERR_STREAM_PREMATURE_CLOSE",d.body.emit("error",E)}})}),m.on("response",w=>{m.setTimeout(0);let S=Rc(w.rawHeaders);if(xs(w.statusCode)){let A=S.get("Location"),q=null;try{q=A===null?null:new URL(A,s.url)}catch{if(s.redirect!=="manual"){n(new de(`uri requested responds with an invalid redirect URL: ${A}`,"invalid-redirect")),g();return}}switch(s.redirect){case"error":n(new de(`uri requested responds with a redirect, redirect mode is set to error: ${s.url}`,"no-redirect")),g();return;case"manual":break;case"follow":{if(q===null)break;if(s.counter>=s.follow){n(new de(`maximum redirect reached at: ${s.url}`,"max-redirect")),g();return}let C={headers:new pe(s.headers),follow:s.follow,counter:s.counter+1,agent:s.agent,compress:s.compress,method:s.method,body:ir(s),signal:s.signal,size:s.size,referrer:s.referrer,referrerPolicy:s.referrerPolicy};if(!hc(s.url,q)||!pc(s.url,q))for(let Q of["authorization","www-authenticate","cookie","cookie2"])C.headers.delete(Q);if(w.statusCode!==303&&s.body&&e.body instanceof Bc.Readable){n(new de("Cannot follow redirect with body being a readable stream","unsupported-redirect")),g();return}(w.statusCode===303||(w.statusCode===301||w.statusCode===302)&&s.method==="POST")&&(C.method="GET",C.body=void 0,C.headers.delete("content-length"));let F=Ic(S);F&&(C.referrerPolicy=F),r(Ys(new Ze(q,C))),g();return}default:return n(new TypeError(`Redirect option '${s.redirect}' is not a valid value of RequestRedirect`))}}c&&w.once("end",()=>{c.removeEventListener("abort",y)});let _=lr(w,new Mc,A=>{A&&n(A)});process.version<"v12.10"&&w.on("aborted",y);let E={url:s.url,status:w.statusCode,statusText:w.statusMessage,headers:S,size:s.size,counter:s.counter,highWaterMark:s.highWaterMark},O=S.get("Content-Encoding");if(!s.compress||s.method==="HEAD"||O===null||w.statusCode===204||w.statusCode===304){d=new se(_,E),r(d);return}let P={flush:ar.Z_SYNC_FLUSH,finishFlush:ar.Z_SYNC_FLUSH};if(O==="gzip"||O==="x-gzip"){_=lr(_,ar.createGunzip(P),A=>{A&&n(A)}),d=new se(_,E),r(d);return}if(O==="deflate"||O==="x-deflate"){let A=lr(w,new Mc,q=>{q&&n(q)});A.once("data",q=>{(q[0]&15)===8?_=lr(_,ar.createInflate(),C=>{C&&n(C)}):_=lr(_,ar.createInflateRaw(),C=>{C&&n(C)}),d=new se(_,E),r(d)}),A.once("end",()=>{d||(d=new se(_,E),r(d))});return}if(O==="br"){_=lr(_,ar.createBrotliDecompress(),A=>{A&&n(A)}),d=new se(_,E),r(d);return}d=new se(_,E),r(d)}),Ac(m,s).catch(n)})}function gw(t,e){let r=Vs.from(`0\r
-\r
-`),n=!1,s=!1,o;t.on("response",l=>{let{headers:f}=l;n=f["transfer-encoding"]==="chunked"&&!f["content-length"]}),t.on("socket",l=>{let f=()=>{if(n&&!s){let d=new Error("Premature close");d.code="ERR_STREAM_PREMATURE_CLOSE",e(d)}},c=d=>{s=Vs.compare(d.slice(-5),r)===0,!s&&o&&(s=Vs.compare(o.slice(-3),r.slice(0,3))===0&&Vs.compare(d.slice(-2),r.slice(3))===0),o=d};l.prependListener("close",f),l.on("data",c),t.on("close",()=>{l.removeListener("close",f),l.removeListener("data",c)})})}var Ep=as(vp(),1);try{let t=new us({level:3}),e=/^(?:https:\/\/maker\.ifttt\.com\/use\/)?(?<key>(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z])$/u;(0,K.startGroup)("Import inputs.");let r=(0,K.getInput)("eventname");if(!zr(r,{pattern:/^(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/u}))throw new TypeError(`\`${r}\` is not a valid IFTTT webhook event name!`);console.log(`${t.bold("Event Name:")} ${r}`),zr(r,{lowerCase:!0})||(0,K.warning)(`Event name \`${r}\` is recommended to keep in lower case to prevent issues!`);let n=(0,K.getInput)("key");if(!zr(n,{pattern:e}))throw new TypeError("Input `key` is not a valid IFTTT webhook key!");let s=n.match(e).groups.key;(0,K.setSecret)(s);let o=(0,K.getBooleanInput)("arbitrary");if(typeof o!="boolean")throw new TypeError("Input `arbitrary` must be type of boolean!");let l=(0,K.getInput)("payload"),f=zo(l,{arrayRoot:!1})?JSON.parse(l):Ep.default.parse(l);if(!xr(f,{arrayRoot:!1}))throw new TypeError(`\`${f}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);let c=JSON.stringify(f);console.log(`${t.bold("Payload:")} ${c}`),(0,K.endGroup)(),(0,K.startGroup)("Post network request to IFTTT.");let d=await Ys(`https://maker.ifttt.com/trigger/${r}${o?"/json":""}/with/key/${s}`,{body:c,follow:1,headers:{"Content-Type":"application/json","User-Agent":`TriggerIFTTTWebhookApplet.GitHubAction/5.0.0 NodeJS/${process.versions.node}`},method:"POST",redirect:"follow"}).catch(y=>{throw new Error(`Unexpected web request issue: ${y?.message}`)}),h=await d.text();if((0,K.setOutput)("response",h),(0,K.setOutput)("status_code",d.status),(0,K.setOutput)("status_ok",d.ok),(0,K.setOutput)("status_text",d.statusText),!d.ok)throw new Error(`Unexpected response status \`${d.status} ${d.statusText}\`: ${h}`);console.log(`${t.bold("Response Status:")} ${d.status} ${d.statusText}`),console.log(`${t.bold("Response Content:")} ${h}`),(0,K.endGroup)()}catch(t){(0,K.error)(t?.message),(0,K.endGroup)(),process.exit(1)}
-/*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
-/*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
-/*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
-//# sourceMappingURL=main.js.map
+		// Bright color
+		blackBright: [90, 39],
+		gray: [90, 39], // Alias of `blackBright`
+		grey: [90, 39], // Alias of `blackBright`
+		redBright: [91, 39],
+		greenBright: [92, 39],
+		yellowBright: [93, 39],
+		blueBright: [94, 39],
+		magentaBright: [95, 39],
+		cyanBright: [96, 39],
+		whiteBright: [97, 39],
+	},
+	bgColor: {
+		bgBlack: [40, 49],
+		bgRed: [41, 49],
+		bgGreen: [42, 49],
+		bgYellow: [43, 49],
+		bgBlue: [44, 49],
+		bgMagenta: [45, 49],
+		bgCyan: [46, 49],
+		bgWhite: [47, 49],
+
+		// Bright color
+		bgBlackBright: [100, 49],
+		bgGray: [100, 49], // Alias of `bgBlackBright`
+		bgGrey: [100, 49], // Alias of `bgBlackBright`
+		bgRedBright: [101, 49],
+		bgGreenBright: [102, 49],
+		bgYellowBright: [103, 49],
+		bgBlueBright: [104, 49],
+		bgMagentaBright: [105, 49],
+		bgCyanBright: [106, 49],
+		bgWhiteBright: [107, 49],
+	},
+};
+
+Object.keys(styles$1.modifier);
+const foregroundColorNames = Object.keys(styles$1.color);
+const backgroundColorNames = Object.keys(styles$1.bgColor);
+[...foregroundColorNames, ...backgroundColorNames];
+
+function assembleStyles() {
+	const codes = new Map();
+
+	for (const [groupName, group] of Object.entries(styles$1)) {
+		for (const [styleName, style] of Object.entries(group)) {
+			styles$1[styleName] = {
+				open: `\u001B[${style[0]}m`,
+				close: `\u001B[${style[1]}m`,
+			};
+
+			group[styleName] = styles$1[styleName];
+
+			codes.set(style[0], style[1]);
+		}
+
+		Object.defineProperty(styles$1, groupName, {
+			value: group,
+			enumerable: false,
+		});
+	}
+
+	Object.defineProperty(styles$1, 'codes', {
+		value: codes,
+		enumerable: false,
+	});
+
+	styles$1.color.close = '\u001B[39m';
+	styles$1.bgColor.close = '\u001B[49m';
+
+	styles$1.color.ansi = wrapAnsi16();
+	styles$1.color.ansi256 = wrapAnsi256();
+	styles$1.color.ansi16m = wrapAnsi16m();
+	styles$1.bgColor.ansi = wrapAnsi16(ANSI_BACKGROUND_OFFSET);
+	styles$1.bgColor.ansi256 = wrapAnsi256(ANSI_BACKGROUND_OFFSET);
+	styles$1.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
+
+	// From https://github.com/Qix-/color-convert/blob/3f0e0d4e92e235796ccb17f6e85c72094a651f49/conversions.js
+	Object.defineProperties(styles$1, {
+		rgbToAnsi256: {
+			value(red, green, blue) {
+				// We use the extended greyscale palette here, with the exception of
+				// black and white. normal palette only has 4 greyscale shades.
+				if (red === green && green === blue) {
+					if (red < 8) {
+						return 16;
+					}
+
+					if (red > 248) {
+						return 231;
+					}
+
+					return Math.round(((red - 8) / 247) * 24) + 232;
+				}
+
+				return 16
+					+ (36 * Math.round(red / 255 * 5))
+					+ (6 * Math.round(green / 255 * 5))
+					+ Math.round(blue / 255 * 5);
+			},
+			enumerable: false,
+		},
+		hexToRgb: {
+			value(hex) {
+				const matches = /[a-f\d]{6}|[a-f\d]{3}/i.exec(hex.toString(16));
+				if (!matches) {
+					return [0, 0, 0];
+				}
+
+				let [colorString] = matches;
+
+				if (colorString.length === 3) {
+					colorString = [...colorString].map(character => character + character).join('');
+				}
+
+				const integer = Number.parseInt(colorString, 16);
+
+				return [
+					/* eslint-disable no-bitwise */
+					(integer >> 16) & 0xFF,
+					(integer >> 8) & 0xFF,
+					integer & 0xFF,
+					/* eslint-enable no-bitwise */
+				];
+			},
+			enumerable: false,
+		},
+		hexToAnsi256: {
+			value: hex => styles$1.rgbToAnsi256(...styles$1.hexToRgb(hex)),
+			enumerable: false,
+		},
+		ansi256ToAnsi: {
+			value(code) {
+				if (code < 8) {
+					return 30 + code;
+				}
+
+				if (code < 16) {
+					return 90 + (code - 8);
+				}
+
+				let red;
+				let green;
+				let blue;
+
+				if (code >= 232) {
+					red = (((code - 232) * 10) + 8) / 255;
+					green = red;
+					blue = red;
+				} else {
+					code -= 16;
+
+					const remainder = code % 36;
+
+					red = Math.floor(code / 36) / 5;
+					green = Math.floor(remainder / 6) / 5;
+					blue = (remainder % 6) / 5;
+				}
+
+				const value = Math.max(red, green, blue) * 2;
+
+				if (value === 0) {
+					return 30;
+				}
+
+				// eslint-disable-next-line no-bitwise
+				let result = 30 + ((Math.round(blue) << 2) | (Math.round(green) << 1) | Math.round(red));
+
+				if (value === 2) {
+					result += 60;
+				}
+
+				return result;
+			},
+			enumerable: false,
+		},
+		rgbToAnsi: {
+			value: (red, green, blue) => styles$1.ansi256ToAnsi(styles$1.rgbToAnsi256(red, green, blue)),
+			enumerable: false,
+		},
+		hexToAnsi: {
+			value: hex => styles$1.ansi256ToAnsi(styles$1.hexToAnsi256(hex)),
+			enumerable: false,
+		},
+	});
+
+	return styles$1;
+}
+
+const ansiStyles = assembleStyles();/* eslint-env browser */
+
+const isBlinkBasedBrowser = navigator.userAgentData
+	? navigator.userAgentData.brands.some(({brand}) => brand === 'Chromium')
+	: /\b(Chrome|Chromium)\//.test(navigator.userAgent);
+
+const colorSupport = isBlinkBasedBrowser ? {
+	level: 1,
+	hasBasic: true,
+	has256: false,
+	has16m: false,
+} : false;
+
+const supportsColor = {
+	stdout: colorSupport,
+	stderr: colorSupport,
+};// TODO: When targeting Node.js 16, use `String.prototype.replaceAll`.
+function stringReplaceAll(string, substring, replacer) {
+	let index = string.indexOf(substring);
+	if (index === -1) {
+		return string;
+	}
+
+	const substringLength = substring.length;
+	let endIndex = 0;
+	let returnValue = '';
+	do {
+		returnValue += string.slice(endIndex, index) + substring + replacer;
+		endIndex = index + substringLength;
+		index = string.indexOf(substring, endIndex);
+	} while (index !== -1);
+
+	returnValue += string.slice(endIndex);
+	return returnValue;
+}
+
+function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
+	let endIndex = 0;
+	let returnValue = '';
+	do {
+		const gotCR = string[index - 1] === '\r';
+		returnValue += string.slice(endIndex, (gotCR ? index - 1 : index)) + prefix + (gotCR ? '\r\n' : '\n') + postfix;
+		endIndex = index + 1;
+		index = string.indexOf('\n', endIndex);
+	} while (index !== -1);
+
+	returnValue += string.slice(endIndex);
+	return returnValue;
+}const {stdout: stdoutColor, stderr: stderrColor} = supportsColor;
+
+const GENERATOR = Symbol('GENERATOR');
+const STYLER = Symbol('STYLER');
+const IS_EMPTY = Symbol('IS_EMPTY');
+
+// `supportsColor.level` → `ansiStyles.color[name]` mapping
+const levelMapping = [
+	'ansi',
+	'ansi',
+	'ansi256',
+	'ansi16m',
+];
+
+const styles = Object.create(null);
+
+const applyOptions = (object, options = {}) => {
+	if (options.level && !(Number.isInteger(options.level) && options.level >= 0 && options.level <= 3)) {
+		throw new Error('The `level` option should be an integer from 0 to 3');
+	}
+
+	// Detect level if not set manually
+	const colorLevel = stdoutColor ? stdoutColor.level : 0;
+	object.level = options.level === undefined ? colorLevel : options.level;
+};
+
+class Chalk {
+	constructor(options) {
+		// eslint-disable-next-line no-constructor-return
+		return chalkFactory(options);
+	}
+}
+
+const chalkFactory = options => {
+	const chalk = (...strings) => strings.join(' ');
+	applyOptions(chalk, options);
+
+	Object.setPrototypeOf(chalk, createChalk.prototype);
+
+	return chalk;
+};
+
+function createChalk(options) {
+	return chalkFactory(options);
+}
+
+Object.setPrototypeOf(createChalk.prototype, Function.prototype);
+
+for (const [styleName, style] of Object.entries(ansiStyles)) {
+	styles[styleName] = {
+		get() {
+			const builder = createBuilder(this, createStyler(style.open, style.close, this[STYLER]), this[IS_EMPTY]);
+			Object.defineProperty(this, styleName, {value: builder});
+			return builder;
+		},
+	};
+}
+
+styles.visible = {
+	get() {
+		const builder = createBuilder(this, this[STYLER], true);
+		Object.defineProperty(this, 'visible', {value: builder});
+		return builder;
+	},
+};
+
+const getModelAnsi = (model, level, type, ...arguments_) => {
+	if (model === 'rgb') {
+		if (level === 'ansi16m') {
+			return ansiStyles[type].ansi16m(...arguments_);
+		}
+
+		if (level === 'ansi256') {
+			return ansiStyles[type].ansi256(ansiStyles.rgbToAnsi256(...arguments_));
+		}
+
+		return ansiStyles[type].ansi(ansiStyles.rgbToAnsi(...arguments_));
+	}
+
+	if (model === 'hex') {
+		return getModelAnsi('rgb', level, type, ...ansiStyles.hexToRgb(...arguments_));
+	}
+
+	return ansiStyles[type][model](...arguments_);
+};
+
+const usedModels = ['rgb', 'hex', 'ansi256'];
+
+for (const model of usedModels) {
+	styles[model] = {
+		get() {
+			const {level} = this;
+			return function (...arguments_) {
+				const styler = createStyler(getModelAnsi(model, levelMapping[level], 'color', ...arguments_), ansiStyles.color.close, this[STYLER]);
+				return createBuilder(this, styler, this[IS_EMPTY]);
+			};
+		},
+	};
+
+	const bgModel = 'bg' + model[0].toUpperCase() + model.slice(1);
+	styles[bgModel] = {
+		get() {
+			const {level} = this;
+			return function (...arguments_) {
+				const styler = createStyler(getModelAnsi(model, levelMapping[level], 'bgColor', ...arguments_), ansiStyles.bgColor.close, this[STYLER]);
+				return createBuilder(this, styler, this[IS_EMPTY]);
+			};
+		},
+	};
+}
+
+const proto = Object.defineProperties(() => {}, {
+	...styles,
+	level: {
+		enumerable: true,
+		get() {
+			return this[GENERATOR].level;
+		},
+		set(level) {
+			this[GENERATOR].level = level;
+		},
+	},
+});
+
+const createStyler = (open, close, parent) => {
+	let openAll;
+	let closeAll;
+	if (parent === undefined) {
+		openAll = open;
+		closeAll = close;
+	} else {
+		openAll = parent.openAll + open;
+		closeAll = close + parent.closeAll;
+	}
+
+	return {
+		open,
+		close,
+		openAll,
+		closeAll,
+		parent,
+	};
+};
+
+const createBuilder = (self, _styler, _isEmpty) => {
+	// Single argument is hot path, implicit coercion is faster than anything
+	// eslint-disable-next-line no-implicit-coercion
+	const builder = (...arguments_) => applyStyle(builder, (arguments_.length === 1) ? ('' + arguments_[0]) : arguments_.join(' '));
+
+	// We alter the prototype because we must return a function, but there is
+	// no way to create a function with a different prototype
+	Object.setPrototypeOf(builder, proto);
+
+	builder[GENERATOR] = self;
+	builder[STYLER] = _styler;
+	builder[IS_EMPTY] = _isEmpty;
+
+	return builder;
+};
+
+const applyStyle = (self, string) => {
+	if (self.level <= 0 || !string) {
+		return self[IS_EMPTY] ? '' : string;
+	}
+
+	let styler = self[STYLER];
+
+	if (styler === undefined) {
+		return string;
+	}
+
+	const {openAll, closeAll} = styler;
+	if (string.includes('\u001B')) {
+		while (styler !== undefined) {
+			// Replace any instances already present with a re-opening code
+			// otherwise only the part of the string until said closing code
+			// will be colored, and the rest will simply be 'plain'.
+			string = stringReplaceAll(string, styler.close, styler.open);
+
+			styler = styler.parent;
+		}
+	}
+
+	// We can move both next actions out of loop, because remaining actions in loop won't have
+	// any/visible effect on parts we add here. Close the styling before a linebreak and reopen
+	// after next line to fix a bleed issue on macOS: https://github.com/chalk/chalk/pull/92
+	const lfIndex = string.indexOf('\n');
+	if (lfIndex !== -1) {
+		string = stringEncaseCRLFWithFirstIndex(string, closeAll, openAll, lfIndex);
+	}
+
+	return openAll + string + closeAll;
+};
+
+Object.defineProperties(createChalk.prototype, styles);
+
+createChalk();
+createChalk({level: stderrColor ? stderrColor.level : 0});var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function getAugmentedNamespace(n) {
+  var f = n.default;
+	if (typeof f == "function") {
+		var a = function () {
+			return f.apply(this, arguments);
+		};
+		a.prototype = f.prototype;
+  } else a = {};
+  Object.defineProperty(a, '__esModule', {value: true});
+	Object.keys(n).forEach(function (k) {
+		var d = Object.getOwnPropertyDescriptor(n, k);
+		Object.defineProperty(a, k, d.get ? d : {
+			enumerable: true,
+			get: function () {
+				return n[k];
+			}
+		});
+	});
+	return a;
+}var core = {};var command = {};var utils = {};// We use any as a valid input type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+Object.defineProperty(utils, "__esModule", { value: true });
+utils.toCommandProperties = utils.toCommandValue = void 0;
+/**
+ * Sanitizes an input into a string so it can be passed into issueCommand safely
+ * @param input input to sanitize into a string
+ */
+function toCommandValue(input) {
+    if (input === null || input === undefined) {
+        return '';
+    }
+    else if (typeof input === 'string' || input instanceof String) {
+        return input;
+    }
+    return JSON.stringify(input);
+}
+utils.toCommandValue = toCommandValue;
+/**
+ *
+ * @param annotationProperties
+ * @returns The command properties to send with the actual annotation command
+ * See IssueCommandProperties: https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManager.cs#L646
+ */
+function toCommandProperties(annotationProperties) {
+    if (!Object.keys(annotationProperties).length) {
+        return {};
+    }
+    return {
+        title: annotationProperties.title,
+        file: annotationProperties.file,
+        line: annotationProperties.startLine,
+        endLine: annotationProperties.endLine,
+        col: annotationProperties.startColumn,
+        endColumn: annotationProperties.endColumn
+    };
+}
+utils.toCommandProperties = toCommandProperties;var __createBinding$1 = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault$1 = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar$1 = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding$1(result, mod, k);
+    __setModuleDefault$1(result, mod);
+    return result;
+};
+Object.defineProperty(command, "__esModule", { value: true });
+command.issue = command.issueCommand = void 0;
+const os$1 = __importStar$1(require$$0);
+const utils_1$1 = utils;
+/**
+ * Commands
+ *
+ * Command Format:
+ *   ::name key=value,key=value::message
+ *
+ * Examples:
+ *   ::warning::This is the message
+ *   ::set-env name=MY_VAR::some value
+ */
+function issueCommand(command, properties, message) {
+    const cmd = new Command(command, properties, message);
+    process.stdout.write(cmd.toString() + os$1.EOL);
+}
+command.issueCommand = issueCommand;
+function issue(name, message = '') {
+    issueCommand(name, {}, message);
+}
+command.issue = issue;
+const CMD_STRING = '::';
+class Command {
+    constructor(command, properties, message) {
+        if (!command) {
+            command = 'missing.command';
+        }
+        this.command = command;
+        this.properties = properties;
+        this.message = message;
+    }
+    toString() {
+        let cmdStr = CMD_STRING + this.command;
+        if (this.properties && Object.keys(this.properties).length > 0) {
+            cmdStr += ' ';
+            let first = true;
+            for (const key in this.properties) {
+                if (this.properties.hasOwnProperty(key)) {
+                    const val = this.properties[key];
+                    if (val) {
+                        if (first) {
+                            first = false;
+                        }
+                        else {
+                            cmdStr += ',';
+                        }
+                        cmdStr += `${key}=${escapeProperty(val)}`;
+                    }
+                }
+            }
+        }
+        cmdStr += `${CMD_STRING}${escapeData(this.message)}`;
+        return cmdStr;
+    }
+}
+function escapeData(s) {
+    return utils_1$1.toCommandValue(s)
+        .replace(/%/g, '%25')
+        .replace(/\r/g, '%0D')
+        .replace(/\n/g, '%0A');
+}
+function escapeProperty(s) {
+    return utils_1$1.toCommandValue(s)
+        .replace(/%/g, '%25')
+        .replace(/\r/g, '%0D')
+        .replace(/\n/g, '%0A')
+        .replace(/:/g, '%3A')
+        .replace(/,/g, '%2C');
+}var fileCommand = {};// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+var getRandomValues;
+var rnds8 = new Uint8Array(16);
+function rng() {
+  // lazy load so that environments that need to polyfill have a chance to do so
+  if (!getRandomValues) {
+    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation. Also,
+    // find the complete implementation of crypto (msCrypto) on IE11.
+    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== 'undefined' && typeof msCrypto.getRandomValues === 'function' && msCrypto.getRandomValues.bind(msCrypto);
+
+    if (!getRandomValues) {
+      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+    }
+  }
+
+  return getRandomValues(rnds8);
+}const REGEX = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;function validate(uuid) {
+  return typeof uuid === 'string' && REGEX.test(uuid);
+}/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+
+var byteToHex = [];
+
+for (var i$1 = 0; i$1 < 256; ++i$1) {
+  byteToHex.push((i$1 + 0x100).toString(16).substr(1));
+}
+
+function stringify$3(arr) {
+  var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  var uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!validate(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+
+var _clockseq; // Previous uuid creation time
+
+
+var _lastMSecs = 0;
+var _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
+
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || new Array(16);
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+
+  if (node == null || clockseq == null) {
+    var seedBytes = options.random || (options.rng || rng)();
+
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [seedBytes[0] | 0x01, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
+    }
+
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+
+
+  var msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
+
+  var dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
+
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  } // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+
+
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  } // Per 4.2.1.2 Throw error if too many uuids are requested
+
+
+  if (nsecs >= 10000) {
+    throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+
+  msecs += 12219292800000; // `time_low`
+
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff; // `time_mid`
+
+  var tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff; // `time_high_and_version`
+
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+
+  b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+
+  b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
+
+  b[i++] = clockseq & 0xff; // `node`
+
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf || stringify$3(b);
+}function parse$1(uuid) {
+  if (!validate(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  var v;
+  var arr = new Uint8Array(16); // Parse ########-....-....-....-............
+
+  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+  arr[1] = v >>> 16 & 0xff;
+  arr[2] = v >>> 8 & 0xff;
+  arr[3] = v & 0xff; // Parse ........-####-....-....-............
+
+  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+  arr[5] = v & 0xff; // Parse ........-....-####-....-............
+
+  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+  arr[7] = v & 0xff; // Parse ........-....-....-####-............
+
+  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+  arr[9] = v & 0xff; // Parse ........-....-....-....-############
+  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
+
+  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
+  arr[11] = v / 0x100000000 & 0xff;
+  arr[12] = v >>> 24 & 0xff;
+  arr[13] = v >>> 16 & 0xff;
+  arr[14] = v >>> 8 & 0xff;
+  arr[15] = v & 0xff;
+  return arr;
+}function stringToBytes(str) {
+  str = unescape(encodeURIComponent(str)); // UTF8 escape
+
+  var bytes = [];
+
+  for (var i = 0; i < str.length; ++i) {
+    bytes.push(str.charCodeAt(i));
+  }
+
+  return bytes;
+}
+
+var DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+var URL$1 = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+function v35 (name, version, hashfunc) {
+  function generateUUID(value, namespace, buf, offset) {
+    if (typeof value === 'string') {
+      value = stringToBytes(value);
+    }
+
+    if (typeof namespace === 'string') {
+      namespace = parse$1(namespace);
+    }
+
+    if (namespace.length !== 16) {
+      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
+    } // Compute hash of namespace and value, Per 4.3
+    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
+    // hashfunc([...namespace, ... value])`
+
+
+    var bytes = new Uint8Array(16 + value.length);
+    bytes.set(namespace);
+    bytes.set(value, namespace.length);
+    bytes = hashfunc(bytes);
+    bytes[6] = bytes[6] & 0x0f | version;
+    bytes[8] = bytes[8] & 0x3f | 0x80;
+
+    if (buf) {
+      offset = offset || 0;
+
+      for (var i = 0; i < 16; ++i) {
+        buf[offset + i] = bytes[i];
+      }
+
+      return buf;
+    }
+
+    return stringify$3(bytes);
+  } // Function#name is not settable on some platforms (#270)
+
+
+  try {
+    generateUUID.name = name; // eslint-disable-next-line no-empty
+  } catch (err) {} // For CommonJS default export support
+
+
+  generateUUID.DNS = DNS;
+  generateUUID.URL = URL$1;
+  return generateUUID;
+}/*
+ * Browser-compatible JavaScript MD5
+ *
+ * Modification of JavaScript MD5
+ * https://github.com/blueimp/JavaScript-MD5
+ *
+ * Copyright 2011, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ *
+ * Based on
+ * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+ * Digest Algorithm, as defined in RFC 1321.
+ * Version 2.2 Copyright (C) Paul Johnston 1999 - 2009
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ * See http://pajhome.org.uk/crypt/md5 for more info.
+ */
+function md5(bytes) {
+  if (typeof bytes === 'string') {
+    var msg = unescape(encodeURIComponent(bytes)); // UTF8 escape
+
+    bytes = new Uint8Array(msg.length);
+
+    for (var i = 0; i < msg.length; ++i) {
+      bytes[i] = msg.charCodeAt(i);
+    }
+  }
+
+  return md5ToHexEncodedArray(wordsToMd5(bytesToWords(bytes), bytes.length * 8));
+}
+/*
+ * Convert an array of little-endian words to an array of bytes
+ */
+
+
+function md5ToHexEncodedArray(input) {
+  var output = [];
+  var length32 = input.length * 32;
+  var hexTab = '0123456789abcdef';
+
+  for (var i = 0; i < length32; i += 8) {
+    var x = input[i >> 5] >>> i % 32 & 0xff;
+    var hex = parseInt(hexTab.charAt(x >>> 4 & 0x0f) + hexTab.charAt(x & 0x0f), 16);
+    output.push(hex);
+  }
+
+  return output;
+}
+/**
+ * Calculate output length with padding and bit length
+ */
+
+
+function getOutputLength(inputLength8) {
+  return (inputLength8 + 64 >>> 9 << 4) + 14 + 1;
+}
+/*
+ * Calculate the MD5 of an array of little-endian words, and a bit length.
+ */
+
+
+function wordsToMd5(x, len) {
+  /* append padding */
+  x[len >> 5] |= 0x80 << len % 32;
+  x[getOutputLength(len) - 1] = len;
+  var a = 1732584193;
+  var b = -271733879;
+  var c = -1732584194;
+  var d = 271733878;
+
+  for (var i = 0; i < x.length; i += 16) {
+    var olda = a;
+    var oldb = b;
+    var oldc = c;
+    var oldd = d;
+    a = md5ff(a, b, c, d, x[i], 7, -680876936);
+    d = md5ff(d, a, b, c, x[i + 1], 12, -389564586);
+    c = md5ff(c, d, a, b, x[i + 2], 17, 606105819);
+    b = md5ff(b, c, d, a, x[i + 3], 22, -1044525330);
+    a = md5ff(a, b, c, d, x[i + 4], 7, -176418897);
+    d = md5ff(d, a, b, c, x[i + 5], 12, 1200080426);
+    c = md5ff(c, d, a, b, x[i + 6], 17, -1473231341);
+    b = md5ff(b, c, d, a, x[i + 7], 22, -45705983);
+    a = md5ff(a, b, c, d, x[i + 8], 7, 1770035416);
+    d = md5ff(d, a, b, c, x[i + 9], 12, -1958414417);
+    c = md5ff(c, d, a, b, x[i + 10], 17, -42063);
+    b = md5ff(b, c, d, a, x[i + 11], 22, -1990404162);
+    a = md5ff(a, b, c, d, x[i + 12], 7, 1804603682);
+    d = md5ff(d, a, b, c, x[i + 13], 12, -40341101);
+    c = md5ff(c, d, a, b, x[i + 14], 17, -1502002290);
+    b = md5ff(b, c, d, a, x[i + 15], 22, 1236535329);
+    a = md5gg(a, b, c, d, x[i + 1], 5, -165796510);
+    d = md5gg(d, a, b, c, x[i + 6], 9, -1069501632);
+    c = md5gg(c, d, a, b, x[i + 11], 14, 643717713);
+    b = md5gg(b, c, d, a, x[i], 20, -373897302);
+    a = md5gg(a, b, c, d, x[i + 5], 5, -701558691);
+    d = md5gg(d, a, b, c, x[i + 10], 9, 38016083);
+    c = md5gg(c, d, a, b, x[i + 15], 14, -660478335);
+    b = md5gg(b, c, d, a, x[i + 4], 20, -405537848);
+    a = md5gg(a, b, c, d, x[i + 9], 5, 568446438);
+    d = md5gg(d, a, b, c, x[i + 14], 9, -1019803690);
+    c = md5gg(c, d, a, b, x[i + 3], 14, -187363961);
+    b = md5gg(b, c, d, a, x[i + 8], 20, 1163531501);
+    a = md5gg(a, b, c, d, x[i + 13], 5, -1444681467);
+    d = md5gg(d, a, b, c, x[i + 2], 9, -51403784);
+    c = md5gg(c, d, a, b, x[i + 7], 14, 1735328473);
+    b = md5gg(b, c, d, a, x[i + 12], 20, -1926607734);
+    a = md5hh(a, b, c, d, x[i + 5], 4, -378558);
+    d = md5hh(d, a, b, c, x[i + 8], 11, -2022574463);
+    c = md5hh(c, d, a, b, x[i + 11], 16, 1839030562);
+    b = md5hh(b, c, d, a, x[i + 14], 23, -35309556);
+    a = md5hh(a, b, c, d, x[i + 1], 4, -1530992060);
+    d = md5hh(d, a, b, c, x[i + 4], 11, 1272893353);
+    c = md5hh(c, d, a, b, x[i + 7], 16, -155497632);
+    b = md5hh(b, c, d, a, x[i + 10], 23, -1094730640);
+    a = md5hh(a, b, c, d, x[i + 13], 4, 681279174);
+    d = md5hh(d, a, b, c, x[i], 11, -358537222);
+    c = md5hh(c, d, a, b, x[i + 3], 16, -722521979);
+    b = md5hh(b, c, d, a, x[i + 6], 23, 76029189);
+    a = md5hh(a, b, c, d, x[i + 9], 4, -640364487);
+    d = md5hh(d, a, b, c, x[i + 12], 11, -421815835);
+    c = md5hh(c, d, a, b, x[i + 15], 16, 530742520);
+    b = md5hh(b, c, d, a, x[i + 2], 23, -995338651);
+    a = md5ii(a, b, c, d, x[i], 6, -198630844);
+    d = md5ii(d, a, b, c, x[i + 7], 10, 1126891415);
+    c = md5ii(c, d, a, b, x[i + 14], 15, -1416354905);
+    b = md5ii(b, c, d, a, x[i + 5], 21, -57434055);
+    a = md5ii(a, b, c, d, x[i + 12], 6, 1700485571);
+    d = md5ii(d, a, b, c, x[i + 3], 10, -1894986606);
+    c = md5ii(c, d, a, b, x[i + 10], 15, -1051523);
+    b = md5ii(b, c, d, a, x[i + 1], 21, -2054922799);
+    a = md5ii(a, b, c, d, x[i + 8], 6, 1873313359);
+    d = md5ii(d, a, b, c, x[i + 15], 10, -30611744);
+    c = md5ii(c, d, a, b, x[i + 6], 15, -1560198380);
+    b = md5ii(b, c, d, a, x[i + 13], 21, 1309151649);
+    a = md5ii(a, b, c, d, x[i + 4], 6, -145523070);
+    d = md5ii(d, a, b, c, x[i + 11], 10, -1120210379);
+    c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
+    b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
+    a = safeAdd(a, olda);
+    b = safeAdd(b, oldb);
+    c = safeAdd(c, oldc);
+    d = safeAdd(d, oldd);
+  }
+
+  return [a, b, c, d];
+}
+/*
+ * Convert an array bytes to an array of little-endian words
+ * Characters >255 have their high-byte silently ignored.
+ */
+
+
+function bytesToWords(input) {
+  if (input.length === 0) {
+    return [];
+  }
+
+  var length8 = input.length * 8;
+  var output = new Uint32Array(getOutputLength(length8));
+
+  for (var i = 0; i < length8; i += 8) {
+    output[i >> 5] |= (input[i / 8] & 0xff) << i % 32;
+  }
+
+  return output;
+}
+/*
+ * Add integers, wrapping at 2^32. This uses 16-bit operations internally
+ * to work around bugs in some JS interpreters.
+ */
+
+
+function safeAdd(x, y) {
+  var lsw = (x & 0xffff) + (y & 0xffff);
+  var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+  return msw << 16 | lsw & 0xffff;
+}
+/*
+ * Bitwise rotate a 32-bit number to the left.
+ */
+
+
+function bitRotateLeft(num, cnt) {
+  return num << cnt | num >>> 32 - cnt;
+}
+/*
+ * These functions implement the four basic operations the algorithm uses.
+ */
+
+
+function md5cmn(q, a, b, x, s, t) {
+  return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
+}
+
+function md5ff(a, b, c, d, x, s, t) {
+  return md5cmn(b & c | ~b & d, a, b, x, s, t);
+}
+
+function md5gg(a, b, c, d, x, s, t) {
+  return md5cmn(b & d | c & ~d, a, b, x, s, t);
+}
+
+function md5hh(a, b, c, d, x, s, t) {
+  return md5cmn(b ^ c ^ d, a, b, x, s, t);
+}
+
+function md5ii(a, b, c, d, x, s, t) {
+  return md5cmn(c ^ (b | ~d), a, b, x, s, t);
+}var v3 = v35('v3', 0x30, md5);
+const v3$1 = v3;function v4(options, buf, offset) {
+  options = options || {};
+  var rnds = options.random || (options.rng || rng)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (var i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return stringify$3(rnds);
+}// Adapted from Chris Veness' SHA1 code at
+// http://www.movable-type.co.uk/scripts/sha1.html
+function f$1(s, x, y, z) {
+  switch (s) {
+    case 0:
+      return x & y ^ ~x & z;
+
+    case 1:
+      return x ^ y ^ z;
+
+    case 2:
+      return x & y ^ x & z ^ y & z;
+
+    case 3:
+      return x ^ y ^ z;
+  }
+}
+
+function ROTL(x, n) {
+  return x << n | x >>> 32 - n;
+}
+
+function sha1(bytes) {
+  var K = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6];
+  var H = [0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0];
+
+  if (typeof bytes === 'string') {
+    var msg = unescape(encodeURIComponent(bytes)); // UTF8 escape
+
+    bytes = [];
+
+    for (var i = 0; i < msg.length; ++i) {
+      bytes.push(msg.charCodeAt(i));
+    }
+  } else if (!Array.isArray(bytes)) {
+    // Convert Array-like to Array
+    bytes = Array.prototype.slice.call(bytes);
+  }
+
+  bytes.push(0x80);
+  var l = bytes.length / 4 + 2;
+  var N = Math.ceil(l / 16);
+  var M = new Array(N);
+
+  for (var _i = 0; _i < N; ++_i) {
+    var arr = new Uint32Array(16);
+
+    for (var j = 0; j < 16; ++j) {
+      arr[j] = bytes[_i * 64 + j * 4] << 24 | bytes[_i * 64 + j * 4 + 1] << 16 | bytes[_i * 64 + j * 4 + 2] << 8 | bytes[_i * 64 + j * 4 + 3];
+    }
+
+    M[_i] = arr;
+  }
+
+  M[N - 1][14] = (bytes.length - 1) * 8 / Math.pow(2, 32);
+  M[N - 1][14] = Math.floor(M[N - 1][14]);
+  M[N - 1][15] = (bytes.length - 1) * 8 & 0xffffffff;
+
+  for (var _i2 = 0; _i2 < N; ++_i2) {
+    var W = new Uint32Array(80);
+
+    for (var t = 0; t < 16; ++t) {
+      W[t] = M[_i2][t];
+    }
+
+    for (var _t = 16; _t < 80; ++_t) {
+      W[_t] = ROTL(W[_t - 3] ^ W[_t - 8] ^ W[_t - 14] ^ W[_t - 16], 1);
+    }
+
+    var a = H[0];
+    var b = H[1];
+    var c = H[2];
+    var d = H[3];
+    var e = H[4];
+
+    for (var _t2 = 0; _t2 < 80; ++_t2) {
+      var s = Math.floor(_t2 / 20);
+      var T = ROTL(a, 5) + f$1(s, b, c, d) + e + K[s] + W[_t2] >>> 0;
+      e = d;
+      d = c;
+      c = ROTL(b, 30) >>> 0;
+      b = a;
+      a = T;
+    }
+
+    H[0] = H[0] + a >>> 0;
+    H[1] = H[1] + b >>> 0;
+    H[2] = H[2] + c >>> 0;
+    H[3] = H[3] + d >>> 0;
+    H[4] = H[4] + e >>> 0;
+  }
+
+  return [H[0] >> 24 & 0xff, H[0] >> 16 & 0xff, H[0] >> 8 & 0xff, H[0] & 0xff, H[1] >> 24 & 0xff, H[1] >> 16 & 0xff, H[1] >> 8 & 0xff, H[1] & 0xff, H[2] >> 24 & 0xff, H[2] >> 16 & 0xff, H[2] >> 8 & 0xff, H[2] & 0xff, H[3] >> 24 & 0xff, H[3] >> 16 & 0xff, H[3] >> 8 & 0xff, H[3] & 0xff, H[4] >> 24 & 0xff, H[4] >> 16 & 0xff, H[4] >> 8 & 0xff, H[4] & 0xff];
+}var v5 = v35('v5', 0x50, sha1);
+const v5$1 = v5;const nil = '00000000-0000-0000-0000-000000000000';function version(uuid) {
+  if (!validate(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  return parseInt(uuid.substr(14, 1), 16);
+}const esmBrowser=/*#__PURE__*/Object.defineProperty({__proto__:null,v1,v3:v3$1,v4,v5:v5$1,NIL:nil,version,validate,stringify:stringify$3,parse:parse$1},Symbol.toStringTag,{value:'Module'});const require$$2 = /*@__PURE__*/getAugmentedNamespace(esmBrowser);// For internal use, subject to change.
+var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(fileCommand, "__esModule", { value: true });
+fileCommand.prepareKeyValueMessage = fileCommand.issueFileCommand = void 0;
+// We use any as a valid input type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const fs = __importStar(require$$0$1);
+const os = __importStar(require$$0);
+const uuid_1 = require$$2;
+const utils_1 = utils;
+function issueFileCommand(command, message) {
+    const filePath = process.env[`GITHUB_${command}`];
+    if (!filePath) {
+        throw new Error(`Unable to find environment variable for file command ${command}`);
+    }
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`Missing file at path: ${filePath}`);
+    }
+    fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+        encoding: 'utf8'
+    });
+}
+fileCommand.issueFileCommand = issueFileCommand;
+function prepareKeyValueMessage(key, value) {
+    const delimiter = `ghadelimiter_${uuid_1.v4()}`;
+    const convertedValue = utils_1.toCommandValue(value);
+    // These should realistically never happen, but just in case someone finds a
+    // way to exploit uuid generation let's not allow keys or values that contain
+    // the delimiter.
+    if (key.includes(delimiter)) {
+        throw new Error(`Unexpected input: name should not contain the delimiter "${delimiter}"`);
+    }
+    if (convertedValue.includes(delimiter)) {
+        throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
+    }
+    return `${key}<<${delimiter}${os.EOL}${convertedValue}${os.EOL}${delimiter}`;
+}
+fileCommand.prepareKeyValueMessage = prepareKeyValueMessage;var oidcUtils = {};var lib = {};var proxy = {};Object.defineProperty(proxy, "__esModule", { value: true });
+proxy.checkBypass = proxy.getProxyUrl = void 0;
+function getProxyUrl(reqUrl) {
+    const usingSsl = reqUrl.protocol === 'https:';
+    if (checkBypass(reqUrl)) {
+        return undefined;
+    }
+    const proxyVar = (() => {
+        if (usingSsl) {
+            return process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+        }
+        else {
+            return process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        }
+    })();
+    if (proxyVar) {
+        return new URL(proxyVar);
+    }
+    else {
+        return undefined;
+    }
+}
+proxy.getProxyUrl = getProxyUrl;
+function checkBypass(reqUrl) {
+    if (!reqUrl.hostname) {
+        return false;
+    }
+    const noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
+    if (!noProxy) {
+        return false;
+    }
+    // Determine the request port
+    let reqPort;
+    if (reqUrl.port) {
+        reqPort = Number(reqUrl.port);
+    }
+    else if (reqUrl.protocol === 'http:') {
+        reqPort = 80;
+    }
+    else if (reqUrl.protocol === 'https:') {
+        reqPort = 443;
+    }
+    // Format the request hostname and hostname with port
+    const upperReqHosts = [reqUrl.hostname.toUpperCase()];
+    if (typeof reqPort === 'number') {
+        upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
+    }
+    // Compare request host against noproxy
+    for (const upperNoProxyItem of noProxy
+        .split(',')
+        .map(x => x.trim().toUpperCase())
+        .filter(x => x)) {
+        if (upperReqHosts.some(x => x === upperNoProxyItem)) {
+            return true;
+        }
+    }
+    return false;
+}
+proxy.checkBypass = checkBypass;var tunnel$1 = {exports: {}};var tunnel = {};var tls = require$$1;
+var http = require$$2$1;
+var https = require$$3;
+var events = require$$4;
+var util = require$$6;
+
+
+tunnel.httpOverHttp = httpOverHttp;
+tunnel.httpsOverHttp = httpsOverHttp;
+tunnel.httpOverHttps = httpOverHttps;
+tunnel.httpsOverHttps = httpsOverHttps;
+
+
+function httpOverHttp(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = http.request;
+  return agent;
+}
+
+function httpsOverHttp(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = http.request;
+  agent.createSocket = createSecureSocket;
+  agent.defaultPort = 443;
+  return agent;
+}
+
+function httpOverHttps(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = https.request;
+  return agent;
+}
+
+function httpsOverHttps(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = https.request;
+  agent.createSocket = createSecureSocket;
+  agent.defaultPort = 443;
+  return agent;
+}
+
+
+function TunnelingAgent(options) {
+  var self = this;
+  self.options = options || {};
+  self.proxyOptions = self.options.proxy || {};
+  self.maxSockets = self.options.maxSockets || http.Agent.defaultMaxSockets;
+  self.requests = [];
+  self.sockets = [];
+
+  self.on('free', function onFree(socket, host, port, localAddress) {
+    var options = toOptions(host, port, localAddress);
+    for (var i = 0, len = self.requests.length; i < len; ++i) {
+      var pending = self.requests[i];
+      if (pending.host === options.host && pending.port === options.port) {
+        // Detect the request to connect same origin server,
+        // reuse the connection.
+        self.requests.splice(i, 1);
+        pending.request.onSocket(socket);
+        return;
+      }
+    }
+    socket.destroy();
+    self.removeSocket(socket);
+  });
+}
+util.inherits(TunnelingAgent, events.EventEmitter);
+
+TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
+  var self = this;
+  var options = mergeOptions({request: req}, self.options, toOptions(host, port, localAddress));
+
+  if (self.sockets.length >= this.maxSockets) {
+    // We are over limit so we'll add it to the queue.
+    self.requests.push(options);
+    return;
+  }
+
+  // If we are under maxSockets create a new one.
+  self.createSocket(options, function(socket) {
+    socket.on('free', onFree);
+    socket.on('close', onCloseOrRemove);
+    socket.on('agentRemove', onCloseOrRemove);
+    req.onSocket(socket);
+
+    function onFree() {
+      self.emit('free', socket, options);
+    }
+
+    function onCloseOrRemove(err) {
+      self.removeSocket(socket);
+      socket.removeListener('free', onFree);
+      socket.removeListener('close', onCloseOrRemove);
+      socket.removeListener('agentRemove', onCloseOrRemove);
+    }
+  });
+};
+
+TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
+  var self = this;
+  var placeholder = {};
+  self.sockets.push(placeholder);
+
+  var connectOptions = mergeOptions({}, self.proxyOptions, {
+    method: 'CONNECT',
+    path: options.host + ':' + options.port,
+    agent: false,
+    headers: {
+      host: options.host + ':' + options.port
+    }
+  });
+  if (options.localAddress) {
+    connectOptions.localAddress = options.localAddress;
+  }
+  if (connectOptions.proxyAuth) {
+    connectOptions.headers = connectOptions.headers || {};
+    connectOptions.headers['Proxy-Authorization'] = 'Basic ' +
+        new Buffer(connectOptions.proxyAuth).toString('base64');
+  }
+
+  debug('making CONNECT request');
+  var connectReq = self.request(connectOptions);
+  connectReq.useChunkedEncodingByDefault = false; // for v0.6
+  connectReq.once('response', onResponse); // for v0.6
+  connectReq.once('upgrade', onUpgrade);   // for v0.6
+  connectReq.once('connect', onConnect);   // for v0.7 or later
+  connectReq.once('error', onError);
+  connectReq.end();
+
+  function onResponse(res) {
+    // Very hacky. This is necessary to avoid http-parser leaks.
+    res.upgrade = true;
+  }
+
+  function onUpgrade(res, socket, head) {
+    // Hacky.
+    process.nextTick(function() {
+      onConnect(res, socket, head);
+    });
+  }
+
+  function onConnect(res, socket, head) {
+    connectReq.removeAllListeners();
+    socket.removeAllListeners();
+
+    if (res.statusCode !== 200) {
+      debug('tunneling socket could not be established, statusCode=%d',
+        res.statusCode);
+      socket.destroy();
+      var error = new Error('tunneling socket could not be established, ' +
+        'statusCode=' + res.statusCode);
+      error.code = 'ECONNRESET';
+      options.request.emit('error', error);
+      self.removeSocket(placeholder);
+      return;
+    }
+    if (head.length > 0) {
+      debug('got illegal response body from proxy');
+      socket.destroy();
+      var error = new Error('got illegal response body from proxy');
+      error.code = 'ECONNRESET';
+      options.request.emit('error', error);
+      self.removeSocket(placeholder);
+      return;
+    }
+    debug('tunneling connection has established');
+    self.sockets[self.sockets.indexOf(placeholder)] = socket;
+    return cb(socket);
+  }
+
+  function onError(cause) {
+    connectReq.removeAllListeners();
+
+    debug('tunneling socket could not be established, cause=%s\n',
+          cause.message, cause.stack);
+    var error = new Error('tunneling socket could not be established, ' +
+                          'cause=' + cause.message);
+    error.code = 'ECONNRESET';
+    options.request.emit('error', error);
+    self.removeSocket(placeholder);
+  }
+};
+
+TunnelingAgent.prototype.removeSocket = function removeSocket(socket) {
+  var pos = this.sockets.indexOf(socket);
+  if (pos === -1) {
+    return;
+  }
+  this.sockets.splice(pos, 1);
+
+  var pending = this.requests.shift();
+  if (pending) {
+    // If we have pending requests and a socket gets closed a new one
+    // needs to be created to take over in the pool for the one that closed.
+    this.createSocket(pending, function(socket) {
+      pending.request.onSocket(socket);
+    });
+  }
+};
+
+function createSecureSocket(options, cb) {
+  var self = this;
+  TunnelingAgent.prototype.createSocket.call(self, options, function(socket) {
+    var hostHeader = options.request.getHeader('host');
+    var tlsOptions = mergeOptions({}, self.options, {
+      socket: socket,
+      servername: hostHeader ? hostHeader.replace(/:.*$/, '') : options.host
+    });
+
+    // 0 is dummy port for v0.6
+    var secureSocket = tls.connect(0, tlsOptions);
+    self.sockets[self.sockets.indexOf(socket)] = secureSocket;
+    cb(secureSocket);
+  });
+}
+
+
+function toOptions(host, port, localAddress) {
+  if (typeof host === 'string') { // since v0.10
+    return {
+      host: host,
+      port: port,
+      localAddress: localAddress
+    };
+  }
+  return host; // for v0.11 or later
+}
+
+function mergeOptions(target) {
+  for (var i = 1, len = arguments.length; i < len; ++i) {
+    var overrides = arguments[i];
+    if (typeof overrides === 'object') {
+      var keys = Object.keys(overrides);
+      for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
+        var k = keys[j];
+        if (overrides[k] !== undefined) {
+          target[k] = overrides[k];
+        }
+      }
+    }
+  }
+  return target;
+}
+
+
+var debug;
+if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
+  debug = function() {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof args[0] === 'string') {
+      args[0] = 'TUNNEL: ' + args[0];
+    } else {
+      args.unshift('TUNNEL:');
+    }
+    console.error.apply(console, args);
+  };
+} else {
+  debug = function() {};
+}
+tunnel.debug = debug; // for test
+(function (module) {
+	module.exports = tunnel;
+} (tunnel$1));(function (exports) {
+	/* eslint-disable @typescript-eslint/no-explicit-any */
+	var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+	}) : (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    o[k2] = m[k];
+	}));
+	var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+	    Object.defineProperty(o, "default", { enumerable: true, value: v });
+	}) : function(o, v) {
+	    o["default"] = v;
+	});
+	var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+	    if (mod && mod.__esModule) return mod;
+	    var result = {};
+	    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+	    __setModuleDefault(result, mod);
+	    return result;
+	};
+	var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+	    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+	    return new (P || (P = Promise))(function (resolve, reject) {
+	        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+	        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+	        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+	        step((generator = generator.apply(thisArg, _arguments || [])).next());
+	    });
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
+	const http = __importStar(require$$2$1);
+	const https = __importStar(require$$3);
+	const pm = __importStar(proxy);
+	const tunnel = __importStar(tunnel$1.exports);
+	var HttpCodes;
+	(function (HttpCodes) {
+	    HttpCodes[HttpCodes["OK"] = 200] = "OK";
+	    HttpCodes[HttpCodes["MultipleChoices"] = 300] = "MultipleChoices";
+	    HttpCodes[HttpCodes["MovedPermanently"] = 301] = "MovedPermanently";
+	    HttpCodes[HttpCodes["ResourceMoved"] = 302] = "ResourceMoved";
+	    HttpCodes[HttpCodes["SeeOther"] = 303] = "SeeOther";
+	    HttpCodes[HttpCodes["NotModified"] = 304] = "NotModified";
+	    HttpCodes[HttpCodes["UseProxy"] = 305] = "UseProxy";
+	    HttpCodes[HttpCodes["SwitchProxy"] = 306] = "SwitchProxy";
+	    HttpCodes[HttpCodes["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+	    HttpCodes[HttpCodes["PermanentRedirect"] = 308] = "PermanentRedirect";
+	    HttpCodes[HttpCodes["BadRequest"] = 400] = "BadRequest";
+	    HttpCodes[HttpCodes["Unauthorized"] = 401] = "Unauthorized";
+	    HttpCodes[HttpCodes["PaymentRequired"] = 402] = "PaymentRequired";
+	    HttpCodes[HttpCodes["Forbidden"] = 403] = "Forbidden";
+	    HttpCodes[HttpCodes["NotFound"] = 404] = "NotFound";
+	    HttpCodes[HttpCodes["MethodNotAllowed"] = 405] = "MethodNotAllowed";
+	    HttpCodes[HttpCodes["NotAcceptable"] = 406] = "NotAcceptable";
+	    HttpCodes[HttpCodes["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
+	    HttpCodes[HttpCodes["RequestTimeout"] = 408] = "RequestTimeout";
+	    HttpCodes[HttpCodes["Conflict"] = 409] = "Conflict";
+	    HttpCodes[HttpCodes["Gone"] = 410] = "Gone";
+	    HttpCodes[HttpCodes["TooManyRequests"] = 429] = "TooManyRequests";
+	    HttpCodes[HttpCodes["InternalServerError"] = 500] = "InternalServerError";
+	    HttpCodes[HttpCodes["NotImplemented"] = 501] = "NotImplemented";
+	    HttpCodes[HttpCodes["BadGateway"] = 502] = "BadGateway";
+	    HttpCodes[HttpCodes["ServiceUnavailable"] = 503] = "ServiceUnavailable";
+	    HttpCodes[HttpCodes["GatewayTimeout"] = 504] = "GatewayTimeout";
+	})(HttpCodes = exports.HttpCodes || (exports.HttpCodes = {}));
+	var Headers;
+	(function (Headers) {
+	    Headers["Accept"] = "accept";
+	    Headers["ContentType"] = "content-type";
+	})(Headers = exports.Headers || (exports.Headers = {}));
+	var MediaTypes;
+	(function (MediaTypes) {
+	    MediaTypes["ApplicationJson"] = "application/json";
+	})(MediaTypes = exports.MediaTypes || (exports.MediaTypes = {}));
+	/**
+	 * Returns the proxy URL, depending upon the supplied url and proxy environment variables.
+	 * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
+	 */
+	function getProxyUrl(serverUrl) {
+	    const proxyUrl = pm.getProxyUrl(new URL(serverUrl));
+	    return proxyUrl ? proxyUrl.href : '';
+	}
+	exports.getProxyUrl = getProxyUrl;
+	const HttpRedirectCodes = [
+	    HttpCodes.MovedPermanently,
+	    HttpCodes.ResourceMoved,
+	    HttpCodes.SeeOther,
+	    HttpCodes.TemporaryRedirect,
+	    HttpCodes.PermanentRedirect
+	];
+	const HttpResponseRetryCodes = [
+	    HttpCodes.BadGateway,
+	    HttpCodes.ServiceUnavailable,
+	    HttpCodes.GatewayTimeout
+	];
+	const RetryableHttpVerbs = ['OPTIONS', 'GET', 'DELETE', 'HEAD'];
+	const ExponentialBackoffCeiling = 10;
+	const ExponentialBackoffTimeSlice = 5;
+	class HttpClientError extends Error {
+	    constructor(message, statusCode) {
+	        super(message);
+	        this.name = 'HttpClientError';
+	        this.statusCode = statusCode;
+	        Object.setPrototypeOf(this, HttpClientError.prototype);
+	    }
+	}
+	exports.HttpClientError = HttpClientError;
+	class HttpClientResponse {
+	    constructor(message) {
+	        this.message = message;
+	    }
+	    readBody() {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+	                let output = Buffer.alloc(0);
+	                this.message.on('data', (chunk) => {
+	                    output = Buffer.concat([output, chunk]);
+	                });
+	                this.message.on('end', () => {
+	                    resolve(output.toString());
+	                });
+	            }));
+	        });
+	    }
+	}
+	exports.HttpClientResponse = HttpClientResponse;
+	function isHttps(requestUrl) {
+	    const parsedUrl = new URL(requestUrl);
+	    return parsedUrl.protocol === 'https:';
+	}
+	exports.isHttps = isHttps;
+	class HttpClient {
+	    constructor(userAgent, handlers, requestOptions) {
+	        this._ignoreSslError = false;
+	        this._allowRedirects = true;
+	        this._allowRedirectDowngrade = false;
+	        this._maxRedirects = 50;
+	        this._allowRetries = false;
+	        this._maxRetries = 1;
+	        this._keepAlive = false;
+	        this._disposed = false;
+	        this.userAgent = userAgent;
+	        this.handlers = handlers || [];
+	        this.requestOptions = requestOptions;
+	        if (requestOptions) {
+	            if (requestOptions.ignoreSslError != null) {
+	                this._ignoreSslError = requestOptions.ignoreSslError;
+	            }
+	            this._socketTimeout = requestOptions.socketTimeout;
+	            if (requestOptions.allowRedirects != null) {
+	                this._allowRedirects = requestOptions.allowRedirects;
+	            }
+	            if (requestOptions.allowRedirectDowngrade != null) {
+	                this._allowRedirectDowngrade = requestOptions.allowRedirectDowngrade;
+	            }
+	            if (requestOptions.maxRedirects != null) {
+	                this._maxRedirects = Math.max(requestOptions.maxRedirects, 0);
+	            }
+	            if (requestOptions.keepAlive != null) {
+	                this._keepAlive = requestOptions.keepAlive;
+	            }
+	            if (requestOptions.allowRetries != null) {
+	                this._allowRetries = requestOptions.allowRetries;
+	            }
+	            if (requestOptions.maxRetries != null) {
+	                this._maxRetries = requestOptions.maxRetries;
+	            }
+	        }
+	    }
+	    options(requestUrl, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('OPTIONS', requestUrl, null, additionalHeaders || {});
+	        });
+	    }
+	    get(requestUrl, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('GET', requestUrl, null, additionalHeaders || {});
+	        });
+	    }
+	    del(requestUrl, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('DELETE', requestUrl, null, additionalHeaders || {});
+	        });
+	    }
+	    post(requestUrl, data, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('POST', requestUrl, data, additionalHeaders || {});
+	        });
+	    }
+	    patch(requestUrl, data, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('PATCH', requestUrl, data, additionalHeaders || {});
+	        });
+	    }
+	    put(requestUrl, data, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('PUT', requestUrl, data, additionalHeaders || {});
+	        });
+	    }
+	    head(requestUrl, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('HEAD', requestUrl, null, additionalHeaders || {});
+	        });
+	    }
+	    sendStream(verb, requestUrl, stream, additionalHeaders) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request(verb, requestUrl, stream, additionalHeaders);
+	        });
+	    }
+	    /**
+	     * Gets a typed object from an endpoint
+	     * Be aware that not found returns a null.  Other errors (4xx, 5xx) reject the promise
+	     */
+	    getJson(requestUrl, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            const res = yield this.get(requestUrl, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
+	    }
+	    postJson(requestUrl, obj, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const data = JSON.stringify(obj, null, 2);
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+	            const res = yield this.post(requestUrl, data, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
+	    }
+	    putJson(requestUrl, obj, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const data = JSON.stringify(obj, null, 2);
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+	            const res = yield this.put(requestUrl, data, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
+	    }
+	    patchJson(requestUrl, obj, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const data = JSON.stringify(obj, null, 2);
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+	            const res = yield this.patch(requestUrl, data, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
+	    }
+	    /**
+	     * Makes a raw http request.
+	     * All other methods such as get, post, patch, and request ultimately call this.
+	     * Prefer get, del, post and patch
+	     */
+	    request(verb, requestUrl, data, headers) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            if (this._disposed) {
+	                throw new Error('Client has already been disposed.');
+	            }
+	            const parsedUrl = new URL(requestUrl);
+	            let info = this._prepareRequest(verb, parsedUrl, headers);
+	            // Only perform retries on reads since writes may not be idempotent.
+	            const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb)
+	                ? this._maxRetries + 1
+	                : 1;
+	            let numTries = 0;
+	            let response;
+	            do {
+	                response = yield this.requestRaw(info, data);
+	                // Check if it's an authentication challenge
+	                if (response &&
+	                    response.message &&
+	                    response.message.statusCode === HttpCodes.Unauthorized) {
+	                    let authenticationHandler;
+	                    for (const handler of this.handlers) {
+	                        if (handler.canHandleAuthentication(response)) {
+	                            authenticationHandler = handler;
+	                            break;
+	                        }
+	                    }
+	                    if (authenticationHandler) {
+	                        return authenticationHandler.handleAuthentication(this, info, data);
+	                    }
+	                    else {
+	                        // We have received an unauthorized response but have no handlers to handle it.
+	                        // Let the response return to the caller.
+	                        return response;
+	                    }
+	                }
+	                let redirectsRemaining = this._maxRedirects;
+	                while (response.message.statusCode &&
+	                    HttpRedirectCodes.includes(response.message.statusCode) &&
+	                    this._allowRedirects &&
+	                    redirectsRemaining > 0) {
+	                    const redirectUrl = response.message.headers['location'];
+	                    if (!redirectUrl) {
+	                        // if there's no location to redirect to, we won't
+	                        break;
+	                    }
+	                    const parsedRedirectUrl = new URL(redirectUrl);
+	                    if (parsedUrl.protocol === 'https:' &&
+	                        parsedUrl.protocol !== parsedRedirectUrl.protocol &&
+	                        !this._allowRedirectDowngrade) {
+	                        throw new Error('Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.');
+	                    }
+	                    // we need to finish reading the response before reassigning response
+	                    // which will leak the open socket.
+	                    yield response.readBody();
+	                    // strip authorization header if redirected to a different hostname
+	                    if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
+	                        for (const header in headers) {
+	                            // header names are case insensitive
+	                            if (header.toLowerCase() === 'authorization') {
+	                                delete headers[header];
+	                            }
+	                        }
+	                    }
+	                    // let's make the request with the new redirectUrl
+	                    info = this._prepareRequest(verb, parsedRedirectUrl, headers);
+	                    response = yield this.requestRaw(info, data);
+	                    redirectsRemaining--;
+	                }
+	                if (!response.message.statusCode ||
+	                    !HttpResponseRetryCodes.includes(response.message.statusCode)) {
+	                    // If not a retry code, return immediately instead of retrying
+	                    return response;
+	                }
+	                numTries += 1;
+	                if (numTries < maxTries) {
+	                    yield response.readBody();
+	                    yield this._performExponentialBackoff(numTries);
+	                }
+	            } while (numTries < maxTries);
+	            return response;
+	        });
+	    }
+	    /**
+	     * Needs to be called if keepAlive is set to true in request options.
+	     */
+	    dispose() {
+	        if (this._agent) {
+	            this._agent.destroy();
+	        }
+	        this._disposed = true;
+	    }
+	    /**
+	     * Raw request.
+	     * @param info
+	     * @param data
+	     */
+	    requestRaw(info, data) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve, reject) => {
+	                function callbackForResult(err, res) {
+	                    if (err) {
+	                        reject(err);
+	                    }
+	                    else if (!res) {
+	                        // If `err` is not passed, then `res` must be passed.
+	                        reject(new Error('Unknown error'));
+	                    }
+	                    else {
+	                        resolve(res);
+	                    }
+	                }
+	                this.requestRawWithCallback(info, data, callbackForResult);
+	            });
+	        });
+	    }
+	    /**
+	     * Raw request with callback.
+	     * @param info
+	     * @param data
+	     * @param onResult
+	     */
+	    requestRawWithCallback(info, data, onResult) {
+	        if (typeof data === 'string') {
+	            if (!info.options.headers) {
+	                info.options.headers = {};
+	            }
+	            info.options.headers['Content-Length'] = Buffer.byteLength(data, 'utf8');
+	        }
+	        let callbackCalled = false;
+	        function handleResult(err, res) {
+	            if (!callbackCalled) {
+	                callbackCalled = true;
+	                onResult(err, res);
+	            }
+	        }
+	        const req = info.httpModule.request(info.options, (msg) => {
+	            const res = new HttpClientResponse(msg);
+	            handleResult(undefined, res);
+	        });
+	        let socket;
+	        req.on('socket', sock => {
+	            socket = sock;
+	        });
+	        // If we ever get disconnected, we want the socket to timeout eventually
+	        req.setTimeout(this._socketTimeout || 3 * 60000, () => {
+	            if (socket) {
+	                socket.end();
+	            }
+	            handleResult(new Error(`Request timeout: ${info.options.path}`));
+	        });
+	        req.on('error', function (err) {
+	            // err has statusCode property
+	            // res should have headers
+	            handleResult(err);
+	        });
+	        if (data && typeof data === 'string') {
+	            req.write(data, 'utf8');
+	        }
+	        if (data && typeof data !== 'string') {
+	            data.on('close', function () {
+	                req.end();
+	            });
+	            data.pipe(req);
+	        }
+	        else {
+	            req.end();
+	        }
+	    }
+	    /**
+	     * Gets an http agent. This function is useful when you need an http agent that handles
+	     * routing through a proxy server - depending upon the url and proxy environment variables.
+	     * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
+	     */
+	    getAgent(serverUrl) {
+	        const parsedUrl = new URL(serverUrl);
+	        return this._getAgent(parsedUrl);
+	    }
+	    _prepareRequest(method, requestUrl, headers) {
+	        const info = {};
+	        info.parsedUrl = requestUrl;
+	        const usingSsl = info.parsedUrl.protocol === 'https:';
+	        info.httpModule = usingSsl ? https : http;
+	        const defaultPort = usingSsl ? 443 : 80;
+	        info.options = {};
+	        info.options.host = info.parsedUrl.hostname;
+	        info.options.port = info.parsedUrl.port
+	            ? parseInt(info.parsedUrl.port)
+	            : defaultPort;
+	        info.options.path =
+	            (info.parsedUrl.pathname || '') + (info.parsedUrl.search || '');
+	        info.options.method = method;
+	        info.options.headers = this._mergeHeaders(headers);
+	        if (this.userAgent != null) {
+	            info.options.headers['user-agent'] = this.userAgent;
+	        }
+	        info.options.agent = this._getAgent(info.parsedUrl);
+	        // gives handlers an opportunity to participate
+	        if (this.handlers) {
+	            for (const handler of this.handlers) {
+	                handler.prepareRequest(info.options);
+	            }
+	        }
+	        return info;
+	    }
+	    _mergeHeaders(headers) {
+	        if (this.requestOptions && this.requestOptions.headers) {
+	            return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers || {}));
+	        }
+	        return lowercaseKeys(headers || {});
+	    }
+	    _getExistingOrDefaultHeader(additionalHeaders, header, _default) {
+	        let clientHeader;
+	        if (this.requestOptions && this.requestOptions.headers) {
+	            clientHeader = lowercaseKeys(this.requestOptions.headers)[header];
+	        }
+	        return additionalHeaders[header] || clientHeader || _default;
+	    }
+	    _getAgent(parsedUrl) {
+	        let agent;
+	        const proxyUrl = pm.getProxyUrl(parsedUrl);
+	        const useProxy = proxyUrl && proxyUrl.hostname;
+	        if (this._keepAlive && useProxy) {
+	            agent = this._proxyAgent;
+	        }
+	        if (this._keepAlive && !useProxy) {
+	            agent = this._agent;
+	        }
+	        // if agent is already assigned use that agent.
+	        if (agent) {
+	            return agent;
+	        }
+	        const usingSsl = parsedUrl.protocol === 'https:';
+	        let maxSockets = 100;
+	        if (this.requestOptions) {
+	            maxSockets = this.requestOptions.maxSockets || http.globalAgent.maxSockets;
+	        }
+	        // This is `useProxy` again, but we need to check `proxyURl` directly for TypeScripts's flow analysis.
+	        if (proxyUrl && proxyUrl.hostname) {
+	            const agentOptions = {
+	                maxSockets,
+	                keepAlive: this._keepAlive,
+	                proxy: Object.assign(Object.assign({}, ((proxyUrl.username || proxyUrl.password) && {
+	                    proxyAuth: `${proxyUrl.username}:${proxyUrl.password}`
+	                })), { host: proxyUrl.hostname, port: proxyUrl.port })
+	            };
+	            let tunnelAgent;
+	            const overHttps = proxyUrl.protocol === 'https:';
+	            if (usingSsl) {
+	                tunnelAgent = overHttps ? tunnel.httpsOverHttps : tunnel.httpsOverHttp;
+	            }
+	            else {
+	                tunnelAgent = overHttps ? tunnel.httpOverHttps : tunnel.httpOverHttp;
+	            }
+	            agent = tunnelAgent(agentOptions);
+	            this._proxyAgent = agent;
+	        }
+	        // if reusing agent across request and tunneling agent isn't assigned create a new agent
+	        if (this._keepAlive && !agent) {
+	            const options = { keepAlive: this._keepAlive, maxSockets };
+	            agent = usingSsl ? new https.Agent(options) : new http.Agent(options);
+	            this._agent = agent;
+	        }
+	        // if not using private agent and tunnel agent isn't setup then use global agent
+	        if (!agent) {
+	            agent = usingSsl ? https.globalAgent : http.globalAgent;
+	        }
+	        if (usingSsl && this._ignoreSslError) {
+	            // we don't want to set NODE_TLS_REJECT_UNAUTHORIZED=0 since that will affect request for entire process
+	            // http.RequestOptions doesn't expose a way to modify RequestOptions.agent.options
+	            // we have to cast it to any and change it directly
+	            agent.options = Object.assign(agent.options || {}, {
+	                rejectUnauthorized: false
+	            });
+	        }
+	        return agent;
+	    }
+	    _performExponentialBackoff(retryNumber) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
+	            const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
+	            return new Promise(resolve => setTimeout(() => resolve(), ms));
+	        });
+	    }
+	    _processResponse(res, options) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+	                const statusCode = res.message.statusCode || 0;
+	                const response = {
+	                    statusCode,
+	                    result: null,
+	                    headers: {}
+	                };
+	                // not found leads to null obj returned
+	                if (statusCode === HttpCodes.NotFound) {
+	                    resolve(response);
+	                }
+	                // get the result from the body
+	                function dateTimeDeserializer(key, value) {
+	                    if (typeof value === 'string') {
+	                        const a = new Date(value);
+	                        if (!isNaN(a.valueOf())) {
+	                            return a;
+	                        }
+	                    }
+	                    return value;
+	                }
+	                let obj;
+	                let contents;
+	                try {
+	                    contents = yield res.readBody();
+	                    if (contents && contents.length > 0) {
+	                        if (options && options.deserializeDates) {
+	                            obj = JSON.parse(contents, dateTimeDeserializer);
+	                        }
+	                        else {
+	                            obj = JSON.parse(contents);
+	                        }
+	                        response.result = obj;
+	                    }
+	                    response.headers = res.message.headers;
+	                }
+	                catch (err) {
+	                    // Invalid resource (contents not json);  leaving result obj null
+	                }
+	                // note that 3xx redirects are handled by the http layer.
+	                if (statusCode > 299) {
+	                    let msg;
+	                    // if exception/error in body, attempt to get better error
+	                    if (obj && obj.message) {
+	                        msg = obj.message;
+	                    }
+	                    else if (contents && contents.length > 0) {
+	                        // it may be the case that the exception is in the body message as string
+	                        msg = contents;
+	                    }
+	                    else {
+	                        msg = `Failed request: (${statusCode})`;
+	                    }
+	                    const err = new HttpClientError(msg, statusCode);
+	                    err.result = response.result;
+	                    reject(err);
+	                }
+	                else {
+	                    resolve(response);
+	                }
+	            }));
+	        });
+	    }
+	}
+	exports.HttpClient = HttpClient;
+	const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
+	
+} (lib));var auth = {};var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(auth, "__esModule", { value: true });
+auth.PersonalAccessTokenCredentialHandler = auth.BearerCredentialHandler = auth.BasicCredentialHandler = void 0;
+class BasicCredentialHandler {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+auth.BasicCredentialHandler = BasicCredentialHandler;
+class BearerCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Bearer ${this.token}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+auth.BearerCredentialHandler = BearerCredentialHandler;
+class PersonalAccessTokenCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString('base64')}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+auth.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;var hasRequiredOidcUtils;
+
+function requireOidcUtils () {
+	if (hasRequiredOidcUtils) return oidcUtils;
+	hasRequiredOidcUtils = 1;
+	var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+	    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+	    return new (P || (P = Promise))(function (resolve, reject) {
+	        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+	        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+	        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+	        step((generator = generator.apply(thisArg, _arguments || [])).next());
+	    });
+	};
+	Object.defineProperty(oidcUtils, "__esModule", { value: true });
+	oidcUtils.OidcClient = void 0;
+	const http_client_1 = lib;
+	const auth_1 = auth;
+	const core_1 = requireCore();
+	class OidcClient {
+	    static createHttpClient(allowRetry = true, maxRetry = 10) {
+	        const requestOptions = {
+	            allowRetries: allowRetry,
+	            maxRetries: maxRetry
+	        };
+	        return new http_client_1.HttpClient('actions/oidc-client', [new auth_1.BearerCredentialHandler(OidcClient.getRequestToken())], requestOptions);
+	    }
+	    static getRequestToken() {
+	        const token = process.env['ACTIONS_ID_TOKEN_REQUEST_TOKEN'];
+	        if (!token) {
+	            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable');
+	        }
+	        return token;
+	    }
+	    static getIDTokenUrl() {
+	        const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL'];
+	        if (!runtimeUrl) {
+	            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable');
+	        }
+	        return runtimeUrl;
+	    }
+	    static getCall(id_token_url) {
+	        var _a;
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const httpclient = OidcClient.createHttpClient();
+	            const res = yield httpclient
+	                .getJson(id_token_url)
+	                .catch(error => {
+	                throw new Error(`Failed to get ID Token. \n 
+        Error Code : ${error.statusCode}\n 
+        Error Message: ${error.result.message}`);
+	            });
+	            const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
+	            if (!id_token) {
+	                throw new Error('Response json body do not have ID Token field');
+	            }
+	            return id_token;
+	        });
+	    }
+	    static getIDToken(audience) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            try {
+	                // New ID Token is requested from action service
+	                let id_token_url = OidcClient.getIDTokenUrl();
+	                if (audience) {
+	                    const encodedAudience = encodeURIComponent(audience);
+	                    id_token_url = `${id_token_url}&audience=${encodedAudience}`;
+	                }
+	                core_1.debug(`ID token url is ${id_token_url}`);
+	                const id_token = yield OidcClient.getCall(id_token_url);
+	                core_1.setSecret(id_token);
+	                return id_token;
+	            }
+	            catch (error) {
+	                throw new Error(`Error message: ${error.message}`);
+	            }
+	        });
+	    }
+	}
+	oidcUtils.OidcClient = OidcClient;
+	
+	return oidcUtils;
+}var summary = {};var hasRequiredSummary;
+
+function requireSummary () {
+	if (hasRequiredSummary) return summary;
+	hasRequiredSummary = 1;
+	(function (exports) {
+		var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+		    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+		    return new (P || (P = Promise))(function (resolve, reject) {
+		        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+		        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+		        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+		        step((generator = generator.apply(thisArg, _arguments || [])).next());
+		    });
+		};
+		Object.defineProperty(exports, "__esModule", { value: true });
+		exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
+		const os_1 = require$$0;
+		const fs_1 = require$$0$1;
+		const { access, appendFile, writeFile } = fs_1.promises;
+		exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
+		exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
+		class Summary {
+		    constructor() {
+		        this._buffer = '';
+		    }
+		    /**
+		     * Finds the summary file path from the environment, rejects if env var is not found or file does not exist
+		     * Also checks r/w permissions.
+		     *
+		     * @returns step summary file path
+		     */
+		    filePath() {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            if (this._filePath) {
+		                return this._filePath;
+		            }
+		            const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
+		            if (!pathFromEnv) {
+		                throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
+		            }
+		            try {
+		                yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
+		            }
+		            catch (_a) {
+		                throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
+		            }
+		            this._filePath = pathFromEnv;
+		            return this._filePath;
+		        });
+		    }
+		    /**
+		     * Wraps content in an HTML tag, adding any HTML attributes
+		     *
+		     * @param {string} tag HTML tag to wrap
+		     * @param {string | null} content content within the tag
+		     * @param {[attribute: string]: string} attrs key-value list of HTML attributes to add
+		     *
+		     * @returns {string} content wrapped in HTML element
+		     */
+		    wrap(tag, content, attrs = {}) {
+		        const htmlAttrs = Object.entries(attrs)
+		            .map(([key, value]) => ` ${key}="${value}"`)
+		            .join('');
+		        if (!content) {
+		            return `<${tag}${htmlAttrs}>`;
+		        }
+		        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
+		    }
+		    /**
+		     * Writes text in the buffer to the summary buffer file and empties buffer. Will append by default.
+		     *
+		     * @param {SummaryWriteOptions} [options] (optional) options for write operation
+		     *
+		     * @returns {Promise<Summary>} summary instance
+		     */
+		    write(options) {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
+		            const filePath = yield this.filePath();
+		            const writeFunc = overwrite ? writeFile : appendFile;
+		            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
+		            return this.emptyBuffer();
+		        });
+		    }
+		    /**
+		     * Clears the summary buffer and wipes the summary file
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    clear() {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            return this.emptyBuffer().write({ overwrite: true });
+		        });
+		    }
+		    /**
+		     * Returns the current summary buffer as a string
+		     *
+		     * @returns {string} string of summary buffer
+		     */
+		    stringify() {
+		        return this._buffer;
+		    }
+		    /**
+		     * If the summary buffer is empty
+		     *
+		     * @returns {boolen} true if the buffer is empty
+		     */
+		    isEmptyBuffer() {
+		        return this._buffer.length === 0;
+		    }
+		    /**
+		     * Resets the summary buffer without writing to summary file
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    emptyBuffer() {
+		        this._buffer = '';
+		        return this;
+		    }
+		    /**
+		     * Adds raw text to the summary buffer
+		     *
+		     * @param {string} text content to add
+		     * @param {boolean} [addEOL=false] (optional) append an EOL to the raw text (default: false)
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addRaw(text, addEOL = false) {
+		        this._buffer += text;
+		        return addEOL ? this.addEOL() : this;
+		    }
+		    /**
+		     * Adds the operating system-specific end-of-line marker to the buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addEOL() {
+		        return this.addRaw(os_1.EOL);
+		    }
+		    /**
+		     * Adds an HTML codeblock to the summary buffer
+		     *
+		     * @param {string} code content to render within fenced code block
+		     * @param {string} lang (optional) language to syntax highlight code
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addCodeBlock(code, lang) {
+		        const attrs = Object.assign({}, (lang && { lang }));
+		        const element = this.wrap('pre', this.wrap('code', code), attrs);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML list to the summary buffer
+		     *
+		     * @param {string[]} items list of items to render
+		     * @param {boolean} [ordered=false] (optional) if the rendered list should be ordered or not (default: false)
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addList(items, ordered = false) {
+		        const tag = ordered ? 'ol' : 'ul';
+		        const listItems = items.map(item => this.wrap('li', item)).join('');
+		        const element = this.wrap(tag, listItems);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML table to the summary buffer
+		     *
+		     * @param {SummaryTableCell[]} rows table rows
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addTable(rows) {
+		        const tableBody = rows
+		            .map(row => {
+		            const cells = row
+		                .map(cell => {
+		                if (typeof cell === 'string') {
+		                    return this.wrap('td', cell);
+		                }
+		                const { header, data, colspan, rowspan } = cell;
+		                const tag = header ? 'th' : 'td';
+		                const attrs = Object.assign(Object.assign({}, (colspan && { colspan })), (rowspan && { rowspan }));
+		                return this.wrap(tag, data, attrs);
+		            })
+		                .join('');
+		            return this.wrap('tr', cells);
+		        })
+		            .join('');
+		        const element = this.wrap('table', tableBody);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds a collapsable HTML details element to the summary buffer
+		     *
+		     * @param {string} label text for the closed state
+		     * @param {string} content collapsable content
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addDetails(label, content) {
+		        const element = this.wrap('details', this.wrap('summary', label) + content);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML image tag to the summary buffer
+		     *
+		     * @param {string} src path to the image you to embed
+		     * @param {string} alt text description of the image
+		     * @param {SummaryImageOptions} options (optional) addition image attributes
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addImage(src, alt, options) {
+		        const { width, height } = options || {};
+		        const attrs = Object.assign(Object.assign({}, (width && { width })), (height && { height }));
+		        const element = this.wrap('img', null, Object.assign({ src, alt }, attrs));
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML section heading element
+		     *
+		     * @param {string} text heading text
+		     * @param {number | string} [level=1] (optional) the heading level, default: 1
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addHeading(text, level) {
+		        const tag = `h${level}`;
+		        const allowedTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)
+		            ? tag
+		            : 'h1';
+		        const element = this.wrap(allowedTag, text);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML thematic break (<hr>) to the summary buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addSeparator() {
+		        const element = this.wrap('hr', null);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML line break (<br>) to the summary buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addBreak() {
+		        const element = this.wrap('br', null);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML blockquote to the summary buffer
+		     *
+		     * @param {string} text quote text
+		     * @param {string} cite (optional) citation url
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addQuote(text, cite) {
+		        const attrs = Object.assign({}, (cite && { cite }));
+		        const element = this.wrap('blockquote', text, attrs);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML anchor tag to the summary buffer
+		     *
+		     * @param {string} text link text/content
+		     * @param {string} href hyperlink
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addLink(text, href) {
+		        const element = this.wrap('a', text, { href });
+		        return this.addRaw(element).addEOL();
+		    }
+		}
+		const _summary = new Summary();
+		/**
+		 * @deprecated use `core.summary`
+		 */
+		exports.markdownSummary = _summary;
+		exports.summary = _summary;
+		
+} (summary));
+	return summary;
+}var pathUtils = {};var hasRequiredPathUtils;
+
+function requirePathUtils () {
+	if (hasRequiredPathUtils) return pathUtils;
+	hasRequiredPathUtils = 1;
+	var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+	}) : (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    o[k2] = m[k];
+	}));
+	var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+	    Object.defineProperty(o, "default", { enumerable: true, value: v });
+	}) : function(o, v) {
+	    o["default"] = v;
+	});
+	var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+	    if (mod && mod.__esModule) return mod;
+	    var result = {};
+	    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+	    __setModuleDefault(result, mod);
+	    return result;
+	};
+	Object.defineProperty(pathUtils, "__esModule", { value: true });
+	pathUtils.toPlatformPath = pathUtils.toWin32Path = pathUtils.toPosixPath = void 0;
+	const path = __importStar(require$$0$2);
+	/**
+	 * toPosixPath converts the given path to the posix form. On Windows, \\ will be
+	 * replaced with /.
+	 *
+	 * @param pth. Path to transform.
+	 * @return string Posix path.
+	 */
+	function toPosixPath(pth) {
+	    return pth.replace(/[\\]/g, '/');
+	}
+	pathUtils.toPosixPath = toPosixPath;
+	/**
+	 * toWin32Path converts the given path to the win32 form. On Linux, / will be
+	 * replaced with \\.
+	 *
+	 * @param pth. Path to transform.
+	 * @return string Win32 path.
+	 */
+	function toWin32Path(pth) {
+	    return pth.replace(/[/]/g, '\\');
+	}
+	pathUtils.toWin32Path = toWin32Path;
+	/**
+	 * toPlatformPath converts the given path to a platform-specific path. It does
+	 * this by replacing instances of / and \ with the platform-specific path
+	 * separator.
+	 *
+	 * @param pth The path to platformize.
+	 * @return string The platform-specific path.
+	 */
+	function toPlatformPath(pth) {
+	    return pth.replace(/[/\\]/g, path.sep);
+	}
+	pathUtils.toPlatformPath = toPlatformPath;
+	
+	return pathUtils;
+}var hasRequiredCore;
+
+function requireCore () {
+	if (hasRequiredCore) return core;
+	hasRequiredCore = 1;
+	(function (exports) {
+		var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+		    if (k2 === undefined) k2 = k;
+		    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+		}) : (function(o, m, k, k2) {
+		    if (k2 === undefined) k2 = k;
+		    o[k2] = m[k];
+		}));
+		var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+		    Object.defineProperty(o, "default", { enumerable: true, value: v });
+		}) : function(o, v) {
+		    o["default"] = v;
+		});
+		var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+		    if (mod && mod.__esModule) return mod;
+		    var result = {};
+		    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+		    __setModuleDefault(result, mod);
+		    return result;
+		};
+		var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+		    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+		    return new (P || (P = Promise))(function (resolve, reject) {
+		        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+		        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+		        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+		        step((generator = generator.apply(thisArg, _arguments || [])).next());
+		    });
+		};
+		Object.defineProperty(exports, "__esModule", { value: true });
+		exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+		const command_1 = command;
+		const file_command_1 = fileCommand;
+		const utils_1 = utils;
+		const os = __importStar(require$$0);
+		const path = __importStar(require$$0$2);
+		const oidc_utils_1 = requireOidcUtils();
+		/**
+		 * The code to exit an action
+		 */
+		var ExitCode;
+		(function (ExitCode) {
+		    /**
+		     * A code indicating that the action was successful
+		     */
+		    ExitCode[ExitCode["Success"] = 0] = "Success";
+		    /**
+		     * A code indicating that the action was a failure
+		     */
+		    ExitCode[ExitCode["Failure"] = 1] = "Failure";
+		})(ExitCode = exports.ExitCode || (exports.ExitCode = {}));
+		//-----------------------------------------------------------------------
+		// Variables
+		//-----------------------------------------------------------------------
+		/**
+		 * Sets env variable for this action and future actions in the job
+		 * @param name the name of the variable to set
+		 * @param val the value of the variable. Non-string values will be converted to a string via JSON.stringify
+		 */
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		function exportVariable(name, val) {
+		    const convertedVal = utils_1.toCommandValue(val);
+		    process.env[name] = convertedVal;
+		    const filePath = process.env['GITHUB_ENV'] || '';
+		    if (filePath) {
+		        return file_command_1.issueFileCommand('ENV', file_command_1.prepareKeyValueMessage(name, val));
+		    }
+		    command_1.issueCommand('set-env', { name }, convertedVal);
+		}
+		exports.exportVariable = exportVariable;
+		/**
+		 * Registers a secret which will get masked from logs
+		 * @param secret value of the secret
+		 */
+		function setSecret(secret) {
+		    command_1.issueCommand('add-mask', {}, secret);
+		}
+		exports.setSecret = setSecret;
+		/**
+		 * Prepends inputPath to the PATH (for this action and future actions)
+		 * @param inputPath
+		 */
+		function addPath(inputPath) {
+		    const filePath = process.env['GITHUB_PATH'] || '';
+		    if (filePath) {
+		        file_command_1.issueFileCommand('PATH', inputPath);
+		    }
+		    else {
+		        command_1.issueCommand('add-path', {}, inputPath);
+		    }
+		    process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
+		}
+		exports.addPath = addPath;
+		/**
+		 * Gets the value of an input.
+		 * Unless trimWhitespace is set to false in InputOptions, the value is also trimmed.
+		 * Returns an empty string if the value is not defined.
+		 *
+		 * @param     name     name of the input to get
+		 * @param     options  optional. See InputOptions.
+		 * @returns   string
+		 */
+		function getInput(name, options) {
+		    const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
+		    if (options && options.required && !val) {
+		        throw new Error(`Input required and not supplied: ${name}`);
+		    }
+		    if (options && options.trimWhitespace === false) {
+		        return val;
+		    }
+		    return val.trim();
+		}
+		exports.getInput = getInput;
+		/**
+		 * Gets the values of an multiline input.  Each value is also trimmed.
+		 *
+		 * @param     name     name of the input to get
+		 * @param     options  optional. See InputOptions.
+		 * @returns   string[]
+		 *
+		 */
+		function getMultilineInput(name, options) {
+		    const inputs = getInput(name, options)
+		        .split('\n')
+		        .filter(x => x !== '');
+		    if (options && options.trimWhitespace === false) {
+		        return inputs;
+		    }
+		    return inputs.map(input => input.trim());
+		}
+		exports.getMultilineInput = getMultilineInput;
+		/**
+		 * Gets the input value of the boolean type in the YAML 1.2 "core schema" specification.
+		 * Support boolean input list: `true | True | TRUE | false | False | FALSE` .
+		 * The return value is also in boolean type.
+		 * ref: https://yaml.org/spec/1.2/spec.html#id2804923
+		 *
+		 * @param     name     name of the input to get
+		 * @param     options  optional. See InputOptions.
+		 * @returns   boolean
+		 */
+		function getBooleanInput(name, options) {
+		    const trueValue = ['true', 'True', 'TRUE'];
+		    const falseValue = ['false', 'False', 'FALSE'];
+		    const val = getInput(name, options);
+		    if (trueValue.includes(val))
+		        return true;
+		    if (falseValue.includes(val))
+		        return false;
+		    throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}\n` +
+		        `Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
+		}
+		exports.getBooleanInput = getBooleanInput;
+		/**
+		 * Sets the value of an output.
+		 *
+		 * @param     name     name of the output to set
+		 * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
+		 */
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		function setOutput(name, value) {
+		    const filePath = process.env['GITHUB_OUTPUT'] || '';
+		    if (filePath) {
+		        return file_command_1.issueFileCommand('OUTPUT', file_command_1.prepareKeyValueMessage(name, value));
+		    }
+		    process.stdout.write(os.EOL);
+		    command_1.issueCommand('set-output', { name }, utils_1.toCommandValue(value));
+		}
+		exports.setOutput = setOutput;
+		/**
+		 * Enables or disables the echoing of commands into stdout for the rest of the step.
+		 * Echoing is disabled by default if ACTIONS_STEP_DEBUG is not set.
+		 *
+		 */
+		function setCommandEcho(enabled) {
+		    command_1.issue('echo', enabled ? 'on' : 'off');
+		}
+		exports.setCommandEcho = setCommandEcho;
+		//-----------------------------------------------------------------------
+		// Results
+		//-----------------------------------------------------------------------
+		/**
+		 * Sets the action status to failed.
+		 * When the action exits it will be with an exit code of 1
+		 * @param message add error issue message
+		 */
+		function setFailed(message) {
+		    process.exitCode = ExitCode.Failure;
+		    error(message);
+		}
+		exports.setFailed = setFailed;
+		//-----------------------------------------------------------------------
+		// Logging Commands
+		//-----------------------------------------------------------------------
+		/**
+		 * Gets whether Actions Step Debug is on or not
+		 */
+		function isDebug() {
+		    return process.env['RUNNER_DEBUG'] === '1';
+		}
+		exports.isDebug = isDebug;
+		/**
+		 * Writes debug message to user log
+		 * @param message debug message
+		 */
+		function debug(message) {
+		    command_1.issueCommand('debug', {}, message);
+		}
+		exports.debug = debug;
+		/**
+		 * Adds an error issue
+		 * @param message error issue message. Errors will be converted to string via toString()
+		 * @param properties optional properties to add to the annotation.
+		 */
+		function error(message, properties = {}) {
+		    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+		}
+		exports.error = error;
+		/**
+		 * Adds a warning issue
+		 * @param message warning issue message. Errors will be converted to string via toString()
+		 * @param properties optional properties to add to the annotation.
+		 */
+		function warning(message, properties = {}) {
+		    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+		}
+		exports.warning = warning;
+		/**
+		 * Adds a notice issue
+		 * @param message notice issue message. Errors will be converted to string via toString()
+		 * @param properties optional properties to add to the annotation.
+		 */
+		function notice(message, properties = {}) {
+		    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+		}
+		exports.notice = notice;
+		/**
+		 * Writes info to log with console.log.
+		 * @param message info message
+		 */
+		function info(message) {
+		    process.stdout.write(message + os.EOL);
+		}
+		exports.info = info;
+		/**
+		 * Begin an output group.
+		 *
+		 * Output until the next `groupEnd` will be foldable in this group
+		 *
+		 * @param name The name of the output group
+		 */
+		function startGroup(name) {
+		    command_1.issue('group', name);
+		}
+		exports.startGroup = startGroup;
+		/**
+		 * End an output group.
+		 */
+		function endGroup() {
+		    command_1.issue('endgroup');
+		}
+		exports.endGroup = endGroup;
+		/**
+		 * Wrap an asynchronous function call in a group.
+		 *
+		 * Returns the same type as the function itself.
+		 *
+		 * @param name The name of the group
+		 * @param fn The function to wrap in the group
+		 */
+		function group(name, fn) {
+		    return __awaiter(this, void 0, void 0, function* () {
+		        startGroup(name);
+		        let result;
+		        try {
+		            result = yield fn();
+		        }
+		        finally {
+		            endGroup();
+		        }
+		        return result;
+		    });
+		}
+		exports.group = group;
+		//-----------------------------------------------------------------------
+		// Wrapper action state
+		//-----------------------------------------------------------------------
+		/**
+		 * Saves state for current action, the state can only be retrieved by this action's post job execution.
+		 *
+		 * @param     name     name of the state to store
+		 * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
+		 */
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		function saveState(name, value) {
+		    const filePath = process.env['GITHUB_STATE'] || '';
+		    if (filePath) {
+		        return file_command_1.issueFileCommand('STATE', file_command_1.prepareKeyValueMessage(name, value));
+		    }
+		    command_1.issueCommand('save-state', { name }, utils_1.toCommandValue(value));
+		}
+		exports.saveState = saveState;
+		/**
+		 * Gets the value of an state set by this action's main execution.
+		 *
+		 * @param     name     name of the state to get
+		 * @returns   string
+		 */
+		function getState(name) {
+		    return process.env[`STATE_${name}`] || '';
+		}
+		exports.getState = getState;
+		function getIDToken(aud) {
+		    return __awaiter(this, void 0, void 0, function* () {
+		        return yield oidc_utils_1.OidcClient.getIDToken(aud);
+		    });
+		}
+		exports.getIDToken = getIDToken;
+		/**
+		 * Summary exports
+		 */
+		var summary_1 = requireSummary();
+		Object.defineProperty(exports, "summary", { enumerable: true, get: function () { return summary_1.summary; } });
+		/**
+		 * @deprecated use core.summary
+		 */
+		var summary_2 = requireSummary();
+		Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function () { return summary_2.markdownSummary; } });
+		/**
+		 * Path exports
+		 */
+		var path_utils_1 = requirePathUtils();
+		Object.defineProperty(exports, "toPosixPath", { enumerable: true, get: function () { return path_utils_1.toPosixPath; } });
+		Object.defineProperty(exports, "toWin32Path", { enumerable: true, get: function () { return path_utils_1.toWin32Path; } });
+		Object.defineProperty(exports, "toPlatformPath", { enumerable: true, get: function () { return path_utils_1.toPlatformPath; } });
+		
+} (core));
+	return core;
+}var coreExports = requireCore();/**
+ * @function isObject
+ * @alias isObj
+ * @description Determine item is type of object or not.
+ * @param {any} item Item that need to determine.
+ * @returns {boolean} Determine result.
+ */
+function isObject(item) {
+	return (typeof item === "object" && !Array.isArray(item) && item !== null && !(item instanceof RegExp));
+}/**
+ * @private
+ * @function $isPlainObject
+ * @param {any} item
+ * @param {object} [param1={}]
+ * @param {boolean} [param1.configurableEntries]
+ * @param {boolean} [param1.enumerableEntries]
+ * @param {boolean} [param1.getterEntries]
+ * @param {number} [param1.maximumEntries=Infinity]
+ * @param {number} [param1.minimumEntries=0]
+ * @param {boolean} [param1.setterEntries]
+ * @param {boolean} [param1.symbolKeys]
+ * @param {boolean} [param1.writableEntries]
+ * @returns {boolean}
+ */
+function $isPlainObject(item, {
+	configurableEntries,
+	enumerableEntries,
+	getterEntries,
+	maximumEntries = Infinity,
+	minimumEntries = 0,
+	setterEntries,
+	symbolKeys,
+	writableEntries
+} = {}) {
+	if (
+		!isObject(item) ||
+		!(item instanceof Object) ||
+		item.constructor.name !== "Object" ||
+		Object.prototype.toString.call(item) !== "[object Object]"
+	) {
+		return false;
+	}
+	let itemPrototype = Object.getPrototypeOf(item);
+	if (itemPrototype !== null && itemPrototype !== Object.prototype) {
+		return false;
+	}
+	let itemShadow = item;
+	while (Object.getPrototypeOf(itemShadow) !== null) {
+		itemShadow = Object.getPrototypeOf(itemShadow);
+	}
+	if (itemPrototype !== itemShadow) {
+		return false;
+	}
+	let itemSymbolKeysLength = Object.getOwnPropertySymbols(item).length;
+	if (
+		(symbolKeys === false && itemSymbolKeysLength > 0) ||
+		(symbolKeys === true && itemSymbolKeysLength === 0)
+	) {
+		return false;
+	}
+	let itemDescriptors = Object.getOwnPropertyDescriptors(item);
+	let itemConfigurableEntriesLength = 0;
+	let itemEnumerableEntriesLength = 0;
+	let itemGetterEntriesLength = 0;
+	let itemNonAccessorEntriesLength = 0;
+	let itemNonConfigurableEntriesLength = 0;
+	let itemNonEnumerableEntriesLength = 0;
+	let itemNonWritableEntriesLength = 0;
+	let itemSetterEntriesLength = 0;
+	let itemWritableEntriesLength = 0;
+	for (let itemPropertyKey in itemDescriptors) {
+		if (Object.prototype.hasOwnProperty.call(itemDescriptors, itemPropertyKey)) {
+			let itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
+			if (itemPropertyDescriptor.configurable) {
+				itemConfigurableEntriesLength += 1;
+			} else {
+				itemNonConfigurableEntriesLength += 1;
+			}
+			if (itemPropertyDescriptor.enumerable) {
+				itemEnumerableEntriesLength += 1;
+			} else {
+				itemNonEnumerableEntriesLength += 1;
+			}
+			if (typeof itemPropertyDescriptor.get !== "undefined") {
+				itemGetterEntriesLength += 1;
+			} else if (typeof itemPropertyDescriptor.set !== "undefined") {
+				itemSetterEntriesLength += 1;
+			} else {
+				itemNonAccessorEntriesLength += 1;
+			}
+			if (itemPropertyDescriptor.writable) {
+				itemWritableEntriesLength += 1;
+			} else {
+				itemNonWritableEntriesLength += 1;
+			}
+		}
+	}
+	if (
+		Object.entries(item).length !== itemEnumerableEntriesLength ||
+		itemConfigurableEntriesLength + itemNonConfigurableEntriesLength !== itemEnumerableEntriesLength + itemNonEnumerableEntriesLength ||
+		itemEnumerableEntriesLength + itemNonEnumerableEntriesLength !== itemGetterEntriesLength + itemNonAccessorEntriesLength + itemSetterEntriesLength ||
+		itemGetterEntriesLength + itemNonAccessorEntriesLength + itemSetterEntriesLength !== itemNonWritableEntriesLength + itemWritableEntriesLength ||
+		itemConfigurableEntriesLength + itemNonConfigurableEntriesLength !== itemNonWritableEntriesLength + itemWritableEntriesLength ||
+		maximumEntries < itemGetterEntriesLength + itemNonAccessorEntriesLength + itemSetterEntriesLength + itemSymbolKeysLength ||
+		itemGetterEntriesLength + itemNonAccessorEntriesLength + itemSetterEntriesLength + itemSymbolKeysLength < minimumEntries ||
+		(configurableEntries === false && itemConfigurableEntriesLength > 0) ||
+		(configurableEntries === true && itemNonConfigurableEntriesLength > 0) ||
+		(enumerableEntries === false && itemEnumerableEntriesLength > 0) ||
+		(enumerableEntries === true && itemNonEnumerableEntriesLength > 0) ||
+		(getterEntries === false && itemGetterEntriesLength > 0) ||
+		(setterEntries === false && itemSetterEntriesLength > 0) ||
+		((
+			getterEntries === true ||
+			setterEntries === true
+		) && itemNonAccessorEntriesLength > 0) ||
+		(writableEntries === false && itemWritableEntriesLength > 0) ||
+		(writableEntries === true && itemNonWritableEntriesLength > 0)
+	) {
+		return false;
+	}
+	return true;
+}/**
+ * @private
+ * @function bigIntegerSquareRoot
+ * @param {bigint} item
+ * @returns {bigint}
+ * @note From https://stackoverflow.com/a/53684036.
+ */
+ function bigIntegerSquareRoot(item) {
+	let x0 = 1n;
+	while (true) {
+		let x1 = (item / x0 + x0) >> 1n;
+		if (
+			x0 === x1 ||
+			x0 === x1 - 1n
+		) {
+			return x0;
+		}
+		x0 = x1;
+	}
+}
+/**
+ * @private
+ * @function isPrimeNumber
+ * @param {bigint|number} item
+ * @returns {boolean}
+ */
+function isPrimeNumber(item) {
+	let itemRaw = (typeof item === "bigint") ? item : BigInt(item);
+	if (
+		itemRaw === 2n ||
+		itemRaw === 3n ||
+		itemRaw === 5n ||
+		itemRaw === 7n
+	) {
+		return true;
+	}
+	if (
+		itemRaw < 2n ||
+		itemRaw % 2n === 0n ||
+		itemRaw % 3n === 0n ||
+		itemRaw % 5n === 0n ||
+		itemRaw % 7n === 0n
+	) {
+		return false;
+	}
+	for (let divisor = 3n; divisor <= bigIntegerSquareRoot(itemRaw) + 1n; divisor += 2n) {
+		if (itemRaw % divisor === 0n) {
+			return false;
+		}
+	}
+	return true;
+}/**
+ * @private
+ * @function $isNumber
+ * @param {any} item
+ * @param {object} [param1={}]
+ * @param {boolean} [param1.even]
+ * @param {boolean} [param1.exclusiveMaximum=false]
+ * @param {boolean} [param1.exclusiveMinimum=false]
+ * @param {boolean} [param1.finite]
+ * @param {boolean} [param1.float]
+ * @param {boolean} [param1.infinite]
+ * @param {boolean} [param1.integer]
+ * @param {number} [param1.maximum=Infinity]
+ * @param {number} [param1.minimum=-Infinity]
+ * @param {boolean} [param1.negative]
+ * @param {boolean} [param1.odd]
+ * @param {boolean} [param1.positive]
+ * @param {boolean} [param1.prime]
+ * @param {boolean} [param1.safe]
+ * @param {boolean} [param1.unsafe]
+ * @returns {boolean}
+ */
+function $isNumber(item, {
+	even,
+	exclusiveMaximum = false,
+	exclusiveMinimum = false,
+	finite,
+	float,
+	infinite,
+	integer,
+	maximum = Infinity,
+	minimum = -Infinity,
+	negative,
+	odd,
+	positive,
+	prime,
+	safe,
+	unsafe
+} = {}) {
+	let itemIsFinite = Number.isFinite(item);
+	let itemIsInteger = Number.isInteger(item);
+	let itemIsSafeInteger = Number.isSafeInteger(item);
+	if (
+		typeof item !== "number" ||
+		Number.isNaN(item) ||
+		(even === false && itemIsSafeInteger && item % 2 === 0) ||
+		(even === true && (
+			!itemIsSafeInteger ||
+			item % 2 !== 0
+		)) ||
+		(exclusiveMaximum && maximum <= item) ||
+		(!exclusiveMaximum && maximum < item) ||
+		(exclusiveMinimum && item <= minimum) ||
+		(!exclusiveMinimum && item < minimum) ||
+		((
+			finite === true ||
+			infinite === false
+		) && !itemIsFinite) ||
+		((
+			infinite === true ||
+			finite === false
+		) && itemIsFinite) ||
+		((
+			float === true ||
+			integer === false
+		) && itemIsInteger) ||
+		((
+			integer === true ||
+			float === false
+		) && !itemIsInteger) ||
+		((
+			negative === true ||
+			positive === false
+		) && item >= 0) ||
+		((
+			positive === true ||
+			negative === false
+		) && item < 0) ||
+		(odd === false && itemIsSafeInteger && item % 2 !== 0) ||
+		(odd === true && (
+			!itemIsSafeInteger ||
+			item % 2 === 0
+		)) ||
+		(prime === false && itemIsSafeInteger && isPrimeNumber(item)) ||
+		(prime === true && (
+			!itemIsSafeInteger ||
+			!isPrimeNumber(item)
+		)) ||
+		((
+			safe === true ||
+			unsafe === false
+		) && (
+			item < Number.MIN_SAFE_INTEGER ||
+			item > Number.MAX_SAFE_INTEGER
+		)) ||
+		((
+			unsafe === true ||
+			safe === false
+		) && item >= Number.MIN_SAFE_INTEGER && item <= Number.MAX_SAFE_INTEGER)
+	) {
+		return false;
+	}
+	return true;
+}/**
+ * @function undefinish
+ * @description Undefinish coalescing.
+ * @param {...any} inputs
+ * @returns {any}
+ */
+function undefinish(...inputs) {
+	for (let input of inputs) {
+		if (typeof input !== "undefined") {
+			return input;
+		}
+	}
+	return undefined;
+}/**
+ * @function isArray
+ * @alias isArr
+ * @alias isList
+ * @description Determine item is type of array or not.
+ * @param {any} item Item that need to determine.
+ * @param {object} [param1={}] Options.
+ * @param {boolean} [param1.empty] An empty array.
+ * @param {number} [param1.maximumLength=Infinity] Maximum length of the array.
+ * @param {number} [param1.minimumLength=0] Minimum length of the array.
+ * @param {boolean} [param1.strict=false] Ensure no custom defined properties in the array.
+ * @param {boolean} [param1.unique=false] Elements must be unique in the array.
+ * @returns {boolean} Determine result.
+ */
+function isArray(item, {
+	empty,
+	maximumLength,
+	minimumLength,
+	strict,
+	unique = false,
+	...aliases
+} = {}) {
+	if (typeof empty !== "boolean" && typeof empty !== "undefined") {
+		throw new TypeError(`Argument \`empty\` must be type of boolean or undefined!`);
+	}
+	maximumLength = undefinish(maximumLength, aliases.maxLength, aliases.maximumElements, aliases.maxElements, Infinity);
+	if (maximumLength !== Infinity && !$isNumber(maximumLength, {
+		integer: true,
+		positive: true,
+		safe: true
+	})) {
+		throw new TypeError(`Argument \`maximumLength\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
+	}
+	minimumLength = undefinish(minimumLength, aliases.minLength, aliases.minimumElements, aliases.minElements, 0);
+	if (!$isNumber(minimumLength, {
+		integer: true,
+		maximum: maximumLength,
+		positive: true,
+		safe: true
+	})) {
+		throw new TypeError(`Argument \`minimumLength\` must be type of number (integer, positive, and safe) and <= ${maximumLength}!`);
+	}
+	strict = undefinish(strict, aliases.super, false);
+	if (typeof strict !== "boolean") {
+		throw new TypeError(`Argument \`strict\` must be type of boolean!`);
+	}
+	if (typeof unique !== "boolean") {
+		throw new TypeError(`Argument \`unique\` must be type of boolean!`);
+	}
+	if (empty === false) {
+		maximumLength = Infinity;
+		minimumLength = 1;
+	} else if (empty === true) {
+		maximumLength = 0;
+		minimumLength = 0;
+	}
+	if (
+		!Array.isArray(item) ||
+		!(item instanceof Array) ||
+		item.constructor.name !== "Array" ||
+		Object.prototype.toString.call(item) !== "[object Array]"
+	) {
+		return false;
+	}
+	if (Object.entries(item).length !== item.length) {
+		return false;
+	}
+	if (strict) {
+		let itemPrototype = Object.getPrototypeOf(item);
+		if (itemPrototype !== null && itemPrototype !== Array.prototype) {
+			return false;
+		}
+		if (Object.getOwnPropertySymbols(item).length > 0) {
+			return false;
+		}
+		let itemDescriptors = Object.getOwnPropertyDescriptors(item);
+		for (let itemPropertyKey in itemDescriptors) {
+			if (Object.prototype.hasOwnProperty.call(itemDescriptors, itemPropertyKey)) {
+				if (itemPropertyKey.search(/^(?:0|[1-9]\d*)$/gu) === 0 && Number(itemPropertyKey) < 4294967296) {
+					let itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
+					if (
+						!itemPropertyDescriptor.configurable ||
+						!itemPropertyDescriptor.enumerable ||
+						typeof itemPropertyDescriptor.get !== "undefined" ||
+						typeof itemPropertyDescriptor.set !== "undefined" ||
+						!itemPropertyDescriptor.writable
+					) {
+						return false;
+					}
+				} else if (itemPropertyKey === "length") {
+					let itemPropertyDescriptor = itemDescriptors[itemPropertyKey];
+					if (
+						itemPropertyDescriptor.configurable ||
+						itemPropertyDescriptor.enumerable ||
+						typeof itemPropertyDescriptor.get !== "undefined" ||
+						typeof itemPropertyDescriptor.set !== "undefined" ||
+						!itemPropertyDescriptor.writable
+					) {
+						return false;
+					}
+				} else {
+					return false;
+				}
+			}
+		}
+	}
+	if (
+		maximumLength < item.length ||
+		item.length < minimumLength ||
+		(unique && Array.from(new Set(item).values()).length < item.length)
+	) {
+		return false;
+	}
+	return true;
+}BigInt(Number.MAX_SAFE_INTEGER);
+BigInt(Number.MIN_SAFE_INTEGER);/**
+ * @private
+ * @function $isValidJSONValue
+ * @param {any} item
+ * @param {object} [param1={}]
+ * @param {RegExp} [param1.keysPattern]
+ * @returns {boolean}
+ */
+function $isValidJSONValue(item, { keysPattern } = {}) {
+	if (
+		typeof item === "boolean" ||
+		$isJSON(item, { keysPattern }) ||
+		item === null ||
+		$isNumber(item) ||
+		typeof item === "string"
+	) {
+		return true;
+	}
+	return false;
+}
+/**
+ * @private
+ * @function $isJSON
+ * @param {any} item
+ * @param {object} [param1={}]
+ * @param {RegExp} [param1.keysPattern]
+ * @returns {boolean}
+ */
+function $isJSON(item, { keysPattern } = {}) {
+	if (isArray(item, { strict: true })) {
+		for (let itemElement of item) {
+			if (!$isValidJSONValue(itemElement, { keysPattern })) {
+				return false;
+			}
+		}
+		return true;
+	}
+	if ($isPlainObject(item, {
+		configurableEntries: true,
+		enumerableEntries: true,
+		getterEntries: false,
+		setterEntries: false,
+		symbolKeys: false,
+		writableEntries: true
+	})) {
+		try {
+			JSON.stringify(item);
+		} catch {
+			return false;
+		}
+		for (let itemKey of Object.keys(item)) {
+			if (
+				(keysPattern instanceof RegExp && itemKey.search(keysPattern) === -1) ||
+				!$isValidJSONValue(item[itemKey], keysPattern)
+			) {
+				return false;
+			}
+		}
+		return true;
+	}
+	return false;
+}
+/**
+ * @function isJSON
+ * @description Determine item is type of JSON or not.
+ * @param {any} item Item that need to determine.
+ * @param {object} [param1={}] Options.
+ * @param {boolean} [param1.arrayRoot] Type of array as the root of the JSON.
+ * @param {boolean} [param1.empty] An empty JSON.
+ * @param {RegExp} [param1.keysPattern] Ensure pattern in the JSON keys.
+ * @param {number} [param1.maximumEntries=Infinity] Maximum entries of the JSON.
+ * @param {number} [param1.minimumEntries=0] Minimum entries of the JSON.
+ * @param {boolean} [param1.strict=false] Ensure type of array is not as the root of the JSON, and no illegal namespace characters in the JSON keys.
+ * @param {boolean} [param1.strictKeys=false] Ensure no illegal namespace characters in the JSON keys.
+ * @returns {boolean} Determine result.
+ */
+function isJSON(item, {
+	arrayRoot,
+	empty,
+	keysPattern,
+	maximumEntries,
+	minimumEntries,
+	strict = false,
+	strictKeys = false,
+	...aliases
+} = {}) {
+	if (typeof arrayRoot !== "boolean" && typeof arrayRoot !== "undefined") {
+		throw new TypeError(`Argument \`arrayRoot\` must be type of boolean or undefined!`);
+	}
+	if (typeof empty !== "boolean" && typeof empty !== "undefined") {
+		throw new TypeError(`Argument \`empty\` must be type of boolean or undefined!`);
+	}
+	if (!(keysPattern instanceof RegExp) && typeof keysPattern !== "undefined") {
+		throw new TypeError(`Argument \`keysPattern\` must be type of regular expression or undefined!`);
+	}
+	maximumEntries = undefinish(maximumEntries, aliases.maxEntries, Infinity);
+	if (maximumEntries !== Infinity && !$isNumber(maximumEntries, {
+		integer: true,
+		positive: true,
+		safe: true
+	})) {
+		throw new TypeError(`Argument \`maximumEntries\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
+	}
+	minimumEntries = undefinish(minimumEntries, aliases.minEntries, 0);
+	if (!$isNumber(minimumEntries, {
+		integer: true,
+		maximum: maximumEntries,
+		positive: true,
+		safe: true
+	})) {
+		throw new TypeError(`Argument \`minimumEntries\` must be type of number (integer, positive, and safe) and <= ${maximumEntries}!`);
+	}
+	if (typeof strict !== "boolean") {
+		throw new TypeError(`Argument \`strict\` must be type of boolean!`);
+	}
+	if (typeof strictKeys !== "boolean") {
+		throw new TypeError(`Argument \`strictKeys\` must be type of boolean!`);
+	}
+	if (empty === false) {
+		maximumEntries = Infinity;
+		minimumEntries = 1;
+	} else if (empty === true) {
+		maximumEntries = 0;
+		minimumEntries = 0;
+	}
+	if (strict) {
+		arrayRoot = false;
+		strictKeys = true;
+	}
+	if (strictKeys) {
+		keysPattern = /^[$_a-z][$\d_a-z]*$/giu;
+	}
+	let itemEntriesLength = Object.entries(item).length;
+	let itemIsArray = Array.isArray(item);
+	if (
+		!$isJSON(item, { keysPattern }) ||
+		(arrayRoot === false && itemIsArray) ||
+		(arrayRoot === true && !itemIsArray) ||
+		maximumEntries < itemEntriesLength ||
+		itemEntriesLength < minimumEntries
+	) {
+		return false;
+	}
+	return true;
+}/**
+ * @function isString
+ * @alias isStr
+ * @description Determine item is type of string or not.
+ * @param {any} item Item that need to determine.
+ * @param {object} [param1={}] Options.
+ * @param {boolean} [param1.ascii=false] Allow only ASCII characters in the string.
+ * @param {boolean} [param1.empty] An empty string.
+ * @param {boolean} [param1.lowerCase] A lower case string.
+ * @param {number} [param1.maximumLength=Infinity] Maximum length of the string.
+ * @param {number} [param1.minimumLength=0] Minimum length of the string.
+ * @param {boolean} [param1.multipleLine] A multiple line string.
+ * @param {RegExp} [param1.pattern] Pattern.
+ * @param {boolean} [param1.preTrim=false] Trim string before determine.
+ * @param {boolean} [param1.singleLine] A single line string.
+ * @param {boolean} [param1.upperCase] An upper case string.
+ * @returns {boolean} Determine result.
+ */
+function isString(item, {
+	ascii = false,
+	empty,
+	lowerCase,
+	maximumLength,
+	minimumLength,
+	multipleLine,
+	pattern,
+	preTrim = false,
+	singleLine,
+	upperCase,
+	...aliases
+} = {}) {
+	if (typeof ascii !== "boolean") {
+		throw new TypeError(`Argument \`ascii\` must be type of boolean!`);
+	}
+	if (typeof empty !== "boolean" && typeof empty !== "undefined") {
+		throw new TypeError(`Argument \`empty\` must be type of boolean or undefined!`);
+	}
+	if (typeof lowerCase !== "boolean" && typeof lowerCase !== "undefined") {
+		throw new TypeError(`Argument \`lowerCase\` must be type of boolean or undefined!`);
+	}
+	maximumLength = undefinish(maximumLength, aliases.maxLength, aliases.maximumCharacters, aliases.maxCharacters, Infinity);
+	if (maximumLength !== Infinity && !$isNumber(maximumLength, {
+		integer: true,
+		positive: true,
+		safe: true
+	})) {
+		throw new TypeError(`Argument \`maximumLength\` must be \`Infinity\` or type of number (integer, positive, and safe)!`);
+	}
+	minimumLength = undefinish(minimumLength, aliases.minLength, aliases.minimumCharacters, aliases.minCharacters, 0);
+	if (!$isNumber(minimumLength, {
+		integer: true,
+		maximum: maximumLength,
+		positive: true,
+		safe: true
+	})) {
+		throw new TypeError(`Argument \`minimumLength\` must be type of number (integer, positive, and safe) and <= ${maximumLength}!`);
+	}
+	multipleLine = undefinish(multipleLine, aliases.multiLine, aliases.multiline);
+	if (typeof multipleLine !== "boolean" && typeof multipleLine !== "undefined") {
+		throw new TypeError(`Argument \`multipleLine\` must be type of boolean or undefined!`);
+	}
+	if (!(pattern instanceof RegExp) && typeof pattern !== "undefined") {
+		throw new TypeError(`Argument \`pattern\` must be type of regular expression or undefined!`);
+	}
+	if (typeof preTrim !== "boolean") {
+		throw new TypeError(`Argument \`preTrim\` must be type of boolean!`);
+	}
+	if (typeof singleLine !== "boolean" && typeof singleLine !== "undefined") {
+		throw new TypeError(`Argument \`singleLine\` must be type of boolean or undefined!`);
+	}
+	if (typeof upperCase !== "boolean" && typeof upperCase !== "undefined") {
+		throw new TypeError(`Argument \`upperCase\` must be type of boolean or undefined!`);
+	}
+	if (empty === false) {
+		maximumLength = Infinity;
+		minimumLength = 1;
+	} else if (empty === true) {
+		maximumLength = 0;
+		minimumLength = 0;
+	}
+	if (typeof item !== "string") {
+		return false;
+	}
+	let itemRaw = preTrim ? item.trim() : item;
+	if (ascii) {
+		for (let character of itemRaw) {
+			if (character.charCodeAt(0) > 127) {
+				return false;
+			}
+		}
+	}
+	if (
+		maximumLength < itemRaw.length ||
+		itemRaw.length < minimumLength ||
+		(pattern instanceof RegExp && itemRaw.search(pattern) === -1) ||
+		((
+			lowerCase === true ||
+			upperCase === false
+		) && itemRaw !== itemRaw.toLowerCase()) ||
+		((
+			upperCase === true ||
+			lowerCase === false
+		) && itemRaw !== itemRaw.toUpperCase()) ||
+		((
+			multipleLine === true ||
+			singleLine === false
+		) && itemRaw.search(/[\n\r]/gu) === -1) ||
+		((
+			singleLine === true ||
+			multipleLine === false
+		) && itemRaw.search(/[\n\r]/gu) !== -1)
+	) {
+		return false;
+	}
+	return true;
+}/**
+ * @function isStringifyJSON
+ * @alias isJSONStr
+ * @alias isJSONStringified
+ * @alias isJSONStringify
+ * @alias isStringifiedJSON
+ * @alias isStrJSON
+ * @description Determine item is type of stringify JSON or not.
+ * @param {any} item Item that need to determine.
+ * @param {object} [param1={}] Options.
+ * @param {boolean} [param1.arrayRoot] Type of array as the root of the stringify JSON.
+ * @param {boolean} [param1.empty] An empty stringify JSON.
+ * @param {RegExp} [param1.keysPattern] Ensure pattern in the stringify JSON keys.
+ * @param {number} [param1.maximumEntries=Infinity] Maximum entries of the stringify JSON.
+ * @param {number} [param1.minimumEntries=0] Minimum entries of the stringify JSON.
+ * @param {boolean} [param1.strict=false] Ensure type of array is not as the root of the stringify JSON, and no illegal namespace characters in the stringify JSON keys.
+ * @param {boolean} [param1.strictKeys=false] Ensure no illegal namespace characters in the stringify JSON keys.
+ * @returns {boolean} Determine result.
+ */
+function isStringifyJSON(item, {
+	arrayRoot,
+	empty,
+	keysPattern,
+	maximumEntries,
+	minimumEntries,
+	strict = false,
+	strictKeys = false,
+	...aliases
+} = {}) {
+	if (typeof item !== "string") {
+		return false;
+	}
+	let itemParse;
+	try {
+		itemParse = JSON.parse(item);
+	} catch {
+		return false;
+	}
+	return isJSON(itemParse, {
+		arrayRoot,
+		empty,
+		keysPattern,
+		maximumEntries,
+		minimumEntries,
+		strict,
+		strictKeys,
+		...aliases
+	});
+}/**
+ * Returns a `Buffer` instance from the given data URI `uri`.
+ *
+ * @param {String} uri Data URI to turn into a Buffer instance
+ * @returns {Buffer} Buffer instance from Data URI
+ * @api public
+ */
+function dataUriToBuffer(uri) {
+    if (!/^data:/i.test(uri)) {
+        throw new TypeError('`uri` does not appear to be a Data URI (must begin with "data:")');
+    }
+    // strip newlines
+    uri = uri.replace(/\r?\n/g, '');
+    // split the URI up into the "metadata" and the "data" portions
+    const firstComma = uri.indexOf(',');
+    if (firstComma === -1 || firstComma <= 4) {
+        throw new TypeError('malformed data: URI');
+    }
+    // remove the "data:" scheme and parse the metadata
+    const meta = uri.substring(5, firstComma).split(';');
+    let charset = '';
+    let base64 = false;
+    const type = meta[0] || 'text/plain';
+    let typeFull = type;
+    for (let i = 1; i < meta.length; i++) {
+        if (meta[i] === 'base64') {
+            base64 = true;
+        }
+        else {
+            typeFull += `;${meta[i]}`;
+            if (meta[i].indexOf('charset=') === 0) {
+                charset = meta[i].substring(8);
+            }
+        }
+    }
+    // defaults to US-ASCII only if type is not provided
+    if (!meta[0] && !charset.length) {
+        typeFull += ';charset=US-ASCII';
+        charset = 'US-ASCII';
+    }
+    // get the encoded data portion and decode URI-encoded chars
+    const encoding = base64 ? 'base64' : 'ascii';
+    const data = unescape(uri.substring(firstComma + 1));
+    const buffer = Buffer.from(data, encoding);
+    // set `.type` and `.typeFull` properties to MIME type
+    buffer.type = type;
+    buffer.typeFull = typeFull;
+    // set the `.charset` property
+    buffer.charset = charset;
+    return buffer;
+}var ponyfill_es2018 = {exports: {}};/**
+ * web-streams-polyfill v3.2.1
+ */
+
+var hasRequiredPonyfill_es2018;
+
+function requirePonyfill_es2018 () {
+	if (hasRequiredPonyfill_es2018) return ponyfill_es2018.exports;
+	hasRequiredPonyfill_es2018 = 1;
+	(function (module, exports) {
+		(function (global, factory) {
+		    factory(exports) ;
+		}(commonjsGlobal, (function (exports) {
+		    /// <reference lib="es2015.symbol" />
+		    const SymbolPolyfill = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ?
+		        Symbol :
+		        description => `Symbol(${description})`;
+
+		    /// <reference lib="dom" />
+		    function noop() {
+		        return undefined;
+		    }
+		    function getGlobals() {
+		        if (typeof self !== 'undefined') {
+		            return self;
+		        }
+		        else if (typeof window !== 'undefined') {
+		            return window;
+		        }
+		        else if (typeof commonjsGlobal !== 'undefined') {
+		            return commonjsGlobal;
+		        }
+		        return undefined;
+		    }
+		    const globals = getGlobals();
+
+		    function typeIsObject(x) {
+		        return (typeof x === 'object' && x !== null) || typeof x === 'function';
+		    }
+		    const rethrowAssertionErrorRejection = noop;
+
+		    const originalPromise = Promise;
+		    const originalPromiseThen = Promise.prototype.then;
+		    const originalPromiseResolve = Promise.resolve.bind(originalPromise);
+		    const originalPromiseReject = Promise.reject.bind(originalPromise);
+		    function newPromise(executor) {
+		        return new originalPromise(executor);
+		    }
+		    function promiseResolvedWith(value) {
+		        return originalPromiseResolve(value);
+		    }
+		    function promiseRejectedWith(reason) {
+		        return originalPromiseReject(reason);
+		    }
+		    function PerformPromiseThen(promise, onFulfilled, onRejected) {
+		        // There doesn't appear to be any way to correctly emulate the behaviour from JavaScript, so this is just an
+		        // approximation.
+		        return originalPromiseThen.call(promise, onFulfilled, onRejected);
+		    }
+		    function uponPromise(promise, onFulfilled, onRejected) {
+		        PerformPromiseThen(PerformPromiseThen(promise, onFulfilled, onRejected), undefined, rethrowAssertionErrorRejection);
+		    }
+		    function uponFulfillment(promise, onFulfilled) {
+		        uponPromise(promise, onFulfilled);
+		    }
+		    function uponRejection(promise, onRejected) {
+		        uponPromise(promise, undefined, onRejected);
+		    }
+		    function transformPromiseWith(promise, fulfillmentHandler, rejectionHandler) {
+		        return PerformPromiseThen(promise, fulfillmentHandler, rejectionHandler);
+		    }
+		    function setPromiseIsHandledToTrue(promise) {
+		        PerformPromiseThen(promise, undefined, rethrowAssertionErrorRejection);
+		    }
+		    const queueMicrotask = (() => {
+		        const globalQueueMicrotask = globals && globals.queueMicrotask;
+		        if (typeof globalQueueMicrotask === 'function') {
+		            return globalQueueMicrotask;
+		        }
+		        const resolvedPromise = promiseResolvedWith(undefined);
+		        return (fn) => PerformPromiseThen(resolvedPromise, fn);
+		    })();
+		    function reflectCall(F, V, args) {
+		        if (typeof F !== 'function') {
+		            throw new TypeError('Argument is not a function');
+		        }
+		        return Function.prototype.apply.call(F, V, args);
+		    }
+		    function promiseCall(F, V, args) {
+		        try {
+		            return promiseResolvedWith(reflectCall(F, V, args));
+		        }
+		        catch (value) {
+		            return promiseRejectedWith(value);
+		        }
+		    }
+
+		    // Original from Chromium
+		    // https://chromium.googlesource.com/chromium/src/+/0aee4434a4dba42a42abaea9bfbc0cd196a63bc1/third_party/blink/renderer/core/streams/SimpleQueue.js
+		    const QUEUE_MAX_ARRAY_SIZE = 16384;
+		    /**
+		     * Simple queue structure.
+		     *
+		     * Avoids scalability issues with using a packed array directly by using
+		     * multiple arrays in a linked list and keeping the array size bounded.
+		     */
+		    class SimpleQueue {
+		        constructor() {
+		            this._cursor = 0;
+		            this._size = 0;
+		            // _front and _back are always defined.
+		            this._front = {
+		                _elements: [],
+		                _next: undefined
+		            };
+		            this._back = this._front;
+		            // The cursor is used to avoid calling Array.shift().
+		            // It contains the index of the front element of the array inside the
+		            // front-most node. It is always in the range [0, QUEUE_MAX_ARRAY_SIZE).
+		            this._cursor = 0;
+		            // When there is only one node, size === elements.length - cursor.
+		            this._size = 0;
+		        }
+		        get length() {
+		            return this._size;
+		        }
+		        // For exception safety, this method is structured in order:
+		        // 1. Read state
+		        // 2. Calculate required state mutations
+		        // 3. Perform state mutations
+		        push(element) {
+		            const oldBack = this._back;
+		            let newBack = oldBack;
+		            if (oldBack._elements.length === QUEUE_MAX_ARRAY_SIZE - 1) {
+		                newBack = {
+		                    _elements: [],
+		                    _next: undefined
+		                };
+		            }
+		            // push() is the mutation most likely to throw an exception, so it
+		            // goes first.
+		            oldBack._elements.push(element);
+		            if (newBack !== oldBack) {
+		                this._back = newBack;
+		                oldBack._next = newBack;
+		            }
+		            ++this._size;
+		        }
+		        // Like push(), shift() follows the read -> calculate -> mutate pattern for
+		        // exception safety.
+		        shift() { // must not be called on an empty queue
+		            const oldFront = this._front;
+		            let newFront = oldFront;
+		            const oldCursor = this._cursor;
+		            let newCursor = oldCursor + 1;
+		            const elements = oldFront._elements;
+		            const element = elements[oldCursor];
+		            if (newCursor === QUEUE_MAX_ARRAY_SIZE) {
+		                newFront = oldFront._next;
+		                newCursor = 0;
+		            }
+		            // No mutations before this point.
+		            --this._size;
+		            this._cursor = newCursor;
+		            if (oldFront !== newFront) {
+		                this._front = newFront;
+		            }
+		            // Permit shifted element to be garbage collected.
+		            elements[oldCursor] = undefined;
+		            return element;
+		        }
+		        // The tricky thing about forEach() is that it can be called
+		        // re-entrantly. The queue may be mutated inside the callback. It is easy to
+		        // see that push() within the callback has no negative effects since the end
+		        // of the queue is checked for on every iteration. If shift() is called
+		        // repeatedly within the callback then the next iteration may return an
+		        // element that has been removed. In this case the callback will be called
+		        // with undefined values until we either "catch up" with elements that still
+		        // exist or reach the back of the queue.
+		        forEach(callback) {
+		            let i = this._cursor;
+		            let node = this._front;
+		            let elements = node._elements;
+		            while (i !== elements.length || node._next !== undefined) {
+		                if (i === elements.length) {
+		                    node = node._next;
+		                    elements = node._elements;
+		                    i = 0;
+		                    if (elements.length === 0) {
+		                        break;
+		                    }
+		                }
+		                callback(elements[i]);
+		                ++i;
+		            }
+		        }
+		        // Return the element that would be returned if shift() was called now,
+		        // without modifying the queue.
+		        peek() { // must not be called on an empty queue
+		            const front = this._front;
+		            const cursor = this._cursor;
+		            return front._elements[cursor];
+		        }
+		    }
+
+		    function ReadableStreamReaderGenericInitialize(reader, stream) {
+		        reader._ownerReadableStream = stream;
+		        stream._reader = reader;
+		        if (stream._state === 'readable') {
+		            defaultReaderClosedPromiseInitialize(reader);
+		        }
+		        else if (stream._state === 'closed') {
+		            defaultReaderClosedPromiseInitializeAsResolved(reader);
+		        }
+		        else {
+		            defaultReaderClosedPromiseInitializeAsRejected(reader, stream._storedError);
+		        }
+		    }
+		    // A client of ReadableStreamDefaultReader and ReadableStreamBYOBReader may use these functions directly to bypass state
+		    // check.
+		    function ReadableStreamReaderGenericCancel(reader, reason) {
+		        const stream = reader._ownerReadableStream;
+		        return ReadableStreamCancel(stream, reason);
+		    }
+		    function ReadableStreamReaderGenericRelease(reader) {
+		        if (reader._ownerReadableStream._state === 'readable') {
+		            defaultReaderClosedPromiseReject(reader, new TypeError(`Reader was released and can no longer be used to monitor the stream's closedness`));
+		        }
+		        else {
+		            defaultReaderClosedPromiseResetToRejected(reader, new TypeError(`Reader was released and can no longer be used to monitor the stream's closedness`));
+		        }
+		        reader._ownerReadableStream._reader = undefined;
+		        reader._ownerReadableStream = undefined;
+		    }
+		    // Helper functions for the readers.
+		    function readerLockException(name) {
+		        return new TypeError('Cannot ' + name + ' a stream using a released reader');
+		    }
+		    // Helper functions for the ReadableStreamDefaultReader.
+		    function defaultReaderClosedPromiseInitialize(reader) {
+		        reader._closedPromise = newPromise((resolve, reject) => {
+		            reader._closedPromise_resolve = resolve;
+		            reader._closedPromise_reject = reject;
+		        });
+		    }
+		    function defaultReaderClosedPromiseInitializeAsRejected(reader, reason) {
+		        defaultReaderClosedPromiseInitialize(reader);
+		        defaultReaderClosedPromiseReject(reader, reason);
+		    }
+		    function defaultReaderClosedPromiseInitializeAsResolved(reader) {
+		        defaultReaderClosedPromiseInitialize(reader);
+		        defaultReaderClosedPromiseResolve(reader);
+		    }
+		    function defaultReaderClosedPromiseReject(reader, reason) {
+		        if (reader._closedPromise_reject === undefined) {
+		            return;
+		        }
+		        setPromiseIsHandledToTrue(reader._closedPromise);
+		        reader._closedPromise_reject(reason);
+		        reader._closedPromise_resolve = undefined;
+		        reader._closedPromise_reject = undefined;
+		    }
+		    function defaultReaderClosedPromiseResetToRejected(reader, reason) {
+		        defaultReaderClosedPromiseInitializeAsRejected(reader, reason);
+		    }
+		    function defaultReaderClosedPromiseResolve(reader) {
+		        if (reader._closedPromise_resolve === undefined) {
+		            return;
+		        }
+		        reader._closedPromise_resolve(undefined);
+		        reader._closedPromise_resolve = undefined;
+		        reader._closedPromise_reject = undefined;
+		    }
+
+		    const AbortSteps = SymbolPolyfill('[[AbortSteps]]');
+		    const ErrorSteps = SymbolPolyfill('[[ErrorSteps]]');
+		    const CancelSteps = SymbolPolyfill('[[CancelSteps]]');
+		    const PullSteps = SymbolPolyfill('[[PullSteps]]');
+
+		    /// <reference lib="es2015.core" />
+		    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite#Polyfill
+		    const NumberIsFinite = Number.isFinite || function (x) {
+		        return typeof x === 'number' && isFinite(x);
+		    };
+
+		    /// <reference lib="es2015.core" />
+		    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc#Polyfill
+		    const MathTrunc = Math.trunc || function (v) {
+		        return v < 0 ? Math.ceil(v) : Math.floor(v);
+		    };
+
+		    // https://heycam.github.io/webidl/#idl-dictionaries
+		    function isDictionary(x) {
+		        return typeof x === 'object' || typeof x === 'function';
+		    }
+		    function assertDictionary(obj, context) {
+		        if (obj !== undefined && !isDictionary(obj)) {
+		            throw new TypeError(`${context} is not an object.`);
+		        }
+		    }
+		    // https://heycam.github.io/webidl/#idl-callback-functions
+		    function assertFunction(x, context) {
+		        if (typeof x !== 'function') {
+		            throw new TypeError(`${context} is not a function.`);
+		        }
+		    }
+		    // https://heycam.github.io/webidl/#idl-object
+		    function isObject(x) {
+		        return (typeof x === 'object' && x !== null) || typeof x === 'function';
+		    }
+		    function assertObject(x, context) {
+		        if (!isObject(x)) {
+		            throw new TypeError(`${context} is not an object.`);
+		        }
+		    }
+		    function assertRequiredArgument(x, position, context) {
+		        if (x === undefined) {
+		            throw new TypeError(`Parameter ${position} is required in '${context}'.`);
+		        }
+		    }
+		    function assertRequiredField(x, field, context) {
+		        if (x === undefined) {
+		            throw new TypeError(`${field} is required in '${context}'.`);
+		        }
+		    }
+		    // https://heycam.github.io/webidl/#idl-unrestricted-double
+		    function convertUnrestrictedDouble(value) {
+		        return Number(value);
+		    }
+		    function censorNegativeZero(x) {
+		        return x === 0 ? 0 : x;
+		    }
+		    function integerPart(x) {
+		        return censorNegativeZero(MathTrunc(x));
+		    }
+		    // https://heycam.github.io/webidl/#idl-unsigned-long-long
+		    function convertUnsignedLongLongWithEnforceRange(value, context) {
+		        const lowerBound = 0;
+		        const upperBound = Number.MAX_SAFE_INTEGER;
+		        let x = Number(value);
+		        x = censorNegativeZero(x);
+		        if (!NumberIsFinite(x)) {
+		            throw new TypeError(`${context} is not a finite number`);
+		        }
+		        x = integerPart(x);
+		        if (x < lowerBound || x > upperBound) {
+		            throw new TypeError(`${context} is outside the accepted range of ${lowerBound} to ${upperBound}, inclusive`);
+		        }
+		        if (!NumberIsFinite(x) || x === 0) {
+		            return 0;
+		        }
+		        // TODO Use BigInt if supported?
+		        // let xBigInt = BigInt(integerPart(x));
+		        // xBigInt = BigInt.asUintN(64, xBigInt);
+		        // return Number(xBigInt);
+		        return x;
+		    }
+
+		    function assertReadableStream(x, context) {
+		        if (!IsReadableStream(x)) {
+		            throw new TypeError(`${context} is not a ReadableStream.`);
+		        }
+		    }
+
+		    // Abstract operations for the ReadableStream.
+		    function AcquireReadableStreamDefaultReader(stream) {
+		        return new ReadableStreamDefaultReader(stream);
+		    }
+		    // ReadableStream API exposed for controllers.
+		    function ReadableStreamAddReadRequest(stream, readRequest) {
+		        stream._reader._readRequests.push(readRequest);
+		    }
+		    function ReadableStreamFulfillReadRequest(stream, chunk, done) {
+		        const reader = stream._reader;
+		        const readRequest = reader._readRequests.shift();
+		        if (done) {
+		            readRequest._closeSteps();
+		        }
+		        else {
+		            readRequest._chunkSteps(chunk);
+		        }
+		    }
+		    function ReadableStreamGetNumReadRequests(stream) {
+		        return stream._reader._readRequests.length;
+		    }
+		    function ReadableStreamHasDefaultReader(stream) {
+		        const reader = stream._reader;
+		        if (reader === undefined) {
+		            return false;
+		        }
+		        if (!IsReadableStreamDefaultReader(reader)) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    /**
+		     * A default reader vended by a {@link ReadableStream}.
+		     *
+		     * @public
+		     */
+		    class ReadableStreamDefaultReader {
+		        constructor(stream) {
+		            assertRequiredArgument(stream, 1, 'ReadableStreamDefaultReader');
+		            assertReadableStream(stream, 'First parameter');
+		            if (IsReadableStreamLocked(stream)) {
+		                throw new TypeError('This stream has already been locked for exclusive reading by another reader');
+		            }
+		            ReadableStreamReaderGenericInitialize(this, stream);
+		            this._readRequests = new SimpleQueue();
+		        }
+		        /**
+		         * Returns a promise that will be fulfilled when the stream becomes closed,
+		         * or rejected if the stream ever errors or the reader's lock is released before the stream finishes closing.
+		         */
+		        get closed() {
+		            if (!IsReadableStreamDefaultReader(this)) {
+		                return promiseRejectedWith(defaultReaderBrandCheckException('closed'));
+		            }
+		            return this._closedPromise;
+		        }
+		        /**
+		         * If the reader is active, behaves the same as {@link ReadableStream.cancel | stream.cancel(reason)}.
+		         */
+		        cancel(reason = undefined) {
+		            if (!IsReadableStreamDefaultReader(this)) {
+		                return promiseRejectedWith(defaultReaderBrandCheckException('cancel'));
+		            }
+		            if (this._ownerReadableStream === undefined) {
+		                return promiseRejectedWith(readerLockException('cancel'));
+		            }
+		            return ReadableStreamReaderGenericCancel(this, reason);
+		        }
+		        /**
+		         * Returns a promise that allows access to the next chunk from the stream's internal queue, if available.
+		         *
+		         * If reading a chunk causes the queue to become empty, more data will be pulled from the underlying source.
+		         */
+		        read() {
+		            if (!IsReadableStreamDefaultReader(this)) {
+		                return promiseRejectedWith(defaultReaderBrandCheckException('read'));
+		            }
+		            if (this._ownerReadableStream === undefined) {
+		                return promiseRejectedWith(readerLockException('read from'));
+		            }
+		            let resolvePromise;
+		            let rejectPromise;
+		            const promise = newPromise((resolve, reject) => {
+		                resolvePromise = resolve;
+		                rejectPromise = reject;
+		            });
+		            const readRequest = {
+		                _chunkSteps: chunk => resolvePromise({ value: chunk, done: false }),
+		                _closeSteps: () => resolvePromise({ value: undefined, done: true }),
+		                _errorSteps: e => rejectPromise(e)
+		            };
+		            ReadableStreamDefaultReaderRead(this, readRequest);
+		            return promise;
+		        }
+		        /**
+		         * Releases the reader's lock on the corresponding stream. After the lock is released, the reader is no longer active.
+		         * If the associated stream is errored when the lock is released, the reader will appear errored in the same way
+		         * from now on; otherwise, the reader will appear closed.
+		         *
+		         * A reader's lock cannot be released while it still has a pending read request, i.e., if a promise returned by
+		         * the reader's {@link ReadableStreamDefaultReader.read | read()} method has not yet been settled. Attempting to
+		         * do so will throw a `TypeError` and leave the reader locked to the stream.
+		         */
+		        releaseLock() {
+		            if (!IsReadableStreamDefaultReader(this)) {
+		                throw defaultReaderBrandCheckException('releaseLock');
+		            }
+		            if (this._ownerReadableStream === undefined) {
+		                return;
+		            }
+		            if (this._readRequests.length > 0) {
+		                throw new TypeError('Tried to release a reader lock when that reader has pending read() calls un-settled');
+		            }
+		            ReadableStreamReaderGenericRelease(this);
+		        }
+		    }
+		    Object.defineProperties(ReadableStreamDefaultReader.prototype, {
+		        cancel: { enumerable: true },
+		        read: { enumerable: true },
+		        releaseLock: { enumerable: true },
+		        closed: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ReadableStreamDefaultReader.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ReadableStreamDefaultReader',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the readers.
+		    function IsReadableStreamDefaultReader(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_readRequests')) {
+		            return false;
+		        }
+		        return x instanceof ReadableStreamDefaultReader;
+		    }
+		    function ReadableStreamDefaultReaderRead(reader, readRequest) {
+		        const stream = reader._ownerReadableStream;
+		        stream._disturbed = true;
+		        if (stream._state === 'closed') {
+		            readRequest._closeSteps();
+		        }
+		        else if (stream._state === 'errored') {
+		            readRequest._errorSteps(stream._storedError);
+		        }
+		        else {
+		            stream._readableStreamController[PullSteps](readRequest);
+		        }
+		    }
+		    // Helper functions for the ReadableStreamDefaultReader.
+		    function defaultReaderBrandCheckException(name) {
+		        return new TypeError(`ReadableStreamDefaultReader.prototype.${name} can only be used on a ReadableStreamDefaultReader`);
+		    }
+
+		    /// <reference lib="es2018.asynciterable" />
+		    /* eslint-disable @typescript-eslint/no-empty-function */
+		    const AsyncIteratorPrototype = Object.getPrototypeOf(Object.getPrototypeOf(async function* () { }).prototype);
+
+		    /// <reference lib="es2018.asynciterable" />
+		    class ReadableStreamAsyncIteratorImpl {
+		        constructor(reader, preventCancel) {
+		            this._ongoingPromise = undefined;
+		            this._isFinished = false;
+		            this._reader = reader;
+		            this._preventCancel = preventCancel;
+		        }
+		        next() {
+		            const nextSteps = () => this._nextSteps();
+		            this._ongoingPromise = this._ongoingPromise ?
+		                transformPromiseWith(this._ongoingPromise, nextSteps, nextSteps) :
+		                nextSteps();
+		            return this._ongoingPromise;
+		        }
+		        return(value) {
+		            const returnSteps = () => this._returnSteps(value);
+		            return this._ongoingPromise ?
+		                transformPromiseWith(this._ongoingPromise, returnSteps, returnSteps) :
+		                returnSteps();
+		        }
+		        _nextSteps() {
+		            if (this._isFinished) {
+		                return Promise.resolve({ value: undefined, done: true });
+		            }
+		            const reader = this._reader;
+		            if (reader._ownerReadableStream === undefined) {
+		                return promiseRejectedWith(readerLockException('iterate'));
+		            }
+		            let resolvePromise;
+		            let rejectPromise;
+		            const promise = newPromise((resolve, reject) => {
+		                resolvePromise = resolve;
+		                rejectPromise = reject;
+		            });
+		            const readRequest = {
+		                _chunkSteps: chunk => {
+		                    this._ongoingPromise = undefined;
+		                    // This needs to be delayed by one microtask, otherwise we stop pulling too early which breaks a test.
+		                    // FIXME Is this a bug in the specification, or in the test?
+		                    queueMicrotask(() => resolvePromise({ value: chunk, done: false }));
+		                },
+		                _closeSteps: () => {
+		                    this._ongoingPromise = undefined;
+		                    this._isFinished = true;
+		                    ReadableStreamReaderGenericRelease(reader);
+		                    resolvePromise({ value: undefined, done: true });
+		                },
+		                _errorSteps: reason => {
+		                    this._ongoingPromise = undefined;
+		                    this._isFinished = true;
+		                    ReadableStreamReaderGenericRelease(reader);
+		                    rejectPromise(reason);
+		                }
+		            };
+		            ReadableStreamDefaultReaderRead(reader, readRequest);
+		            return promise;
+		        }
+		        _returnSteps(value) {
+		            if (this._isFinished) {
+		                return Promise.resolve({ value, done: true });
+		            }
+		            this._isFinished = true;
+		            const reader = this._reader;
+		            if (reader._ownerReadableStream === undefined) {
+		                return promiseRejectedWith(readerLockException('finish iterating'));
+		            }
+		            if (!this._preventCancel) {
+		                const result = ReadableStreamReaderGenericCancel(reader, value);
+		                ReadableStreamReaderGenericRelease(reader);
+		                return transformPromiseWith(result, () => ({ value, done: true }));
+		            }
+		            ReadableStreamReaderGenericRelease(reader);
+		            return promiseResolvedWith({ value, done: true });
+		        }
+		    }
+		    const ReadableStreamAsyncIteratorPrototype = {
+		        next() {
+		            if (!IsReadableStreamAsyncIterator(this)) {
+		                return promiseRejectedWith(streamAsyncIteratorBrandCheckException('next'));
+		            }
+		            return this._asyncIteratorImpl.next();
+		        },
+		        return(value) {
+		            if (!IsReadableStreamAsyncIterator(this)) {
+		                return promiseRejectedWith(streamAsyncIteratorBrandCheckException('return'));
+		            }
+		            return this._asyncIteratorImpl.return(value);
+		        }
+		    };
+		    if (AsyncIteratorPrototype !== undefined) {
+		        Object.setPrototypeOf(ReadableStreamAsyncIteratorPrototype, AsyncIteratorPrototype);
+		    }
+		    // Abstract operations for the ReadableStream.
+		    function AcquireReadableStreamAsyncIterator(stream, preventCancel) {
+		        const reader = AcquireReadableStreamDefaultReader(stream);
+		        const impl = new ReadableStreamAsyncIteratorImpl(reader, preventCancel);
+		        const iterator = Object.create(ReadableStreamAsyncIteratorPrototype);
+		        iterator._asyncIteratorImpl = impl;
+		        return iterator;
+		    }
+		    function IsReadableStreamAsyncIterator(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_asyncIteratorImpl')) {
+		            return false;
+		        }
+		        try {
+		            // noinspection SuspiciousTypeOfGuard
+		            return x._asyncIteratorImpl instanceof
+		                ReadableStreamAsyncIteratorImpl;
+		        }
+		        catch (_a) {
+		            return false;
+		        }
+		    }
+		    // Helper functions for the ReadableStream.
+		    function streamAsyncIteratorBrandCheckException(name) {
+		        return new TypeError(`ReadableStreamAsyncIterator.${name} can only be used on a ReadableSteamAsyncIterator`);
+		    }
+
+		    /// <reference lib="es2015.core" />
+		    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN#Polyfill
+		    const NumberIsNaN = Number.isNaN || function (x) {
+		        // eslint-disable-next-line no-self-compare
+		        return x !== x;
+		    };
+
+		    function CreateArrayFromList(elements) {
+		        // We use arrays to represent lists, so this is basically a no-op.
+		        // Do a slice though just in case we happen to depend on the unique-ness.
+		        return elements.slice();
+		    }
+		    function CopyDataBlockBytes(dest, destOffset, src, srcOffset, n) {
+		        new Uint8Array(dest).set(new Uint8Array(src, srcOffset, n), destOffset);
+		    }
+		    // Not implemented correctly
+		    function TransferArrayBuffer(O) {
+		        return O;
+		    }
+		    // Not implemented correctly
+		    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+		    function IsDetachedBuffer(O) {
+		        return false;
+		    }
+		    function ArrayBufferSlice(buffer, begin, end) {
+		        // ArrayBuffer.prototype.slice is not available on IE10
+		        // https://www.caniuse.com/mdn-javascript_builtins_arraybuffer_slice
+		        if (buffer.slice) {
+		            return buffer.slice(begin, end);
+		        }
+		        const length = end - begin;
+		        const slice = new ArrayBuffer(length);
+		        CopyDataBlockBytes(slice, 0, buffer, begin, length);
+		        return slice;
+		    }
+
+		    function IsNonNegativeNumber(v) {
+		        if (typeof v !== 'number') {
+		            return false;
+		        }
+		        if (NumberIsNaN(v)) {
+		            return false;
+		        }
+		        if (v < 0) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    function CloneAsUint8Array(O) {
+		        const buffer = ArrayBufferSlice(O.buffer, O.byteOffset, O.byteOffset + O.byteLength);
+		        return new Uint8Array(buffer);
+		    }
+
+		    function DequeueValue(container) {
+		        const pair = container._queue.shift();
+		        container._queueTotalSize -= pair.size;
+		        if (container._queueTotalSize < 0) {
+		            container._queueTotalSize = 0;
+		        }
+		        return pair.value;
+		    }
+		    function EnqueueValueWithSize(container, value, size) {
+		        if (!IsNonNegativeNumber(size) || size === Infinity) {
+		            throw new RangeError('Size must be a finite, non-NaN, non-negative number.');
+		        }
+		        container._queue.push({ value, size });
+		        container._queueTotalSize += size;
+		    }
+		    function PeekQueueValue(container) {
+		        const pair = container._queue.peek();
+		        return pair.value;
+		    }
+		    function ResetQueue(container) {
+		        container._queue = new SimpleQueue();
+		        container._queueTotalSize = 0;
+		    }
+
+		    /**
+		     * A pull-into request in a {@link ReadableByteStreamController}.
+		     *
+		     * @public
+		     */
+		    class ReadableStreamBYOBRequest {
+		        constructor() {
+		            throw new TypeError('Illegal constructor');
+		        }
+		        /**
+		         * Returns the view for writing in to, or `null` if the BYOB request has already been responded to.
+		         */
+		        get view() {
+		            if (!IsReadableStreamBYOBRequest(this)) {
+		                throw byobRequestBrandCheckException('view');
+		            }
+		            return this._view;
+		        }
+		        respond(bytesWritten) {
+		            if (!IsReadableStreamBYOBRequest(this)) {
+		                throw byobRequestBrandCheckException('respond');
+		            }
+		            assertRequiredArgument(bytesWritten, 1, 'respond');
+		            bytesWritten = convertUnsignedLongLongWithEnforceRange(bytesWritten, 'First parameter');
+		            if (this._associatedReadableByteStreamController === undefined) {
+		                throw new TypeError('This BYOB request has been invalidated');
+		            }
+		            if (IsDetachedBuffer(this._view.buffer)) ;
+		            ReadableByteStreamControllerRespond(this._associatedReadableByteStreamController, bytesWritten);
+		        }
+		        respondWithNewView(view) {
+		            if (!IsReadableStreamBYOBRequest(this)) {
+		                throw byobRequestBrandCheckException('respondWithNewView');
+		            }
+		            assertRequiredArgument(view, 1, 'respondWithNewView');
+		            if (!ArrayBuffer.isView(view)) {
+		                throw new TypeError('You can only respond with array buffer views');
+		            }
+		            if (this._associatedReadableByteStreamController === undefined) {
+		                throw new TypeError('This BYOB request has been invalidated');
+		            }
+		            if (IsDetachedBuffer(view.buffer)) ;
+		            ReadableByteStreamControllerRespondWithNewView(this._associatedReadableByteStreamController, view);
+		        }
+		    }
+		    Object.defineProperties(ReadableStreamBYOBRequest.prototype, {
+		        respond: { enumerable: true },
+		        respondWithNewView: { enumerable: true },
+		        view: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ReadableStreamBYOBRequest.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ReadableStreamBYOBRequest',
+		            configurable: true
+		        });
+		    }
+		    /**
+		     * Allows control of a {@link ReadableStream | readable byte stream}'s state and internal queue.
+		     *
+		     * @public
+		     */
+		    class ReadableByteStreamController {
+		        constructor() {
+		            throw new TypeError('Illegal constructor');
+		        }
+		        /**
+		         * Returns the current BYOB pull request, or `null` if there isn't one.
+		         */
+		        get byobRequest() {
+		            if (!IsReadableByteStreamController(this)) {
+		                throw byteStreamControllerBrandCheckException('byobRequest');
+		            }
+		            return ReadableByteStreamControllerGetBYOBRequest(this);
+		        }
+		        /**
+		         * Returns the desired size to fill the controlled stream's internal queue. It can be negative, if the queue is
+		         * over-full. An underlying byte source ought to use this information to determine when and how to apply backpressure.
+		         */
+		        get desiredSize() {
+		            if (!IsReadableByteStreamController(this)) {
+		                throw byteStreamControllerBrandCheckException('desiredSize');
+		            }
+		            return ReadableByteStreamControllerGetDesiredSize(this);
+		        }
+		        /**
+		         * Closes the controlled readable stream. Consumers will still be able to read any previously-enqueued chunks from
+		         * the stream, but once those are read, the stream will become closed.
+		         */
+		        close() {
+		            if (!IsReadableByteStreamController(this)) {
+		                throw byteStreamControllerBrandCheckException('close');
+		            }
+		            if (this._closeRequested) {
+		                throw new TypeError('The stream has already been closed; do not close it again!');
+		            }
+		            const state = this._controlledReadableByteStream._state;
+		            if (state !== 'readable') {
+		                throw new TypeError(`The stream (in ${state} state) is not in the readable state and cannot be closed`);
+		            }
+		            ReadableByteStreamControllerClose(this);
+		        }
+		        enqueue(chunk) {
+		            if (!IsReadableByteStreamController(this)) {
+		                throw byteStreamControllerBrandCheckException('enqueue');
+		            }
+		            assertRequiredArgument(chunk, 1, 'enqueue');
+		            if (!ArrayBuffer.isView(chunk)) {
+		                throw new TypeError('chunk must be an array buffer view');
+		            }
+		            if (chunk.byteLength === 0) {
+		                throw new TypeError('chunk must have non-zero byteLength');
+		            }
+		            if (chunk.buffer.byteLength === 0) {
+		                throw new TypeError(`chunk's buffer must have non-zero byteLength`);
+		            }
+		            if (this._closeRequested) {
+		                throw new TypeError('stream is closed or draining');
+		            }
+		            const state = this._controlledReadableByteStream._state;
+		            if (state !== 'readable') {
+		                throw new TypeError(`The stream (in ${state} state) is not in the readable state and cannot be enqueued to`);
+		            }
+		            ReadableByteStreamControllerEnqueue(this, chunk);
+		        }
+		        /**
+		         * Errors the controlled readable stream, making all future interactions with it fail with the given error `e`.
+		         */
+		        error(e = undefined) {
+		            if (!IsReadableByteStreamController(this)) {
+		                throw byteStreamControllerBrandCheckException('error');
+		            }
+		            ReadableByteStreamControllerError(this, e);
+		        }
+		        /** @internal */
+		        [CancelSteps](reason) {
+		            ReadableByteStreamControllerClearPendingPullIntos(this);
+		            ResetQueue(this);
+		            const result = this._cancelAlgorithm(reason);
+		            ReadableByteStreamControllerClearAlgorithms(this);
+		            return result;
+		        }
+		        /** @internal */
+		        [PullSteps](readRequest) {
+		            const stream = this._controlledReadableByteStream;
+		            if (this._queueTotalSize > 0) {
+		                const entry = this._queue.shift();
+		                this._queueTotalSize -= entry.byteLength;
+		                ReadableByteStreamControllerHandleQueueDrain(this);
+		                const view = new Uint8Array(entry.buffer, entry.byteOffset, entry.byteLength);
+		                readRequest._chunkSteps(view);
+		                return;
+		            }
+		            const autoAllocateChunkSize = this._autoAllocateChunkSize;
+		            if (autoAllocateChunkSize !== undefined) {
+		                let buffer;
+		                try {
+		                    buffer = new ArrayBuffer(autoAllocateChunkSize);
+		                }
+		                catch (bufferE) {
+		                    readRequest._errorSteps(bufferE);
+		                    return;
+		                }
+		                const pullIntoDescriptor = {
+		                    buffer,
+		                    bufferByteLength: autoAllocateChunkSize,
+		                    byteOffset: 0,
+		                    byteLength: autoAllocateChunkSize,
+		                    bytesFilled: 0,
+		                    elementSize: 1,
+		                    viewConstructor: Uint8Array,
+		                    readerType: 'default'
+		                };
+		                this._pendingPullIntos.push(pullIntoDescriptor);
+		            }
+		            ReadableStreamAddReadRequest(stream, readRequest);
+		            ReadableByteStreamControllerCallPullIfNeeded(this);
+		        }
+		    }
+		    Object.defineProperties(ReadableByteStreamController.prototype, {
+		        close: { enumerable: true },
+		        enqueue: { enumerable: true },
+		        error: { enumerable: true },
+		        byobRequest: { enumerable: true },
+		        desiredSize: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ReadableByteStreamController.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ReadableByteStreamController',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the ReadableByteStreamController.
+		    function IsReadableByteStreamController(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_controlledReadableByteStream')) {
+		            return false;
+		        }
+		        return x instanceof ReadableByteStreamController;
+		    }
+		    function IsReadableStreamBYOBRequest(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_associatedReadableByteStreamController')) {
+		            return false;
+		        }
+		        return x instanceof ReadableStreamBYOBRequest;
+		    }
+		    function ReadableByteStreamControllerCallPullIfNeeded(controller) {
+		        const shouldPull = ReadableByteStreamControllerShouldCallPull(controller);
+		        if (!shouldPull) {
+		            return;
+		        }
+		        if (controller._pulling) {
+		            controller._pullAgain = true;
+		            return;
+		        }
+		        controller._pulling = true;
+		        // TODO: Test controller argument
+		        const pullPromise = controller._pullAlgorithm();
+		        uponPromise(pullPromise, () => {
+		            controller._pulling = false;
+		            if (controller._pullAgain) {
+		                controller._pullAgain = false;
+		                ReadableByteStreamControllerCallPullIfNeeded(controller);
+		            }
+		        }, e => {
+		            ReadableByteStreamControllerError(controller, e);
+		        });
+		    }
+		    function ReadableByteStreamControllerClearPendingPullIntos(controller) {
+		        ReadableByteStreamControllerInvalidateBYOBRequest(controller);
+		        controller._pendingPullIntos = new SimpleQueue();
+		    }
+		    function ReadableByteStreamControllerCommitPullIntoDescriptor(stream, pullIntoDescriptor) {
+		        let done = false;
+		        if (stream._state === 'closed') {
+		            done = true;
+		        }
+		        const filledView = ReadableByteStreamControllerConvertPullIntoDescriptor(pullIntoDescriptor);
+		        if (pullIntoDescriptor.readerType === 'default') {
+		            ReadableStreamFulfillReadRequest(stream, filledView, done);
+		        }
+		        else {
+		            ReadableStreamFulfillReadIntoRequest(stream, filledView, done);
+		        }
+		    }
+		    function ReadableByteStreamControllerConvertPullIntoDescriptor(pullIntoDescriptor) {
+		        const bytesFilled = pullIntoDescriptor.bytesFilled;
+		        const elementSize = pullIntoDescriptor.elementSize;
+		        return new pullIntoDescriptor.viewConstructor(pullIntoDescriptor.buffer, pullIntoDescriptor.byteOffset, bytesFilled / elementSize);
+		    }
+		    function ReadableByteStreamControllerEnqueueChunkToQueue(controller, buffer, byteOffset, byteLength) {
+		        controller._queue.push({ buffer, byteOffset, byteLength });
+		        controller._queueTotalSize += byteLength;
+		    }
+		    function ReadableByteStreamControllerFillPullIntoDescriptorFromQueue(controller, pullIntoDescriptor) {
+		        const elementSize = pullIntoDescriptor.elementSize;
+		        const currentAlignedBytes = pullIntoDescriptor.bytesFilled - pullIntoDescriptor.bytesFilled % elementSize;
+		        const maxBytesToCopy = Math.min(controller._queueTotalSize, pullIntoDescriptor.byteLength - pullIntoDescriptor.bytesFilled);
+		        const maxBytesFilled = pullIntoDescriptor.bytesFilled + maxBytesToCopy;
+		        const maxAlignedBytes = maxBytesFilled - maxBytesFilled % elementSize;
+		        let totalBytesToCopyRemaining = maxBytesToCopy;
+		        let ready = false;
+		        if (maxAlignedBytes > currentAlignedBytes) {
+		            totalBytesToCopyRemaining = maxAlignedBytes - pullIntoDescriptor.bytesFilled;
+		            ready = true;
+		        }
+		        const queue = controller._queue;
+		        while (totalBytesToCopyRemaining > 0) {
+		            const headOfQueue = queue.peek();
+		            const bytesToCopy = Math.min(totalBytesToCopyRemaining, headOfQueue.byteLength);
+		            const destStart = pullIntoDescriptor.byteOffset + pullIntoDescriptor.bytesFilled;
+		            CopyDataBlockBytes(pullIntoDescriptor.buffer, destStart, headOfQueue.buffer, headOfQueue.byteOffset, bytesToCopy);
+		            if (headOfQueue.byteLength === bytesToCopy) {
+		                queue.shift();
+		            }
+		            else {
+		                headOfQueue.byteOffset += bytesToCopy;
+		                headOfQueue.byteLength -= bytesToCopy;
+		            }
+		            controller._queueTotalSize -= bytesToCopy;
+		            ReadableByteStreamControllerFillHeadPullIntoDescriptor(controller, bytesToCopy, pullIntoDescriptor);
+		            totalBytesToCopyRemaining -= bytesToCopy;
+		        }
+		        return ready;
+		    }
+		    function ReadableByteStreamControllerFillHeadPullIntoDescriptor(controller, size, pullIntoDescriptor) {
+		        pullIntoDescriptor.bytesFilled += size;
+		    }
+		    function ReadableByteStreamControllerHandleQueueDrain(controller) {
+		        if (controller._queueTotalSize === 0 && controller._closeRequested) {
+		            ReadableByteStreamControllerClearAlgorithms(controller);
+		            ReadableStreamClose(controller._controlledReadableByteStream);
+		        }
+		        else {
+		            ReadableByteStreamControllerCallPullIfNeeded(controller);
+		        }
+		    }
+		    function ReadableByteStreamControllerInvalidateBYOBRequest(controller) {
+		        if (controller._byobRequest === null) {
+		            return;
+		        }
+		        controller._byobRequest._associatedReadableByteStreamController = undefined;
+		        controller._byobRequest._view = null;
+		        controller._byobRequest = null;
+		    }
+		    function ReadableByteStreamControllerProcessPullIntoDescriptorsUsingQueue(controller) {
+		        while (controller._pendingPullIntos.length > 0) {
+		            if (controller._queueTotalSize === 0) {
+		                return;
+		            }
+		            const pullIntoDescriptor = controller._pendingPullIntos.peek();
+		            if (ReadableByteStreamControllerFillPullIntoDescriptorFromQueue(controller, pullIntoDescriptor)) {
+		                ReadableByteStreamControllerShiftPendingPullInto(controller);
+		                ReadableByteStreamControllerCommitPullIntoDescriptor(controller._controlledReadableByteStream, pullIntoDescriptor);
+		            }
+		        }
+		    }
+		    function ReadableByteStreamControllerPullInto(controller, view, readIntoRequest) {
+		        const stream = controller._controlledReadableByteStream;
+		        let elementSize = 1;
+		        if (view.constructor !== DataView) {
+		            elementSize = view.constructor.BYTES_PER_ELEMENT;
+		        }
+		        const ctor = view.constructor;
+		        // try {
+		        const buffer = TransferArrayBuffer(view.buffer);
+		        // } catch (e) {
+		        //   readIntoRequest._errorSteps(e);
+		        //   return;
+		        // }
+		        const pullIntoDescriptor = {
+		            buffer,
+		            bufferByteLength: buffer.byteLength,
+		            byteOffset: view.byteOffset,
+		            byteLength: view.byteLength,
+		            bytesFilled: 0,
+		            elementSize,
+		            viewConstructor: ctor,
+		            readerType: 'byob'
+		        };
+		        if (controller._pendingPullIntos.length > 0) {
+		            controller._pendingPullIntos.push(pullIntoDescriptor);
+		            // No ReadableByteStreamControllerCallPullIfNeeded() call since:
+		            // - No change happens on desiredSize
+		            // - The source has already been notified of that there's at least 1 pending read(view)
+		            ReadableStreamAddReadIntoRequest(stream, readIntoRequest);
+		            return;
+		        }
+		        if (stream._state === 'closed') {
+		            const emptyView = new ctor(pullIntoDescriptor.buffer, pullIntoDescriptor.byteOffset, 0);
+		            readIntoRequest._closeSteps(emptyView);
+		            return;
+		        }
+		        if (controller._queueTotalSize > 0) {
+		            if (ReadableByteStreamControllerFillPullIntoDescriptorFromQueue(controller, pullIntoDescriptor)) {
+		                const filledView = ReadableByteStreamControllerConvertPullIntoDescriptor(pullIntoDescriptor);
+		                ReadableByteStreamControllerHandleQueueDrain(controller);
+		                readIntoRequest._chunkSteps(filledView);
+		                return;
+		            }
+		            if (controller._closeRequested) {
+		                const e = new TypeError('Insufficient bytes to fill elements in the given buffer');
+		                ReadableByteStreamControllerError(controller, e);
+		                readIntoRequest._errorSteps(e);
+		                return;
+		            }
+		        }
+		        controller._pendingPullIntos.push(pullIntoDescriptor);
+		        ReadableStreamAddReadIntoRequest(stream, readIntoRequest);
+		        ReadableByteStreamControllerCallPullIfNeeded(controller);
+		    }
+		    function ReadableByteStreamControllerRespondInClosedState(controller, firstDescriptor) {
+		        const stream = controller._controlledReadableByteStream;
+		        if (ReadableStreamHasBYOBReader(stream)) {
+		            while (ReadableStreamGetNumReadIntoRequests(stream) > 0) {
+		                const pullIntoDescriptor = ReadableByteStreamControllerShiftPendingPullInto(controller);
+		                ReadableByteStreamControllerCommitPullIntoDescriptor(stream, pullIntoDescriptor);
+		            }
+		        }
+		    }
+		    function ReadableByteStreamControllerRespondInReadableState(controller, bytesWritten, pullIntoDescriptor) {
+		        ReadableByteStreamControllerFillHeadPullIntoDescriptor(controller, bytesWritten, pullIntoDescriptor);
+		        if (pullIntoDescriptor.bytesFilled < pullIntoDescriptor.elementSize) {
+		            return;
+		        }
+		        ReadableByteStreamControllerShiftPendingPullInto(controller);
+		        const remainderSize = pullIntoDescriptor.bytesFilled % pullIntoDescriptor.elementSize;
+		        if (remainderSize > 0) {
+		            const end = pullIntoDescriptor.byteOffset + pullIntoDescriptor.bytesFilled;
+		            const remainder = ArrayBufferSlice(pullIntoDescriptor.buffer, end - remainderSize, end);
+		            ReadableByteStreamControllerEnqueueChunkToQueue(controller, remainder, 0, remainder.byteLength);
+		        }
+		        pullIntoDescriptor.bytesFilled -= remainderSize;
+		        ReadableByteStreamControllerCommitPullIntoDescriptor(controller._controlledReadableByteStream, pullIntoDescriptor);
+		        ReadableByteStreamControllerProcessPullIntoDescriptorsUsingQueue(controller);
+		    }
+		    function ReadableByteStreamControllerRespondInternal(controller, bytesWritten) {
+		        const firstDescriptor = controller._pendingPullIntos.peek();
+		        ReadableByteStreamControllerInvalidateBYOBRequest(controller);
+		        const state = controller._controlledReadableByteStream._state;
+		        if (state === 'closed') {
+		            ReadableByteStreamControllerRespondInClosedState(controller);
+		        }
+		        else {
+		            ReadableByteStreamControllerRespondInReadableState(controller, bytesWritten, firstDescriptor);
+		        }
+		        ReadableByteStreamControllerCallPullIfNeeded(controller);
+		    }
+		    function ReadableByteStreamControllerShiftPendingPullInto(controller) {
+		        const descriptor = controller._pendingPullIntos.shift();
+		        return descriptor;
+		    }
+		    function ReadableByteStreamControllerShouldCallPull(controller) {
+		        const stream = controller._controlledReadableByteStream;
+		        if (stream._state !== 'readable') {
+		            return false;
+		        }
+		        if (controller._closeRequested) {
+		            return false;
+		        }
+		        if (!controller._started) {
+		            return false;
+		        }
+		        if (ReadableStreamHasDefaultReader(stream) && ReadableStreamGetNumReadRequests(stream) > 0) {
+		            return true;
+		        }
+		        if (ReadableStreamHasBYOBReader(stream) && ReadableStreamGetNumReadIntoRequests(stream) > 0) {
+		            return true;
+		        }
+		        const desiredSize = ReadableByteStreamControllerGetDesiredSize(controller);
+		        if (desiredSize > 0) {
+		            return true;
+		        }
+		        return false;
+		    }
+		    function ReadableByteStreamControllerClearAlgorithms(controller) {
+		        controller._pullAlgorithm = undefined;
+		        controller._cancelAlgorithm = undefined;
+		    }
+		    // A client of ReadableByteStreamController may use these functions directly to bypass state check.
+		    function ReadableByteStreamControllerClose(controller) {
+		        const stream = controller._controlledReadableByteStream;
+		        if (controller._closeRequested || stream._state !== 'readable') {
+		            return;
+		        }
+		        if (controller._queueTotalSize > 0) {
+		            controller._closeRequested = true;
+		            return;
+		        }
+		        if (controller._pendingPullIntos.length > 0) {
+		            const firstPendingPullInto = controller._pendingPullIntos.peek();
+		            if (firstPendingPullInto.bytesFilled > 0) {
+		                const e = new TypeError('Insufficient bytes to fill elements in the given buffer');
+		                ReadableByteStreamControllerError(controller, e);
+		                throw e;
+		            }
+		        }
+		        ReadableByteStreamControllerClearAlgorithms(controller);
+		        ReadableStreamClose(stream);
+		    }
+		    function ReadableByteStreamControllerEnqueue(controller, chunk) {
+		        const stream = controller._controlledReadableByteStream;
+		        if (controller._closeRequested || stream._state !== 'readable') {
+		            return;
+		        }
+		        const buffer = chunk.buffer;
+		        const byteOffset = chunk.byteOffset;
+		        const byteLength = chunk.byteLength;
+		        const transferredBuffer = TransferArrayBuffer(buffer);
+		        if (controller._pendingPullIntos.length > 0) {
+		            const firstPendingPullInto = controller._pendingPullIntos.peek();
+		            if (IsDetachedBuffer(firstPendingPullInto.buffer)) ;
+		            firstPendingPullInto.buffer = TransferArrayBuffer(firstPendingPullInto.buffer);
+		        }
+		        ReadableByteStreamControllerInvalidateBYOBRequest(controller);
+		        if (ReadableStreamHasDefaultReader(stream)) {
+		            if (ReadableStreamGetNumReadRequests(stream) === 0) {
+		                ReadableByteStreamControllerEnqueueChunkToQueue(controller, transferredBuffer, byteOffset, byteLength);
+		            }
+		            else {
+		                if (controller._pendingPullIntos.length > 0) {
+		                    ReadableByteStreamControllerShiftPendingPullInto(controller);
+		                }
+		                const transferredView = new Uint8Array(transferredBuffer, byteOffset, byteLength);
+		                ReadableStreamFulfillReadRequest(stream, transferredView, false);
+		            }
+		        }
+		        else if (ReadableStreamHasBYOBReader(stream)) {
+		            // TODO: Ideally in this branch detaching should happen only if the buffer is not consumed fully.
+		            ReadableByteStreamControllerEnqueueChunkToQueue(controller, transferredBuffer, byteOffset, byteLength);
+		            ReadableByteStreamControllerProcessPullIntoDescriptorsUsingQueue(controller);
+		        }
+		        else {
+		            ReadableByteStreamControllerEnqueueChunkToQueue(controller, transferredBuffer, byteOffset, byteLength);
+		        }
+		        ReadableByteStreamControllerCallPullIfNeeded(controller);
+		    }
+		    function ReadableByteStreamControllerError(controller, e) {
+		        const stream = controller._controlledReadableByteStream;
+		        if (stream._state !== 'readable') {
+		            return;
+		        }
+		        ReadableByteStreamControllerClearPendingPullIntos(controller);
+		        ResetQueue(controller);
+		        ReadableByteStreamControllerClearAlgorithms(controller);
+		        ReadableStreamError(stream, e);
+		    }
+		    function ReadableByteStreamControllerGetBYOBRequest(controller) {
+		        if (controller._byobRequest === null && controller._pendingPullIntos.length > 0) {
+		            const firstDescriptor = controller._pendingPullIntos.peek();
+		            const view = new Uint8Array(firstDescriptor.buffer, firstDescriptor.byteOffset + firstDescriptor.bytesFilled, firstDescriptor.byteLength - firstDescriptor.bytesFilled);
+		            const byobRequest = Object.create(ReadableStreamBYOBRequest.prototype);
+		            SetUpReadableStreamBYOBRequest(byobRequest, controller, view);
+		            controller._byobRequest = byobRequest;
+		        }
+		        return controller._byobRequest;
+		    }
+		    function ReadableByteStreamControllerGetDesiredSize(controller) {
+		        const state = controller._controlledReadableByteStream._state;
+		        if (state === 'errored') {
+		            return null;
+		        }
+		        if (state === 'closed') {
+		            return 0;
+		        }
+		        return controller._strategyHWM - controller._queueTotalSize;
+		    }
+		    function ReadableByteStreamControllerRespond(controller, bytesWritten) {
+		        const firstDescriptor = controller._pendingPullIntos.peek();
+		        const state = controller._controlledReadableByteStream._state;
+		        if (state === 'closed') {
+		            if (bytesWritten !== 0) {
+		                throw new TypeError('bytesWritten must be 0 when calling respond() on a closed stream');
+		            }
+		        }
+		        else {
+		            if (bytesWritten === 0) {
+		                throw new TypeError('bytesWritten must be greater than 0 when calling respond() on a readable stream');
+		            }
+		            if (firstDescriptor.bytesFilled + bytesWritten > firstDescriptor.byteLength) {
+		                throw new RangeError('bytesWritten out of range');
+		            }
+		        }
+		        firstDescriptor.buffer = TransferArrayBuffer(firstDescriptor.buffer);
+		        ReadableByteStreamControllerRespondInternal(controller, bytesWritten);
+		    }
+		    function ReadableByteStreamControllerRespondWithNewView(controller, view) {
+		        const firstDescriptor = controller._pendingPullIntos.peek();
+		        const state = controller._controlledReadableByteStream._state;
+		        if (state === 'closed') {
+		            if (view.byteLength !== 0) {
+		                throw new TypeError('The view\'s length must be 0 when calling respondWithNewView() on a closed stream');
+		            }
+		        }
+		        else {
+		            if (view.byteLength === 0) {
+		                throw new TypeError('The view\'s length must be greater than 0 when calling respondWithNewView() on a readable stream');
+		            }
+		        }
+		        if (firstDescriptor.byteOffset + firstDescriptor.bytesFilled !== view.byteOffset) {
+		            throw new RangeError('The region specified by view does not match byobRequest');
+		        }
+		        if (firstDescriptor.bufferByteLength !== view.buffer.byteLength) {
+		            throw new RangeError('The buffer of view has different capacity than byobRequest');
+		        }
+		        if (firstDescriptor.bytesFilled + view.byteLength > firstDescriptor.byteLength) {
+		            throw new RangeError('The region specified by view is larger than byobRequest');
+		        }
+		        const viewByteLength = view.byteLength;
+		        firstDescriptor.buffer = TransferArrayBuffer(view.buffer);
+		        ReadableByteStreamControllerRespondInternal(controller, viewByteLength);
+		    }
+		    function SetUpReadableByteStreamController(stream, controller, startAlgorithm, pullAlgorithm, cancelAlgorithm, highWaterMark, autoAllocateChunkSize) {
+		        controller._controlledReadableByteStream = stream;
+		        controller._pullAgain = false;
+		        controller._pulling = false;
+		        controller._byobRequest = null;
+		        // Need to set the slots so that the assert doesn't fire. In the spec the slots already exist implicitly.
+		        controller._queue = controller._queueTotalSize = undefined;
+		        ResetQueue(controller);
+		        controller._closeRequested = false;
+		        controller._started = false;
+		        controller._strategyHWM = highWaterMark;
+		        controller._pullAlgorithm = pullAlgorithm;
+		        controller._cancelAlgorithm = cancelAlgorithm;
+		        controller._autoAllocateChunkSize = autoAllocateChunkSize;
+		        controller._pendingPullIntos = new SimpleQueue();
+		        stream._readableStreamController = controller;
+		        const startResult = startAlgorithm();
+		        uponPromise(promiseResolvedWith(startResult), () => {
+		            controller._started = true;
+		            ReadableByteStreamControllerCallPullIfNeeded(controller);
+		        }, r => {
+		            ReadableByteStreamControllerError(controller, r);
+		        });
+		    }
+		    function SetUpReadableByteStreamControllerFromUnderlyingSource(stream, underlyingByteSource, highWaterMark) {
+		        const controller = Object.create(ReadableByteStreamController.prototype);
+		        let startAlgorithm = () => undefined;
+		        let pullAlgorithm = () => promiseResolvedWith(undefined);
+		        let cancelAlgorithm = () => promiseResolvedWith(undefined);
+		        if (underlyingByteSource.start !== undefined) {
+		            startAlgorithm = () => underlyingByteSource.start(controller);
+		        }
+		        if (underlyingByteSource.pull !== undefined) {
+		            pullAlgorithm = () => underlyingByteSource.pull(controller);
+		        }
+		        if (underlyingByteSource.cancel !== undefined) {
+		            cancelAlgorithm = reason => underlyingByteSource.cancel(reason);
+		        }
+		        const autoAllocateChunkSize = underlyingByteSource.autoAllocateChunkSize;
+		        if (autoAllocateChunkSize === 0) {
+		            throw new TypeError('autoAllocateChunkSize must be greater than 0');
+		        }
+		        SetUpReadableByteStreamController(stream, controller, startAlgorithm, pullAlgorithm, cancelAlgorithm, highWaterMark, autoAllocateChunkSize);
+		    }
+		    function SetUpReadableStreamBYOBRequest(request, controller, view) {
+		        request._associatedReadableByteStreamController = controller;
+		        request._view = view;
+		    }
+		    // Helper functions for the ReadableStreamBYOBRequest.
+		    function byobRequestBrandCheckException(name) {
+		        return new TypeError(`ReadableStreamBYOBRequest.prototype.${name} can only be used on a ReadableStreamBYOBRequest`);
+		    }
+		    // Helper functions for the ReadableByteStreamController.
+		    function byteStreamControllerBrandCheckException(name) {
+		        return new TypeError(`ReadableByteStreamController.prototype.${name} can only be used on a ReadableByteStreamController`);
+		    }
+
+		    // Abstract operations for the ReadableStream.
+		    function AcquireReadableStreamBYOBReader(stream) {
+		        return new ReadableStreamBYOBReader(stream);
+		    }
+		    // ReadableStream API exposed for controllers.
+		    function ReadableStreamAddReadIntoRequest(stream, readIntoRequest) {
+		        stream._reader._readIntoRequests.push(readIntoRequest);
+		    }
+		    function ReadableStreamFulfillReadIntoRequest(stream, chunk, done) {
+		        const reader = stream._reader;
+		        const readIntoRequest = reader._readIntoRequests.shift();
+		        if (done) {
+		            readIntoRequest._closeSteps(chunk);
+		        }
+		        else {
+		            readIntoRequest._chunkSteps(chunk);
+		        }
+		    }
+		    function ReadableStreamGetNumReadIntoRequests(stream) {
+		        return stream._reader._readIntoRequests.length;
+		    }
+		    function ReadableStreamHasBYOBReader(stream) {
+		        const reader = stream._reader;
+		        if (reader === undefined) {
+		            return false;
+		        }
+		        if (!IsReadableStreamBYOBReader(reader)) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    /**
+		     * A BYOB reader vended by a {@link ReadableStream}.
+		     *
+		     * @public
+		     */
+		    class ReadableStreamBYOBReader {
+		        constructor(stream) {
+		            assertRequiredArgument(stream, 1, 'ReadableStreamBYOBReader');
+		            assertReadableStream(stream, 'First parameter');
+		            if (IsReadableStreamLocked(stream)) {
+		                throw new TypeError('This stream has already been locked for exclusive reading by another reader');
+		            }
+		            if (!IsReadableByteStreamController(stream._readableStreamController)) {
+		                throw new TypeError('Cannot construct a ReadableStreamBYOBReader for a stream not constructed with a byte ' +
+		                    'source');
+		            }
+		            ReadableStreamReaderGenericInitialize(this, stream);
+		            this._readIntoRequests = new SimpleQueue();
+		        }
+		        /**
+		         * Returns a promise that will be fulfilled when the stream becomes closed, or rejected if the stream ever errors or
+		         * the reader's lock is released before the stream finishes closing.
+		         */
+		        get closed() {
+		            if (!IsReadableStreamBYOBReader(this)) {
+		                return promiseRejectedWith(byobReaderBrandCheckException('closed'));
+		            }
+		            return this._closedPromise;
+		        }
+		        /**
+		         * If the reader is active, behaves the same as {@link ReadableStream.cancel | stream.cancel(reason)}.
+		         */
+		        cancel(reason = undefined) {
+		            if (!IsReadableStreamBYOBReader(this)) {
+		                return promiseRejectedWith(byobReaderBrandCheckException('cancel'));
+		            }
+		            if (this._ownerReadableStream === undefined) {
+		                return promiseRejectedWith(readerLockException('cancel'));
+		            }
+		            return ReadableStreamReaderGenericCancel(this, reason);
+		        }
+		        /**
+		         * Attempts to reads bytes into view, and returns a promise resolved with the result.
+		         *
+		         * If reading a chunk causes the queue to become empty, more data will be pulled from the underlying source.
+		         */
+		        read(view) {
+		            if (!IsReadableStreamBYOBReader(this)) {
+		                return promiseRejectedWith(byobReaderBrandCheckException('read'));
+		            }
+		            if (!ArrayBuffer.isView(view)) {
+		                return promiseRejectedWith(new TypeError('view must be an array buffer view'));
+		            }
+		            if (view.byteLength === 0) {
+		                return promiseRejectedWith(new TypeError('view must have non-zero byteLength'));
+		            }
+		            if (view.buffer.byteLength === 0) {
+		                return promiseRejectedWith(new TypeError(`view's buffer must have non-zero byteLength`));
+		            }
+		            if (IsDetachedBuffer(view.buffer)) ;
+		            if (this._ownerReadableStream === undefined) {
+		                return promiseRejectedWith(readerLockException('read from'));
+		            }
+		            let resolvePromise;
+		            let rejectPromise;
+		            const promise = newPromise((resolve, reject) => {
+		                resolvePromise = resolve;
+		                rejectPromise = reject;
+		            });
+		            const readIntoRequest = {
+		                _chunkSteps: chunk => resolvePromise({ value: chunk, done: false }),
+		                _closeSteps: chunk => resolvePromise({ value: chunk, done: true }),
+		                _errorSteps: e => rejectPromise(e)
+		            };
+		            ReadableStreamBYOBReaderRead(this, view, readIntoRequest);
+		            return promise;
+		        }
+		        /**
+		         * Releases the reader's lock on the corresponding stream. After the lock is released, the reader is no longer active.
+		         * If the associated stream is errored when the lock is released, the reader will appear errored in the same way
+		         * from now on; otherwise, the reader will appear closed.
+		         *
+		         * A reader's lock cannot be released while it still has a pending read request, i.e., if a promise returned by
+		         * the reader's {@link ReadableStreamBYOBReader.read | read()} method has not yet been settled. Attempting to
+		         * do so will throw a `TypeError` and leave the reader locked to the stream.
+		         */
+		        releaseLock() {
+		            if (!IsReadableStreamBYOBReader(this)) {
+		                throw byobReaderBrandCheckException('releaseLock');
+		            }
+		            if (this._ownerReadableStream === undefined) {
+		                return;
+		            }
+		            if (this._readIntoRequests.length > 0) {
+		                throw new TypeError('Tried to release a reader lock when that reader has pending read() calls un-settled');
+		            }
+		            ReadableStreamReaderGenericRelease(this);
+		        }
+		    }
+		    Object.defineProperties(ReadableStreamBYOBReader.prototype, {
+		        cancel: { enumerable: true },
+		        read: { enumerable: true },
+		        releaseLock: { enumerable: true },
+		        closed: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ReadableStreamBYOBReader.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ReadableStreamBYOBReader',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the readers.
+		    function IsReadableStreamBYOBReader(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_readIntoRequests')) {
+		            return false;
+		        }
+		        return x instanceof ReadableStreamBYOBReader;
+		    }
+		    function ReadableStreamBYOBReaderRead(reader, view, readIntoRequest) {
+		        const stream = reader._ownerReadableStream;
+		        stream._disturbed = true;
+		        if (stream._state === 'errored') {
+		            readIntoRequest._errorSteps(stream._storedError);
+		        }
+		        else {
+		            ReadableByteStreamControllerPullInto(stream._readableStreamController, view, readIntoRequest);
+		        }
+		    }
+		    // Helper functions for the ReadableStreamBYOBReader.
+		    function byobReaderBrandCheckException(name) {
+		        return new TypeError(`ReadableStreamBYOBReader.prototype.${name} can only be used on a ReadableStreamBYOBReader`);
+		    }
+
+		    function ExtractHighWaterMark(strategy, defaultHWM) {
+		        const { highWaterMark } = strategy;
+		        if (highWaterMark === undefined) {
+		            return defaultHWM;
+		        }
+		        if (NumberIsNaN(highWaterMark) || highWaterMark < 0) {
+		            throw new RangeError('Invalid highWaterMark');
+		        }
+		        return highWaterMark;
+		    }
+		    function ExtractSizeAlgorithm(strategy) {
+		        const { size } = strategy;
+		        if (!size) {
+		            return () => 1;
+		        }
+		        return size;
+		    }
+
+		    function convertQueuingStrategy(init, context) {
+		        assertDictionary(init, context);
+		        const highWaterMark = init === null || init === void 0 ? void 0 : init.highWaterMark;
+		        const size = init === null || init === void 0 ? void 0 : init.size;
+		        return {
+		            highWaterMark: highWaterMark === undefined ? undefined : convertUnrestrictedDouble(highWaterMark),
+		            size: size === undefined ? undefined : convertQueuingStrategySize(size, `${context} has member 'size' that`)
+		        };
+		    }
+		    function convertQueuingStrategySize(fn, context) {
+		        assertFunction(fn, context);
+		        return chunk => convertUnrestrictedDouble(fn(chunk));
+		    }
+
+		    function convertUnderlyingSink(original, context) {
+		        assertDictionary(original, context);
+		        const abort = original === null || original === void 0 ? void 0 : original.abort;
+		        const close = original === null || original === void 0 ? void 0 : original.close;
+		        const start = original === null || original === void 0 ? void 0 : original.start;
+		        const type = original === null || original === void 0 ? void 0 : original.type;
+		        const write = original === null || original === void 0 ? void 0 : original.write;
+		        return {
+		            abort: abort === undefined ?
+		                undefined :
+		                convertUnderlyingSinkAbortCallback(abort, original, `${context} has member 'abort' that`),
+		            close: close === undefined ?
+		                undefined :
+		                convertUnderlyingSinkCloseCallback(close, original, `${context} has member 'close' that`),
+		            start: start === undefined ?
+		                undefined :
+		                convertUnderlyingSinkStartCallback(start, original, `${context} has member 'start' that`),
+		            write: write === undefined ?
+		                undefined :
+		                convertUnderlyingSinkWriteCallback(write, original, `${context} has member 'write' that`),
+		            type
+		        };
+		    }
+		    function convertUnderlyingSinkAbortCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (reason) => promiseCall(fn, original, [reason]);
+		    }
+		    function convertUnderlyingSinkCloseCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return () => promiseCall(fn, original, []);
+		    }
+		    function convertUnderlyingSinkStartCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (controller) => reflectCall(fn, original, [controller]);
+		    }
+		    function convertUnderlyingSinkWriteCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (chunk, controller) => promiseCall(fn, original, [chunk, controller]);
+		    }
+
+		    function assertWritableStream(x, context) {
+		        if (!IsWritableStream(x)) {
+		            throw new TypeError(`${context} is not a WritableStream.`);
+		        }
+		    }
+
+		    function isAbortSignal(value) {
+		        if (typeof value !== 'object' || value === null) {
+		            return false;
+		        }
+		        try {
+		            return typeof value.aborted === 'boolean';
+		        }
+		        catch (_a) {
+		            // AbortSignal.prototype.aborted throws if its brand check fails
+		            return false;
+		        }
+		    }
+		    const supportsAbortController = typeof AbortController === 'function';
+		    /**
+		     * Construct a new AbortController, if supported by the platform.
+		     *
+		     * @internal
+		     */
+		    function createAbortController() {
+		        if (supportsAbortController) {
+		            return new AbortController();
+		        }
+		        return undefined;
+		    }
+
+		    /**
+		     * A writable stream represents a destination for data, into which you can write.
+		     *
+		     * @public
+		     */
+		    class WritableStream {
+		        constructor(rawUnderlyingSink = {}, rawStrategy = {}) {
+		            if (rawUnderlyingSink === undefined) {
+		                rawUnderlyingSink = null;
+		            }
+		            else {
+		                assertObject(rawUnderlyingSink, 'First parameter');
+		            }
+		            const strategy = convertQueuingStrategy(rawStrategy, 'Second parameter');
+		            const underlyingSink = convertUnderlyingSink(rawUnderlyingSink, 'First parameter');
+		            InitializeWritableStream(this);
+		            const type = underlyingSink.type;
+		            if (type !== undefined) {
+		                throw new RangeError('Invalid type is specified');
+		            }
+		            const sizeAlgorithm = ExtractSizeAlgorithm(strategy);
+		            const highWaterMark = ExtractHighWaterMark(strategy, 1);
+		            SetUpWritableStreamDefaultControllerFromUnderlyingSink(this, underlyingSink, highWaterMark, sizeAlgorithm);
+		        }
+		        /**
+		         * Returns whether or not the writable stream is locked to a writer.
+		         */
+		        get locked() {
+		            if (!IsWritableStream(this)) {
+		                throw streamBrandCheckException$2('locked');
+		            }
+		            return IsWritableStreamLocked(this);
+		        }
+		        /**
+		         * Aborts the stream, signaling that the producer can no longer successfully write to the stream and it is to be
+		         * immediately moved to an errored state, with any queued-up writes discarded. This will also execute any abort
+		         * mechanism of the underlying sink.
+		         *
+		         * The returned promise will fulfill if the stream shuts down successfully, or reject if the underlying sink signaled
+		         * that there was an error doing so. Additionally, it will reject with a `TypeError` (without attempting to cancel
+		         * the stream) if the stream is currently locked.
+		         */
+		        abort(reason = undefined) {
+		            if (!IsWritableStream(this)) {
+		                return promiseRejectedWith(streamBrandCheckException$2('abort'));
+		            }
+		            if (IsWritableStreamLocked(this)) {
+		                return promiseRejectedWith(new TypeError('Cannot abort a stream that already has a writer'));
+		            }
+		            return WritableStreamAbort(this, reason);
+		        }
+		        /**
+		         * Closes the stream. The underlying sink will finish processing any previously-written chunks, before invoking its
+		         * close behavior. During this time any further attempts to write will fail (without erroring the stream).
+		         *
+		         * The method returns a promise that will fulfill if all remaining chunks are successfully written and the stream
+		         * successfully closes, or rejects if an error is encountered during this process. Additionally, it will reject with
+		         * a `TypeError` (without attempting to cancel the stream) if the stream is currently locked.
+		         */
+		        close() {
+		            if (!IsWritableStream(this)) {
+		                return promiseRejectedWith(streamBrandCheckException$2('close'));
+		            }
+		            if (IsWritableStreamLocked(this)) {
+		                return promiseRejectedWith(new TypeError('Cannot close a stream that already has a writer'));
+		            }
+		            if (WritableStreamCloseQueuedOrInFlight(this)) {
+		                return promiseRejectedWith(new TypeError('Cannot close an already-closing stream'));
+		            }
+		            return WritableStreamClose(this);
+		        }
+		        /**
+		         * Creates a {@link WritableStreamDefaultWriter | writer} and locks the stream to the new writer. While the stream
+		         * is locked, no other writer can be acquired until this one is released.
+		         *
+		         * This functionality is especially useful for creating abstractions that desire the ability to write to a stream
+		         * without interruption or interleaving. By getting a writer for the stream, you can ensure nobody else can write at
+		         * the same time, which would cause the resulting written data to be unpredictable and probably useless.
+		         */
+		        getWriter() {
+		            if (!IsWritableStream(this)) {
+		                throw streamBrandCheckException$2('getWriter');
+		            }
+		            return AcquireWritableStreamDefaultWriter(this);
+		        }
+		    }
+		    Object.defineProperties(WritableStream.prototype, {
+		        abort: { enumerable: true },
+		        close: { enumerable: true },
+		        getWriter: { enumerable: true },
+		        locked: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(WritableStream.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'WritableStream',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the WritableStream.
+		    function AcquireWritableStreamDefaultWriter(stream) {
+		        return new WritableStreamDefaultWriter(stream);
+		    }
+		    // Throws if and only if startAlgorithm throws.
+		    function CreateWritableStream(startAlgorithm, writeAlgorithm, closeAlgorithm, abortAlgorithm, highWaterMark = 1, sizeAlgorithm = () => 1) {
+		        const stream = Object.create(WritableStream.prototype);
+		        InitializeWritableStream(stream);
+		        const controller = Object.create(WritableStreamDefaultController.prototype);
+		        SetUpWritableStreamDefaultController(stream, controller, startAlgorithm, writeAlgorithm, closeAlgorithm, abortAlgorithm, highWaterMark, sizeAlgorithm);
+		        return stream;
+		    }
+		    function InitializeWritableStream(stream) {
+		        stream._state = 'writable';
+		        // The error that will be reported by new method calls once the state becomes errored. Only set when [[state]] is
+		        // 'erroring' or 'errored'. May be set to an undefined value.
+		        stream._storedError = undefined;
+		        stream._writer = undefined;
+		        // Initialize to undefined first because the constructor of the controller checks this
+		        // variable to validate the caller.
+		        stream._writableStreamController = undefined;
+		        // This queue is placed here instead of the writer class in order to allow for passing a writer to the next data
+		        // producer without waiting for the queued writes to finish.
+		        stream._writeRequests = new SimpleQueue();
+		        // Write requests are removed from _writeRequests when write() is called on the underlying sink. This prevents
+		        // them from being erroneously rejected on error. If a write() call is in-flight, the request is stored here.
+		        stream._inFlightWriteRequest = undefined;
+		        // The promise that was returned from writer.close(). Stored here because it may be fulfilled after the writer
+		        // has been detached.
+		        stream._closeRequest = undefined;
+		        // Close request is removed from _closeRequest when close() is called on the underlying sink. This prevents it
+		        // from being erroneously rejected on error. If a close() call is in-flight, the request is stored here.
+		        stream._inFlightCloseRequest = undefined;
+		        // The promise that was returned from writer.abort(). This may also be fulfilled after the writer has detached.
+		        stream._pendingAbortRequest = undefined;
+		        // The backpressure signal set by the controller.
+		        stream._backpressure = false;
+		    }
+		    function IsWritableStream(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_writableStreamController')) {
+		            return false;
+		        }
+		        return x instanceof WritableStream;
+		    }
+		    function IsWritableStreamLocked(stream) {
+		        if (stream._writer === undefined) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    function WritableStreamAbort(stream, reason) {
+		        var _a;
+		        if (stream._state === 'closed' || stream._state === 'errored') {
+		            return promiseResolvedWith(undefined);
+		        }
+		        stream._writableStreamController._abortReason = reason;
+		        (_a = stream._writableStreamController._abortController) === null || _a === void 0 ? void 0 : _a.abort();
+		        // TypeScript narrows the type of `stream._state` down to 'writable' | 'erroring',
+		        // but it doesn't know that signaling abort runs author code that might have changed the state.
+		        // Widen the type again by casting to WritableStreamState.
+		        const state = stream._state;
+		        if (state === 'closed' || state === 'errored') {
+		            return promiseResolvedWith(undefined);
+		        }
+		        if (stream._pendingAbortRequest !== undefined) {
+		            return stream._pendingAbortRequest._promise;
+		        }
+		        let wasAlreadyErroring = false;
+		        if (state === 'erroring') {
+		            wasAlreadyErroring = true;
+		            // reason will not be used, so don't keep a reference to it.
+		            reason = undefined;
+		        }
+		        const promise = newPromise((resolve, reject) => {
+		            stream._pendingAbortRequest = {
+		                _promise: undefined,
+		                _resolve: resolve,
+		                _reject: reject,
+		                _reason: reason,
+		                _wasAlreadyErroring: wasAlreadyErroring
+		            };
+		        });
+		        stream._pendingAbortRequest._promise = promise;
+		        if (!wasAlreadyErroring) {
+		            WritableStreamStartErroring(stream, reason);
+		        }
+		        return promise;
+		    }
+		    function WritableStreamClose(stream) {
+		        const state = stream._state;
+		        if (state === 'closed' || state === 'errored') {
+		            return promiseRejectedWith(new TypeError(`The stream (in ${state} state) is not in the writable state and cannot be closed`));
+		        }
+		        const promise = newPromise((resolve, reject) => {
+		            const closeRequest = {
+		                _resolve: resolve,
+		                _reject: reject
+		            };
+		            stream._closeRequest = closeRequest;
+		        });
+		        const writer = stream._writer;
+		        if (writer !== undefined && stream._backpressure && state === 'writable') {
+		            defaultWriterReadyPromiseResolve(writer);
+		        }
+		        WritableStreamDefaultControllerClose(stream._writableStreamController);
+		        return promise;
+		    }
+		    // WritableStream API exposed for controllers.
+		    function WritableStreamAddWriteRequest(stream) {
+		        const promise = newPromise((resolve, reject) => {
+		            const writeRequest = {
+		                _resolve: resolve,
+		                _reject: reject
+		            };
+		            stream._writeRequests.push(writeRequest);
+		        });
+		        return promise;
+		    }
+		    function WritableStreamDealWithRejection(stream, error) {
+		        const state = stream._state;
+		        if (state === 'writable') {
+		            WritableStreamStartErroring(stream, error);
+		            return;
+		        }
+		        WritableStreamFinishErroring(stream);
+		    }
+		    function WritableStreamStartErroring(stream, reason) {
+		        const controller = stream._writableStreamController;
+		        stream._state = 'erroring';
+		        stream._storedError = reason;
+		        const writer = stream._writer;
+		        if (writer !== undefined) {
+		            WritableStreamDefaultWriterEnsureReadyPromiseRejected(writer, reason);
+		        }
+		        if (!WritableStreamHasOperationMarkedInFlight(stream) && controller._started) {
+		            WritableStreamFinishErroring(stream);
+		        }
+		    }
+		    function WritableStreamFinishErroring(stream) {
+		        stream._state = 'errored';
+		        stream._writableStreamController[ErrorSteps]();
+		        const storedError = stream._storedError;
+		        stream._writeRequests.forEach(writeRequest => {
+		            writeRequest._reject(storedError);
+		        });
+		        stream._writeRequests = new SimpleQueue();
+		        if (stream._pendingAbortRequest === undefined) {
+		            WritableStreamRejectCloseAndClosedPromiseIfNeeded(stream);
+		            return;
+		        }
+		        const abortRequest = stream._pendingAbortRequest;
+		        stream._pendingAbortRequest = undefined;
+		        if (abortRequest._wasAlreadyErroring) {
+		            abortRequest._reject(storedError);
+		            WritableStreamRejectCloseAndClosedPromiseIfNeeded(stream);
+		            return;
+		        }
+		        const promise = stream._writableStreamController[AbortSteps](abortRequest._reason);
+		        uponPromise(promise, () => {
+		            abortRequest._resolve();
+		            WritableStreamRejectCloseAndClosedPromiseIfNeeded(stream);
+		        }, (reason) => {
+		            abortRequest._reject(reason);
+		            WritableStreamRejectCloseAndClosedPromiseIfNeeded(stream);
+		        });
+		    }
+		    function WritableStreamFinishInFlightWrite(stream) {
+		        stream._inFlightWriteRequest._resolve(undefined);
+		        stream._inFlightWriteRequest = undefined;
+		    }
+		    function WritableStreamFinishInFlightWriteWithError(stream, error) {
+		        stream._inFlightWriteRequest._reject(error);
+		        stream._inFlightWriteRequest = undefined;
+		        WritableStreamDealWithRejection(stream, error);
+		    }
+		    function WritableStreamFinishInFlightClose(stream) {
+		        stream._inFlightCloseRequest._resolve(undefined);
+		        stream._inFlightCloseRequest = undefined;
+		        const state = stream._state;
+		        if (state === 'erroring') {
+		            // The error was too late to do anything, so it is ignored.
+		            stream._storedError = undefined;
+		            if (stream._pendingAbortRequest !== undefined) {
+		                stream._pendingAbortRequest._resolve();
+		                stream._pendingAbortRequest = undefined;
+		            }
+		        }
+		        stream._state = 'closed';
+		        const writer = stream._writer;
+		        if (writer !== undefined) {
+		            defaultWriterClosedPromiseResolve(writer);
+		        }
+		    }
+		    function WritableStreamFinishInFlightCloseWithError(stream, error) {
+		        stream._inFlightCloseRequest._reject(error);
+		        stream._inFlightCloseRequest = undefined;
+		        // Never execute sink abort() after sink close().
+		        if (stream._pendingAbortRequest !== undefined) {
+		            stream._pendingAbortRequest._reject(error);
+		            stream._pendingAbortRequest = undefined;
+		        }
+		        WritableStreamDealWithRejection(stream, error);
+		    }
+		    // TODO(ricea): Fix alphabetical order.
+		    function WritableStreamCloseQueuedOrInFlight(stream) {
+		        if (stream._closeRequest === undefined && stream._inFlightCloseRequest === undefined) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    function WritableStreamHasOperationMarkedInFlight(stream) {
+		        if (stream._inFlightWriteRequest === undefined && stream._inFlightCloseRequest === undefined) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    function WritableStreamMarkCloseRequestInFlight(stream) {
+		        stream._inFlightCloseRequest = stream._closeRequest;
+		        stream._closeRequest = undefined;
+		    }
+		    function WritableStreamMarkFirstWriteRequestInFlight(stream) {
+		        stream._inFlightWriteRequest = stream._writeRequests.shift();
+		    }
+		    function WritableStreamRejectCloseAndClosedPromiseIfNeeded(stream) {
+		        if (stream._closeRequest !== undefined) {
+		            stream._closeRequest._reject(stream._storedError);
+		            stream._closeRequest = undefined;
+		        }
+		        const writer = stream._writer;
+		        if (writer !== undefined) {
+		            defaultWriterClosedPromiseReject(writer, stream._storedError);
+		        }
+		    }
+		    function WritableStreamUpdateBackpressure(stream, backpressure) {
+		        const writer = stream._writer;
+		        if (writer !== undefined && backpressure !== stream._backpressure) {
+		            if (backpressure) {
+		                defaultWriterReadyPromiseReset(writer);
+		            }
+		            else {
+		                defaultWriterReadyPromiseResolve(writer);
+		            }
+		        }
+		        stream._backpressure = backpressure;
+		    }
+		    /**
+		     * A default writer vended by a {@link WritableStream}.
+		     *
+		     * @public
+		     */
+		    class WritableStreamDefaultWriter {
+		        constructor(stream) {
+		            assertRequiredArgument(stream, 1, 'WritableStreamDefaultWriter');
+		            assertWritableStream(stream, 'First parameter');
+		            if (IsWritableStreamLocked(stream)) {
+		                throw new TypeError('This stream has already been locked for exclusive writing by another writer');
+		            }
+		            this._ownerWritableStream = stream;
+		            stream._writer = this;
+		            const state = stream._state;
+		            if (state === 'writable') {
+		                if (!WritableStreamCloseQueuedOrInFlight(stream) && stream._backpressure) {
+		                    defaultWriterReadyPromiseInitialize(this);
+		                }
+		                else {
+		                    defaultWriterReadyPromiseInitializeAsResolved(this);
+		                }
+		                defaultWriterClosedPromiseInitialize(this);
+		            }
+		            else if (state === 'erroring') {
+		                defaultWriterReadyPromiseInitializeAsRejected(this, stream._storedError);
+		                defaultWriterClosedPromiseInitialize(this);
+		            }
+		            else if (state === 'closed') {
+		                defaultWriterReadyPromiseInitializeAsResolved(this);
+		                defaultWriterClosedPromiseInitializeAsResolved(this);
+		            }
+		            else {
+		                const storedError = stream._storedError;
+		                defaultWriterReadyPromiseInitializeAsRejected(this, storedError);
+		                defaultWriterClosedPromiseInitializeAsRejected(this, storedError);
+		            }
+		        }
+		        /**
+		         * Returns a promise that will be fulfilled when the stream becomes closed, or rejected if the stream ever errors or
+		         * the writer’s lock is released before the stream finishes closing.
+		         */
+		        get closed() {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                return promiseRejectedWith(defaultWriterBrandCheckException('closed'));
+		            }
+		            return this._closedPromise;
+		        }
+		        /**
+		         * Returns the desired size to fill the stream’s internal queue. It can be negative, if the queue is over-full.
+		         * A producer can use this information to determine the right amount of data to write.
+		         *
+		         * It will be `null` if the stream cannot be successfully written to (due to either being errored, or having an abort
+		         * queued up). It will return zero if the stream is closed. And the getter will throw an exception if invoked when
+		         * the writer’s lock is released.
+		         */
+		        get desiredSize() {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                throw defaultWriterBrandCheckException('desiredSize');
+		            }
+		            if (this._ownerWritableStream === undefined) {
+		                throw defaultWriterLockException('desiredSize');
+		            }
+		            return WritableStreamDefaultWriterGetDesiredSize(this);
+		        }
+		        /**
+		         * Returns a promise that will be fulfilled when the desired size to fill the stream’s internal queue transitions
+		         * from non-positive to positive, signaling that it is no longer applying backpressure. Once the desired size dips
+		         * back to zero or below, the getter will return a new promise that stays pending until the next transition.
+		         *
+		         * If the stream becomes errored or aborted, or the writer’s lock is released, the returned promise will become
+		         * rejected.
+		         */
+		        get ready() {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                return promiseRejectedWith(defaultWriterBrandCheckException('ready'));
+		            }
+		            return this._readyPromise;
+		        }
+		        /**
+		         * If the reader is active, behaves the same as {@link WritableStream.abort | stream.abort(reason)}.
+		         */
+		        abort(reason = undefined) {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                return promiseRejectedWith(defaultWriterBrandCheckException('abort'));
+		            }
+		            if (this._ownerWritableStream === undefined) {
+		                return promiseRejectedWith(defaultWriterLockException('abort'));
+		            }
+		            return WritableStreamDefaultWriterAbort(this, reason);
+		        }
+		        /**
+		         * If the reader is active, behaves the same as {@link WritableStream.close | stream.close()}.
+		         */
+		        close() {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                return promiseRejectedWith(defaultWriterBrandCheckException('close'));
+		            }
+		            const stream = this._ownerWritableStream;
+		            if (stream === undefined) {
+		                return promiseRejectedWith(defaultWriterLockException('close'));
+		            }
+		            if (WritableStreamCloseQueuedOrInFlight(stream)) {
+		                return promiseRejectedWith(new TypeError('Cannot close an already-closing stream'));
+		            }
+		            return WritableStreamDefaultWriterClose(this);
+		        }
+		        /**
+		         * Releases the writer’s lock on the corresponding stream. After the lock is released, the writer is no longer active.
+		         * If the associated stream is errored when the lock is released, the writer will appear errored in the same way from
+		         * now on; otherwise, the writer will appear closed.
+		         *
+		         * Note that the lock can still be released even if some ongoing writes have not yet finished (i.e. even if the
+		         * promises returned from previous calls to {@link WritableStreamDefaultWriter.write | write()} have not yet settled).
+		         * It’s not necessary to hold the lock on the writer for the duration of the write; the lock instead simply prevents
+		         * other producers from writing in an interleaved manner.
+		         */
+		        releaseLock() {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                throw defaultWriterBrandCheckException('releaseLock');
+		            }
+		            const stream = this._ownerWritableStream;
+		            if (stream === undefined) {
+		                return;
+		            }
+		            WritableStreamDefaultWriterRelease(this);
+		        }
+		        write(chunk = undefined) {
+		            if (!IsWritableStreamDefaultWriter(this)) {
+		                return promiseRejectedWith(defaultWriterBrandCheckException('write'));
+		            }
+		            if (this._ownerWritableStream === undefined) {
+		                return promiseRejectedWith(defaultWriterLockException('write to'));
+		            }
+		            return WritableStreamDefaultWriterWrite(this, chunk);
+		        }
+		    }
+		    Object.defineProperties(WritableStreamDefaultWriter.prototype, {
+		        abort: { enumerable: true },
+		        close: { enumerable: true },
+		        releaseLock: { enumerable: true },
+		        write: { enumerable: true },
+		        closed: { enumerable: true },
+		        desiredSize: { enumerable: true },
+		        ready: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(WritableStreamDefaultWriter.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'WritableStreamDefaultWriter',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the WritableStreamDefaultWriter.
+		    function IsWritableStreamDefaultWriter(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_ownerWritableStream')) {
+		            return false;
+		        }
+		        return x instanceof WritableStreamDefaultWriter;
+		    }
+		    // A client of WritableStreamDefaultWriter may use these functions directly to bypass state check.
+		    function WritableStreamDefaultWriterAbort(writer, reason) {
+		        const stream = writer._ownerWritableStream;
+		        return WritableStreamAbort(stream, reason);
+		    }
+		    function WritableStreamDefaultWriterClose(writer) {
+		        const stream = writer._ownerWritableStream;
+		        return WritableStreamClose(stream);
+		    }
+		    function WritableStreamDefaultWriterCloseWithErrorPropagation(writer) {
+		        const stream = writer._ownerWritableStream;
+		        const state = stream._state;
+		        if (WritableStreamCloseQueuedOrInFlight(stream) || state === 'closed') {
+		            return promiseResolvedWith(undefined);
+		        }
+		        if (state === 'errored') {
+		            return promiseRejectedWith(stream._storedError);
+		        }
+		        return WritableStreamDefaultWriterClose(writer);
+		    }
+		    function WritableStreamDefaultWriterEnsureClosedPromiseRejected(writer, error) {
+		        if (writer._closedPromiseState === 'pending') {
+		            defaultWriterClosedPromiseReject(writer, error);
+		        }
+		        else {
+		            defaultWriterClosedPromiseResetToRejected(writer, error);
+		        }
+		    }
+		    function WritableStreamDefaultWriterEnsureReadyPromiseRejected(writer, error) {
+		        if (writer._readyPromiseState === 'pending') {
+		            defaultWriterReadyPromiseReject(writer, error);
+		        }
+		        else {
+		            defaultWriterReadyPromiseResetToRejected(writer, error);
+		        }
+		    }
+		    function WritableStreamDefaultWriterGetDesiredSize(writer) {
+		        const stream = writer._ownerWritableStream;
+		        const state = stream._state;
+		        if (state === 'errored' || state === 'erroring') {
+		            return null;
+		        }
+		        if (state === 'closed') {
+		            return 0;
+		        }
+		        return WritableStreamDefaultControllerGetDesiredSize(stream._writableStreamController);
+		    }
+		    function WritableStreamDefaultWriterRelease(writer) {
+		        const stream = writer._ownerWritableStream;
+		        const releasedError = new TypeError(`Writer was released and can no longer be used to monitor the stream's closedness`);
+		        WritableStreamDefaultWriterEnsureReadyPromiseRejected(writer, releasedError);
+		        // The state transitions to "errored" before the sink abort() method runs, but the writer.closed promise is not
+		        // rejected until afterwards. This means that simply testing state will not work.
+		        WritableStreamDefaultWriterEnsureClosedPromiseRejected(writer, releasedError);
+		        stream._writer = undefined;
+		        writer._ownerWritableStream = undefined;
+		    }
+		    function WritableStreamDefaultWriterWrite(writer, chunk) {
+		        const stream = writer._ownerWritableStream;
+		        const controller = stream._writableStreamController;
+		        const chunkSize = WritableStreamDefaultControllerGetChunkSize(controller, chunk);
+		        if (stream !== writer._ownerWritableStream) {
+		            return promiseRejectedWith(defaultWriterLockException('write to'));
+		        }
+		        const state = stream._state;
+		        if (state === 'errored') {
+		            return promiseRejectedWith(stream._storedError);
+		        }
+		        if (WritableStreamCloseQueuedOrInFlight(stream) || state === 'closed') {
+		            return promiseRejectedWith(new TypeError('The stream is closing or closed and cannot be written to'));
+		        }
+		        if (state === 'erroring') {
+		            return promiseRejectedWith(stream._storedError);
+		        }
+		        const promise = WritableStreamAddWriteRequest(stream);
+		        WritableStreamDefaultControllerWrite(controller, chunk, chunkSize);
+		        return promise;
+		    }
+		    const closeSentinel = {};
+		    /**
+		     * Allows control of a {@link WritableStream | writable stream}'s state and internal queue.
+		     *
+		     * @public
+		     */
+		    class WritableStreamDefaultController {
+		        constructor() {
+		            throw new TypeError('Illegal constructor');
+		        }
+		        /**
+		         * The reason which was passed to `WritableStream.abort(reason)` when the stream was aborted.
+		         *
+		         * @deprecated
+		         *  This property has been removed from the specification, see https://github.com/whatwg/streams/pull/1177.
+		         *  Use {@link WritableStreamDefaultController.signal}'s `reason` instead.
+		         */
+		        get abortReason() {
+		            if (!IsWritableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$2('abortReason');
+		            }
+		            return this._abortReason;
+		        }
+		        /**
+		         * An `AbortSignal` that can be used to abort the pending write or close operation when the stream is aborted.
+		         */
+		        get signal() {
+		            if (!IsWritableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$2('signal');
+		            }
+		            if (this._abortController === undefined) {
+		                // Older browsers or older Node versions may not support `AbortController` or `AbortSignal`.
+		                // We don't want to bundle and ship an `AbortController` polyfill together with our polyfill,
+		                // so instead we only implement support for `signal` if we find a global `AbortController` constructor.
+		                throw new TypeError('WritableStreamDefaultController.prototype.signal is not supported');
+		            }
+		            return this._abortController.signal;
+		        }
+		        /**
+		         * Closes the controlled writable stream, making all future interactions with it fail with the given error `e`.
+		         *
+		         * This method is rarely used, since usually it suffices to return a rejected promise from one of the underlying
+		         * sink's methods. However, it can be useful for suddenly shutting down a stream in response to an event outside the
+		         * normal lifecycle of interactions with the underlying sink.
+		         */
+		        error(e = undefined) {
+		            if (!IsWritableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$2('error');
+		            }
+		            const state = this._controlledWritableStream._state;
+		            if (state !== 'writable') {
+		                // The stream is closed, errored or will be soon. The sink can't do anything useful if it gets an error here, so
+		                // just treat it as a no-op.
+		                return;
+		            }
+		            WritableStreamDefaultControllerError(this, e);
+		        }
+		        /** @internal */
+		        [AbortSteps](reason) {
+		            const result = this._abortAlgorithm(reason);
+		            WritableStreamDefaultControllerClearAlgorithms(this);
+		            return result;
+		        }
+		        /** @internal */
+		        [ErrorSteps]() {
+		            ResetQueue(this);
+		        }
+		    }
+		    Object.defineProperties(WritableStreamDefaultController.prototype, {
+		        abortReason: { enumerable: true },
+		        signal: { enumerable: true },
+		        error: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(WritableStreamDefaultController.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'WritableStreamDefaultController',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations implementing interface required by the WritableStream.
+		    function IsWritableStreamDefaultController(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_controlledWritableStream')) {
+		            return false;
+		        }
+		        return x instanceof WritableStreamDefaultController;
+		    }
+		    function SetUpWritableStreamDefaultController(stream, controller, startAlgorithm, writeAlgorithm, closeAlgorithm, abortAlgorithm, highWaterMark, sizeAlgorithm) {
+		        controller._controlledWritableStream = stream;
+		        stream._writableStreamController = controller;
+		        // Need to set the slots so that the assert doesn't fire. In the spec the slots already exist implicitly.
+		        controller._queue = undefined;
+		        controller._queueTotalSize = undefined;
+		        ResetQueue(controller);
+		        controller._abortReason = undefined;
+		        controller._abortController = createAbortController();
+		        controller._started = false;
+		        controller._strategySizeAlgorithm = sizeAlgorithm;
+		        controller._strategyHWM = highWaterMark;
+		        controller._writeAlgorithm = writeAlgorithm;
+		        controller._closeAlgorithm = closeAlgorithm;
+		        controller._abortAlgorithm = abortAlgorithm;
+		        const backpressure = WritableStreamDefaultControllerGetBackpressure(controller);
+		        WritableStreamUpdateBackpressure(stream, backpressure);
+		        const startResult = startAlgorithm();
+		        const startPromise = promiseResolvedWith(startResult);
+		        uponPromise(startPromise, () => {
+		            controller._started = true;
+		            WritableStreamDefaultControllerAdvanceQueueIfNeeded(controller);
+		        }, r => {
+		            controller._started = true;
+		            WritableStreamDealWithRejection(stream, r);
+		        });
+		    }
+		    function SetUpWritableStreamDefaultControllerFromUnderlyingSink(stream, underlyingSink, highWaterMark, sizeAlgorithm) {
+		        const controller = Object.create(WritableStreamDefaultController.prototype);
+		        let startAlgorithm = () => undefined;
+		        let writeAlgorithm = () => promiseResolvedWith(undefined);
+		        let closeAlgorithm = () => promiseResolvedWith(undefined);
+		        let abortAlgorithm = () => promiseResolvedWith(undefined);
+		        if (underlyingSink.start !== undefined) {
+		            startAlgorithm = () => underlyingSink.start(controller);
+		        }
+		        if (underlyingSink.write !== undefined) {
+		            writeAlgorithm = chunk => underlyingSink.write(chunk, controller);
+		        }
+		        if (underlyingSink.close !== undefined) {
+		            closeAlgorithm = () => underlyingSink.close();
+		        }
+		        if (underlyingSink.abort !== undefined) {
+		            abortAlgorithm = reason => underlyingSink.abort(reason);
+		        }
+		        SetUpWritableStreamDefaultController(stream, controller, startAlgorithm, writeAlgorithm, closeAlgorithm, abortAlgorithm, highWaterMark, sizeAlgorithm);
+		    }
+		    // ClearAlgorithms may be called twice. Erroring the same stream in multiple ways will often result in redundant calls.
+		    function WritableStreamDefaultControllerClearAlgorithms(controller) {
+		        controller._writeAlgorithm = undefined;
+		        controller._closeAlgorithm = undefined;
+		        controller._abortAlgorithm = undefined;
+		        controller._strategySizeAlgorithm = undefined;
+		    }
+		    function WritableStreamDefaultControllerClose(controller) {
+		        EnqueueValueWithSize(controller, closeSentinel, 0);
+		        WritableStreamDefaultControllerAdvanceQueueIfNeeded(controller);
+		    }
+		    function WritableStreamDefaultControllerGetChunkSize(controller, chunk) {
+		        try {
+		            return controller._strategySizeAlgorithm(chunk);
+		        }
+		        catch (chunkSizeE) {
+		            WritableStreamDefaultControllerErrorIfNeeded(controller, chunkSizeE);
+		            return 1;
+		        }
+		    }
+		    function WritableStreamDefaultControllerGetDesiredSize(controller) {
+		        return controller._strategyHWM - controller._queueTotalSize;
+		    }
+		    function WritableStreamDefaultControllerWrite(controller, chunk, chunkSize) {
+		        try {
+		            EnqueueValueWithSize(controller, chunk, chunkSize);
+		        }
+		        catch (enqueueE) {
+		            WritableStreamDefaultControllerErrorIfNeeded(controller, enqueueE);
+		            return;
+		        }
+		        const stream = controller._controlledWritableStream;
+		        if (!WritableStreamCloseQueuedOrInFlight(stream) && stream._state === 'writable') {
+		            const backpressure = WritableStreamDefaultControllerGetBackpressure(controller);
+		            WritableStreamUpdateBackpressure(stream, backpressure);
+		        }
+		        WritableStreamDefaultControllerAdvanceQueueIfNeeded(controller);
+		    }
+		    // Abstract operations for the WritableStreamDefaultController.
+		    function WritableStreamDefaultControllerAdvanceQueueIfNeeded(controller) {
+		        const stream = controller._controlledWritableStream;
+		        if (!controller._started) {
+		            return;
+		        }
+		        if (stream._inFlightWriteRequest !== undefined) {
+		            return;
+		        }
+		        const state = stream._state;
+		        if (state === 'erroring') {
+		            WritableStreamFinishErroring(stream);
+		            return;
+		        }
+		        if (controller._queue.length === 0) {
+		            return;
+		        }
+		        const value = PeekQueueValue(controller);
+		        if (value === closeSentinel) {
+		            WritableStreamDefaultControllerProcessClose(controller);
+		        }
+		        else {
+		            WritableStreamDefaultControllerProcessWrite(controller, value);
+		        }
+		    }
+		    function WritableStreamDefaultControllerErrorIfNeeded(controller, error) {
+		        if (controller._controlledWritableStream._state === 'writable') {
+		            WritableStreamDefaultControllerError(controller, error);
+		        }
+		    }
+		    function WritableStreamDefaultControllerProcessClose(controller) {
+		        const stream = controller._controlledWritableStream;
+		        WritableStreamMarkCloseRequestInFlight(stream);
+		        DequeueValue(controller);
+		        const sinkClosePromise = controller._closeAlgorithm();
+		        WritableStreamDefaultControllerClearAlgorithms(controller);
+		        uponPromise(sinkClosePromise, () => {
+		            WritableStreamFinishInFlightClose(stream);
+		        }, reason => {
+		            WritableStreamFinishInFlightCloseWithError(stream, reason);
+		        });
+		    }
+		    function WritableStreamDefaultControllerProcessWrite(controller, chunk) {
+		        const stream = controller._controlledWritableStream;
+		        WritableStreamMarkFirstWriteRequestInFlight(stream);
+		        const sinkWritePromise = controller._writeAlgorithm(chunk);
+		        uponPromise(sinkWritePromise, () => {
+		            WritableStreamFinishInFlightWrite(stream);
+		            const state = stream._state;
+		            DequeueValue(controller);
+		            if (!WritableStreamCloseQueuedOrInFlight(stream) && state === 'writable') {
+		                const backpressure = WritableStreamDefaultControllerGetBackpressure(controller);
+		                WritableStreamUpdateBackpressure(stream, backpressure);
+		            }
+		            WritableStreamDefaultControllerAdvanceQueueIfNeeded(controller);
+		        }, reason => {
+		            if (stream._state === 'writable') {
+		                WritableStreamDefaultControllerClearAlgorithms(controller);
+		            }
+		            WritableStreamFinishInFlightWriteWithError(stream, reason);
+		        });
+		    }
+		    function WritableStreamDefaultControllerGetBackpressure(controller) {
+		        const desiredSize = WritableStreamDefaultControllerGetDesiredSize(controller);
+		        return desiredSize <= 0;
+		    }
+		    // A client of WritableStreamDefaultController may use these functions directly to bypass state check.
+		    function WritableStreamDefaultControllerError(controller, error) {
+		        const stream = controller._controlledWritableStream;
+		        WritableStreamDefaultControllerClearAlgorithms(controller);
+		        WritableStreamStartErroring(stream, error);
+		    }
+		    // Helper functions for the WritableStream.
+		    function streamBrandCheckException$2(name) {
+		        return new TypeError(`WritableStream.prototype.${name} can only be used on a WritableStream`);
+		    }
+		    // Helper functions for the WritableStreamDefaultController.
+		    function defaultControllerBrandCheckException$2(name) {
+		        return new TypeError(`WritableStreamDefaultController.prototype.${name} can only be used on a WritableStreamDefaultController`);
+		    }
+		    // Helper functions for the WritableStreamDefaultWriter.
+		    function defaultWriterBrandCheckException(name) {
+		        return new TypeError(`WritableStreamDefaultWriter.prototype.${name} can only be used on a WritableStreamDefaultWriter`);
+		    }
+		    function defaultWriterLockException(name) {
+		        return new TypeError('Cannot ' + name + ' a stream using a released writer');
+		    }
+		    function defaultWriterClosedPromiseInitialize(writer) {
+		        writer._closedPromise = newPromise((resolve, reject) => {
+		            writer._closedPromise_resolve = resolve;
+		            writer._closedPromise_reject = reject;
+		            writer._closedPromiseState = 'pending';
+		        });
+		    }
+		    function defaultWriterClosedPromiseInitializeAsRejected(writer, reason) {
+		        defaultWriterClosedPromiseInitialize(writer);
+		        defaultWriterClosedPromiseReject(writer, reason);
+		    }
+		    function defaultWriterClosedPromiseInitializeAsResolved(writer) {
+		        defaultWriterClosedPromiseInitialize(writer);
+		        defaultWriterClosedPromiseResolve(writer);
+		    }
+		    function defaultWriterClosedPromiseReject(writer, reason) {
+		        if (writer._closedPromise_reject === undefined) {
+		            return;
+		        }
+		        setPromiseIsHandledToTrue(writer._closedPromise);
+		        writer._closedPromise_reject(reason);
+		        writer._closedPromise_resolve = undefined;
+		        writer._closedPromise_reject = undefined;
+		        writer._closedPromiseState = 'rejected';
+		    }
+		    function defaultWriterClosedPromiseResetToRejected(writer, reason) {
+		        defaultWriterClosedPromiseInitializeAsRejected(writer, reason);
+		    }
+		    function defaultWriterClosedPromiseResolve(writer) {
+		        if (writer._closedPromise_resolve === undefined) {
+		            return;
+		        }
+		        writer._closedPromise_resolve(undefined);
+		        writer._closedPromise_resolve = undefined;
+		        writer._closedPromise_reject = undefined;
+		        writer._closedPromiseState = 'resolved';
+		    }
+		    function defaultWriterReadyPromiseInitialize(writer) {
+		        writer._readyPromise = newPromise((resolve, reject) => {
+		            writer._readyPromise_resolve = resolve;
+		            writer._readyPromise_reject = reject;
+		        });
+		        writer._readyPromiseState = 'pending';
+		    }
+		    function defaultWriterReadyPromiseInitializeAsRejected(writer, reason) {
+		        defaultWriterReadyPromiseInitialize(writer);
+		        defaultWriterReadyPromiseReject(writer, reason);
+		    }
+		    function defaultWriterReadyPromiseInitializeAsResolved(writer) {
+		        defaultWriterReadyPromiseInitialize(writer);
+		        defaultWriterReadyPromiseResolve(writer);
+		    }
+		    function defaultWriterReadyPromiseReject(writer, reason) {
+		        if (writer._readyPromise_reject === undefined) {
+		            return;
+		        }
+		        setPromiseIsHandledToTrue(writer._readyPromise);
+		        writer._readyPromise_reject(reason);
+		        writer._readyPromise_resolve = undefined;
+		        writer._readyPromise_reject = undefined;
+		        writer._readyPromiseState = 'rejected';
+		    }
+		    function defaultWriterReadyPromiseReset(writer) {
+		        defaultWriterReadyPromiseInitialize(writer);
+		    }
+		    function defaultWriterReadyPromiseResetToRejected(writer, reason) {
+		        defaultWriterReadyPromiseInitializeAsRejected(writer, reason);
+		    }
+		    function defaultWriterReadyPromiseResolve(writer) {
+		        if (writer._readyPromise_resolve === undefined) {
+		            return;
+		        }
+		        writer._readyPromise_resolve(undefined);
+		        writer._readyPromise_resolve = undefined;
+		        writer._readyPromise_reject = undefined;
+		        writer._readyPromiseState = 'fulfilled';
+		    }
+
+		    /// <reference lib="dom" />
+		    const NativeDOMException = typeof DOMException !== 'undefined' ? DOMException : undefined;
+
+		    /// <reference types="node" />
+		    function isDOMExceptionConstructor(ctor) {
+		        if (!(typeof ctor === 'function' || typeof ctor === 'object')) {
+		            return false;
+		        }
+		        try {
+		            new ctor();
+		            return true;
+		        }
+		        catch (_a) {
+		            return false;
+		        }
+		    }
+		    function createDOMExceptionPolyfill() {
+		        // eslint-disable-next-line no-shadow
+		        const ctor = function DOMException(message, name) {
+		            this.message = message || '';
+		            this.name = name || 'Error';
+		            if (Error.captureStackTrace) {
+		                Error.captureStackTrace(this, this.constructor);
+		            }
+		        };
+		        ctor.prototype = Object.create(Error.prototype);
+		        Object.defineProperty(ctor.prototype, 'constructor', { value: ctor, writable: true, configurable: true });
+		        return ctor;
+		    }
+		    // eslint-disable-next-line no-redeclare
+		    const DOMException$1 = isDOMExceptionConstructor(NativeDOMException) ? NativeDOMException : createDOMExceptionPolyfill();
+
+		    function ReadableStreamPipeTo(source, dest, preventClose, preventAbort, preventCancel, signal) {
+		        const reader = AcquireReadableStreamDefaultReader(source);
+		        const writer = AcquireWritableStreamDefaultWriter(dest);
+		        source._disturbed = true;
+		        let shuttingDown = false;
+		        // This is used to keep track of the spec's requirement that we wait for ongoing writes during shutdown.
+		        let currentWrite = promiseResolvedWith(undefined);
+		        return newPromise((resolve, reject) => {
+		            let abortAlgorithm;
+		            if (signal !== undefined) {
+		                abortAlgorithm = () => {
+		                    const error = new DOMException$1('Aborted', 'AbortError');
+		                    const actions = [];
+		                    if (!preventAbort) {
+		                        actions.push(() => {
+		                            if (dest._state === 'writable') {
+		                                return WritableStreamAbort(dest, error);
+		                            }
+		                            return promiseResolvedWith(undefined);
+		                        });
+		                    }
+		                    if (!preventCancel) {
+		                        actions.push(() => {
+		                            if (source._state === 'readable') {
+		                                return ReadableStreamCancel(source, error);
+		                            }
+		                            return promiseResolvedWith(undefined);
+		                        });
+		                    }
+		                    shutdownWithAction(() => Promise.all(actions.map(action => action())), true, error);
+		                };
+		                if (signal.aborted) {
+		                    abortAlgorithm();
+		                    return;
+		                }
+		                signal.addEventListener('abort', abortAlgorithm);
+		            }
+		            // Using reader and writer, read all chunks from this and write them to dest
+		            // - Backpressure must be enforced
+		            // - Shutdown must stop all activity
+		            function pipeLoop() {
+		                return newPromise((resolveLoop, rejectLoop) => {
+		                    function next(done) {
+		                        if (done) {
+		                            resolveLoop();
+		                        }
+		                        else {
+		                            // Use `PerformPromiseThen` instead of `uponPromise` to avoid
+		                            // adding unnecessary `.catch(rethrowAssertionErrorRejection)` handlers
+		                            PerformPromiseThen(pipeStep(), next, rejectLoop);
+		                        }
+		                    }
+		                    next(false);
+		                });
+		            }
+		            function pipeStep() {
+		                if (shuttingDown) {
+		                    return promiseResolvedWith(true);
+		                }
+		                return PerformPromiseThen(writer._readyPromise, () => {
+		                    return newPromise((resolveRead, rejectRead) => {
+		                        ReadableStreamDefaultReaderRead(reader, {
+		                            _chunkSteps: chunk => {
+		                                currentWrite = PerformPromiseThen(WritableStreamDefaultWriterWrite(writer, chunk), undefined, noop);
+		                                resolveRead(false);
+		                            },
+		                            _closeSteps: () => resolveRead(true),
+		                            _errorSteps: rejectRead
+		                        });
+		                    });
+		                });
+		            }
+		            // Errors must be propagated forward
+		            isOrBecomesErrored(source, reader._closedPromise, storedError => {
+		                if (!preventAbort) {
+		                    shutdownWithAction(() => WritableStreamAbort(dest, storedError), true, storedError);
+		                }
+		                else {
+		                    shutdown(true, storedError);
+		                }
+		            });
+		            // Errors must be propagated backward
+		            isOrBecomesErrored(dest, writer._closedPromise, storedError => {
+		                if (!preventCancel) {
+		                    shutdownWithAction(() => ReadableStreamCancel(source, storedError), true, storedError);
+		                }
+		                else {
+		                    shutdown(true, storedError);
+		                }
+		            });
+		            // Closing must be propagated forward
+		            isOrBecomesClosed(source, reader._closedPromise, () => {
+		                if (!preventClose) {
+		                    shutdownWithAction(() => WritableStreamDefaultWriterCloseWithErrorPropagation(writer));
+		                }
+		                else {
+		                    shutdown();
+		                }
+		            });
+		            // Closing must be propagated backward
+		            if (WritableStreamCloseQueuedOrInFlight(dest) || dest._state === 'closed') {
+		                const destClosed = new TypeError('the destination writable stream closed before all data could be piped to it');
+		                if (!preventCancel) {
+		                    shutdownWithAction(() => ReadableStreamCancel(source, destClosed), true, destClosed);
+		                }
+		                else {
+		                    shutdown(true, destClosed);
+		                }
+		            }
+		            setPromiseIsHandledToTrue(pipeLoop());
+		            function waitForWritesToFinish() {
+		                // Another write may have started while we were waiting on this currentWrite, so we have to be sure to wait
+		                // for that too.
+		                const oldCurrentWrite = currentWrite;
+		                return PerformPromiseThen(currentWrite, () => oldCurrentWrite !== currentWrite ? waitForWritesToFinish() : undefined);
+		            }
+		            function isOrBecomesErrored(stream, promise, action) {
+		                if (stream._state === 'errored') {
+		                    action(stream._storedError);
+		                }
+		                else {
+		                    uponRejection(promise, action);
+		                }
+		            }
+		            function isOrBecomesClosed(stream, promise, action) {
+		                if (stream._state === 'closed') {
+		                    action();
+		                }
+		                else {
+		                    uponFulfillment(promise, action);
+		                }
+		            }
+		            function shutdownWithAction(action, originalIsError, originalError) {
+		                if (shuttingDown) {
+		                    return;
+		                }
+		                shuttingDown = true;
+		                if (dest._state === 'writable' && !WritableStreamCloseQueuedOrInFlight(dest)) {
+		                    uponFulfillment(waitForWritesToFinish(), doTheRest);
+		                }
+		                else {
+		                    doTheRest();
+		                }
+		                function doTheRest() {
+		                    uponPromise(action(), () => finalize(originalIsError, originalError), newError => finalize(true, newError));
+		                }
+		            }
+		            function shutdown(isError, error) {
+		                if (shuttingDown) {
+		                    return;
+		                }
+		                shuttingDown = true;
+		                if (dest._state === 'writable' && !WritableStreamCloseQueuedOrInFlight(dest)) {
+		                    uponFulfillment(waitForWritesToFinish(), () => finalize(isError, error));
+		                }
+		                else {
+		                    finalize(isError, error);
+		                }
+		            }
+		            function finalize(isError, error) {
+		                WritableStreamDefaultWriterRelease(writer);
+		                ReadableStreamReaderGenericRelease(reader);
+		                if (signal !== undefined) {
+		                    signal.removeEventListener('abort', abortAlgorithm);
+		                }
+		                if (isError) {
+		                    reject(error);
+		                }
+		                else {
+		                    resolve(undefined);
+		                }
+		            }
+		        });
+		    }
+
+		    /**
+		     * Allows control of a {@link ReadableStream | readable stream}'s state and internal queue.
+		     *
+		     * @public
+		     */
+		    class ReadableStreamDefaultController {
+		        constructor() {
+		            throw new TypeError('Illegal constructor');
+		        }
+		        /**
+		         * Returns the desired size to fill the controlled stream's internal queue. It can be negative, if the queue is
+		         * over-full. An underlying source ought to use this information to determine when and how to apply backpressure.
+		         */
+		        get desiredSize() {
+		            if (!IsReadableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$1('desiredSize');
+		            }
+		            return ReadableStreamDefaultControllerGetDesiredSize(this);
+		        }
+		        /**
+		         * Closes the controlled readable stream. Consumers will still be able to read any previously-enqueued chunks from
+		         * the stream, but once those are read, the stream will become closed.
+		         */
+		        close() {
+		            if (!IsReadableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$1('close');
+		            }
+		            if (!ReadableStreamDefaultControllerCanCloseOrEnqueue(this)) {
+		                throw new TypeError('The stream is not in a state that permits close');
+		            }
+		            ReadableStreamDefaultControllerClose(this);
+		        }
+		        enqueue(chunk = undefined) {
+		            if (!IsReadableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$1('enqueue');
+		            }
+		            if (!ReadableStreamDefaultControllerCanCloseOrEnqueue(this)) {
+		                throw new TypeError('The stream is not in a state that permits enqueue');
+		            }
+		            return ReadableStreamDefaultControllerEnqueue(this, chunk);
+		        }
+		        /**
+		         * Errors the controlled readable stream, making all future interactions with it fail with the given error `e`.
+		         */
+		        error(e = undefined) {
+		            if (!IsReadableStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException$1('error');
+		            }
+		            ReadableStreamDefaultControllerError(this, e);
+		        }
+		        /** @internal */
+		        [CancelSteps](reason) {
+		            ResetQueue(this);
+		            const result = this._cancelAlgorithm(reason);
+		            ReadableStreamDefaultControllerClearAlgorithms(this);
+		            return result;
+		        }
+		        /** @internal */
+		        [PullSteps](readRequest) {
+		            const stream = this._controlledReadableStream;
+		            if (this._queue.length > 0) {
+		                const chunk = DequeueValue(this);
+		                if (this._closeRequested && this._queue.length === 0) {
+		                    ReadableStreamDefaultControllerClearAlgorithms(this);
+		                    ReadableStreamClose(stream);
+		                }
+		                else {
+		                    ReadableStreamDefaultControllerCallPullIfNeeded(this);
+		                }
+		                readRequest._chunkSteps(chunk);
+		            }
+		            else {
+		                ReadableStreamAddReadRequest(stream, readRequest);
+		                ReadableStreamDefaultControllerCallPullIfNeeded(this);
+		            }
+		        }
+		    }
+		    Object.defineProperties(ReadableStreamDefaultController.prototype, {
+		        close: { enumerable: true },
+		        enqueue: { enumerable: true },
+		        error: { enumerable: true },
+		        desiredSize: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ReadableStreamDefaultController.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ReadableStreamDefaultController',
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the ReadableStreamDefaultController.
+		    function IsReadableStreamDefaultController(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_controlledReadableStream')) {
+		            return false;
+		        }
+		        return x instanceof ReadableStreamDefaultController;
+		    }
+		    function ReadableStreamDefaultControllerCallPullIfNeeded(controller) {
+		        const shouldPull = ReadableStreamDefaultControllerShouldCallPull(controller);
+		        if (!shouldPull) {
+		            return;
+		        }
+		        if (controller._pulling) {
+		            controller._pullAgain = true;
+		            return;
+		        }
+		        controller._pulling = true;
+		        const pullPromise = controller._pullAlgorithm();
+		        uponPromise(pullPromise, () => {
+		            controller._pulling = false;
+		            if (controller._pullAgain) {
+		                controller._pullAgain = false;
+		                ReadableStreamDefaultControllerCallPullIfNeeded(controller);
+		            }
+		        }, e => {
+		            ReadableStreamDefaultControllerError(controller, e);
+		        });
+		    }
+		    function ReadableStreamDefaultControllerShouldCallPull(controller) {
+		        const stream = controller._controlledReadableStream;
+		        if (!ReadableStreamDefaultControllerCanCloseOrEnqueue(controller)) {
+		            return false;
+		        }
+		        if (!controller._started) {
+		            return false;
+		        }
+		        if (IsReadableStreamLocked(stream) && ReadableStreamGetNumReadRequests(stream) > 0) {
+		            return true;
+		        }
+		        const desiredSize = ReadableStreamDefaultControllerGetDesiredSize(controller);
+		        if (desiredSize > 0) {
+		            return true;
+		        }
+		        return false;
+		    }
+		    function ReadableStreamDefaultControllerClearAlgorithms(controller) {
+		        controller._pullAlgorithm = undefined;
+		        controller._cancelAlgorithm = undefined;
+		        controller._strategySizeAlgorithm = undefined;
+		    }
+		    // A client of ReadableStreamDefaultController may use these functions directly to bypass state check.
+		    function ReadableStreamDefaultControllerClose(controller) {
+		        if (!ReadableStreamDefaultControllerCanCloseOrEnqueue(controller)) {
+		            return;
+		        }
+		        const stream = controller._controlledReadableStream;
+		        controller._closeRequested = true;
+		        if (controller._queue.length === 0) {
+		            ReadableStreamDefaultControllerClearAlgorithms(controller);
+		            ReadableStreamClose(stream);
+		        }
+		    }
+		    function ReadableStreamDefaultControllerEnqueue(controller, chunk) {
+		        if (!ReadableStreamDefaultControllerCanCloseOrEnqueue(controller)) {
+		            return;
+		        }
+		        const stream = controller._controlledReadableStream;
+		        if (IsReadableStreamLocked(stream) && ReadableStreamGetNumReadRequests(stream) > 0) {
+		            ReadableStreamFulfillReadRequest(stream, chunk, false);
+		        }
+		        else {
+		            let chunkSize;
+		            try {
+		                chunkSize = controller._strategySizeAlgorithm(chunk);
+		            }
+		            catch (chunkSizeE) {
+		                ReadableStreamDefaultControllerError(controller, chunkSizeE);
+		                throw chunkSizeE;
+		            }
+		            try {
+		                EnqueueValueWithSize(controller, chunk, chunkSize);
+		            }
+		            catch (enqueueE) {
+		                ReadableStreamDefaultControllerError(controller, enqueueE);
+		                throw enqueueE;
+		            }
+		        }
+		        ReadableStreamDefaultControllerCallPullIfNeeded(controller);
+		    }
+		    function ReadableStreamDefaultControllerError(controller, e) {
+		        const stream = controller._controlledReadableStream;
+		        if (stream._state !== 'readable') {
+		            return;
+		        }
+		        ResetQueue(controller);
+		        ReadableStreamDefaultControllerClearAlgorithms(controller);
+		        ReadableStreamError(stream, e);
+		    }
+		    function ReadableStreamDefaultControllerGetDesiredSize(controller) {
+		        const state = controller._controlledReadableStream._state;
+		        if (state === 'errored') {
+		            return null;
+		        }
+		        if (state === 'closed') {
+		            return 0;
+		        }
+		        return controller._strategyHWM - controller._queueTotalSize;
+		    }
+		    // This is used in the implementation of TransformStream.
+		    function ReadableStreamDefaultControllerHasBackpressure(controller) {
+		        if (ReadableStreamDefaultControllerShouldCallPull(controller)) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    function ReadableStreamDefaultControllerCanCloseOrEnqueue(controller) {
+		        const state = controller._controlledReadableStream._state;
+		        if (!controller._closeRequested && state === 'readable') {
+		            return true;
+		        }
+		        return false;
+		    }
+		    function SetUpReadableStreamDefaultController(stream, controller, startAlgorithm, pullAlgorithm, cancelAlgorithm, highWaterMark, sizeAlgorithm) {
+		        controller._controlledReadableStream = stream;
+		        controller._queue = undefined;
+		        controller._queueTotalSize = undefined;
+		        ResetQueue(controller);
+		        controller._started = false;
+		        controller._closeRequested = false;
+		        controller._pullAgain = false;
+		        controller._pulling = false;
+		        controller._strategySizeAlgorithm = sizeAlgorithm;
+		        controller._strategyHWM = highWaterMark;
+		        controller._pullAlgorithm = pullAlgorithm;
+		        controller._cancelAlgorithm = cancelAlgorithm;
+		        stream._readableStreamController = controller;
+		        const startResult = startAlgorithm();
+		        uponPromise(promiseResolvedWith(startResult), () => {
+		            controller._started = true;
+		            ReadableStreamDefaultControllerCallPullIfNeeded(controller);
+		        }, r => {
+		            ReadableStreamDefaultControllerError(controller, r);
+		        });
+		    }
+		    function SetUpReadableStreamDefaultControllerFromUnderlyingSource(stream, underlyingSource, highWaterMark, sizeAlgorithm) {
+		        const controller = Object.create(ReadableStreamDefaultController.prototype);
+		        let startAlgorithm = () => undefined;
+		        let pullAlgorithm = () => promiseResolvedWith(undefined);
+		        let cancelAlgorithm = () => promiseResolvedWith(undefined);
+		        if (underlyingSource.start !== undefined) {
+		            startAlgorithm = () => underlyingSource.start(controller);
+		        }
+		        if (underlyingSource.pull !== undefined) {
+		            pullAlgorithm = () => underlyingSource.pull(controller);
+		        }
+		        if (underlyingSource.cancel !== undefined) {
+		            cancelAlgorithm = reason => underlyingSource.cancel(reason);
+		        }
+		        SetUpReadableStreamDefaultController(stream, controller, startAlgorithm, pullAlgorithm, cancelAlgorithm, highWaterMark, sizeAlgorithm);
+		    }
+		    // Helper functions for the ReadableStreamDefaultController.
+		    function defaultControllerBrandCheckException$1(name) {
+		        return new TypeError(`ReadableStreamDefaultController.prototype.${name} can only be used on a ReadableStreamDefaultController`);
+		    }
+
+		    function ReadableStreamTee(stream, cloneForBranch2) {
+		        if (IsReadableByteStreamController(stream._readableStreamController)) {
+		            return ReadableByteStreamTee(stream);
+		        }
+		        return ReadableStreamDefaultTee(stream);
+		    }
+		    function ReadableStreamDefaultTee(stream, cloneForBranch2) {
+		        const reader = AcquireReadableStreamDefaultReader(stream);
+		        let reading = false;
+		        let readAgain = false;
+		        let canceled1 = false;
+		        let canceled2 = false;
+		        let reason1;
+		        let reason2;
+		        let branch1;
+		        let branch2;
+		        let resolveCancelPromise;
+		        const cancelPromise = newPromise(resolve => {
+		            resolveCancelPromise = resolve;
+		        });
+		        function pullAlgorithm() {
+		            if (reading) {
+		                readAgain = true;
+		                return promiseResolvedWith(undefined);
+		            }
+		            reading = true;
+		            const readRequest = {
+		                _chunkSteps: chunk => {
+		                    // This needs to be delayed a microtask because it takes at least a microtask to detect errors (using
+		                    // reader._closedPromise below), and we want errors in stream to error both branches immediately. We cannot let
+		                    // successful synchronously-available reads get ahead of asynchronously-available errors.
+		                    queueMicrotask(() => {
+		                        readAgain = false;
+		                        const chunk1 = chunk;
+		                        const chunk2 = chunk;
+		                        // There is no way to access the cloning code right now in the reference implementation.
+		                        // If we add one then we'll need an implementation for serializable objects.
+		                        // if (!canceled2 && cloneForBranch2) {
+		                        //   chunk2 = StructuredDeserialize(StructuredSerialize(chunk2));
+		                        // }
+		                        if (!canceled1) {
+		                            ReadableStreamDefaultControllerEnqueue(branch1._readableStreamController, chunk1);
+		                        }
+		                        if (!canceled2) {
+		                            ReadableStreamDefaultControllerEnqueue(branch2._readableStreamController, chunk2);
+		                        }
+		                        reading = false;
+		                        if (readAgain) {
+		                            pullAlgorithm();
+		                        }
+		                    });
+		                },
+		                _closeSteps: () => {
+		                    reading = false;
+		                    if (!canceled1) {
+		                        ReadableStreamDefaultControllerClose(branch1._readableStreamController);
+		                    }
+		                    if (!canceled2) {
+		                        ReadableStreamDefaultControllerClose(branch2._readableStreamController);
+		                    }
+		                    if (!canceled1 || !canceled2) {
+		                        resolveCancelPromise(undefined);
+		                    }
+		                },
+		                _errorSteps: () => {
+		                    reading = false;
+		                }
+		            };
+		            ReadableStreamDefaultReaderRead(reader, readRequest);
+		            return promiseResolvedWith(undefined);
+		        }
+		        function cancel1Algorithm(reason) {
+		            canceled1 = true;
+		            reason1 = reason;
+		            if (canceled2) {
+		                const compositeReason = CreateArrayFromList([reason1, reason2]);
+		                const cancelResult = ReadableStreamCancel(stream, compositeReason);
+		                resolveCancelPromise(cancelResult);
+		            }
+		            return cancelPromise;
+		        }
+		        function cancel2Algorithm(reason) {
+		            canceled2 = true;
+		            reason2 = reason;
+		            if (canceled1) {
+		                const compositeReason = CreateArrayFromList([reason1, reason2]);
+		                const cancelResult = ReadableStreamCancel(stream, compositeReason);
+		                resolveCancelPromise(cancelResult);
+		            }
+		            return cancelPromise;
+		        }
+		        function startAlgorithm() {
+		            // do nothing
+		        }
+		        branch1 = CreateReadableStream(startAlgorithm, pullAlgorithm, cancel1Algorithm);
+		        branch2 = CreateReadableStream(startAlgorithm, pullAlgorithm, cancel2Algorithm);
+		        uponRejection(reader._closedPromise, (r) => {
+		            ReadableStreamDefaultControllerError(branch1._readableStreamController, r);
+		            ReadableStreamDefaultControllerError(branch2._readableStreamController, r);
+		            if (!canceled1 || !canceled2) {
+		                resolveCancelPromise(undefined);
+		            }
+		        });
+		        return [branch1, branch2];
+		    }
+		    function ReadableByteStreamTee(stream) {
+		        let reader = AcquireReadableStreamDefaultReader(stream);
+		        let reading = false;
+		        let readAgainForBranch1 = false;
+		        let readAgainForBranch2 = false;
+		        let canceled1 = false;
+		        let canceled2 = false;
+		        let reason1;
+		        let reason2;
+		        let branch1;
+		        let branch2;
+		        let resolveCancelPromise;
+		        const cancelPromise = newPromise(resolve => {
+		            resolveCancelPromise = resolve;
+		        });
+		        function forwardReaderError(thisReader) {
+		            uponRejection(thisReader._closedPromise, r => {
+		                if (thisReader !== reader) {
+		                    return;
+		                }
+		                ReadableByteStreamControllerError(branch1._readableStreamController, r);
+		                ReadableByteStreamControllerError(branch2._readableStreamController, r);
+		                if (!canceled1 || !canceled2) {
+		                    resolveCancelPromise(undefined);
+		                }
+		            });
+		        }
+		        function pullWithDefaultReader() {
+		            if (IsReadableStreamBYOBReader(reader)) {
+		                ReadableStreamReaderGenericRelease(reader);
+		                reader = AcquireReadableStreamDefaultReader(stream);
+		                forwardReaderError(reader);
+		            }
+		            const readRequest = {
+		                _chunkSteps: chunk => {
+		                    // This needs to be delayed a microtask because it takes at least a microtask to detect errors (using
+		                    // reader._closedPromise below), and we want errors in stream to error both branches immediately. We cannot let
+		                    // successful synchronously-available reads get ahead of asynchronously-available errors.
+		                    queueMicrotask(() => {
+		                        readAgainForBranch1 = false;
+		                        readAgainForBranch2 = false;
+		                        const chunk1 = chunk;
+		                        let chunk2 = chunk;
+		                        if (!canceled1 && !canceled2) {
+		                            try {
+		                                chunk2 = CloneAsUint8Array(chunk);
+		                            }
+		                            catch (cloneE) {
+		                                ReadableByteStreamControllerError(branch1._readableStreamController, cloneE);
+		                                ReadableByteStreamControllerError(branch2._readableStreamController, cloneE);
+		                                resolveCancelPromise(ReadableStreamCancel(stream, cloneE));
+		                                return;
+		                            }
+		                        }
+		                        if (!canceled1) {
+		                            ReadableByteStreamControllerEnqueue(branch1._readableStreamController, chunk1);
+		                        }
+		                        if (!canceled2) {
+		                            ReadableByteStreamControllerEnqueue(branch2._readableStreamController, chunk2);
+		                        }
+		                        reading = false;
+		                        if (readAgainForBranch1) {
+		                            pull1Algorithm();
+		                        }
+		                        else if (readAgainForBranch2) {
+		                            pull2Algorithm();
+		                        }
+		                    });
+		                },
+		                _closeSteps: () => {
+		                    reading = false;
+		                    if (!canceled1) {
+		                        ReadableByteStreamControllerClose(branch1._readableStreamController);
+		                    }
+		                    if (!canceled2) {
+		                        ReadableByteStreamControllerClose(branch2._readableStreamController);
+		                    }
+		                    if (branch1._readableStreamController._pendingPullIntos.length > 0) {
+		                        ReadableByteStreamControllerRespond(branch1._readableStreamController, 0);
+		                    }
+		                    if (branch2._readableStreamController._pendingPullIntos.length > 0) {
+		                        ReadableByteStreamControllerRespond(branch2._readableStreamController, 0);
+		                    }
+		                    if (!canceled1 || !canceled2) {
+		                        resolveCancelPromise(undefined);
+		                    }
+		                },
+		                _errorSteps: () => {
+		                    reading = false;
+		                }
+		            };
+		            ReadableStreamDefaultReaderRead(reader, readRequest);
+		        }
+		        function pullWithBYOBReader(view, forBranch2) {
+		            if (IsReadableStreamDefaultReader(reader)) {
+		                ReadableStreamReaderGenericRelease(reader);
+		                reader = AcquireReadableStreamBYOBReader(stream);
+		                forwardReaderError(reader);
+		            }
+		            const byobBranch = forBranch2 ? branch2 : branch1;
+		            const otherBranch = forBranch2 ? branch1 : branch2;
+		            const readIntoRequest = {
+		                _chunkSteps: chunk => {
+		                    // This needs to be delayed a microtask because it takes at least a microtask to detect errors (using
+		                    // reader._closedPromise below), and we want errors in stream to error both branches immediately. We cannot let
+		                    // successful synchronously-available reads get ahead of asynchronously-available errors.
+		                    queueMicrotask(() => {
+		                        readAgainForBranch1 = false;
+		                        readAgainForBranch2 = false;
+		                        const byobCanceled = forBranch2 ? canceled2 : canceled1;
+		                        const otherCanceled = forBranch2 ? canceled1 : canceled2;
+		                        if (!otherCanceled) {
+		                            let clonedChunk;
+		                            try {
+		                                clonedChunk = CloneAsUint8Array(chunk);
+		                            }
+		                            catch (cloneE) {
+		                                ReadableByteStreamControllerError(byobBranch._readableStreamController, cloneE);
+		                                ReadableByteStreamControllerError(otherBranch._readableStreamController, cloneE);
+		                                resolveCancelPromise(ReadableStreamCancel(stream, cloneE));
+		                                return;
+		                            }
+		                            if (!byobCanceled) {
+		                                ReadableByteStreamControllerRespondWithNewView(byobBranch._readableStreamController, chunk);
+		                            }
+		                            ReadableByteStreamControllerEnqueue(otherBranch._readableStreamController, clonedChunk);
+		                        }
+		                        else if (!byobCanceled) {
+		                            ReadableByteStreamControllerRespondWithNewView(byobBranch._readableStreamController, chunk);
+		                        }
+		                        reading = false;
+		                        if (readAgainForBranch1) {
+		                            pull1Algorithm();
+		                        }
+		                        else if (readAgainForBranch2) {
+		                            pull2Algorithm();
+		                        }
+		                    });
+		                },
+		                _closeSteps: chunk => {
+		                    reading = false;
+		                    const byobCanceled = forBranch2 ? canceled2 : canceled1;
+		                    const otherCanceled = forBranch2 ? canceled1 : canceled2;
+		                    if (!byobCanceled) {
+		                        ReadableByteStreamControllerClose(byobBranch._readableStreamController);
+		                    }
+		                    if (!otherCanceled) {
+		                        ReadableByteStreamControllerClose(otherBranch._readableStreamController);
+		                    }
+		                    if (chunk !== undefined) {
+		                        if (!byobCanceled) {
+		                            ReadableByteStreamControllerRespondWithNewView(byobBranch._readableStreamController, chunk);
+		                        }
+		                        if (!otherCanceled && otherBranch._readableStreamController._pendingPullIntos.length > 0) {
+		                            ReadableByteStreamControllerRespond(otherBranch._readableStreamController, 0);
+		                        }
+		                    }
+		                    if (!byobCanceled || !otherCanceled) {
+		                        resolveCancelPromise(undefined);
+		                    }
+		                },
+		                _errorSteps: () => {
+		                    reading = false;
+		                }
+		            };
+		            ReadableStreamBYOBReaderRead(reader, view, readIntoRequest);
+		        }
+		        function pull1Algorithm() {
+		            if (reading) {
+		                readAgainForBranch1 = true;
+		                return promiseResolvedWith(undefined);
+		            }
+		            reading = true;
+		            const byobRequest = ReadableByteStreamControllerGetBYOBRequest(branch1._readableStreamController);
+		            if (byobRequest === null) {
+		                pullWithDefaultReader();
+		            }
+		            else {
+		                pullWithBYOBReader(byobRequest._view, false);
+		            }
+		            return promiseResolvedWith(undefined);
+		        }
+		        function pull2Algorithm() {
+		            if (reading) {
+		                readAgainForBranch2 = true;
+		                return promiseResolvedWith(undefined);
+		            }
+		            reading = true;
+		            const byobRequest = ReadableByteStreamControllerGetBYOBRequest(branch2._readableStreamController);
+		            if (byobRequest === null) {
+		                pullWithDefaultReader();
+		            }
+		            else {
+		                pullWithBYOBReader(byobRequest._view, true);
+		            }
+		            return promiseResolvedWith(undefined);
+		        }
+		        function cancel1Algorithm(reason) {
+		            canceled1 = true;
+		            reason1 = reason;
+		            if (canceled2) {
+		                const compositeReason = CreateArrayFromList([reason1, reason2]);
+		                const cancelResult = ReadableStreamCancel(stream, compositeReason);
+		                resolveCancelPromise(cancelResult);
+		            }
+		            return cancelPromise;
+		        }
+		        function cancel2Algorithm(reason) {
+		            canceled2 = true;
+		            reason2 = reason;
+		            if (canceled1) {
+		                const compositeReason = CreateArrayFromList([reason1, reason2]);
+		                const cancelResult = ReadableStreamCancel(stream, compositeReason);
+		                resolveCancelPromise(cancelResult);
+		            }
+		            return cancelPromise;
+		        }
+		        function startAlgorithm() {
+		            return;
+		        }
+		        branch1 = CreateReadableByteStream(startAlgorithm, pull1Algorithm, cancel1Algorithm);
+		        branch2 = CreateReadableByteStream(startAlgorithm, pull2Algorithm, cancel2Algorithm);
+		        forwardReaderError(reader);
+		        return [branch1, branch2];
+		    }
+
+		    function convertUnderlyingDefaultOrByteSource(source, context) {
+		        assertDictionary(source, context);
+		        const original = source;
+		        const autoAllocateChunkSize = original === null || original === void 0 ? void 0 : original.autoAllocateChunkSize;
+		        const cancel = original === null || original === void 0 ? void 0 : original.cancel;
+		        const pull = original === null || original === void 0 ? void 0 : original.pull;
+		        const start = original === null || original === void 0 ? void 0 : original.start;
+		        const type = original === null || original === void 0 ? void 0 : original.type;
+		        return {
+		            autoAllocateChunkSize: autoAllocateChunkSize === undefined ?
+		                undefined :
+		                convertUnsignedLongLongWithEnforceRange(autoAllocateChunkSize, `${context} has member 'autoAllocateChunkSize' that`),
+		            cancel: cancel === undefined ?
+		                undefined :
+		                convertUnderlyingSourceCancelCallback(cancel, original, `${context} has member 'cancel' that`),
+		            pull: pull === undefined ?
+		                undefined :
+		                convertUnderlyingSourcePullCallback(pull, original, `${context} has member 'pull' that`),
+		            start: start === undefined ?
+		                undefined :
+		                convertUnderlyingSourceStartCallback(start, original, `${context} has member 'start' that`),
+		            type: type === undefined ? undefined : convertReadableStreamType(type, `${context} has member 'type' that`)
+		        };
+		    }
+		    function convertUnderlyingSourceCancelCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (reason) => promiseCall(fn, original, [reason]);
+		    }
+		    function convertUnderlyingSourcePullCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (controller) => promiseCall(fn, original, [controller]);
+		    }
+		    function convertUnderlyingSourceStartCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (controller) => reflectCall(fn, original, [controller]);
+		    }
+		    function convertReadableStreamType(type, context) {
+		        type = `${type}`;
+		        if (type !== 'bytes') {
+		            throw new TypeError(`${context} '${type}' is not a valid enumeration value for ReadableStreamType`);
+		        }
+		        return type;
+		    }
+
+		    function convertReaderOptions(options, context) {
+		        assertDictionary(options, context);
+		        const mode = options === null || options === void 0 ? void 0 : options.mode;
+		        return {
+		            mode: mode === undefined ? undefined : convertReadableStreamReaderMode(mode, `${context} has member 'mode' that`)
+		        };
+		    }
+		    function convertReadableStreamReaderMode(mode, context) {
+		        mode = `${mode}`;
+		        if (mode !== 'byob') {
+		            throw new TypeError(`${context} '${mode}' is not a valid enumeration value for ReadableStreamReaderMode`);
+		        }
+		        return mode;
+		    }
+
+		    function convertIteratorOptions(options, context) {
+		        assertDictionary(options, context);
+		        const preventCancel = options === null || options === void 0 ? void 0 : options.preventCancel;
+		        return { preventCancel: Boolean(preventCancel) };
+		    }
+
+		    function convertPipeOptions(options, context) {
+		        assertDictionary(options, context);
+		        const preventAbort = options === null || options === void 0 ? void 0 : options.preventAbort;
+		        const preventCancel = options === null || options === void 0 ? void 0 : options.preventCancel;
+		        const preventClose = options === null || options === void 0 ? void 0 : options.preventClose;
+		        const signal = options === null || options === void 0 ? void 0 : options.signal;
+		        if (signal !== undefined) {
+		            assertAbortSignal(signal, `${context} has member 'signal' that`);
+		        }
+		        return {
+		            preventAbort: Boolean(preventAbort),
+		            preventCancel: Boolean(preventCancel),
+		            preventClose: Boolean(preventClose),
+		            signal
+		        };
+		    }
+		    function assertAbortSignal(signal, context) {
+		        if (!isAbortSignal(signal)) {
+		            throw new TypeError(`${context} is not an AbortSignal.`);
+		        }
+		    }
+
+		    function convertReadableWritablePair(pair, context) {
+		        assertDictionary(pair, context);
+		        const readable = pair === null || pair === void 0 ? void 0 : pair.readable;
+		        assertRequiredField(readable, 'readable', 'ReadableWritablePair');
+		        assertReadableStream(readable, `${context} has member 'readable' that`);
+		        const writable = pair === null || pair === void 0 ? void 0 : pair.writable;
+		        assertRequiredField(writable, 'writable', 'ReadableWritablePair');
+		        assertWritableStream(writable, `${context} has member 'writable' that`);
+		        return { readable, writable };
+		    }
+
+		    /**
+		     * A readable stream represents a source of data, from which you can read.
+		     *
+		     * @public
+		     */
+		    class ReadableStream {
+		        constructor(rawUnderlyingSource = {}, rawStrategy = {}) {
+		            if (rawUnderlyingSource === undefined) {
+		                rawUnderlyingSource = null;
+		            }
+		            else {
+		                assertObject(rawUnderlyingSource, 'First parameter');
+		            }
+		            const strategy = convertQueuingStrategy(rawStrategy, 'Second parameter');
+		            const underlyingSource = convertUnderlyingDefaultOrByteSource(rawUnderlyingSource, 'First parameter');
+		            InitializeReadableStream(this);
+		            if (underlyingSource.type === 'bytes') {
+		                if (strategy.size !== undefined) {
+		                    throw new RangeError('The strategy for a byte stream cannot have a size function');
+		                }
+		                const highWaterMark = ExtractHighWaterMark(strategy, 0);
+		                SetUpReadableByteStreamControllerFromUnderlyingSource(this, underlyingSource, highWaterMark);
+		            }
+		            else {
+		                const sizeAlgorithm = ExtractSizeAlgorithm(strategy);
+		                const highWaterMark = ExtractHighWaterMark(strategy, 1);
+		                SetUpReadableStreamDefaultControllerFromUnderlyingSource(this, underlyingSource, highWaterMark, sizeAlgorithm);
+		            }
+		        }
+		        /**
+		         * Whether or not the readable stream is locked to a {@link ReadableStreamDefaultReader | reader}.
+		         */
+		        get locked() {
+		            if (!IsReadableStream(this)) {
+		                throw streamBrandCheckException$1('locked');
+		            }
+		            return IsReadableStreamLocked(this);
+		        }
+		        /**
+		         * Cancels the stream, signaling a loss of interest in the stream by a consumer.
+		         *
+		         * The supplied `reason` argument will be given to the underlying source's {@link UnderlyingSource.cancel | cancel()}
+		         * method, which might or might not use it.
+		         */
+		        cancel(reason = undefined) {
+		            if (!IsReadableStream(this)) {
+		                return promiseRejectedWith(streamBrandCheckException$1('cancel'));
+		            }
+		            if (IsReadableStreamLocked(this)) {
+		                return promiseRejectedWith(new TypeError('Cannot cancel a stream that already has a reader'));
+		            }
+		            return ReadableStreamCancel(this, reason);
+		        }
+		        getReader(rawOptions = undefined) {
+		            if (!IsReadableStream(this)) {
+		                throw streamBrandCheckException$1('getReader');
+		            }
+		            const options = convertReaderOptions(rawOptions, 'First parameter');
+		            if (options.mode === undefined) {
+		                return AcquireReadableStreamDefaultReader(this);
+		            }
+		            return AcquireReadableStreamBYOBReader(this);
+		        }
+		        pipeThrough(rawTransform, rawOptions = {}) {
+		            if (!IsReadableStream(this)) {
+		                throw streamBrandCheckException$1('pipeThrough');
+		            }
+		            assertRequiredArgument(rawTransform, 1, 'pipeThrough');
+		            const transform = convertReadableWritablePair(rawTransform, 'First parameter');
+		            const options = convertPipeOptions(rawOptions, 'Second parameter');
+		            if (IsReadableStreamLocked(this)) {
+		                throw new TypeError('ReadableStream.prototype.pipeThrough cannot be used on a locked ReadableStream');
+		            }
+		            if (IsWritableStreamLocked(transform.writable)) {
+		                throw new TypeError('ReadableStream.prototype.pipeThrough cannot be used on a locked WritableStream');
+		            }
+		            const promise = ReadableStreamPipeTo(this, transform.writable, options.preventClose, options.preventAbort, options.preventCancel, options.signal);
+		            setPromiseIsHandledToTrue(promise);
+		            return transform.readable;
+		        }
+		        pipeTo(destination, rawOptions = {}) {
+		            if (!IsReadableStream(this)) {
+		                return promiseRejectedWith(streamBrandCheckException$1('pipeTo'));
+		            }
+		            if (destination === undefined) {
+		                return promiseRejectedWith(`Parameter 1 is required in 'pipeTo'.`);
+		            }
+		            if (!IsWritableStream(destination)) {
+		                return promiseRejectedWith(new TypeError(`ReadableStream.prototype.pipeTo's first argument must be a WritableStream`));
+		            }
+		            let options;
+		            try {
+		                options = convertPipeOptions(rawOptions, 'Second parameter');
+		            }
+		            catch (e) {
+		                return promiseRejectedWith(e);
+		            }
+		            if (IsReadableStreamLocked(this)) {
+		                return promiseRejectedWith(new TypeError('ReadableStream.prototype.pipeTo cannot be used on a locked ReadableStream'));
+		            }
+		            if (IsWritableStreamLocked(destination)) {
+		                return promiseRejectedWith(new TypeError('ReadableStream.prototype.pipeTo cannot be used on a locked WritableStream'));
+		            }
+		            return ReadableStreamPipeTo(this, destination, options.preventClose, options.preventAbort, options.preventCancel, options.signal);
+		        }
+		        /**
+		         * Tees this readable stream, returning a two-element array containing the two resulting branches as
+		         * new {@link ReadableStream} instances.
+		         *
+		         * Teeing a stream will lock it, preventing any other consumer from acquiring a reader.
+		         * To cancel the stream, cancel both of the resulting branches; a composite cancellation reason will then be
+		         * propagated to the stream's underlying source.
+		         *
+		         * Note that the chunks seen in each branch will be the same object. If the chunks are not immutable,
+		         * this could allow interference between the two branches.
+		         */
+		        tee() {
+		            if (!IsReadableStream(this)) {
+		                throw streamBrandCheckException$1('tee');
+		            }
+		            const branches = ReadableStreamTee(this);
+		            return CreateArrayFromList(branches);
+		        }
+		        values(rawOptions = undefined) {
+		            if (!IsReadableStream(this)) {
+		                throw streamBrandCheckException$1('values');
+		            }
+		            const options = convertIteratorOptions(rawOptions, 'First parameter');
+		            return AcquireReadableStreamAsyncIterator(this, options.preventCancel);
+		        }
+		    }
+		    Object.defineProperties(ReadableStream.prototype, {
+		        cancel: { enumerable: true },
+		        getReader: { enumerable: true },
+		        pipeThrough: { enumerable: true },
+		        pipeTo: { enumerable: true },
+		        tee: { enumerable: true },
+		        values: { enumerable: true },
+		        locked: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ReadableStream.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ReadableStream',
+		            configurable: true
+		        });
+		    }
+		    if (typeof SymbolPolyfill.asyncIterator === 'symbol') {
+		        Object.defineProperty(ReadableStream.prototype, SymbolPolyfill.asyncIterator, {
+		            value: ReadableStream.prototype.values,
+		            writable: true,
+		            configurable: true
+		        });
+		    }
+		    // Abstract operations for the ReadableStream.
+		    // Throws if and only if startAlgorithm throws.
+		    function CreateReadableStream(startAlgorithm, pullAlgorithm, cancelAlgorithm, highWaterMark = 1, sizeAlgorithm = () => 1) {
+		        const stream = Object.create(ReadableStream.prototype);
+		        InitializeReadableStream(stream);
+		        const controller = Object.create(ReadableStreamDefaultController.prototype);
+		        SetUpReadableStreamDefaultController(stream, controller, startAlgorithm, pullAlgorithm, cancelAlgorithm, highWaterMark, sizeAlgorithm);
+		        return stream;
+		    }
+		    // Throws if and only if startAlgorithm throws.
+		    function CreateReadableByteStream(startAlgorithm, pullAlgorithm, cancelAlgorithm) {
+		        const stream = Object.create(ReadableStream.prototype);
+		        InitializeReadableStream(stream);
+		        const controller = Object.create(ReadableByteStreamController.prototype);
+		        SetUpReadableByteStreamController(stream, controller, startAlgorithm, pullAlgorithm, cancelAlgorithm, 0, undefined);
+		        return stream;
+		    }
+		    function InitializeReadableStream(stream) {
+		        stream._state = 'readable';
+		        stream._reader = undefined;
+		        stream._storedError = undefined;
+		        stream._disturbed = false;
+		    }
+		    function IsReadableStream(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_readableStreamController')) {
+		            return false;
+		        }
+		        return x instanceof ReadableStream;
+		    }
+		    function IsReadableStreamLocked(stream) {
+		        if (stream._reader === undefined) {
+		            return false;
+		        }
+		        return true;
+		    }
+		    // ReadableStream API exposed for controllers.
+		    function ReadableStreamCancel(stream, reason) {
+		        stream._disturbed = true;
+		        if (stream._state === 'closed') {
+		            return promiseResolvedWith(undefined);
+		        }
+		        if (stream._state === 'errored') {
+		            return promiseRejectedWith(stream._storedError);
+		        }
+		        ReadableStreamClose(stream);
+		        const reader = stream._reader;
+		        if (reader !== undefined && IsReadableStreamBYOBReader(reader)) {
+		            reader._readIntoRequests.forEach(readIntoRequest => {
+		                readIntoRequest._closeSteps(undefined);
+		            });
+		            reader._readIntoRequests = new SimpleQueue();
+		        }
+		        const sourceCancelPromise = stream._readableStreamController[CancelSteps](reason);
+		        return transformPromiseWith(sourceCancelPromise, noop);
+		    }
+		    function ReadableStreamClose(stream) {
+		        stream._state = 'closed';
+		        const reader = stream._reader;
+		        if (reader === undefined) {
+		            return;
+		        }
+		        defaultReaderClosedPromiseResolve(reader);
+		        if (IsReadableStreamDefaultReader(reader)) {
+		            reader._readRequests.forEach(readRequest => {
+		                readRequest._closeSteps();
+		            });
+		            reader._readRequests = new SimpleQueue();
+		        }
+		    }
+		    function ReadableStreamError(stream, e) {
+		        stream._state = 'errored';
+		        stream._storedError = e;
+		        const reader = stream._reader;
+		        if (reader === undefined) {
+		            return;
+		        }
+		        defaultReaderClosedPromiseReject(reader, e);
+		        if (IsReadableStreamDefaultReader(reader)) {
+		            reader._readRequests.forEach(readRequest => {
+		                readRequest._errorSteps(e);
+		            });
+		            reader._readRequests = new SimpleQueue();
+		        }
+		        else {
+		            reader._readIntoRequests.forEach(readIntoRequest => {
+		                readIntoRequest._errorSteps(e);
+		            });
+		            reader._readIntoRequests = new SimpleQueue();
+		        }
+		    }
+		    // Helper functions for the ReadableStream.
+		    function streamBrandCheckException$1(name) {
+		        return new TypeError(`ReadableStream.prototype.${name} can only be used on a ReadableStream`);
+		    }
+
+		    function convertQueuingStrategyInit(init, context) {
+		        assertDictionary(init, context);
+		        const highWaterMark = init === null || init === void 0 ? void 0 : init.highWaterMark;
+		        assertRequiredField(highWaterMark, 'highWaterMark', 'QueuingStrategyInit');
+		        return {
+		            highWaterMark: convertUnrestrictedDouble(highWaterMark)
+		        };
+		    }
+
+		    // The size function must not have a prototype property nor be a constructor
+		    const byteLengthSizeFunction = (chunk) => {
+		        return chunk.byteLength;
+		    };
+		    try {
+		        Object.defineProperty(byteLengthSizeFunction, 'name', {
+		            value: 'size',
+		            configurable: true
+		        });
+		    }
+		    catch (_a) {
+		        // This property is non-configurable in older browsers, so ignore if this throws.
+		        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name#browser_compatibility
+		    }
+		    /**
+		     * A queuing strategy that counts the number of bytes in each chunk.
+		     *
+		     * @public
+		     */
+		    class ByteLengthQueuingStrategy {
+		        constructor(options) {
+		            assertRequiredArgument(options, 1, 'ByteLengthQueuingStrategy');
+		            options = convertQueuingStrategyInit(options, 'First parameter');
+		            this._byteLengthQueuingStrategyHighWaterMark = options.highWaterMark;
+		        }
+		        /**
+		         * Returns the high water mark provided to the constructor.
+		         */
+		        get highWaterMark() {
+		            if (!IsByteLengthQueuingStrategy(this)) {
+		                throw byteLengthBrandCheckException('highWaterMark');
+		            }
+		            return this._byteLengthQueuingStrategyHighWaterMark;
+		        }
+		        /**
+		         * Measures the size of `chunk` by returning the value of its `byteLength` property.
+		         */
+		        get size() {
+		            if (!IsByteLengthQueuingStrategy(this)) {
+		                throw byteLengthBrandCheckException('size');
+		            }
+		            return byteLengthSizeFunction;
+		        }
+		    }
+		    Object.defineProperties(ByteLengthQueuingStrategy.prototype, {
+		        highWaterMark: { enumerable: true },
+		        size: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(ByteLengthQueuingStrategy.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'ByteLengthQueuingStrategy',
+		            configurable: true
+		        });
+		    }
+		    // Helper functions for the ByteLengthQueuingStrategy.
+		    function byteLengthBrandCheckException(name) {
+		        return new TypeError(`ByteLengthQueuingStrategy.prototype.${name} can only be used on a ByteLengthQueuingStrategy`);
+		    }
+		    function IsByteLengthQueuingStrategy(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_byteLengthQueuingStrategyHighWaterMark')) {
+		            return false;
+		        }
+		        return x instanceof ByteLengthQueuingStrategy;
+		    }
+
+		    // The size function must not have a prototype property nor be a constructor
+		    const countSizeFunction = () => {
+		        return 1;
+		    };
+		    try {
+		        Object.defineProperty(countSizeFunction, 'name', {
+		            value: 'size',
+		            configurable: true
+		        });
+		    }
+		    catch (_a) {
+		        // This property is non-configurable in older browsers, so ignore if this throws.
+		        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name#browser_compatibility
+		    }
+		    /**
+		     * A queuing strategy that counts the number of chunks.
+		     *
+		     * @public
+		     */
+		    class CountQueuingStrategy {
+		        constructor(options) {
+		            assertRequiredArgument(options, 1, 'CountQueuingStrategy');
+		            options = convertQueuingStrategyInit(options, 'First parameter');
+		            this._countQueuingStrategyHighWaterMark = options.highWaterMark;
+		        }
+		        /**
+		         * Returns the high water mark provided to the constructor.
+		         */
+		        get highWaterMark() {
+		            if (!IsCountQueuingStrategy(this)) {
+		                throw countBrandCheckException('highWaterMark');
+		            }
+		            return this._countQueuingStrategyHighWaterMark;
+		        }
+		        /**
+		         * Measures the size of `chunk` by always returning 1.
+		         * This ensures that the total queue size is a count of the number of chunks in the queue.
+		         */
+		        get size() {
+		            if (!IsCountQueuingStrategy(this)) {
+		                throw countBrandCheckException('size');
+		            }
+		            return countSizeFunction;
+		        }
+		    }
+		    Object.defineProperties(CountQueuingStrategy.prototype, {
+		        highWaterMark: { enumerable: true },
+		        size: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(CountQueuingStrategy.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'CountQueuingStrategy',
+		            configurable: true
+		        });
+		    }
+		    // Helper functions for the CountQueuingStrategy.
+		    function countBrandCheckException(name) {
+		        return new TypeError(`CountQueuingStrategy.prototype.${name} can only be used on a CountQueuingStrategy`);
+		    }
+		    function IsCountQueuingStrategy(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_countQueuingStrategyHighWaterMark')) {
+		            return false;
+		        }
+		        return x instanceof CountQueuingStrategy;
+		    }
+
+		    function convertTransformer(original, context) {
+		        assertDictionary(original, context);
+		        const flush = original === null || original === void 0 ? void 0 : original.flush;
+		        const readableType = original === null || original === void 0 ? void 0 : original.readableType;
+		        const start = original === null || original === void 0 ? void 0 : original.start;
+		        const transform = original === null || original === void 0 ? void 0 : original.transform;
+		        const writableType = original === null || original === void 0 ? void 0 : original.writableType;
+		        return {
+		            flush: flush === undefined ?
+		                undefined :
+		                convertTransformerFlushCallback(flush, original, `${context} has member 'flush' that`),
+		            readableType,
+		            start: start === undefined ?
+		                undefined :
+		                convertTransformerStartCallback(start, original, `${context} has member 'start' that`),
+		            transform: transform === undefined ?
+		                undefined :
+		                convertTransformerTransformCallback(transform, original, `${context} has member 'transform' that`),
+		            writableType
+		        };
+		    }
+		    function convertTransformerFlushCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (controller) => promiseCall(fn, original, [controller]);
+		    }
+		    function convertTransformerStartCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (controller) => reflectCall(fn, original, [controller]);
+		    }
+		    function convertTransformerTransformCallback(fn, original, context) {
+		        assertFunction(fn, context);
+		        return (chunk, controller) => promiseCall(fn, original, [chunk, controller]);
+		    }
+
+		    // Class TransformStream
+		    /**
+		     * A transform stream consists of a pair of streams: a {@link WritableStream | writable stream},
+		     * known as its writable side, and a {@link ReadableStream | readable stream}, known as its readable side.
+		     * In a manner specific to the transform stream in question, writes to the writable side result in new data being
+		     * made available for reading from the readable side.
+		     *
+		     * @public
+		     */
+		    class TransformStream {
+		        constructor(rawTransformer = {}, rawWritableStrategy = {}, rawReadableStrategy = {}) {
+		            if (rawTransformer === undefined) {
+		                rawTransformer = null;
+		            }
+		            const writableStrategy = convertQueuingStrategy(rawWritableStrategy, 'Second parameter');
+		            const readableStrategy = convertQueuingStrategy(rawReadableStrategy, 'Third parameter');
+		            const transformer = convertTransformer(rawTransformer, 'First parameter');
+		            if (transformer.readableType !== undefined) {
+		                throw new RangeError('Invalid readableType specified');
+		            }
+		            if (transformer.writableType !== undefined) {
+		                throw new RangeError('Invalid writableType specified');
+		            }
+		            const readableHighWaterMark = ExtractHighWaterMark(readableStrategy, 0);
+		            const readableSizeAlgorithm = ExtractSizeAlgorithm(readableStrategy);
+		            const writableHighWaterMark = ExtractHighWaterMark(writableStrategy, 1);
+		            const writableSizeAlgorithm = ExtractSizeAlgorithm(writableStrategy);
+		            let startPromise_resolve;
+		            const startPromise = newPromise(resolve => {
+		                startPromise_resolve = resolve;
+		            });
+		            InitializeTransformStream(this, startPromise, writableHighWaterMark, writableSizeAlgorithm, readableHighWaterMark, readableSizeAlgorithm);
+		            SetUpTransformStreamDefaultControllerFromTransformer(this, transformer);
+		            if (transformer.start !== undefined) {
+		                startPromise_resolve(transformer.start(this._transformStreamController));
+		            }
+		            else {
+		                startPromise_resolve(undefined);
+		            }
+		        }
+		        /**
+		         * The readable side of the transform stream.
+		         */
+		        get readable() {
+		            if (!IsTransformStream(this)) {
+		                throw streamBrandCheckException('readable');
+		            }
+		            return this._readable;
+		        }
+		        /**
+		         * The writable side of the transform stream.
+		         */
+		        get writable() {
+		            if (!IsTransformStream(this)) {
+		                throw streamBrandCheckException('writable');
+		            }
+		            return this._writable;
+		        }
+		    }
+		    Object.defineProperties(TransformStream.prototype, {
+		        readable: { enumerable: true },
+		        writable: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(TransformStream.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'TransformStream',
+		            configurable: true
+		        });
+		    }
+		    function InitializeTransformStream(stream, startPromise, writableHighWaterMark, writableSizeAlgorithm, readableHighWaterMark, readableSizeAlgorithm) {
+		        function startAlgorithm() {
+		            return startPromise;
+		        }
+		        function writeAlgorithm(chunk) {
+		            return TransformStreamDefaultSinkWriteAlgorithm(stream, chunk);
+		        }
+		        function abortAlgorithm(reason) {
+		            return TransformStreamDefaultSinkAbortAlgorithm(stream, reason);
+		        }
+		        function closeAlgorithm() {
+		            return TransformStreamDefaultSinkCloseAlgorithm(stream);
+		        }
+		        stream._writable = CreateWritableStream(startAlgorithm, writeAlgorithm, closeAlgorithm, abortAlgorithm, writableHighWaterMark, writableSizeAlgorithm);
+		        function pullAlgorithm() {
+		            return TransformStreamDefaultSourcePullAlgorithm(stream);
+		        }
+		        function cancelAlgorithm(reason) {
+		            TransformStreamErrorWritableAndUnblockWrite(stream, reason);
+		            return promiseResolvedWith(undefined);
+		        }
+		        stream._readable = CreateReadableStream(startAlgorithm, pullAlgorithm, cancelAlgorithm, readableHighWaterMark, readableSizeAlgorithm);
+		        // The [[backpressure]] slot is set to undefined so that it can be initialised by TransformStreamSetBackpressure.
+		        stream._backpressure = undefined;
+		        stream._backpressureChangePromise = undefined;
+		        stream._backpressureChangePromise_resolve = undefined;
+		        TransformStreamSetBackpressure(stream, true);
+		        stream._transformStreamController = undefined;
+		    }
+		    function IsTransformStream(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_transformStreamController')) {
+		            return false;
+		        }
+		        return x instanceof TransformStream;
+		    }
+		    // This is a no-op if both sides are already errored.
+		    function TransformStreamError(stream, e) {
+		        ReadableStreamDefaultControllerError(stream._readable._readableStreamController, e);
+		        TransformStreamErrorWritableAndUnblockWrite(stream, e);
+		    }
+		    function TransformStreamErrorWritableAndUnblockWrite(stream, e) {
+		        TransformStreamDefaultControllerClearAlgorithms(stream._transformStreamController);
+		        WritableStreamDefaultControllerErrorIfNeeded(stream._writable._writableStreamController, e);
+		        if (stream._backpressure) {
+		            // Pretend that pull() was called to permit any pending write() calls to complete. TransformStreamSetBackpressure()
+		            // cannot be called from enqueue() or pull() once the ReadableStream is errored, so this will will be the final time
+		            // _backpressure is set.
+		            TransformStreamSetBackpressure(stream, false);
+		        }
+		    }
+		    function TransformStreamSetBackpressure(stream, backpressure) {
+		        // Passes also when called during construction.
+		        if (stream._backpressureChangePromise !== undefined) {
+		            stream._backpressureChangePromise_resolve();
+		        }
+		        stream._backpressureChangePromise = newPromise(resolve => {
+		            stream._backpressureChangePromise_resolve = resolve;
+		        });
+		        stream._backpressure = backpressure;
+		    }
+		    // Class TransformStreamDefaultController
+		    /**
+		     * Allows control of the {@link ReadableStream} and {@link WritableStream} of the associated {@link TransformStream}.
+		     *
+		     * @public
+		     */
+		    class TransformStreamDefaultController {
+		        constructor() {
+		            throw new TypeError('Illegal constructor');
+		        }
+		        /**
+		         * Returns the desired size to fill the readable side’s internal queue. It can be negative, if the queue is over-full.
+		         */
+		        get desiredSize() {
+		            if (!IsTransformStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException('desiredSize');
+		            }
+		            const readableController = this._controlledTransformStream._readable._readableStreamController;
+		            return ReadableStreamDefaultControllerGetDesiredSize(readableController);
+		        }
+		        enqueue(chunk = undefined) {
+		            if (!IsTransformStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException('enqueue');
+		            }
+		            TransformStreamDefaultControllerEnqueue(this, chunk);
+		        }
+		        /**
+		         * Errors both the readable side and the writable side of the controlled transform stream, making all future
+		         * interactions with it fail with the given error `e`. Any chunks queued for transformation will be discarded.
+		         */
+		        error(reason = undefined) {
+		            if (!IsTransformStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException('error');
+		            }
+		            TransformStreamDefaultControllerError(this, reason);
+		        }
+		        /**
+		         * Closes the readable side and errors the writable side of the controlled transform stream. This is useful when the
+		         * transformer only needs to consume a portion of the chunks written to the writable side.
+		         */
+		        terminate() {
+		            if (!IsTransformStreamDefaultController(this)) {
+		                throw defaultControllerBrandCheckException('terminate');
+		            }
+		            TransformStreamDefaultControllerTerminate(this);
+		        }
+		    }
+		    Object.defineProperties(TransformStreamDefaultController.prototype, {
+		        enqueue: { enumerable: true },
+		        error: { enumerable: true },
+		        terminate: { enumerable: true },
+		        desiredSize: { enumerable: true }
+		    });
+		    if (typeof SymbolPolyfill.toStringTag === 'symbol') {
+		        Object.defineProperty(TransformStreamDefaultController.prototype, SymbolPolyfill.toStringTag, {
+		            value: 'TransformStreamDefaultController',
+		            configurable: true
+		        });
+		    }
+		    // Transform Stream Default Controller Abstract Operations
+		    function IsTransformStreamDefaultController(x) {
+		        if (!typeIsObject(x)) {
+		            return false;
+		        }
+		        if (!Object.prototype.hasOwnProperty.call(x, '_controlledTransformStream')) {
+		            return false;
+		        }
+		        return x instanceof TransformStreamDefaultController;
+		    }
+		    function SetUpTransformStreamDefaultController(stream, controller, transformAlgorithm, flushAlgorithm) {
+		        controller._controlledTransformStream = stream;
+		        stream._transformStreamController = controller;
+		        controller._transformAlgorithm = transformAlgorithm;
+		        controller._flushAlgorithm = flushAlgorithm;
+		    }
+		    function SetUpTransformStreamDefaultControllerFromTransformer(stream, transformer) {
+		        const controller = Object.create(TransformStreamDefaultController.prototype);
+		        let transformAlgorithm = (chunk) => {
+		            try {
+		                TransformStreamDefaultControllerEnqueue(controller, chunk);
+		                return promiseResolvedWith(undefined);
+		            }
+		            catch (transformResultE) {
+		                return promiseRejectedWith(transformResultE);
+		            }
+		        };
+		        let flushAlgorithm = () => promiseResolvedWith(undefined);
+		        if (transformer.transform !== undefined) {
+		            transformAlgorithm = chunk => transformer.transform(chunk, controller);
+		        }
+		        if (transformer.flush !== undefined) {
+		            flushAlgorithm = () => transformer.flush(controller);
+		        }
+		        SetUpTransformStreamDefaultController(stream, controller, transformAlgorithm, flushAlgorithm);
+		    }
+		    function TransformStreamDefaultControllerClearAlgorithms(controller) {
+		        controller._transformAlgorithm = undefined;
+		        controller._flushAlgorithm = undefined;
+		    }
+		    function TransformStreamDefaultControllerEnqueue(controller, chunk) {
+		        const stream = controller._controlledTransformStream;
+		        const readableController = stream._readable._readableStreamController;
+		        if (!ReadableStreamDefaultControllerCanCloseOrEnqueue(readableController)) {
+		            throw new TypeError('Readable side is not in a state that permits enqueue');
+		        }
+		        // We throttle transform invocations based on the backpressure of the ReadableStream, but we still
+		        // accept TransformStreamDefaultControllerEnqueue() calls.
+		        try {
+		            ReadableStreamDefaultControllerEnqueue(readableController, chunk);
+		        }
+		        catch (e) {
+		            // This happens when readableStrategy.size() throws.
+		            TransformStreamErrorWritableAndUnblockWrite(stream, e);
+		            throw stream._readable._storedError;
+		        }
+		        const backpressure = ReadableStreamDefaultControllerHasBackpressure(readableController);
+		        if (backpressure !== stream._backpressure) {
+		            TransformStreamSetBackpressure(stream, true);
+		        }
+		    }
+		    function TransformStreamDefaultControllerError(controller, e) {
+		        TransformStreamError(controller._controlledTransformStream, e);
+		    }
+		    function TransformStreamDefaultControllerPerformTransform(controller, chunk) {
+		        const transformPromise = controller._transformAlgorithm(chunk);
+		        return transformPromiseWith(transformPromise, undefined, r => {
+		            TransformStreamError(controller._controlledTransformStream, r);
+		            throw r;
+		        });
+		    }
+		    function TransformStreamDefaultControllerTerminate(controller) {
+		        const stream = controller._controlledTransformStream;
+		        const readableController = stream._readable._readableStreamController;
+		        ReadableStreamDefaultControllerClose(readableController);
+		        const error = new TypeError('TransformStream terminated');
+		        TransformStreamErrorWritableAndUnblockWrite(stream, error);
+		    }
+		    // TransformStreamDefaultSink Algorithms
+		    function TransformStreamDefaultSinkWriteAlgorithm(stream, chunk) {
+		        const controller = stream._transformStreamController;
+		        if (stream._backpressure) {
+		            const backpressureChangePromise = stream._backpressureChangePromise;
+		            return transformPromiseWith(backpressureChangePromise, () => {
+		                const writable = stream._writable;
+		                const state = writable._state;
+		                if (state === 'erroring') {
+		                    throw writable._storedError;
+		                }
+		                return TransformStreamDefaultControllerPerformTransform(controller, chunk);
+		            });
+		        }
+		        return TransformStreamDefaultControllerPerformTransform(controller, chunk);
+		    }
+		    function TransformStreamDefaultSinkAbortAlgorithm(stream, reason) {
+		        // abort() is not called synchronously, so it is possible for abort() to be called when the stream is already
+		        // errored.
+		        TransformStreamError(stream, reason);
+		        return promiseResolvedWith(undefined);
+		    }
+		    function TransformStreamDefaultSinkCloseAlgorithm(stream) {
+		        // stream._readable cannot change after construction, so caching it across a call to user code is safe.
+		        const readable = stream._readable;
+		        const controller = stream._transformStreamController;
+		        const flushPromise = controller._flushAlgorithm();
+		        TransformStreamDefaultControllerClearAlgorithms(controller);
+		        // Return a promise that is fulfilled with undefined on success.
+		        return transformPromiseWith(flushPromise, () => {
+		            if (readable._state === 'errored') {
+		                throw readable._storedError;
+		            }
+		            ReadableStreamDefaultControllerClose(readable._readableStreamController);
+		        }, r => {
+		            TransformStreamError(stream, r);
+		            throw readable._storedError;
+		        });
+		    }
+		    // TransformStreamDefaultSource Algorithms
+		    function TransformStreamDefaultSourcePullAlgorithm(stream) {
+		        // Invariant. Enforced by the promises returned by start() and pull().
+		        TransformStreamSetBackpressure(stream, false);
+		        // Prevent the next pull() call until there is backpressure.
+		        return stream._backpressureChangePromise;
+		    }
+		    // Helper functions for the TransformStreamDefaultController.
+		    function defaultControllerBrandCheckException(name) {
+		        return new TypeError(`TransformStreamDefaultController.prototype.${name} can only be used on a TransformStreamDefaultController`);
+		    }
+		    // Helper functions for the TransformStream.
+		    function streamBrandCheckException(name) {
+		        return new TypeError(`TransformStream.prototype.${name} can only be used on a TransformStream`);
+		    }
+
+		    exports.ByteLengthQueuingStrategy = ByteLengthQueuingStrategy;
+		    exports.CountQueuingStrategy = CountQueuingStrategy;
+		    exports.ReadableByteStreamController = ReadableByteStreamController;
+		    exports.ReadableStream = ReadableStream;
+		    exports.ReadableStreamBYOBReader = ReadableStreamBYOBReader;
+		    exports.ReadableStreamBYOBRequest = ReadableStreamBYOBRequest;
+		    exports.ReadableStreamDefaultController = ReadableStreamDefaultController;
+		    exports.ReadableStreamDefaultReader = ReadableStreamDefaultReader;
+		    exports.TransformStream = TransformStream;
+		    exports.TransformStreamDefaultController = TransformStreamDefaultController;
+		    exports.WritableStream = WritableStream;
+		    exports.WritableStreamDefaultController = WritableStreamDefaultController;
+		    exports.WritableStreamDefaultWriter = WritableStreamDefaultWriter;
+
+		    Object.defineProperty(exports, '__esModule', { value: true });
+
+		})));
+		
+} (ponyfill_es2018, ponyfill_es2018.exports));
+	return ponyfill_es2018.exports;
+}/* c8 ignore start */
+
+// 64 KiB (same size chrome slice theirs blob into Uint8array's)
+const POOL_SIZE$1 = 65536;
+
+if (!globalThis.ReadableStream) {
+  // `node:stream/web` got introduced in v16.5.0 as experimental
+  // and it's preferred over the polyfilled version. So we also
+  // suppress the warning that gets emitted by NodeJS for using it.
+  try {
+    const process = require('node:process');
+    const { emitWarning } = process;
+    try {
+      process.emitWarning = () => {};
+      Object.assign(globalThis, require('node:stream/web'));
+      process.emitWarning = emitWarning;
+    } catch (error) {
+      process.emitWarning = emitWarning;
+      throw error
+    }
+  } catch (error) {
+    // fallback to polyfill implementation
+    Object.assign(globalThis, requirePonyfill_es2018());
+  }
+}
+
+try {
+  // Don't use node: prefix for this, require+node: is not supported until node v14.14
+  // Only `import()` can use prefix in 12.20 and later
+  const { Blob } = require('buffer');
+  if (Blob && !Blob.prototype.stream) {
+    Blob.prototype.stream = function name (params) {
+      let position = 0;
+      const blob = this;
+
+      return new ReadableStream({
+        type: 'bytes',
+        async pull (ctrl) {
+          const chunk = blob.slice(position, Math.min(blob.size, position + POOL_SIZE$1));
+          const buffer = await chunk.arrayBuffer();
+          position += buffer.byteLength;
+          ctrl.enqueue(new Uint8Array(buffer));
+
+          if (position === blob.size) {
+            ctrl.close();
+          }
+        }
+      })
+    };
+  }
+} catch (error) {}/*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
+
+// 64 KiB (same size chrome slice theirs blob into Uint8array's)
+const POOL_SIZE = 65536;
+
+/** @param {(Blob | Uint8Array)[]} parts */
+async function * toIterator (parts, clone = true) {
+  for (const part of parts) {
+    if ('stream' in part) {
+      yield * (/** @type {AsyncIterableIterator<Uint8Array>} */ (part.stream()));
+    } else if (ArrayBuffer.isView(part)) {
+      if (clone) {
+        let position = part.byteOffset;
+        const end = part.byteOffset + part.byteLength;
+        while (position !== end) {
+          const size = Math.min(end - position, POOL_SIZE);
+          const chunk = part.buffer.slice(position, position + size);
+          position += chunk.byteLength;
+          yield new Uint8Array(chunk);
+        }
+      } else {
+        yield part;
+      }
+    /* c8 ignore next 10 */
+    } else {
+      // For blobs that have arrayBuffer but no stream method (nodes buffer.Blob)
+      let position = 0, b = (/** @type {Blob} */ (part));
+      while (position !== b.size) {
+        const chunk = b.slice(position, Math.min(b.size, position + POOL_SIZE));
+        const buffer = await chunk.arrayBuffer();
+        position += buffer.byteLength;
+        yield new Uint8Array(buffer);
+      }
+    }
+  }
+}
+
+const _Blob = class Blob {
+  /** @type {Array.<(Blob|Uint8Array)>} */
+  #parts = []
+  #type = ''
+  #size = 0
+  #endings = 'transparent'
+
+  /**
+   * The Blob() constructor returns a new Blob object. The content
+   * of the blob consists of the concatenation of the values given
+   * in the parameter array.
+   *
+   * @param {*} blobParts
+   * @param {{ type?: string, endings?: string }} [options]
+   */
+  constructor (blobParts = [], options = {}) {
+    if (typeof blobParts !== 'object' || blobParts === null) {
+      throw new TypeError('Failed to construct \'Blob\': The provided value cannot be converted to a sequence.')
+    }
+
+    if (typeof blobParts[Symbol.iterator] !== 'function') {
+      throw new TypeError('Failed to construct \'Blob\': The object must have a callable @@iterator property.')
+    }
+
+    if (typeof options !== 'object' && typeof options !== 'function') {
+      throw new TypeError('Failed to construct \'Blob\': parameter 2 cannot convert to dictionary.')
+    }
+
+    if (options === null) options = {};
+
+    const encoder = new TextEncoder();
+    for (const element of blobParts) {
+      let part;
+      if (ArrayBuffer.isView(element)) {
+        part = new Uint8Array(element.buffer.slice(element.byteOffset, element.byteOffset + element.byteLength));
+      } else if (element instanceof ArrayBuffer) {
+        part = new Uint8Array(element.slice(0));
+      } else if (element instanceof Blob) {
+        part = element;
+      } else {
+        part = encoder.encode(`${element}`);
+      }
+
+      this.#size += ArrayBuffer.isView(part) ? part.byteLength : part.size;
+      this.#parts.push(part);
+    }
+
+    this.#endings = `${options.endings === undefined ? 'transparent' : options.endings}`;
+    const type = options.type === undefined ? '' : String(options.type);
+    this.#type = /^[\x20-\x7E]*$/.test(type) ? type : '';
+  }
+
+  /**
+   * The Blob interface's size property returns the
+   * size of the Blob in bytes.
+   */
+  get size () {
+    return this.#size
+  }
+
+  /**
+   * The type property of a Blob object returns the MIME type of the file.
+   */
+  get type () {
+    return this.#type
+  }
+
+  /**
+   * The text() method in the Blob interface returns a Promise
+   * that resolves with a string containing the contents of
+   * the blob, interpreted as UTF-8.
+   *
+   * @return {Promise<string>}
+   */
+  async text () {
+    // More optimized than using this.arrayBuffer()
+    // that requires twice as much ram
+    const decoder = new TextDecoder();
+    let str = '';
+    for await (const part of toIterator(this.#parts, false)) {
+      str += decoder.decode(part, { stream: true });
+    }
+    // Remaining
+    str += decoder.decode();
+    return str
+  }
+
+  /**
+   * The arrayBuffer() method in the Blob interface returns a
+   * Promise that resolves with the contents of the blob as
+   * binary data contained in an ArrayBuffer.
+   *
+   * @return {Promise<ArrayBuffer>}
+   */
+  async arrayBuffer () {
+    // Easier way... Just a unnecessary overhead
+    // const view = new Uint8Array(this.size);
+    // await this.stream().getReader({mode: 'byob'}).read(view);
+    // return view.buffer;
+
+    const data = new Uint8Array(this.size);
+    let offset = 0;
+    for await (const chunk of toIterator(this.#parts, false)) {
+      data.set(chunk, offset);
+      offset += chunk.length;
+    }
+
+    return data.buffer
+  }
+
+  stream () {
+    const it = toIterator(this.#parts, true);
+
+    return new globalThis.ReadableStream({
+      // @ts-ignore
+      type: 'bytes',
+      async pull (ctrl) {
+        const chunk = await it.next();
+        chunk.done ? ctrl.close() : ctrl.enqueue(chunk.value);
+      },
+
+      async cancel () {
+        await it.return();
+      }
+    })
+  }
+
+  /**
+   * The Blob interface's slice() method creates and returns a
+   * new Blob object which contains data from a subset of the
+   * blob on which it's called.
+   *
+   * @param {number} [start]
+   * @param {number} [end]
+   * @param {string} [type]
+   */
+  slice (start = 0, end = this.size, type = '') {
+    const { size } = this;
+
+    let relativeStart = start < 0 ? Math.max(size + start, 0) : Math.min(start, size);
+    let relativeEnd = end < 0 ? Math.max(size + end, 0) : Math.min(end, size);
+
+    const span = Math.max(relativeEnd - relativeStart, 0);
+    const parts = this.#parts;
+    const blobParts = [];
+    let added = 0;
+
+    for (const part of parts) {
+      // don't add the overflow to new blobParts
+      if (added >= span) {
+        break
+      }
+
+      const size = ArrayBuffer.isView(part) ? part.byteLength : part.size;
+      if (relativeStart && size <= relativeStart) {
+        // Skip the beginning and change the relative
+        // start & end position as we skip the unwanted parts
+        relativeStart -= size;
+        relativeEnd -= size;
+      } else {
+        let chunk;
+        if (ArrayBuffer.isView(part)) {
+          chunk = part.subarray(relativeStart, Math.min(size, relativeEnd));
+          added += chunk.byteLength;
+        } else {
+          chunk = part.slice(relativeStart, Math.min(size, relativeEnd));
+          added += chunk.size;
+        }
+        relativeEnd -= size;
+        blobParts.push(chunk);
+        relativeStart = 0; // All next sequential parts should start at 0
+      }
+    }
+
+    const blob = new Blob([], { type: String(type).toLowerCase() });
+    blob.#size = span;
+    blob.#parts = blobParts;
+
+    return blob
+  }
+
+  get [Symbol.toStringTag] () {
+    return 'Blob'
+  }
+
+  static [Symbol.hasInstance] (object) {
+    return (
+      object &&
+      typeof object === 'object' &&
+      typeof object.constructor === 'function' &&
+      (
+        typeof object.stream === 'function' ||
+        typeof object.arrayBuffer === 'function'
+      ) &&
+      /^(Blob|File)$/.test(object[Symbol.toStringTag])
+    )
+  }
+};
+
+Object.defineProperties(_Blob.prototype, {
+  size: { enumerable: true },
+  type: { enumerable: true },
+  slice: { enumerable: true }
+});
+
+/** @type {typeof globalThis.Blob} */
+const Blob = _Blob;
+const Blob$1 = Blob;const _File = class File extends Blob$1 {
+  #lastModified = 0
+  #name = ''
+
+  /**
+   * @param {*[]} fileBits
+   * @param {string} fileName
+   * @param {{lastModified?: number, type?: string}} options
+   */// @ts-ignore
+  constructor (fileBits, fileName, options = {}) {
+    if (arguments.length < 2) {
+      throw new TypeError(`Failed to construct 'File': 2 arguments required, but only ${arguments.length} present.`)
+    }
+    super(fileBits, options);
+
+    if (options === null) options = {};
+
+    // Simulate WebIDL type casting for NaN value in lastModified option.
+    const lastModified = options.lastModified === undefined ? Date.now() : Number(options.lastModified);
+    if (!Number.isNaN(lastModified)) {
+      this.#lastModified = lastModified;
+    }
+
+    this.#name = String(fileName);
+  }
+
+  get name () {
+    return this.#name
+  }
+
+  get lastModified () {
+    return this.#lastModified
+  }
+
+  get [Symbol.toStringTag] () {
+    return 'File'
+  }
+
+  static [Symbol.hasInstance] (object) {
+    return !!object && object instanceof Blob$1 &&
+      /^(File)$/.test(object[Symbol.toStringTag])
+  }
+};
+
+/** @type {typeof globalThis.File} */// @ts-ignore
+const File = _File;/*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
+
+var {toStringTag:t,iterator:i,hasInstance:h}=Symbol,
+r=Math.random,
+m='append,set,get,getAll,delete,keys,values,entries,forEach,constructor'.split(','),
+f=(a,b,c)=>(a+='',/^(Blob|File)$/.test(b && b[t])?[(c=c!==void 0?c+'':b[t]=='File'?b.name:'blob',a),b.name!==c||b[t]=='blob'?new File([b],c,b):b]:[a,b+'']),
+e=(c,f)=>(f?c:c.replace(/\r?\n|\r/g,'\r\n')).replace(/\n/g,'%0A').replace(/\r/g,'%0D').replace(/"/g,'%22'),
+x=(n, a, e)=>{if(a.length<e){throw new TypeError(`Failed to execute '${n}' on 'FormData': ${e} arguments required, but only ${a.length} present.`)}};
+
+/** @type {typeof globalThis.FormData} */
+const FormData = class FormData {
+#d=[];
+constructor(...a){if(a.length)throw new TypeError(`Failed to construct 'FormData': parameter 1 is not of type 'HTMLFormElement'.`)}
+get [t]() {return 'FormData'}
+[i](){return this.entries()}
+static [h](o) {return o&&typeof o==='object'&&o[t]==='FormData'&&!m.some(m=>typeof o[m]!='function')}
+append(...a){x('append',arguments,2);this.#d.push(f(...a));}
+delete(a){x('delete',arguments,1);a+='';this.#d=this.#d.filter(([b])=>b!==a);}
+get(a){x('get',arguments,1);a+='';for(var b=this.#d,l=b.length,c=0;c<l;c++)if(b[c][0]===a)return b[c][1];return null}
+getAll(a,b){x('getAll',arguments,1);b=[];a+='';this.#d.forEach(c=>c[0]===a&&b.push(c[1]));return b}
+has(a){x('has',arguments,1);a+='';return this.#d.some(b=>b[0]===a)}
+forEach(a,b){x('forEach',arguments,1);for(var [c,d]of this)a.call(b,d,c,this);}
+set(...a){x('set',arguments,2);var b=[],c=!0;a=f(...a);this.#d.forEach(d=>{d[0]===a[0]?c&&(c=!b.push(a)):b.push(d);});c&&b.push(a);this.#d=b;}
+*entries(){yield*this.#d;}
+*keys(){for(var[a]of this)yield a;}
+*values(){for(var[,a]of this)yield a;}};
+
+/** @param {FormData} F */
+function formDataToBlob (F,B=Blob$1){
+var b=`${r()}${r()}`.replace(/\./g, '').slice(-28).padStart(32, '-'),c=[],p=`--${b}\r\nContent-Disposition: form-data; name="`;
+F.forEach((v,n)=>typeof v=='string'
+?c.push(p+e(n)+`"\r\n\r\n${v.replace(/\r(?!\n)|(?<!\r)\n/g, '\r\n')}\r\n`)
+:c.push(p+e(n)+`"; filename="${e(v.name, 1)}"\r\nContent-Type: ${v.type||"application/octet-stream"}\r\n\r\n`, v, '\r\n'));
+c.push(`--${b}--`);
+return new B(c,{type:"multipart/form-data; boundary="+b})}class FetchBaseError extends Error {
+	constructor(message, type) {
+		super(message);
+		// Hide custom error implementation details from end-users
+		Error.captureStackTrace(this, this.constructor);
+
+		this.type = type;
+	}
+
+	get name() {
+		return this.constructor.name;
+	}
+
+	get [Symbol.toStringTag]() {
+		return this.constructor.name;
+	}
+}/**
+ * @typedef {{ address?: string, code: string, dest?: string, errno: number, info?: object, message: string, path?: string, port?: number, syscall: string}} SystemError
+*/
+
+/**
+ * FetchError interface for operational errors
+ */
+class FetchError extends FetchBaseError {
+	/**
+	 * @param  {string} message -      Error message for human
+	 * @param  {string} [type] -        Error type for machine
+	 * @param  {SystemError} [systemError] - For Node.js system error
+	 */
+	constructor(message, type, systemError) {
+		super(message, type);
+		// When err.type is `system`, err.erroredSysCall contains system error and err.code contains system error code
+		if (systemError) {
+			// eslint-disable-next-line no-multi-assign
+			this.code = this.errno = systemError.code;
+			this.erroredSysCall = systemError.syscall;
+		}
+	}
+}/**
+ * Is.js
+ *
+ * Object type checks.
+ */
+
+const NAME = Symbol.toStringTag;
+
+/**
+ * Check if `obj` is a URLSearchParams object
+ * ref: https://github.com/node-fetch/node-fetch/issues/296#issuecomment-307598143
+ * @param {*} object - Object to check for
+ * @return {boolean}
+ */
+const isURLSearchParameters = object => {
+	return (
+		typeof object === 'object' &&
+		typeof object.append === 'function' &&
+		typeof object.delete === 'function' &&
+		typeof object.get === 'function' &&
+		typeof object.getAll === 'function' &&
+		typeof object.has === 'function' &&
+		typeof object.set === 'function' &&
+		typeof object.sort === 'function' &&
+		object[NAME] === 'URLSearchParams'
+	);
+};
+
+/**
+ * Check if `object` is a W3C `Blob` object (which `File` inherits from)
+ * @param {*} object - Object to check for
+ * @return {boolean}
+ */
+const isBlob = object => {
+	return (
+		object &&
+		typeof object === 'object' &&
+		typeof object.arrayBuffer === 'function' &&
+		typeof object.type === 'string' &&
+		typeof object.stream === 'function' &&
+		typeof object.constructor === 'function' &&
+		/^(Blob|File)$/.test(object[NAME])
+	);
+};
+
+/**
+ * Check if `obj` is an instance of AbortSignal.
+ * @param {*} object - Object to check for
+ * @return {boolean}
+ */
+const isAbortSignal = object => {
+	return (
+		typeof object === 'object' && (
+			object[NAME] === 'AbortSignal' ||
+			object[NAME] === 'EventTarget'
+		)
+	);
+};
+
+/**
+ * isDomainOrSubdomain reports whether sub is a subdomain (or exact match) of
+ * the parent domain.
+ *
+ * Both domains must already be in canonical form.
+ * @param {string|URL} original
+ * @param {string|URL} destination
+ */
+const isDomainOrSubdomain = (destination, original) => {
+	const orig = new URL(original).hostname;
+	const dest = new URL(destination).hostname;
+
+	return orig === dest || orig.endsWith(`.${dest}`);
+};
+
+/**
+ * isSameProtocol reports whether the two provided URLs use the same protocol.
+ *
+ * Both domains must already be in canonical form.
+ * @param {string|URL} original
+ * @param {string|URL} destination
+ */
+const isSameProtocol = (destination, original) => {
+	const orig = new URL(original).protocol;
+	const dest = new URL(destination).protocol;
+
+	return orig === dest;
+};const pipeline = promisify(Stream.pipeline);
+const INTERNALS$2 = Symbol('Body internals');
+
+/**
+ * Body mixin
+ *
+ * Ref: https://fetch.spec.whatwg.org/#body
+ *
+ * @param   Stream  body  Readable stream
+ * @param   Object  opts  Response options
+ * @return  Void
+ */
+class Body {
+	constructor(body, {
+		size = 0
+	} = {}) {
+		let boundary = null;
+
+		if (body === null) {
+			// Body is undefined or null
+			body = null;
+		} else if (isURLSearchParameters(body)) {
+			// Body is a URLSearchParams
+			body = Buffer$1.from(body.toString());
+		} else if (isBlob(body)) ; else if (Buffer$1.isBuffer(body)) ; else if (types.isAnyArrayBuffer(body)) {
+			// Body is ArrayBuffer
+			body = Buffer$1.from(body);
+		} else if (ArrayBuffer.isView(body)) {
+			// Body is ArrayBufferView
+			body = Buffer$1.from(body.buffer, body.byteOffset, body.byteLength);
+		} else if (body instanceof Stream) ; else if (body instanceof FormData) {
+			// Body is FormData
+			body = formDataToBlob(body);
+			boundary = body.type.split('=')[1];
+		} else {
+			// None of the above
+			// coerce to string then buffer
+			body = Buffer$1.from(String(body));
+		}
+
+		let stream = body;
+
+		if (Buffer$1.isBuffer(body)) {
+			stream = Stream.Readable.from(body);
+		} else if (isBlob(body)) {
+			stream = Stream.Readable.from(body.stream());
+		}
+
+		this[INTERNALS$2] = {
+			body,
+			stream,
+			boundary,
+			disturbed: false,
+			error: null
+		};
+		this.size = size;
+
+		if (body instanceof Stream) {
+			body.on('error', error_ => {
+				const error = error_ instanceof FetchBaseError ?
+					error_ :
+					new FetchError(`Invalid response body while trying to fetch ${this.url}: ${error_.message}`, 'system', error_);
+				this[INTERNALS$2].error = error;
+			});
+		}
+	}
+
+	get body() {
+		return this[INTERNALS$2].stream;
+	}
+
+	get bodyUsed() {
+		return this[INTERNALS$2].disturbed;
+	}
+
+	/**
+	 * Decode response as ArrayBuffer
+	 *
+	 * @return  Promise
+	 */
+	async arrayBuffer() {
+		const {buffer, byteOffset, byteLength} = await consumeBody(this);
+		return buffer.slice(byteOffset, byteOffset + byteLength);
+	}
+
+	async formData() {
+		const ct = this.headers.get('content-type');
+
+		if (ct.startsWith('application/x-www-form-urlencoded')) {
+			const formData = new FormData();
+			const parameters = new URLSearchParams(await this.text());
+
+			for (const [name, value] of parameters) {
+				formData.append(name, value);
+			}
+
+			return formData;
+		}
+
+		const {toFormData} = await import('./multipart-parser-a8090f2a.js');
+		return toFormData(this.body, ct);
+	}
+
+	/**
+	 * Return raw response as Blob
+	 *
+	 * @return Promise
+	 */
+	async blob() {
+		const ct = (this.headers && this.headers.get('content-type')) || (this[INTERNALS$2].body && this[INTERNALS$2].body.type) || '';
+		const buf = await this.arrayBuffer();
+
+		return new Blob$1([buf], {
+			type: ct
+		});
+	}
+
+	/**
+	 * Decode response as json
+	 *
+	 * @return  Promise
+	 */
+	async json() {
+		const text = await this.text();
+		return JSON.parse(text);
+	}
+
+	/**
+	 * Decode response as text
+	 *
+	 * @return  Promise
+	 */
+	async text() {
+		const buffer = await consumeBody(this);
+		return new TextDecoder().decode(buffer);
+	}
+
+	/**
+	 * Decode response as buffer (non-spec api)
+	 *
+	 * @return  Promise
+	 */
+	buffer() {
+		return consumeBody(this);
+	}
+}
+
+Body.prototype.buffer = deprecate(Body.prototype.buffer, 'Please use \'response.arrayBuffer()\' instead of \'response.buffer()\'', 'node-fetch#buffer');
+
+// In browsers, all properties are enumerable.
+Object.defineProperties(Body.prototype, {
+	body: {enumerable: true},
+	bodyUsed: {enumerable: true},
+	arrayBuffer: {enumerable: true},
+	blob: {enumerable: true},
+	json: {enumerable: true},
+	text: {enumerable: true},
+	data: {get: deprecate(() => {},
+		'data doesn\'t exist, use json(), text(), arrayBuffer(), or body instead',
+		'https://github.com/node-fetch/node-fetch/issues/1000 (response)')}
+});
+
+/**
+ * Consume and convert an entire Body to a Buffer.
+ *
+ * Ref: https://fetch.spec.whatwg.org/#concept-body-consume-body
+ *
+ * @return Promise
+ */
+async function consumeBody(data) {
+	if (data[INTERNALS$2].disturbed) {
+		throw new TypeError(`body used already for: ${data.url}`);
+	}
+
+	data[INTERNALS$2].disturbed = true;
+
+	if (data[INTERNALS$2].error) {
+		throw data[INTERNALS$2].error;
+	}
+
+	const {body} = data;
+
+	// Body is null
+	if (body === null) {
+		return Buffer$1.alloc(0);
+	}
+
+	/* c8 ignore next 3 */
+	if (!(body instanceof Stream)) {
+		return Buffer$1.alloc(0);
+	}
+
+	// Body is stream
+	// get ready to actually consume the body
+	const accum = [];
+	let accumBytes = 0;
+
+	try {
+		for await (const chunk of body) {
+			if (data.size > 0 && accumBytes + chunk.length > data.size) {
+				const error = new FetchError(`content size at ${data.url} over limit: ${data.size}`, 'max-size');
+				body.destroy(error);
+				throw error;
+			}
+
+			accumBytes += chunk.length;
+			accum.push(chunk);
+		}
+	} catch (error) {
+		const error_ = error instanceof FetchBaseError ? error : new FetchError(`Invalid response body while trying to fetch ${data.url}: ${error.message}`, 'system', error);
+		throw error_;
+	}
+
+	if (body.readableEnded === true || body._readableState.ended === true) {
+		try {
+			if (accum.every(c => typeof c === 'string')) {
+				return Buffer$1.from(accum.join(''));
+			}
+
+			return Buffer$1.concat(accum, accumBytes);
+		} catch (error) {
+			throw new FetchError(`Could not create Buffer from response body for ${data.url}: ${error.message}`, 'system', error);
+		}
+	} else {
+		throw new FetchError(`Premature close of server response while trying to fetch ${data.url}`);
+	}
+}
+
+/**
+ * Clone body given Res/Req instance
+ *
+ * @param   Mixed   instance       Response or Request instance
+ * @param   String  highWaterMark  highWaterMark for both PassThrough body streams
+ * @return  Mixed
+ */
+const clone = (instance, highWaterMark) => {
+	let p1;
+	let p2;
+	let {body} = instance[INTERNALS$2];
+
+	// Don't allow cloning a used body
+	if (instance.bodyUsed) {
+		throw new Error('cannot clone body after it is used');
+	}
+
+	// Check that body is a stream and not form-data object
+	// note: we can't clone the form-data object without having it as a dependency
+	if ((body instanceof Stream) && (typeof body.getBoundary !== 'function')) {
+		// Tee instance body
+		p1 = new PassThrough({highWaterMark});
+		p2 = new PassThrough({highWaterMark});
+		body.pipe(p1);
+		body.pipe(p2);
+		// Set instance body to teed body and return the other teed body
+		instance[INTERNALS$2].stream = p1;
+		body = p2;
+	}
+
+	return body;
+};
+
+const getNonSpecFormDataBoundary = deprecate(
+	body => body.getBoundary(),
+	'form-data doesn\'t follow the spec and requires special treatment. Use alternative package',
+	'https://github.com/node-fetch/node-fetch/issues/1167'
+);
+
+/**
+ * Performs the operation "extract a `Content-Type` value from |object|" as
+ * specified in the specification:
+ * https://fetch.spec.whatwg.org/#concept-bodyinit-extract
+ *
+ * This function assumes that instance.body is present.
+ *
+ * @param {any} body Any options.body input
+ * @returns {string | null}
+ */
+const extractContentType = (body, request) => {
+	// Body is null or undefined
+	if (body === null) {
+		return null;
+	}
+
+	// Body is string
+	if (typeof body === 'string') {
+		return 'text/plain;charset=UTF-8';
+	}
+
+	// Body is a URLSearchParams
+	if (isURLSearchParameters(body)) {
+		return 'application/x-www-form-urlencoded;charset=UTF-8';
+	}
+
+	// Body is blob
+	if (isBlob(body)) {
+		return body.type || null;
+	}
+
+	// Body is a Buffer (Buffer, ArrayBuffer or ArrayBufferView)
+	if (Buffer$1.isBuffer(body) || types.isAnyArrayBuffer(body) || ArrayBuffer.isView(body)) {
+		return null;
+	}
+
+	if (body instanceof FormData) {
+		return `multipart/form-data; boundary=${request[INTERNALS$2].boundary}`;
+	}
+
+	// Detect form data input from form-data module
+	if (body && typeof body.getBoundary === 'function') {
+		return `multipart/form-data;boundary=${getNonSpecFormDataBoundary(body)}`;
+	}
+
+	// Body is stream - can't really do much about this
+	if (body instanceof Stream) {
+		return null;
+	}
+
+	// Body constructor defaults other things to string
+	return 'text/plain;charset=UTF-8';
+};
+
+/**
+ * The Fetch Standard treats this as if "total bytes" is a property on the body.
+ * For us, we have to explicitly get it with a function.
+ *
+ * ref: https://fetch.spec.whatwg.org/#concept-body-total-bytes
+ *
+ * @param {any} obj.body Body object from the Body instance.
+ * @returns {number | null}
+ */
+const getTotalBytes = request => {
+	const {body} = request[INTERNALS$2];
+
+	// Body is null or undefined
+	if (body === null) {
+		return 0;
+	}
+
+	// Body is Blob
+	if (isBlob(body)) {
+		return body.size;
+	}
+
+	// Body is Buffer
+	if (Buffer$1.isBuffer(body)) {
+		return body.length;
+	}
+
+	// Detect form data input from form-data module
+	if (body && typeof body.getLengthSync === 'function') {
+		return body.hasKnownLength && body.hasKnownLength() ? body.getLengthSync() : null;
+	}
+
+	// Body is stream
+	return null;
+};
+
+/**
+ * Write a Body to a Node.js WritableStream (e.g. http.Request) object.
+ *
+ * @param {Stream.Writable} dest The stream to write to.
+ * @param obj.body Body object from the Body instance.
+ * @returns {Promise<void>}
+ */
+const writeToStream = async (dest, {body}) => {
+	if (body === null) {
+		// Body is null
+		dest.end();
+	} else {
+		// Body is stream
+		await pipeline(body, dest);
+	}
+};/**
+ * Headers.js
+ *
+ * Headers class offers convenient helpers
+ */
+
+/* c8 ignore next 9 */
+const validateHeaderName = typeof http$1.validateHeaderName === 'function' ?
+	http$1.validateHeaderName :
+	name => {
+		if (!/^[\^`\-\w!#$%&'*+.|~]+$/.test(name)) {
+			const error = new TypeError(`Header name must be a valid HTTP token [${name}]`);
+			Object.defineProperty(error, 'code', {value: 'ERR_INVALID_HTTP_TOKEN'});
+			throw error;
+		}
+	};
+
+/* c8 ignore next 9 */
+const validateHeaderValue = typeof http$1.validateHeaderValue === 'function' ?
+	http$1.validateHeaderValue :
+	(name, value) => {
+		if (/[^\t\u0020-\u007E\u0080-\u00FF]/.test(value)) {
+			const error = new TypeError(`Invalid character in header content ["${name}"]`);
+			Object.defineProperty(error, 'code', {value: 'ERR_INVALID_CHAR'});
+			throw error;
+		}
+	};
+
+/**
+ * @typedef {Headers | Record<string, string> | Iterable<readonly [string, string]> | Iterable<Iterable<string>>} HeadersInit
+ */
+
+/**
+ * This Fetch API interface allows you to perform various actions on HTTP request and response headers.
+ * These actions include retrieving, setting, adding to, and removing.
+ * A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.
+ * You can add to this using methods like append() (see Examples.)
+ * In all methods of this interface, header names are matched by case-insensitive byte sequence.
+ *
+ */
+class Headers extends URLSearchParams {
+	/**
+	 * Headers class
+	 *
+	 * @constructor
+	 * @param {HeadersInit} [init] - Response headers
+	 */
+	constructor(init) {
+		// Validate and normalize init object in [name, value(s)][]
+		/** @type {string[][]} */
+		let result = [];
+		if (init instanceof Headers) {
+			const raw = init.raw();
+			for (const [name, values] of Object.entries(raw)) {
+				result.push(...values.map(value => [name, value]));
+			}
+		} else if (init == null) ; else if (typeof init === 'object' && !types.isBoxedPrimitive(init)) {
+			const method = init[Symbol.iterator];
+			// eslint-disable-next-line no-eq-null, eqeqeq
+			if (method == null) {
+				// Record<ByteString, ByteString>
+				result.push(...Object.entries(init));
+			} else {
+				if (typeof method !== 'function') {
+					throw new TypeError('Header pairs must be iterable');
+				}
+
+				// Sequence<sequence<ByteString>>
+				// Note: per spec we have to first exhaust the lists then process them
+				result = [...init]
+					.map(pair => {
+						if (
+							typeof pair !== 'object' || types.isBoxedPrimitive(pair)
+						) {
+							throw new TypeError('Each header pair must be an iterable object');
+						}
+
+						return [...pair];
+					}).map(pair => {
+						if (pair.length !== 2) {
+							throw new TypeError('Each header pair must be a name/value tuple');
+						}
+
+						return [...pair];
+					});
+			}
+		} else {
+			throw new TypeError('Failed to construct \'Headers\': The provided value is not of type \'(sequence<sequence<ByteString>> or record<ByteString, ByteString>)');
+		}
+
+		// Validate and lowercase
+		result =
+			result.length > 0 ?
+				result.map(([name, value]) => {
+					validateHeaderName(name);
+					validateHeaderValue(name, String(value));
+					return [String(name).toLowerCase(), String(value)];
+				}) :
+				undefined;
+
+		super(result);
+
+		// Returning a Proxy that will lowercase key names, validate parameters and sort keys
+		// eslint-disable-next-line no-constructor-return
+		return new Proxy(this, {
+			get(target, p, receiver) {
+				switch (p) {
+					case 'append':
+					case 'set':
+						return (name, value) => {
+							validateHeaderName(name);
+							validateHeaderValue(name, String(value));
+							return URLSearchParams.prototype[p].call(
+								target,
+								String(name).toLowerCase(),
+								String(value)
+							);
+						};
+
+					case 'delete':
+					case 'has':
+					case 'getAll':
+						return name => {
+							validateHeaderName(name);
+							return URLSearchParams.prototype[p].call(
+								target,
+								String(name).toLowerCase()
+							);
+						};
+
+					case 'keys':
+						return () => {
+							target.sort();
+							return new Set(URLSearchParams.prototype.keys.call(target)).keys();
+						};
+
+					default:
+						return Reflect.get(target, p, receiver);
+				}
+			}
+		});
+		/* c8 ignore next */
+	}
+
+	get [Symbol.toStringTag]() {
+		return this.constructor.name;
+	}
+
+	toString() {
+		return Object.prototype.toString.call(this);
+	}
+
+	get(name) {
+		const values = this.getAll(name);
+		if (values.length === 0) {
+			return null;
+		}
+
+		let value = values.join(', ');
+		if (/^content-encoding$/i.test(name)) {
+			value = value.toLowerCase();
+		}
+
+		return value;
+	}
+
+	forEach(callback, thisArg = undefined) {
+		for (const name of this.keys()) {
+			Reflect.apply(callback, thisArg, [this.get(name), name, this]);
+		}
+	}
+
+	* values() {
+		for (const name of this.keys()) {
+			yield this.get(name);
+		}
+	}
+
+	/**
+	 * @type {() => IterableIterator<[string, string]>}
+	 */
+	* entries() {
+		for (const name of this.keys()) {
+			yield [name, this.get(name)];
+		}
+	}
+
+	[Symbol.iterator]() {
+		return this.entries();
+	}
+
+	/**
+	 * Node-fetch non-spec method
+	 * returning all headers and their values as array
+	 * @returns {Record<string, string[]>}
+	 */
+	raw() {
+		return [...this.keys()].reduce((result, key) => {
+			result[key] = this.getAll(key);
+			return result;
+		}, {});
+	}
+
+	/**
+	 * For better console.log(headers) and also to convert Headers into Node.js Request compatible format
+	 */
+	[Symbol.for('nodejs.util.inspect.custom')]() {
+		return [...this.keys()].reduce((result, key) => {
+			const values = this.getAll(key);
+			// Http.request() only supports string as Host header.
+			// This hack makes specifying custom Host header possible.
+			if (key === 'host') {
+				result[key] = values[0];
+			} else {
+				result[key] = values.length > 1 ? values : values[0];
+			}
+
+			return result;
+		}, {});
+	}
+}
+
+/**
+ * Re-shaping object for Web IDL tests
+ * Only need to do it for overridden methods
+ */
+Object.defineProperties(
+	Headers.prototype,
+	['get', 'entries', 'forEach', 'values'].reduce((result, property) => {
+		result[property] = {enumerable: true};
+		return result;
+	}, {})
+);
+
+/**
+ * Create a Headers object from an http.IncomingMessage.rawHeaders, ignoring those that do
+ * not conform to HTTP grammar productions.
+ * @param {import('http').IncomingMessage['rawHeaders']} headers
+ */
+function fromRawHeaders(headers = []) {
+	return new Headers(
+		headers
+			// Split into pairs
+			.reduce((result, value, index, array) => {
+				if (index % 2 === 0) {
+					result.push(array.slice(index, index + 2));
+				}
+
+				return result;
+			}, [])
+			.filter(([name, value]) => {
+				try {
+					validateHeaderName(name);
+					validateHeaderValue(name, String(value));
+					return true;
+				} catch {
+					return false;
+				}
+			})
+
+	);
+}const redirectStatus = new Set([301, 302, 303, 307, 308]);
+
+/**
+ * Redirect code matching
+ *
+ * @param {number} code - Status code
+ * @return {boolean}
+ */
+const isRedirect = code => {
+	return redirectStatus.has(code);
+};/**
+ * Response.js
+ *
+ * Response class provides content decoding
+ */
+
+const INTERNALS$1 = Symbol('Response internals');
+
+/**
+ * Response class
+ *
+ * Ref: https://fetch.spec.whatwg.org/#response-class
+ *
+ * @param   Stream  body  Readable stream
+ * @param   Object  opts  Response options
+ * @return  Void
+ */
+class Response extends Body {
+	constructor(body = null, options = {}) {
+		super(body, options);
+
+		// eslint-disable-next-line no-eq-null, eqeqeq, no-negated-condition
+		const status = options.status != null ? options.status : 200;
+
+		const headers = new Headers(options.headers);
+
+		if (body !== null && !headers.has('Content-Type')) {
+			const contentType = extractContentType(body, this);
+			if (contentType) {
+				headers.append('Content-Type', contentType);
+			}
+		}
+
+		this[INTERNALS$1] = {
+			type: 'default',
+			url: options.url,
+			status,
+			statusText: options.statusText || '',
+			headers,
+			counter: options.counter,
+			highWaterMark: options.highWaterMark
+		};
+	}
+
+	get type() {
+		return this[INTERNALS$1].type;
+	}
+
+	get url() {
+		return this[INTERNALS$1].url || '';
+	}
+
+	get status() {
+		return this[INTERNALS$1].status;
+	}
+
+	/**
+	 * Convenience property representing if the request ended normally
+	 */
+	get ok() {
+		return this[INTERNALS$1].status >= 200 && this[INTERNALS$1].status < 300;
+	}
+
+	get redirected() {
+		return this[INTERNALS$1].counter > 0;
+	}
+
+	get statusText() {
+		return this[INTERNALS$1].statusText;
+	}
+
+	get headers() {
+		return this[INTERNALS$1].headers;
+	}
+
+	get highWaterMark() {
+		return this[INTERNALS$1].highWaterMark;
+	}
+
+	/**
+	 * Clone this response
+	 *
+	 * @return  Response
+	 */
+	clone() {
+		return new Response(clone(this, this.highWaterMark), {
+			type: this.type,
+			url: this.url,
+			status: this.status,
+			statusText: this.statusText,
+			headers: this.headers,
+			ok: this.ok,
+			redirected: this.redirected,
+			size: this.size,
+			highWaterMark: this.highWaterMark
+		});
+	}
+
+	/**
+	 * @param {string} url    The URL that the new response is to originate from.
+	 * @param {number} status An optional status code for the response (e.g., 302.)
+	 * @returns {Response}    A Response object.
+	 */
+	static redirect(url, status = 302) {
+		if (!isRedirect(status)) {
+			throw new RangeError('Failed to execute "redirect" on "response": Invalid status code');
+		}
+
+		return new Response(null, {
+			headers: {
+				location: new URL(url).toString()
+			},
+			status
+		});
+	}
+
+	static error() {
+		const response = new Response(null, {status: 0, statusText: ''});
+		response[INTERNALS$1].type = 'error';
+		return response;
+	}
+
+	get [Symbol.toStringTag]() {
+		return 'Response';
+	}
+}
+
+Object.defineProperties(Response.prototype, {
+	type: {enumerable: true},
+	url: {enumerable: true},
+	status: {enumerable: true},
+	ok: {enumerable: true},
+	redirected: {enumerable: true},
+	statusText: {enumerable: true},
+	headers: {enumerable: true},
+	clone: {enumerable: true}
+});const getSearch = parsedURL => {
+	if (parsedURL.search) {
+		return parsedURL.search;
+	}
+
+	const lastOffset = parsedURL.href.length - 1;
+	const hash = parsedURL.hash || (parsedURL.href[lastOffset] === '#' ? '#' : '');
+	return parsedURL.href[lastOffset - hash.length] === '?' ? '?' : '';
+};/**
+ * @external URL
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/URL|URL}
+ */
+
+/**
+ * @module utils/referrer
+ * @private
+ */
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#strip-url|Referrer Policy §8.4. Strip url for use as a referrer}
+ * @param {string} URL
+ * @param {boolean} [originOnly=false]
+ */
+function stripURLForUseAsAReferrer(url, originOnly = false) {
+	// 1. If url is null, return no referrer.
+	if (url == null) { // eslint-disable-line no-eq-null, eqeqeq
+		return 'no-referrer';
+	}
+
+	url = new URL(url);
+
+	// 2. If url's scheme is a local scheme, then return no referrer.
+	if (/^(about|blob|data):$/.test(url.protocol)) {
+		return 'no-referrer';
+	}
+
+	// 3. Set url's username to the empty string.
+	url.username = '';
+
+	// 4. Set url's password to null.
+	// Note: `null` appears to be a mistake as this actually results in the password being `"null"`.
+	url.password = '';
+
+	// 5. Set url's fragment to null.
+	// Note: `null` appears to be a mistake as this actually results in the fragment being `"#null"`.
+	url.hash = '';
+
+	// 6. If the origin-only flag is true, then:
+	if (originOnly) {
+		// 6.1. Set url's path to null.
+		// Note: `null` appears to be a mistake as this actually results in the path being `"/null"`.
+		url.pathname = '';
+
+		// 6.2. Set url's query to null.
+		// Note: `null` appears to be a mistake as this actually results in the query being `"?null"`.
+		url.search = '';
+	}
+
+	// 7. Return url.
+	return url;
+}
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#enumdef-referrerpolicy|enum ReferrerPolicy}
+ */
+const ReferrerPolicy = new Set([
+	'',
+	'no-referrer',
+	'no-referrer-when-downgrade',
+	'same-origin',
+	'origin',
+	'strict-origin',
+	'origin-when-cross-origin',
+	'strict-origin-when-cross-origin',
+	'unsafe-url'
+]);
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#default-referrer-policy|default referrer policy}
+ */
+const DEFAULT_REFERRER_POLICY = 'strict-origin-when-cross-origin';
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#referrer-policies|Referrer Policy §3. Referrer Policies}
+ * @param {string} referrerPolicy
+ * @returns {string} referrerPolicy
+ */
+function validateReferrerPolicy(referrerPolicy) {
+	if (!ReferrerPolicy.has(referrerPolicy)) {
+		throw new TypeError(`Invalid referrerPolicy: ${referrerPolicy}`);
+	}
+
+	return referrerPolicy;
+}
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy|Referrer Policy §3.2. Is origin potentially trustworthy?}
+ * @param {external:URL} url
+ * @returns `true`: "Potentially Trustworthy", `false`: "Not Trustworthy"
+ */
+function isOriginPotentiallyTrustworthy(url) {
+	// 1. If origin is an opaque origin, return "Not Trustworthy".
+	// Not applicable
+
+	// 2. Assert: origin is a tuple origin.
+	// Not for implementations
+
+	// 3. If origin's scheme is either "https" or "wss", return "Potentially Trustworthy".
+	if (/^(http|ws)s:$/.test(url.protocol)) {
+		return true;
+	}
+
+	// 4. If origin's host component matches one of the CIDR notations 127.0.0.0/8 or ::1/128 [RFC4632], return "Potentially Trustworthy".
+	const hostIp = url.host.replace(/(^\[)|(]$)/g, '');
+	const hostIPVersion = isIP(hostIp);
+
+	if (hostIPVersion === 4 && /^127\./.test(hostIp)) {
+		return true;
+	}
+
+	if (hostIPVersion === 6 && /^(((0+:){7})|(::(0+:){0,6}))0*1$/.test(hostIp)) {
+		return true;
+	}
+
+	// 5. If origin's host component is "localhost" or falls within ".localhost", and the user agent conforms to the name resolution rules in [let-localhost-be-localhost], return "Potentially Trustworthy".
+	// We are returning FALSE here because we cannot ensure conformance to
+	// let-localhost-be-loalhost (https://tools.ietf.org/html/draft-west-let-localhost-be-localhost)
+	if (url.host === 'localhost' || url.host.endsWith('.localhost')) {
+		return false;
+	}
+
+	// 6. If origin's scheme component is file, return "Potentially Trustworthy".
+	if (url.protocol === 'file:') {
+		return true;
+	}
+
+	// 7. If origin's scheme component is one which the user agent considers to be authenticated, return "Potentially Trustworthy".
+	// Not supported
+
+	// 8. If origin has been configured as a trustworthy origin, return "Potentially Trustworthy".
+	// Not supported
+
+	// 9. Return "Not Trustworthy".
+	return false;
+}
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-secure-contexts/#is-url-trustworthy|Referrer Policy §3.3. Is url potentially trustworthy?}
+ * @param {external:URL} url
+ * @returns `true`: "Potentially Trustworthy", `false`: "Not Trustworthy"
+ */
+function isUrlPotentiallyTrustworthy(url) {
+	// 1. If url is "about:blank" or "about:srcdoc", return "Potentially Trustworthy".
+	if (/^about:(blank|srcdoc)$/.test(url)) {
+		return true;
+	}
+
+	// 2. If url's scheme is "data", return "Potentially Trustworthy".
+	if (url.protocol === 'data:') {
+		return true;
+	}
+
+	// Note: The origin of blob: and filesystem: URLs is the origin of the context in which they were
+	// created. Therefore, blobs created in a trustworthy origin will themselves be potentially
+	// trustworthy.
+	if (/^(blob|filesystem):$/.test(url.protocol)) {
+		return true;
+	}
+
+	// 3. Return the result of executing §3.2 Is origin potentially trustworthy? on url's origin.
+	return isOriginPotentiallyTrustworthy(url);
+}
+
+/**
+ * Modifies the referrerURL to enforce any extra security policy considerations.
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#determine-requests-referrer|Referrer Policy §8.3. Determine request's Referrer}, step 7
+ * @callback module:utils/referrer~referrerURLCallback
+ * @param {external:URL} referrerURL
+ * @returns {external:URL} modified referrerURL
+ */
+
+/**
+ * Modifies the referrerOrigin to enforce any extra security policy considerations.
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#determine-requests-referrer|Referrer Policy §8.3. Determine request's Referrer}, step 7
+ * @callback module:utils/referrer~referrerOriginCallback
+ * @param {external:URL} referrerOrigin
+ * @returns {external:URL} modified referrerOrigin
+ */
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#determine-requests-referrer|Referrer Policy §8.3. Determine request's Referrer}
+ * @param {Request} request
+ * @param {object} o
+ * @param {module:utils/referrer~referrerURLCallback} o.referrerURLCallback
+ * @param {module:utils/referrer~referrerOriginCallback} o.referrerOriginCallback
+ * @returns {external:URL} Request's referrer
+ */
+function determineRequestsReferrer(request, {referrerURLCallback, referrerOriginCallback} = {}) {
+	// There are 2 notes in the specification about invalid pre-conditions.  We return null, here, for
+	// these cases:
+	// > Note: If request's referrer is "no-referrer", Fetch will not call into this algorithm.
+	// > Note: If request's referrer policy is the empty string, Fetch will not call into this
+	// > algorithm.
+	if (request.referrer === 'no-referrer' || request.referrerPolicy === '') {
+		return null;
+	}
+
+	// 1. Let policy be request's associated referrer policy.
+	const policy = request.referrerPolicy;
+
+	// 2. Let environment be request's client.
+	// not applicable to node.js
+
+	// 3. Switch on request's referrer:
+	if (request.referrer === 'about:client') {
+		return 'no-referrer';
+	}
+
+	// "a URL": Let referrerSource be request's referrer.
+	const referrerSource = request.referrer;
+
+	// 4. Let request's referrerURL be the result of stripping referrerSource for use as a referrer.
+	let referrerURL = stripURLForUseAsAReferrer(referrerSource);
+
+	// 5. Let referrerOrigin be the result of stripping referrerSource for use as a referrer, with the
+	//    origin-only flag set to true.
+	let referrerOrigin = stripURLForUseAsAReferrer(referrerSource, true);
+
+	// 6. If the result of serializing referrerURL is a string whose length is greater than 4096, set
+	//    referrerURL to referrerOrigin.
+	if (referrerURL.toString().length > 4096) {
+		referrerURL = referrerOrigin;
+	}
+
+	// 7. The user agent MAY alter referrerURL or referrerOrigin at this point to enforce arbitrary
+	//    policy considerations in the interests of minimizing data leakage. For example, the user
+	//    agent could strip the URL down to an origin, modify its host, replace it with an empty
+	//    string, etc.
+	if (referrerURLCallback) {
+		referrerURL = referrerURLCallback(referrerURL);
+	}
+
+	if (referrerOriginCallback) {
+		referrerOrigin = referrerOriginCallback(referrerOrigin);
+	}
+
+	// 8.Execute the statements corresponding to the value of policy:
+	const currentURL = new URL(request.url);
+
+	switch (policy) {
+		case 'no-referrer':
+			return 'no-referrer';
+
+		case 'origin':
+			return referrerOrigin;
+
+		case 'unsafe-url':
+			return referrerURL;
+
+		case 'strict-origin':
+			// 1. If referrerURL is a potentially trustworthy URL and request's current URL is not a
+			//    potentially trustworthy URL, then return no referrer.
+			if (isUrlPotentiallyTrustworthy(referrerURL) && !isUrlPotentiallyTrustworthy(currentURL)) {
+				return 'no-referrer';
+			}
+
+			// 2. Return referrerOrigin.
+			return referrerOrigin.toString();
+
+		case 'strict-origin-when-cross-origin':
+			// 1. If the origin of referrerURL and the origin of request's current URL are the same, then
+			//    return referrerURL.
+			if (referrerURL.origin === currentURL.origin) {
+				return referrerURL;
+			}
+
+			// 2. If referrerURL is a potentially trustworthy URL and request's current URL is not a
+			//    potentially trustworthy URL, then return no referrer.
+			if (isUrlPotentiallyTrustworthy(referrerURL) && !isUrlPotentiallyTrustworthy(currentURL)) {
+				return 'no-referrer';
+			}
+
+			// 3. Return referrerOrigin.
+			return referrerOrigin;
+
+		case 'same-origin':
+			// 1. If the origin of referrerURL and the origin of request's current URL are the same, then
+			//    return referrerURL.
+			if (referrerURL.origin === currentURL.origin) {
+				return referrerURL;
+			}
+
+			// 2. Return no referrer.
+			return 'no-referrer';
+
+		case 'origin-when-cross-origin':
+			// 1. If the origin of referrerURL and the origin of request's current URL are the same, then
+			//    return referrerURL.
+			if (referrerURL.origin === currentURL.origin) {
+				return referrerURL;
+			}
+
+			// Return referrerOrigin.
+			return referrerOrigin;
+
+		case 'no-referrer-when-downgrade':
+			// 1. If referrerURL is a potentially trustworthy URL and request's current URL is not a
+			//    potentially trustworthy URL, then return no referrer.
+			if (isUrlPotentiallyTrustworthy(referrerURL) && !isUrlPotentiallyTrustworthy(currentURL)) {
+				return 'no-referrer';
+			}
+
+			// 2. Return referrerURL.
+			return referrerURL;
+
+		default:
+			throw new TypeError(`Invalid referrerPolicy: ${policy}`);
+	}
+}
+
+/**
+ * @see {@link https://w3c.github.io/webappsec-referrer-policy/#parse-referrer-policy-from-header|Referrer Policy §8.1. Parse a referrer policy from a Referrer-Policy header}
+ * @param {Headers} headers Response headers
+ * @returns {string} policy
+ */
+function parseReferrerPolicyFromHeader(headers) {
+	// 1. Let policy-tokens be the result of extracting header list values given `Referrer-Policy`
+	//    and response’s header list.
+	const policyTokens = (headers.get('referrer-policy') || '').split(/[,\s]+/);
+
+	// 2. Let policy be the empty string.
+	let policy = '';
+
+	// 3. For each token in policy-tokens, if token is a referrer policy and token is not the empty
+	//    string, then set policy to token.
+	// Note: This algorithm loops over multiple policy values to allow deployment of new policy
+	// values with fallbacks for older user agents, as described in § 11.1 Unknown Policy Values.
+	for (const token of policyTokens) {
+		if (token && ReferrerPolicy.has(token)) {
+			policy = token;
+		}
+	}
+
+	// 4. Return policy.
+	return policy;
+}/**
+ * Request.js
+ *
+ * Request class contains server only options
+ *
+ * All spec algorithm step numbers are based on https://fetch.spec.whatwg.org/commit-snapshots/ae716822cb3a61843226cd090eefc6589446c1d2/.
+ */
+
+const INTERNALS = Symbol('Request internals');
+
+/**
+ * Check if `obj` is an instance of Request.
+ *
+ * @param  {*} object
+ * @return {boolean}
+ */
+const isRequest = object => {
+	return (
+		typeof object === 'object' &&
+		typeof object[INTERNALS] === 'object'
+	);
+};
+
+const doBadDataWarn = deprecate(() => {},
+	'.data is not a valid RequestInit property, use .body instead',
+	'https://github.com/node-fetch/node-fetch/issues/1000 (request)');
+
+/**
+ * Request class
+ *
+ * Ref: https://fetch.spec.whatwg.org/#request-class
+ *
+ * @param   Mixed   input  Url or Request instance
+ * @param   Object  init   Custom options
+ * @return  Void
+ */
+class Request extends Body {
+	constructor(input, init = {}) {
+		let parsedURL;
+
+		// Normalize input and force URL to be encoded as UTF-8 (https://github.com/node-fetch/node-fetch/issues/245)
+		if (isRequest(input)) {
+			parsedURL = new URL(input.url);
+		} else {
+			parsedURL = new URL(input);
+			input = {};
+		}
+
+		if (parsedURL.username !== '' || parsedURL.password !== '') {
+			throw new TypeError(`${parsedURL} is an url with embedded credentials.`);
+		}
+
+		let method = init.method || input.method || 'GET';
+		if (/^(delete|get|head|options|post|put)$/i.test(method)) {
+			method = method.toUpperCase();
+		}
+
+		if (!isRequest(init) && 'data' in init) {
+			doBadDataWarn();
+		}
+
+		// eslint-disable-next-line no-eq-null, eqeqeq
+		if ((init.body != null || (isRequest(input) && input.body !== null)) &&
+			(method === 'GET' || method === 'HEAD')) {
+			throw new TypeError('Request with GET/HEAD method cannot have body');
+		}
+
+		const inputBody = init.body ?
+			init.body :
+			(isRequest(input) && input.body !== null ?
+				clone(input) :
+				null);
+
+		super(inputBody, {
+			size: init.size || input.size || 0
+		});
+
+		const headers = new Headers(init.headers || input.headers || {});
+
+		if (inputBody !== null && !headers.has('Content-Type')) {
+			const contentType = extractContentType(inputBody, this);
+			if (contentType) {
+				headers.set('Content-Type', contentType);
+			}
+		}
+
+		let signal = isRequest(input) ?
+			input.signal :
+			null;
+		if ('signal' in init) {
+			signal = init.signal;
+		}
+
+		// eslint-disable-next-line no-eq-null, eqeqeq
+		if (signal != null && !isAbortSignal(signal)) {
+			throw new TypeError('Expected signal to be an instanceof AbortSignal or EventTarget');
+		}
+
+		// §5.4, Request constructor steps, step 15.1
+		// eslint-disable-next-line no-eq-null, eqeqeq
+		let referrer = init.referrer == null ? input.referrer : init.referrer;
+		if (referrer === '') {
+			// §5.4, Request constructor steps, step 15.2
+			referrer = 'no-referrer';
+		} else if (referrer) {
+			// §5.4, Request constructor steps, step 15.3.1, 15.3.2
+			const parsedReferrer = new URL(referrer);
+			// §5.4, Request constructor steps, step 15.3.3, 15.3.4
+			referrer = /^about:(\/\/)?client$/.test(parsedReferrer) ? 'client' : parsedReferrer;
+		} else {
+			referrer = undefined;
+		}
+
+		this[INTERNALS] = {
+			method,
+			redirect: init.redirect || input.redirect || 'follow',
+			headers,
+			parsedURL,
+			signal,
+			referrer
+		};
+
+		// Node-fetch-only options
+		this.follow = init.follow === undefined ? (input.follow === undefined ? 20 : input.follow) : init.follow;
+		this.compress = init.compress === undefined ? (input.compress === undefined ? true : input.compress) : init.compress;
+		this.counter = init.counter || input.counter || 0;
+		this.agent = init.agent || input.agent;
+		this.highWaterMark = init.highWaterMark || input.highWaterMark || 16384;
+		this.insecureHTTPParser = init.insecureHTTPParser || input.insecureHTTPParser || false;
+
+		// §5.4, Request constructor steps, step 16.
+		// Default is empty string per https://fetch.spec.whatwg.org/#concept-request-referrer-policy
+		this.referrerPolicy = init.referrerPolicy || input.referrerPolicy || '';
+	}
+
+	/** @returns {string} */
+	get method() {
+		return this[INTERNALS].method;
+	}
+
+	/** @returns {string} */
+	get url() {
+		return format(this[INTERNALS].parsedURL);
+	}
+
+	/** @returns {Headers} */
+	get headers() {
+		return this[INTERNALS].headers;
+	}
+
+	get redirect() {
+		return this[INTERNALS].redirect;
+	}
+
+	/** @returns {AbortSignal} */
+	get signal() {
+		return this[INTERNALS].signal;
+	}
+
+	// https://fetch.spec.whatwg.org/#dom-request-referrer
+	get referrer() {
+		if (this[INTERNALS].referrer === 'no-referrer') {
+			return '';
+		}
+
+		if (this[INTERNALS].referrer === 'client') {
+			return 'about:client';
+		}
+
+		if (this[INTERNALS].referrer) {
+			return this[INTERNALS].referrer.toString();
+		}
+
+		return undefined;
+	}
+
+	get referrerPolicy() {
+		return this[INTERNALS].referrerPolicy;
+	}
+
+	set referrerPolicy(referrerPolicy) {
+		this[INTERNALS].referrerPolicy = validateReferrerPolicy(referrerPolicy);
+	}
+
+	/**
+	 * Clone this request
+	 *
+	 * @return  Request
+	 */
+	clone() {
+		return new Request(this);
+	}
+
+	get [Symbol.toStringTag]() {
+		return 'Request';
+	}
+}
+
+Object.defineProperties(Request.prototype, {
+	method: {enumerable: true},
+	url: {enumerable: true},
+	headers: {enumerable: true},
+	redirect: {enumerable: true},
+	clone: {enumerable: true},
+	signal: {enumerable: true},
+	referrer: {enumerable: true},
+	referrerPolicy: {enumerable: true}
+});
+
+/**
+ * Convert a Request to Node.js http request options.
+ *
+ * @param {Request} request - A Request instance
+ * @return The options object to be passed to http.request
+ */
+const getNodeRequestOptions = request => {
+	const {parsedURL} = request[INTERNALS];
+	const headers = new Headers(request[INTERNALS].headers);
+
+	// Fetch step 1.3
+	if (!headers.has('Accept')) {
+		headers.set('Accept', '*/*');
+	}
+
+	// HTTP-network-or-cache fetch steps 2.4-2.7
+	let contentLengthValue = null;
+	if (request.body === null && /^(post|put)$/i.test(request.method)) {
+		contentLengthValue = '0';
+	}
+
+	if (request.body !== null) {
+		const totalBytes = getTotalBytes(request);
+		// Set Content-Length if totalBytes is a number (that is not NaN)
+		if (typeof totalBytes === 'number' && !Number.isNaN(totalBytes)) {
+			contentLengthValue = String(totalBytes);
+		}
+	}
+
+	if (contentLengthValue) {
+		headers.set('Content-Length', contentLengthValue);
+	}
+
+	// 4.1. Main fetch, step 2.6
+	// > If request's referrer policy is the empty string, then set request's referrer policy to the
+	// > default referrer policy.
+	if (request.referrerPolicy === '') {
+		request.referrerPolicy = DEFAULT_REFERRER_POLICY;
+	}
+
+	// 4.1. Main fetch, step 2.7
+	// > If request's referrer is not "no-referrer", set request's referrer to the result of invoking
+	// > determine request's referrer.
+	if (request.referrer && request.referrer !== 'no-referrer') {
+		request[INTERNALS].referrer = determineRequestsReferrer(request);
+	} else {
+		request[INTERNALS].referrer = 'no-referrer';
+	}
+
+	// 4.5. HTTP-network-or-cache fetch, step 6.9
+	// > If httpRequest's referrer is a URL, then append `Referer`/httpRequest's referrer, serialized
+	// >  and isomorphic encoded, to httpRequest's header list.
+	if (request[INTERNALS].referrer instanceof URL) {
+		headers.set('Referer', request.referrer);
+	}
+
+	// HTTP-network-or-cache fetch step 2.11
+	if (!headers.has('User-Agent')) {
+		headers.set('User-Agent', 'node-fetch');
+	}
+
+	// HTTP-network-or-cache fetch step 2.15
+	if (request.compress && !headers.has('Accept-Encoding')) {
+		headers.set('Accept-Encoding', 'gzip, deflate, br');
+	}
+
+	let {agent} = request;
+	if (typeof agent === 'function') {
+		agent = agent(parsedURL);
+	}
+
+	if (!headers.has('Connection') && !agent) {
+		headers.set('Connection', 'close');
+	}
+
+	// HTTP-network fetch step 4.2
+	// chunked encoding is handled by Node.js
+
+	const search = getSearch(parsedURL);
+
+	// Pass the full URL directly to request(), but overwrite the following
+	// options:
+	const options = {
+		// Overwrite search to retain trailing ? (issue #776)
+		path: parsedURL.pathname + search,
+		// The following options are not expressed in the URL
+		method: request.method,
+		headers: headers[Symbol.for('nodejs.util.inspect.custom')](),
+		insecureHTTPParser: request.insecureHTTPParser,
+		agent
+	};
+
+	return {
+		/** @type {URL} */
+		parsedURL,
+		options
+	};
+};/**
+ * AbortError interface for cancelled requests
+ */
+class AbortError extends FetchBaseError {
+	constructor(message, type = 'aborted') {
+		super(message, type);
+	}
+}/*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
+
+if (!globalThis.DOMException) {
+  try {
+    const { MessageChannel } = require('worker_threads'),
+    port = new MessageChannel().port1,
+    ab = new ArrayBuffer();
+    port.postMessage(ab, [ab, ab]);
+  } catch (err) {
+    err.constructor.name === 'DOMException' && (
+      globalThis.DOMException = err.constructor
+    );
+  }
+}/**
+ * Index.js
+ *
+ * a request API compatible with window.fetch
+ *
+ * All spec algorithm step numbers are based on https://fetch.spec.whatwg.org/commit-snapshots/ae716822cb3a61843226cd090eefc6589446c1d2/.
+ */
+
+const supportedSchemas = new Set(['data:', 'http:', 'https:']);
+
+/**
+ * Fetch function
+ *
+ * @param   {string | URL | import('./request').default} url - Absolute url or Request instance
+ * @param   {*} [options_] - Fetch options
+ * @return  {Promise<import('./response').default>}
+ */
+async function fetch(url, options_) {
+	return new Promise((resolve, reject) => {
+		// Build request object
+		const request = new Request(url, options_);
+		const {parsedURL, options} = getNodeRequestOptions(request);
+		if (!supportedSchemas.has(parsedURL.protocol)) {
+			throw new TypeError(`node-fetch cannot load ${url}. URL scheme "${parsedURL.protocol.replace(/:$/, '')}" is not supported.`);
+		}
+
+		if (parsedURL.protocol === 'data:') {
+			const data = dataUriToBuffer(request.url);
+			const response = new Response(data, {headers: {'Content-Type': data.typeFull}});
+			resolve(response);
+			return;
+		}
+
+		// Wrap http.request into fetch
+		const send = (parsedURL.protocol === 'https:' ? https$1 : http$1).request;
+		const {signal} = request;
+		let response = null;
+
+		const abort = () => {
+			const error = new AbortError('The operation was aborted.');
+			reject(error);
+			if (request.body && request.body instanceof Stream.Readable) {
+				request.body.destroy(error);
+			}
+
+			if (!response || !response.body) {
+				return;
+			}
+
+			response.body.emit('error', error);
+		};
+
+		if (signal && signal.aborted) {
+			abort();
+			return;
+		}
+
+		const abortAndFinalize = () => {
+			abort();
+			finalize();
+		};
+
+		// Send request
+		const request_ = send(parsedURL.toString(), options);
+
+		if (signal) {
+			signal.addEventListener('abort', abortAndFinalize);
+		}
+
+		const finalize = () => {
+			request_.abort();
+			if (signal) {
+				signal.removeEventListener('abort', abortAndFinalize);
+			}
+		};
+
+		request_.on('error', error => {
+			reject(new FetchError(`request to ${request.url} failed, reason: ${error.message}`, 'system', error));
+			finalize();
+		});
+
+		fixResponseChunkedTransferBadEnding(request_, error => {
+			if (response && response.body) {
+				response.body.destroy(error);
+			}
+		});
+
+		/* c8 ignore next 18 */
+		if (process.version < 'v14') {
+			// Before Node.js 14, pipeline() does not fully support async iterators and does not always
+			// properly handle when the socket close/end events are out of order.
+			request_.on('socket', s => {
+				let endedWithEventsCount;
+				s.prependListener('end', () => {
+					endedWithEventsCount = s._eventsCount;
+				});
+				s.prependListener('close', hadError => {
+					// if end happened before close but the socket didn't emit an error, do it now
+					if (response && endedWithEventsCount < s._eventsCount && !hadError) {
+						const error = new Error('Premature close');
+						error.code = 'ERR_STREAM_PREMATURE_CLOSE';
+						response.body.emit('error', error);
+					}
+				});
+			});
+		}
+
+		request_.on('response', response_ => {
+			request_.setTimeout(0);
+			const headers = fromRawHeaders(response_.rawHeaders);
+
+			// HTTP fetch step 5
+			if (isRedirect(response_.statusCode)) {
+				// HTTP fetch step 5.2
+				const location = headers.get('Location');
+
+				// HTTP fetch step 5.3
+				let locationURL = null;
+				try {
+					locationURL = location === null ? null : new URL(location, request.url);
+				} catch {
+					// error here can only be invalid URL in Location: header
+					// do not throw when options.redirect == manual
+					// let the user extract the errorneous redirect URL
+					if (request.redirect !== 'manual') {
+						reject(new FetchError(`uri requested responds with an invalid redirect URL: ${location}`, 'invalid-redirect'));
+						finalize();
+						return;
+					}
+				}
+
+				// HTTP fetch step 5.5
+				switch (request.redirect) {
+					case 'error':
+						reject(new FetchError(`uri requested responds with a redirect, redirect mode is set to error: ${request.url}`, 'no-redirect'));
+						finalize();
+						return;
+					case 'manual':
+						// Nothing to do
+						break;
+					case 'follow': {
+						// HTTP-redirect fetch step 2
+						if (locationURL === null) {
+							break;
+						}
+
+						// HTTP-redirect fetch step 5
+						if (request.counter >= request.follow) {
+							reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
+							finalize();
+							return;
+						}
+
+						// HTTP-redirect fetch step 6 (counter increment)
+						// Create a new Request object.
+						const requestOptions = {
+							headers: new Headers(request.headers),
+							follow: request.follow,
+							counter: request.counter + 1,
+							agent: request.agent,
+							compress: request.compress,
+							method: request.method,
+							body: clone(request),
+							signal: request.signal,
+							size: request.size,
+							referrer: request.referrer,
+							referrerPolicy: request.referrerPolicy
+						};
+
+						// when forwarding sensitive headers like "Authorization",
+						// "WWW-Authenticate", and "Cookie" to untrusted targets,
+						// headers will be ignored when following a redirect to a domain
+						// that is not a subdomain match or exact match of the initial domain.
+						// For example, a redirect from "foo.com" to either "foo.com" or "sub.foo.com"
+						// will forward the sensitive headers, but a redirect to "bar.com" will not.
+						// headers will also be ignored when following a redirect to a domain using
+						// a different protocol. For example, a redirect from "https://foo.com" to "http://foo.com"
+						// will not forward the sensitive headers
+						if (!isDomainOrSubdomain(request.url, locationURL) || !isSameProtocol(request.url, locationURL)) {
+							for (const name of ['authorization', 'www-authenticate', 'cookie', 'cookie2']) {
+								requestOptions.headers.delete(name);
+							}
+						}
+
+						// HTTP-redirect fetch step 9
+						if (response_.statusCode !== 303 && request.body && options_.body instanceof Stream.Readable) {
+							reject(new FetchError('Cannot follow redirect with body being a readable stream', 'unsupported-redirect'));
+							finalize();
+							return;
+						}
+
+						// HTTP-redirect fetch step 11
+						if (response_.statusCode === 303 || ((response_.statusCode === 301 || response_.statusCode === 302) && request.method === 'POST')) {
+							requestOptions.method = 'GET';
+							requestOptions.body = undefined;
+							requestOptions.headers.delete('content-length');
+						}
+
+						// HTTP-redirect fetch step 14
+						const responseReferrerPolicy = parseReferrerPolicyFromHeader(headers);
+						if (responseReferrerPolicy) {
+							requestOptions.referrerPolicy = responseReferrerPolicy;
+						}
+
+						// HTTP-redirect fetch step 15
+						resolve(fetch(new Request(locationURL, requestOptions)));
+						finalize();
+						return;
+					}
+
+					default:
+						return reject(new TypeError(`Redirect option '${request.redirect}' is not a valid value of RequestRedirect`));
+				}
+			}
+
+			// Prepare response
+			if (signal) {
+				response_.once('end', () => {
+					signal.removeEventListener('abort', abortAndFinalize);
+				});
+			}
+
+			let body = pipeline$1(response_, new PassThrough(), error => {
+				if (error) {
+					reject(error);
+				}
+			});
+			// see https://github.com/nodejs/node/pull/29376
+			/* c8 ignore next 3 */
+			if (process.version < 'v12.10') {
+				response_.on('aborted', abortAndFinalize);
+			}
+
+			const responseOptions = {
+				url: request.url,
+				status: response_.statusCode,
+				statusText: response_.statusMessage,
+				headers,
+				size: request.size,
+				counter: request.counter,
+				highWaterMark: request.highWaterMark
+			};
+
+			// HTTP-network fetch step 12.1.1.3
+			const codings = headers.get('Content-Encoding');
+
+			// HTTP-network fetch step 12.1.1.4: handle content codings
+
+			// in following scenarios we ignore compression support
+			// 1. compression support is disabled
+			// 2. HEAD request
+			// 3. no Content-Encoding header
+			// 4. no content response (204)
+			// 5. content not modified response (304)
+			if (!request.compress || request.method === 'HEAD' || codings === null || response_.statusCode === 204 || response_.statusCode === 304) {
+				response = new Response(body, responseOptions);
+				resolve(response);
+				return;
+			}
+
+			// For Node v6+
+			// Be less strict when decoding compressed responses, since sometimes
+			// servers send slightly invalid responses that are still accepted
+			// by common browsers.
+			// Always using Z_SYNC_FLUSH is what cURL does.
+			const zlibOptions = {
+				flush: zlib.Z_SYNC_FLUSH,
+				finishFlush: zlib.Z_SYNC_FLUSH
+			};
+
+			// For gzip
+			if (codings === 'gzip' || codings === 'x-gzip') {
+				body = pipeline$1(body, zlib.createGunzip(zlibOptions), error => {
+					if (error) {
+						reject(error);
+					}
+				});
+				response = new Response(body, responseOptions);
+				resolve(response);
+				return;
+			}
+
+			// For deflate
+			if (codings === 'deflate' || codings === 'x-deflate') {
+				// Handle the infamous raw deflate response from old servers
+				// a hack for old IIS and Apache servers
+				const raw = pipeline$1(response_, new PassThrough(), error => {
+					if (error) {
+						reject(error);
+					}
+				});
+				raw.once('data', chunk => {
+					// See http://stackoverflow.com/questions/37519828
+					if ((chunk[0] & 0x0F) === 0x08) {
+						body = pipeline$1(body, zlib.createInflate(), error => {
+							if (error) {
+								reject(error);
+							}
+						});
+					} else {
+						body = pipeline$1(body, zlib.createInflateRaw(), error => {
+							if (error) {
+								reject(error);
+							}
+						});
+					}
+
+					response = new Response(body, responseOptions);
+					resolve(response);
+				});
+				raw.once('end', () => {
+					// Some old IIS servers return zero-length OK deflate responses, so
+					// 'data' is never emitted. See https://github.com/node-fetch/node-fetch/pull/903
+					if (!response) {
+						response = new Response(body, responseOptions);
+						resolve(response);
+					}
+				});
+				return;
+			}
+
+			// For br
+			if (codings === 'br') {
+				body = pipeline$1(body, zlib.createBrotliDecompress(), error => {
+					if (error) {
+						reject(error);
+					}
+				});
+				response = new Response(body, responseOptions);
+				resolve(response);
+				return;
+			}
+
+			// Otherwise, use response as-is
+			response = new Response(body, responseOptions);
+			resolve(response);
+		});
+
+		// eslint-disable-next-line promise/prefer-await-to-then
+		writeToStream(request_, request).catch(reject);
+	});
+}
+
+function fixResponseChunkedTransferBadEnding(request, errorCallback) {
+	const LAST_CHUNK = Buffer$1.from('0\r\n\r\n');
+
+	let isChunkedTransfer = false;
+	let properLastChunkReceived = false;
+	let previousChunk;
+
+	request.on('response', response => {
+		const {headers} = response;
+		isChunkedTransfer = headers['transfer-encoding'] === 'chunked' && !headers['content-length'];
+	});
+
+	request.on('socket', socket => {
+		const onSocketClose = () => {
+			if (isChunkedTransfer && !properLastChunkReceived) {
+				const error = new Error('Premature close');
+				error.code = 'ERR_STREAM_PREMATURE_CLOSE';
+				errorCallback(error);
+			}
+		};
+
+		const onData = buf => {
+			properLastChunkReceived = Buffer$1.compare(buf.slice(-5), LAST_CHUNK) === 0;
+
+			// Sometimes final 0-length chunk and end of message code are in separate packets
+			if (!properLastChunkReceived && previousChunk) {
+				properLastChunkReceived = (
+					Buffer$1.compare(previousChunk.slice(-3), LAST_CHUNK.slice(0, 3)) === 0 &&
+					Buffer$1.compare(buf.slice(-2), LAST_CHUNK.slice(3)) === 0
+				);
+			}
+
+			previousChunk = buf;
+		};
+
+		socket.prependListener('close', onSocketClose);
+		socket.on('data', onData);
+
+		request.on('close', () => {
+			socket.removeListener('close', onSocketClose);
+			socket.removeListener('data', onData);
+		});
+	});
+}const ALIAS = Symbol.for('yaml.alias');
+const DOC = Symbol.for('yaml.document');
+const MAP = Symbol.for('yaml.map');
+const PAIR = Symbol.for('yaml.pair');
+const SCALAR$1 = Symbol.for('yaml.scalar');
+const SEQ = Symbol.for('yaml.seq');
+const NODE_TYPE = Symbol.for('yaml.node.type');
+const isAlias = (node) => !!node && typeof node === 'object' && node[NODE_TYPE] === ALIAS;
+const isDocument = (node) => !!node && typeof node === 'object' && node[NODE_TYPE] === DOC;
+const isMap = (node) => !!node && typeof node === 'object' && node[NODE_TYPE] === MAP;
+const isPair = (node) => !!node && typeof node === 'object' && node[NODE_TYPE] === PAIR;
+const isScalar$1 = (node) => !!node && typeof node === 'object' && node[NODE_TYPE] === SCALAR$1;
+const isSeq = (node) => !!node && typeof node === 'object' && node[NODE_TYPE] === SEQ;
+function isCollection$1(node) {
+    if (node && typeof node === 'object')
+        switch (node[NODE_TYPE]) {
+            case MAP:
+            case SEQ:
+                return true;
+        }
+    return false;
+}
+function isNode(node) {
+    if (node && typeof node === 'object')
+        switch (node[NODE_TYPE]) {
+            case ALIAS:
+            case MAP:
+            case SCALAR$1:
+            case SEQ:
+                return true;
+        }
+    return false;
+}
+const hasAnchor = (node) => (isScalar$1(node) || isCollection$1(node)) && !!node.anchor;
+class NodeBase {
+    constructor(type) {
+        Object.defineProperty(this, NODE_TYPE, { value: type });
+    }
+    /** Create a copy of this node.  */
+    clone() {
+        const copy = Object.create(Object.getPrototypeOf(this), Object.getOwnPropertyDescriptors(this));
+        if (this.range)
+            copy.range = this.range.slice();
+        return copy;
+    }
+}const BREAK$1 = Symbol('break visit');
+const SKIP$1 = Symbol('skip children');
+const REMOVE$1 = Symbol('remove node');
+/**
+ * Apply a visitor to an AST node or document.
+ *
+ * Walks through the tree (depth-first) starting from `node`, calling a
+ * `visitor` function with three arguments:
+ *   - `key`: For sequence values and map `Pair`, the node's index in the
+ *     collection. Within a `Pair`, `'key'` or `'value'`, correspondingly.
+ *     `null` for the root node.
+ *   - `node`: The current node.
+ *   - `path`: The ancestry of the current node.
+ *
+ * The return value of the visitor may be used to control the traversal:
+ *   - `undefined` (default): Do nothing and continue
+ *   - `visit.SKIP`: Do not visit the children of this node, continue with next
+ *     sibling
+ *   - `visit.BREAK`: Terminate traversal completely
+ *   - `visit.REMOVE`: Remove the current node, then continue with the next one
+ *   - `Node`: Replace the current node, then continue by visiting it
+ *   - `number`: While iterating the items of a sequence or map, set the index
+ *     of the next step. This is useful especially if the index of the current
+ *     node has changed.
+ *
+ * If `visitor` is a single function, it will be called with all values
+ * encountered in the tree, including e.g. `null` values. Alternatively,
+ * separate visitor functions may be defined for each `Map`, `Pair`, `Seq`,
+ * `Alias` and `Scalar` node. To define the same visitor function for more than
+ * one node type, use the `Collection` (map and seq), `Value` (map, seq & scalar)
+ * and `Node` (alias, map, seq & scalar) targets. Of all these, only the most
+ * specific defined one will be used for each node.
+ */
+function visit$1(node, visitor) {
+    const visitor_ = initVisitor(visitor);
+    if (isDocument(node)) {
+        const cd = visit_(null, node.contents, visitor_, Object.freeze([node]));
+        if (cd === REMOVE$1)
+            node.contents = null;
+    }
+    else
+        visit_(null, node, visitor_, Object.freeze([]));
+}
+// Without the `as symbol` casts, TS declares these in the `visit`
+// namespace using `var`, but then complains about that because
+// `unique symbol` must be `const`.
+/** Terminate visit traversal completely */
+visit$1.BREAK = BREAK$1;
+/** Do not visit the children of the current node */
+visit$1.SKIP = SKIP$1;
+/** Remove the current node */
+visit$1.REMOVE = REMOVE$1;
+function visit_(key, node, visitor, path) {
+    const ctrl = callVisitor(key, node, visitor, path);
+    if (isNode(ctrl) || isPair(ctrl)) {
+        replaceNode(key, path, ctrl);
+        return visit_(key, ctrl, visitor, path);
+    }
+    if (typeof ctrl !== 'symbol') {
+        if (isCollection$1(node)) {
+            path = Object.freeze(path.concat(node));
+            for (let i = 0; i < node.items.length; ++i) {
+                const ci = visit_(i, node.items[i], visitor, path);
+                if (typeof ci === 'number')
+                    i = ci - 1;
+                else if (ci === BREAK$1)
+                    return BREAK$1;
+                else if (ci === REMOVE$1) {
+                    node.items.splice(i, 1);
+                    i -= 1;
+                }
+            }
+        }
+        else if (isPair(node)) {
+            path = Object.freeze(path.concat(node));
+            const ck = visit_('key', node.key, visitor, path);
+            if (ck === BREAK$1)
+                return BREAK$1;
+            else if (ck === REMOVE$1)
+                node.key = null;
+            const cv = visit_('value', node.value, visitor, path);
+            if (cv === BREAK$1)
+                return BREAK$1;
+            else if (cv === REMOVE$1)
+                node.value = null;
+        }
+    }
+    return ctrl;
+}
+/**
+ * Apply an async visitor to an AST node or document.
+ *
+ * Walks through the tree (depth-first) starting from `node`, calling a
+ * `visitor` function with three arguments:
+ *   - `key`: For sequence values and map `Pair`, the node's index in the
+ *     collection. Within a `Pair`, `'key'` or `'value'`, correspondingly.
+ *     `null` for the root node.
+ *   - `node`: The current node.
+ *   - `path`: The ancestry of the current node.
+ *
+ * The return value of the visitor may be used to control the traversal:
+ *   - `Promise`: Must resolve to one of the following values
+ *   - `undefined` (default): Do nothing and continue
+ *   - `visit.SKIP`: Do not visit the children of this node, continue with next
+ *     sibling
+ *   - `visit.BREAK`: Terminate traversal completely
+ *   - `visit.REMOVE`: Remove the current node, then continue with the next one
+ *   - `Node`: Replace the current node, then continue by visiting it
+ *   - `number`: While iterating the items of a sequence or map, set the index
+ *     of the next step. This is useful especially if the index of the current
+ *     node has changed.
+ *
+ * If `visitor` is a single function, it will be called with all values
+ * encountered in the tree, including e.g. `null` values. Alternatively,
+ * separate visitor functions may be defined for each `Map`, `Pair`, `Seq`,
+ * `Alias` and `Scalar` node. To define the same visitor function for more than
+ * one node type, use the `Collection` (map and seq), `Value` (map, seq & scalar)
+ * and `Node` (alias, map, seq & scalar) targets. Of all these, only the most
+ * specific defined one will be used for each node.
+ */
+async function visitAsync(node, visitor) {
+    const visitor_ = initVisitor(visitor);
+    if (isDocument(node)) {
+        const cd = await visitAsync_(null, node.contents, visitor_, Object.freeze([node]));
+        if (cd === REMOVE$1)
+            node.contents = null;
+    }
+    else
+        await visitAsync_(null, node, visitor_, Object.freeze([]));
+}
+// Without the `as symbol` casts, TS declares these in the `visit`
+// namespace using `var`, but then complains about that because
+// `unique symbol` must be `const`.
+/** Terminate visit traversal completely */
+visitAsync.BREAK = BREAK$1;
+/** Do not visit the children of the current node */
+visitAsync.SKIP = SKIP$1;
+/** Remove the current node */
+visitAsync.REMOVE = REMOVE$1;
+async function visitAsync_(key, node, visitor, path) {
+    const ctrl = await callVisitor(key, node, visitor, path);
+    if (isNode(ctrl) || isPair(ctrl)) {
+        replaceNode(key, path, ctrl);
+        return visitAsync_(key, ctrl, visitor, path);
+    }
+    if (typeof ctrl !== 'symbol') {
+        if (isCollection$1(node)) {
+            path = Object.freeze(path.concat(node));
+            for (let i = 0; i < node.items.length; ++i) {
+                const ci = await visitAsync_(i, node.items[i], visitor, path);
+                if (typeof ci === 'number')
+                    i = ci - 1;
+                else if (ci === BREAK$1)
+                    return BREAK$1;
+                else if (ci === REMOVE$1) {
+                    node.items.splice(i, 1);
+                    i -= 1;
+                }
+            }
+        }
+        else if (isPair(node)) {
+            path = Object.freeze(path.concat(node));
+            const ck = await visitAsync_('key', node.key, visitor, path);
+            if (ck === BREAK$1)
+                return BREAK$1;
+            else if (ck === REMOVE$1)
+                node.key = null;
+            const cv = await visitAsync_('value', node.value, visitor, path);
+            if (cv === BREAK$1)
+                return BREAK$1;
+            else if (cv === REMOVE$1)
+                node.value = null;
+        }
+    }
+    return ctrl;
+}
+function initVisitor(visitor) {
+    if (typeof visitor === 'object' &&
+        (visitor.Collection || visitor.Node || visitor.Value)) {
+        return Object.assign({
+            Alias: visitor.Node,
+            Map: visitor.Node,
+            Scalar: visitor.Node,
+            Seq: visitor.Node
+        }, visitor.Value && {
+            Map: visitor.Value,
+            Scalar: visitor.Value,
+            Seq: visitor.Value
+        }, visitor.Collection && {
+            Map: visitor.Collection,
+            Seq: visitor.Collection
+        }, visitor);
+    }
+    return visitor;
+}
+function callVisitor(key, node, visitor, path) {
+    if (typeof visitor === 'function')
+        return visitor(key, node, path);
+    if (isMap(node))
+        return visitor.Map?.(key, node, path);
+    if (isSeq(node))
+        return visitor.Seq?.(key, node, path);
+    if (isPair(node))
+        return visitor.Pair?.(key, node, path);
+    if (isScalar$1(node))
+        return visitor.Scalar?.(key, node, path);
+    if (isAlias(node))
+        return visitor.Alias?.(key, node, path);
+    return undefined;
+}
+function replaceNode(key, path, node) {
+    const parent = path[path.length - 1];
+    if (isCollection$1(parent)) {
+        parent.items[key] = node;
+    }
+    else if (isPair(parent)) {
+        if (key === 'key')
+            parent.key = node;
+        else
+            parent.value = node;
+    }
+    else if (isDocument(parent)) {
+        parent.contents = node;
+    }
+    else {
+        const pt = isAlias(parent) ? 'alias' : 'scalar';
+        throw new Error(`Cannot replace node with ${pt} parent`);
+    }
+}const escapeChars = {
+    '!': '%21',
+    ',': '%2C',
+    '[': '%5B',
+    ']': '%5D',
+    '{': '%7B',
+    '}': '%7D'
+};
+const escapeTagName = (tn) => tn.replace(/[!,[\]{}]/g, ch => escapeChars[ch]);
+class Directives {
+    constructor(yaml, tags) {
+        /**
+         * The directives-end/doc-start marker `---`. If `null`, a marker may still be
+         * included in the document's stringified representation.
+         */
+        this.docStart = null;
+        /** The doc-end marker `...`.  */
+        this.docEnd = false;
+        this.yaml = Object.assign({}, Directives.defaultYaml, yaml);
+        this.tags = Object.assign({}, Directives.defaultTags, tags);
+    }
+    clone() {
+        const copy = new Directives(this.yaml, this.tags);
+        copy.docStart = this.docStart;
+        return copy;
+    }
+    /**
+     * During parsing, get a Directives instance for the current document and
+     * update the stream state according to the current version's spec.
+     */
+    atDocument() {
+        const res = new Directives(this.yaml, this.tags);
+        switch (this.yaml.version) {
+            case '1.1':
+                this.atNextDocument = true;
+                break;
+            case '1.2':
+                this.atNextDocument = false;
+                this.yaml = {
+                    explicit: Directives.defaultYaml.explicit,
+                    version: '1.2'
+                };
+                this.tags = Object.assign({}, Directives.defaultTags);
+                break;
+        }
+        return res;
+    }
+    /**
+     * @param onError - May be called even if the action was successful
+     * @returns `true` on success
+     */
+    add(line, onError) {
+        if (this.atNextDocument) {
+            this.yaml = { explicit: Directives.defaultYaml.explicit, version: '1.1' };
+            this.tags = Object.assign({}, Directives.defaultTags);
+            this.atNextDocument = false;
+        }
+        const parts = line.trim().split(/[ \t]+/);
+        const name = parts.shift();
+        switch (name) {
+            case '%TAG': {
+                if (parts.length !== 2) {
+                    onError(0, '%TAG directive should contain exactly two parts');
+                    if (parts.length < 2)
+                        return false;
+                }
+                const [handle, prefix] = parts;
+                this.tags[handle] = prefix;
+                return true;
+            }
+            case '%YAML': {
+                this.yaml.explicit = true;
+                if (parts.length !== 1) {
+                    onError(0, '%YAML directive should contain exactly one part');
+                    return false;
+                }
+                const [version] = parts;
+                if (version === '1.1' || version === '1.2') {
+                    this.yaml.version = version;
+                    return true;
+                }
+                else {
+                    const isValid = /^\d+\.\d+$/.test(version);
+                    onError(6, `Unsupported YAML version ${version}`, isValid);
+                    return false;
+                }
+            }
+            default:
+                onError(0, `Unknown directive ${name}`, true);
+                return false;
+        }
+    }
+    /**
+     * Resolves a tag, matching handles to those defined in %TAG directives.
+     *
+     * @returns Resolved tag, which may also be the non-specific tag `'!'` or a
+     *   `'!local'` tag, or `null` if unresolvable.
+     */
+    tagName(source, onError) {
+        if (source === '!')
+            return '!'; // non-specific tag
+        if (source[0] !== '!') {
+            onError(`Not a valid tag: ${source}`);
+            return null;
+        }
+        if (source[1] === '<') {
+            const verbatim = source.slice(2, -1);
+            if (verbatim === '!' || verbatim === '!!') {
+                onError(`Verbatim tags aren't resolved, so ${source} is invalid.`);
+                return null;
+            }
+            if (source[source.length - 1] !== '>')
+                onError('Verbatim tags must end with a >');
+            return verbatim;
+        }
+        const [, handle, suffix] = source.match(/^(.*!)([^!]*)$/);
+        if (!suffix)
+            onError(`The ${source} tag has no suffix`);
+        const prefix = this.tags[handle];
+        if (prefix)
+            return prefix + decodeURIComponent(suffix);
+        if (handle === '!')
+            return source; // local tag
+        onError(`Could not resolve tag: ${source}`);
+        return null;
+    }
+    /**
+     * Given a fully resolved tag, returns its printable string form,
+     * taking into account current tag prefixes and defaults.
+     */
+    tagString(tag) {
+        for (const [handle, prefix] of Object.entries(this.tags)) {
+            if (tag.startsWith(prefix))
+                return handle + escapeTagName(tag.substring(prefix.length));
+        }
+        return tag[0] === '!' ? tag : `!<${tag}>`;
+    }
+    toString(doc) {
+        const lines = this.yaml.explicit
+            ? [`%YAML ${this.yaml.version || '1.2'}`]
+            : [];
+        const tagEntries = Object.entries(this.tags);
+        let tagNames;
+        if (doc && tagEntries.length > 0 && isNode(doc.contents)) {
+            const tags = {};
+            visit$1(doc.contents, (_key, node) => {
+                if (isNode(node) && node.tag)
+                    tags[node.tag] = true;
+            });
+            tagNames = Object.keys(tags);
+        }
+        else
+            tagNames = [];
+        for (const [handle, prefix] of tagEntries) {
+            if (handle === '!!' && prefix === 'tag:yaml.org,2002:')
+                continue;
+            if (!doc || tagNames.some(tn => tn.startsWith(prefix)))
+                lines.push(`%TAG ${handle} ${prefix}`);
+        }
+        return lines.join('\n');
+    }
+}
+Directives.defaultYaml = { explicit: false, version: '1.2' };
+Directives.defaultTags = { '!!': 'tag:yaml.org,2002:' };/**
+ * Verify that the input string is a valid anchor.
+ *
+ * Will throw on errors.
+ */
+function anchorIsValid(anchor) {
+    if (/[\x00-\x19\s,[\]{}]/.test(anchor)) {
+        const sa = JSON.stringify(anchor);
+        const msg = `Anchor must not contain whitespace or control characters: ${sa}`;
+        throw new Error(msg);
+    }
+    return true;
+}
+function anchorNames(root) {
+    const anchors = new Set();
+    visit$1(root, {
+        Value(_key, node) {
+            if (node.anchor)
+                anchors.add(node.anchor);
+        }
+    });
+    return anchors;
+}
+/** Find a new anchor name with the given `prefix` and a one-indexed suffix. */
+function findNewAnchor(prefix, exclude) {
+    for (let i = 1; true; ++i) {
+        const name = `${prefix}${i}`;
+        if (!exclude.has(name))
+            return name;
+    }
+}
+function createNodeAnchors(doc, prefix) {
+    const aliasObjects = [];
+    const sourceObjects = new Map();
+    let prevAnchors = null;
+    return {
+        onAnchor: (source) => {
+            aliasObjects.push(source);
+            if (!prevAnchors)
+                prevAnchors = anchorNames(doc);
+            const anchor = findNewAnchor(prefix, prevAnchors);
+            prevAnchors.add(anchor);
+            return anchor;
+        },
+        /**
+         * With circular references, the source node is only resolved after all
+         * of its child nodes are. This is why anchors are set only after all of
+         * the nodes have been created.
+         */
+        setAnchors: () => {
+            for (const source of aliasObjects) {
+                const ref = sourceObjects.get(source);
+                if (typeof ref === 'object' &&
+                    ref.anchor &&
+                    (isScalar$1(ref.node) || isCollection$1(ref.node))) {
+                    ref.node.anchor = ref.anchor;
+                }
+                else {
+                    const error = new Error('Failed to resolve repeated object (this should not happen)');
+                    error.source = source;
+                    throw error;
+                }
+            }
+        },
+        sourceObjects
+    };
+}class Alias extends NodeBase {
+    constructor(source) {
+        super(ALIAS);
+        this.source = source;
+        Object.defineProperty(this, 'tag', {
+            set() {
+                throw new Error('Alias nodes cannot have tags');
+            }
+        });
+    }
+    /**
+     * Resolve the value of this alias within `doc`, finding the last
+     * instance of the `source` anchor before this node.
+     */
+    resolve(doc) {
+        let found = undefined;
+        visit$1(doc, {
+            Node: (_key, node) => {
+                if (node === this)
+                    return visit$1.BREAK;
+                if (node.anchor === this.source)
+                    found = node;
+            }
+        });
+        return found;
+    }
+    toJSON(_arg, ctx) {
+        if (!ctx)
+            return { source: this.source };
+        const { anchors, doc, maxAliasCount } = ctx;
+        const source = this.resolve(doc);
+        if (!source) {
+            const msg = `Unresolved alias (the anchor must be set before the alias): ${this.source}`;
+            throw new ReferenceError(msg);
+        }
+        const data = anchors.get(source);
+        /* istanbul ignore if */
+        if (!data || data.res === undefined) {
+            const msg = 'This should not happen: Alias anchor was not resolved?';
+            throw new ReferenceError(msg);
+        }
+        if (maxAliasCount >= 0) {
+            data.count += 1;
+            if (data.aliasCount === 0)
+                data.aliasCount = getAliasCount(doc, source, anchors);
+            if (data.count * data.aliasCount > maxAliasCount) {
+                const msg = 'Excessive alias count indicates a resource exhaustion attack';
+                throw new ReferenceError(msg);
+            }
+        }
+        return data.res;
+    }
+    toString(ctx, _onComment, _onChompKeep) {
+        const src = `*${this.source}`;
+        if (ctx) {
+            anchorIsValid(this.source);
+            if (ctx.options.verifyAliasOrder && !ctx.anchors.has(this.source)) {
+                const msg = `Unresolved alias (the anchor must be set before the alias): ${this.source}`;
+                throw new Error(msg);
+            }
+            if (ctx.implicitKey)
+                return `${src} `;
+        }
+        return src;
+    }
+}
+function getAliasCount(doc, node, anchors) {
+    if (isAlias(node)) {
+        const source = node.resolve(doc);
+        const anchor = anchors && source && anchors.get(source);
+        return anchor ? anchor.count * anchor.aliasCount : 0;
+    }
+    else if (isCollection$1(node)) {
+        let count = 0;
+        for (const item of node.items) {
+            const c = getAliasCount(doc, item, anchors);
+            if (c > count)
+                count = c;
+        }
+        return count;
+    }
+    else if (isPair(node)) {
+        const kc = getAliasCount(doc, node.key, anchors);
+        const vc = getAliasCount(doc, node.value, anchors);
+        return Math.max(kc, vc);
+    }
+    return 1;
+}/**
+ * Recursively convert any node or its contents to native JavaScript
+ *
+ * @param value - The input value
+ * @param arg - If `value` defines a `toJSON()` method, use this
+ *   as its first argument
+ * @param ctx - Conversion context, originally set in Document#toJS(). If
+ *   `{ keep: true }` is not set, output should be suitable for JSON
+ *   stringification.
+ */
+function toJS(value, arg, ctx) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    if (Array.isArray(value))
+        return value.map((v, i) => toJS(v, String(i), ctx));
+    if (value && typeof value.toJSON === 'function') {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        if (!ctx || !hasAnchor(value))
+            return value.toJSON(arg, ctx);
+        const data = { aliasCount: 0, count: 1, res: undefined };
+        ctx.anchors.set(value, data);
+        ctx.onCreate = res => {
+            data.res = res;
+            delete ctx.onCreate;
+        };
+        const res = value.toJSON(arg, ctx);
+        if (ctx.onCreate)
+            ctx.onCreate(res);
+        return res;
+    }
+    if (typeof value === 'bigint' && !ctx?.keep)
+        return Number(value);
+    return value;
+}const isScalarValue = (value) => !value || (typeof value !== 'function' && typeof value !== 'object');
+class Scalar extends NodeBase {
+    constructor(value) {
+        super(SCALAR$1);
+        this.value = value;
+    }
+    toJSON(arg, ctx) {
+        return ctx?.keep ? this.value : toJS(this.value, arg, ctx);
+    }
+    toString() {
+        return String(this.value);
+    }
+}
+Scalar.BLOCK_FOLDED = 'BLOCK_FOLDED';
+Scalar.BLOCK_LITERAL = 'BLOCK_LITERAL';
+Scalar.PLAIN = 'PLAIN';
+Scalar.QUOTE_DOUBLE = 'QUOTE_DOUBLE';
+Scalar.QUOTE_SINGLE = 'QUOTE_SINGLE';const defaultTagPrefix = 'tag:yaml.org,2002:';
+function findTagObject(value, tagName, tags) {
+    if (tagName) {
+        const match = tags.filter(t => t.tag === tagName);
+        const tagObj = match.find(t => !t.format) ?? match[0];
+        if (!tagObj)
+            throw new Error(`Tag ${tagName} not found`);
+        return tagObj;
+    }
+    return tags.find(t => t.identify?.(value) && !t.format);
+}
+function createNode(value, tagName, ctx) {
+    if (isDocument(value))
+        value = value.contents;
+    if (isNode(value))
+        return value;
+    if (isPair(value)) {
+        const map = ctx.schema[MAP].createNode?.(ctx.schema, null, ctx);
+        map.items.push(value);
+        return map;
+    }
+    if (value instanceof String ||
+        value instanceof Number ||
+        value instanceof Boolean ||
+        (typeof BigInt !== 'undefined' && value instanceof BigInt) // not supported everywhere
+    ) {
+        // https://tc39.es/ecma262/#sec-serializejsonproperty
+        value = value.valueOf();
+    }
+    const { aliasDuplicateObjects, onAnchor, onTagObj, schema, sourceObjects } = ctx;
+    // Detect duplicate references to the same object & use Alias nodes for all
+    // after first. The `ref` wrapper allows for circular references to resolve.
+    let ref = undefined;
+    if (aliasDuplicateObjects && value && typeof value === 'object') {
+        ref = sourceObjects.get(value);
+        if (ref) {
+            if (!ref.anchor)
+                ref.anchor = onAnchor(value);
+            return new Alias(ref.anchor);
+        }
+        else {
+            ref = { anchor: null, node: null };
+            sourceObjects.set(value, ref);
+        }
+    }
+    if (tagName?.startsWith('!!'))
+        tagName = defaultTagPrefix + tagName.slice(2);
+    let tagObj = findTagObject(value, tagName, schema.tags);
+    if (!tagObj) {
+        if (value && typeof value.toJSON === 'function') {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+            value = value.toJSON();
+        }
+        if (!value || typeof value !== 'object') {
+            const node = new Scalar(value);
+            if (ref)
+                ref.node = node;
+            return node;
+        }
+        tagObj =
+            value instanceof Map
+                ? schema[MAP]
+                : Symbol.iterator in Object(value)
+                    ? schema[SEQ]
+                    : schema[MAP];
+    }
+    if (onTagObj) {
+        onTagObj(tagObj);
+        delete ctx.onTagObj;
+    }
+    const node = tagObj?.createNode
+        ? tagObj.createNode(ctx.schema, value, ctx)
+        : new Scalar(value);
+    if (tagName)
+        node.tag = tagName;
+    if (ref)
+        ref.node = node;
+    return node;
+}function collectionFromPath(schema, path, value) {
+    let v = value;
+    for (let i = path.length - 1; i >= 0; --i) {
+        const k = path[i];
+        if (typeof k === 'number' && Number.isInteger(k) && k >= 0) {
+            const a = [];
+            a[k] = v;
+            v = a;
+        }
+        else {
+            v = new Map([[k, v]]);
+        }
+    }
+    return createNode(v, undefined, {
+        aliasDuplicateObjects: false,
+        keepUndefined: false,
+        onAnchor: () => {
+            throw new Error('This should not happen, please report a bug.');
+        },
+        schema,
+        sourceObjects: new Map()
+    });
+}
+// Type guard is intentionally a little wrong so as to be more useful,
+// as it does not cover untypable empty non-string iterables (e.g. []).
+const isEmptyPath = (path) => path == null ||
+    (typeof path === 'object' && !!path[Symbol.iterator]().next().done);
+class Collection extends NodeBase {
+    constructor(type, schema) {
+        super(type);
+        Object.defineProperty(this, 'schema', {
+            value: schema,
+            configurable: true,
+            enumerable: false,
+            writable: true
+        });
+    }
+    /**
+     * Create a copy of this collection.
+     *
+     * @param schema - If defined, overwrites the original's schema
+     */
+    clone(schema) {
+        const copy = Object.create(Object.getPrototypeOf(this), Object.getOwnPropertyDescriptors(this));
+        if (schema)
+            copy.schema = schema;
+        copy.items = copy.items.map(it => isNode(it) || isPair(it) ? it.clone(schema) : it);
+        if (this.range)
+            copy.range = this.range.slice();
+        return copy;
+    }
+    /**
+     * Adds a value to the collection. For `!!map` and `!!omap` the value must
+     * be a Pair instance or a `{ key, value }` object, which may not have a key
+     * that already exists in the map.
+     */
+    addIn(path, value) {
+        if (isEmptyPath(path))
+            this.add(value);
+        else {
+            const [key, ...rest] = path;
+            const node = this.get(key, true);
+            if (isCollection$1(node))
+                node.addIn(rest, value);
+            else if (node === undefined && this.schema)
+                this.set(key, collectionFromPath(this.schema, rest, value));
+            else
+                throw new Error(`Expected YAML collection at ${key}. Remaining path: ${rest}`);
+        }
+    }
+    /**
+     * Removes a value from the collection.
+     * @returns `true` if the item was found and removed.
+     */
+    deleteIn(path) {
+        const [key, ...rest] = path;
+        if (rest.length === 0)
+            return this.delete(key);
+        const node = this.get(key, true);
+        if (isCollection$1(node))
+            return node.deleteIn(rest);
+        else
+            throw new Error(`Expected YAML collection at ${key}. Remaining path: ${rest}`);
+    }
+    /**
+     * Returns item at `key`, or `undefined` if not found. By default unwraps
+     * scalar values from their surrounding node; to disable set `keepScalar` to
+     * `true` (collections are always returned intact).
+     */
+    getIn(path, keepScalar) {
+        const [key, ...rest] = path;
+        const node = this.get(key, true);
+        if (rest.length === 0)
+            return !keepScalar && isScalar$1(node) ? node.value : node;
+        else
+            return isCollection$1(node) ? node.getIn(rest, keepScalar) : undefined;
+    }
+    hasAllNullValues(allowScalar) {
+        return this.items.every(node => {
+            if (!isPair(node))
+                return false;
+            const n = node.value;
+            return (n == null ||
+                (allowScalar &&
+                    isScalar$1(n) &&
+                    n.value == null &&
+                    !n.commentBefore &&
+                    !n.comment &&
+                    !n.tag));
+        });
+    }
+    /**
+     * Checks if the collection includes a value with the key `key`.
+     */
+    hasIn(path) {
+        const [key, ...rest] = path;
+        if (rest.length === 0)
+            return this.has(key);
+        const node = this.get(key, true);
+        return isCollection$1(node) ? node.hasIn(rest) : false;
+    }
+    /**
+     * Sets a value in this collection. For `!!set`, `value` needs to be a
+     * boolean to add/remove the item from the set.
+     */
+    setIn(path, value) {
+        const [key, ...rest] = path;
+        if (rest.length === 0) {
+            this.set(key, value);
+        }
+        else {
+            const node = this.get(key, true);
+            if (isCollection$1(node))
+                node.setIn(rest, value);
+            else if (node === undefined && this.schema)
+                this.set(key, collectionFromPath(this.schema, rest, value));
+            else
+                throw new Error(`Expected YAML collection at ${key}. Remaining path: ${rest}`);
+        }
+    }
+}
+Collection.maxFlowStringSingleLineLength = 60;/**
+ * Stringifies a comment.
+ *
+ * Empty comment lines are left empty,
+ * lines consisting of a single space are replaced by `#`,
+ * and all other lines are prefixed with a `#`.
+ */
+const stringifyComment = (str) => str.replace(/^(?!$)(?: $)?/gm, '#');
+function indentComment(comment, indent) {
+    if (/^\n+$/.test(comment))
+        return comment.substring(1);
+    return indent ? comment.replace(/^(?! *$)/gm, indent) : comment;
+}
+const lineComment = (str, indent, comment) => str.endsWith('\n')
+    ? indentComment(comment, indent)
+    : comment.includes('\n')
+        ? '\n' + indentComment(comment, indent)
+        : (str.endsWith(' ') ? '' : ' ') + comment;const FOLD_FLOW = 'flow';
+const FOLD_BLOCK = 'block';
+const FOLD_QUOTED = 'quoted';
+/**
+ * Tries to keep input at up to `lineWidth` characters, splitting only on spaces
+ * not followed by newlines or spaces unless `mode` is `'quoted'`. Lines are
+ * terminated with `\n` and started with `indent`.
+ */
+function foldFlowLines(text, indent, mode = 'flow', { indentAtStart, lineWidth = 80, minContentWidth = 20, onFold, onOverflow } = {}) {
+    if (!lineWidth || lineWidth < 0)
+        return text;
+    const endStep = Math.max(1 + minContentWidth, 1 + lineWidth - indent.length);
+    if (text.length <= endStep)
+        return text;
+    const folds = [];
+    const escapedFolds = {};
+    let end = lineWidth - indent.length;
+    if (typeof indentAtStart === 'number') {
+        if (indentAtStart > lineWidth - Math.max(2, minContentWidth))
+            folds.push(0);
+        else
+            end = lineWidth - indentAtStart;
+    }
+    let split = undefined;
+    let prev = undefined;
+    let overflow = false;
+    let i = -1;
+    let escStart = -1;
+    let escEnd = -1;
+    if (mode === FOLD_BLOCK) {
+        i = consumeMoreIndentedLines(text, i);
+        if (i !== -1)
+            end = i + endStep;
+    }
+    for (let ch; (ch = text[(i += 1)]);) {
+        if (mode === FOLD_QUOTED && ch === '\\') {
+            escStart = i;
+            switch (text[i + 1]) {
+                case 'x':
+                    i += 3;
+                    break;
+                case 'u':
+                    i += 5;
+                    break;
+                case 'U':
+                    i += 9;
+                    break;
+                default:
+                    i += 1;
+            }
+            escEnd = i;
+        }
+        if (ch === '\n') {
+            if (mode === FOLD_BLOCK)
+                i = consumeMoreIndentedLines(text, i);
+            end = i + endStep;
+            split = undefined;
+        }
+        else {
+            if (ch === ' ' &&
+                prev &&
+                prev !== ' ' &&
+                prev !== '\n' &&
+                prev !== '\t') {
+                // space surrounded by non-space can be replaced with newline + indent
+                const next = text[i + 1];
+                if (next && next !== ' ' && next !== '\n' && next !== '\t')
+                    split = i;
+            }
+            if (i >= end) {
+                if (split) {
+                    folds.push(split);
+                    end = split + endStep;
+                    split = undefined;
+                }
+                else if (mode === FOLD_QUOTED) {
+                    // white-space collected at end may stretch past lineWidth
+                    while (prev === ' ' || prev === '\t') {
+                        prev = ch;
+                        ch = text[(i += 1)];
+                        overflow = true;
+                    }
+                    // Account for newline escape, but don't break preceding escape
+                    const j = i > escEnd + 1 ? i - 2 : escStart - 1;
+                    // Bail out if lineWidth & minContentWidth are shorter than an escape string
+                    if (escapedFolds[j])
+                        return text;
+                    folds.push(j);
+                    escapedFolds[j] = true;
+                    end = j + endStep;
+                    split = undefined;
+                }
+                else {
+                    overflow = true;
+                }
+            }
+        }
+        prev = ch;
+    }
+    if (overflow && onOverflow)
+        onOverflow();
+    if (folds.length === 0)
+        return text;
+    if (onFold)
+        onFold();
+    let res = text.slice(0, folds[0]);
+    for (let i = 0; i < folds.length; ++i) {
+        const fold = folds[i];
+        const end = folds[i + 1] || text.length;
+        if (fold === 0)
+            res = `\n${indent}${text.slice(0, end)}`;
+        else {
+            if (mode === FOLD_QUOTED && escapedFolds[fold])
+                res += `${text[fold]}\\`;
+            res += `\n${indent}${text.slice(fold + 1, end)}`;
+        }
+    }
+    return res;
+}
+/**
+ * Presumes `i + 1` is at the start of a line
+ * @returns index of last newline in more-indented block
+ */
+function consumeMoreIndentedLines(text, i) {
+    let ch = text[i + 1];
+    while (ch === ' ' || ch === '\t') {
+        do {
+            ch = text[(i += 1)];
+        } while (ch && ch !== '\n');
+        ch = text[i + 1];
+    }
+    return i;
+}const getFoldOptions = (ctx) => ({
+    indentAtStart: ctx.indentAtStart,
+    lineWidth: ctx.options.lineWidth,
+    minContentWidth: ctx.options.minContentWidth
+});
+// Also checks for lines starting with %, as parsing the output as YAML 1.1 will
+// presume that's starting a new document.
+const containsDocumentMarker = (str) => /^(%|---|\.\.\.)/m.test(str);
+function lineLengthOverLimit(str, lineWidth, indentLength) {
+    if (!lineWidth || lineWidth < 0)
+        return false;
+    const limit = lineWidth - indentLength;
+    const strLen = str.length;
+    if (strLen <= limit)
+        return false;
+    for (let i = 0, start = 0; i < strLen; ++i) {
+        if (str[i] === '\n') {
+            if (i - start > limit)
+                return true;
+            start = i + 1;
+            if (strLen - start <= limit)
+                return false;
+        }
+    }
+    return true;
+}
+function doubleQuotedString(value, ctx) {
+    const json = JSON.stringify(value);
+    if (ctx.options.doubleQuotedAsJSON)
+        return json;
+    const { implicitKey } = ctx;
+    const minMultiLineLength = ctx.options.doubleQuotedMinMultiLineLength;
+    const indent = ctx.indent || (containsDocumentMarker(value) ? '  ' : '');
+    let str = '';
+    let start = 0;
+    for (let i = 0, ch = json[i]; ch; ch = json[++i]) {
+        if (ch === ' ' && json[i + 1] === '\\' && json[i + 2] === 'n') {
+            // space before newline needs to be escaped to not be folded
+            str += json.slice(start, i) + '\\ ';
+            i += 1;
+            start = i;
+            ch = '\\';
+        }
+        if (ch === '\\')
+            switch (json[i + 1]) {
+                case 'u':
+                    {
+                        str += json.slice(start, i);
+                        const code = json.substr(i + 2, 4);
+                        switch (code) {
+                            case '0000':
+                                str += '\\0';
+                                break;
+                            case '0007':
+                                str += '\\a';
+                                break;
+                            case '000b':
+                                str += '\\v';
+                                break;
+                            case '001b':
+                                str += '\\e';
+                                break;
+                            case '0085':
+                                str += '\\N';
+                                break;
+                            case '00a0':
+                                str += '\\_';
+                                break;
+                            case '2028':
+                                str += '\\L';
+                                break;
+                            case '2029':
+                                str += '\\P';
+                                break;
+                            default:
+                                if (code.substr(0, 2) === '00')
+                                    str += '\\x' + code.substr(2);
+                                else
+                                    str += json.substr(i, 6);
+                        }
+                        i += 5;
+                        start = i + 1;
+                    }
+                    break;
+                case 'n':
+                    if (implicitKey ||
+                        json[i + 2] === '"' ||
+                        json.length < minMultiLineLength) {
+                        i += 1;
+                    }
+                    else {
+                        // folding will eat first newline
+                        str += json.slice(start, i) + '\n\n';
+                        while (json[i + 2] === '\\' &&
+                            json[i + 3] === 'n' &&
+                            json[i + 4] !== '"') {
+                            str += '\n';
+                            i += 2;
+                        }
+                        str += indent;
+                        // space after newline needs to be escaped to not be folded
+                        if (json[i + 2] === ' ')
+                            str += '\\';
+                        i += 1;
+                        start = i + 1;
+                    }
+                    break;
+                default:
+                    i += 1;
+            }
+    }
+    str = start ? str + json.slice(start) : json;
+    return implicitKey
+        ? str
+        : foldFlowLines(str, indent, FOLD_QUOTED, getFoldOptions(ctx));
+}
+function singleQuotedString(value, ctx) {
+    if (ctx.options.singleQuote === false ||
+        (ctx.implicitKey && value.includes('\n')) ||
+        /[ \t]\n|\n[ \t]/.test(value) // single quoted string can't have leading or trailing whitespace around newline
+    )
+        return doubleQuotedString(value, ctx);
+    const indent = ctx.indent || (containsDocumentMarker(value) ? '  ' : '');
+    const res = "'" + value.replace(/'/g, "''").replace(/\n+/g, `$&\n${indent}`) + "'";
+    return ctx.implicitKey
+        ? res
+        : foldFlowLines(res, indent, FOLD_FLOW, getFoldOptions(ctx));
+}
+function quotedString(value, ctx) {
+    const { singleQuote } = ctx.options;
+    let qs;
+    if (singleQuote === false)
+        qs = doubleQuotedString;
+    else {
+        const hasDouble = value.includes('"');
+        const hasSingle = value.includes("'");
+        if (hasDouble && !hasSingle)
+            qs = singleQuotedString;
+        else if (hasSingle && !hasDouble)
+            qs = doubleQuotedString;
+        else
+            qs = singleQuote ? singleQuotedString : doubleQuotedString;
+    }
+    return qs(value, ctx);
+}
+function blockString({ comment, type, value }, ctx, onComment, onChompKeep) {
+    const { blockQuote, commentString, lineWidth } = ctx.options;
+    // 1. Block can't end in whitespace unless the last line is non-empty.
+    // 2. Strings consisting of only whitespace are best rendered explicitly.
+    if (!blockQuote || /\n[\t ]+$/.test(value) || /^\s*$/.test(value)) {
+        return quotedString(value, ctx);
+    }
+    const indent = ctx.indent ||
+        (ctx.forceBlockIndent || containsDocumentMarker(value) ? '  ' : '');
+    const literal = blockQuote === 'literal'
+        ? true
+        : blockQuote === 'folded' || type === Scalar.BLOCK_FOLDED
+            ? false
+            : type === Scalar.BLOCK_LITERAL
+                ? true
+                : !lineLengthOverLimit(value, lineWidth, indent.length);
+    if (!value)
+        return literal ? '|\n' : '>\n';
+    // determine chomping from whitespace at value end
+    let chomp;
+    let endStart;
+    for (endStart = value.length; endStart > 0; --endStart) {
+        const ch = value[endStart - 1];
+        if (ch !== '\n' && ch !== '\t' && ch !== ' ')
+            break;
+    }
+    let end = value.substring(endStart);
+    const endNlPos = end.indexOf('\n');
+    if (endNlPos === -1) {
+        chomp = '-'; // strip
+    }
+    else if (value === end || endNlPos !== end.length - 1) {
+        chomp = '+'; // keep
+        if (onChompKeep)
+            onChompKeep();
+    }
+    else {
+        chomp = ''; // clip
+    }
+    if (end) {
+        value = value.slice(0, -end.length);
+        if (end[end.length - 1] === '\n')
+            end = end.slice(0, -1);
+        end = end.replace(/\n+(?!\n|$)/g, `$&${indent}`);
+    }
+    // determine indent indicator from whitespace at value start
+    let startWithSpace = false;
+    let startEnd;
+    let startNlPos = -1;
+    for (startEnd = 0; startEnd < value.length; ++startEnd) {
+        const ch = value[startEnd];
+        if (ch === ' ')
+            startWithSpace = true;
+        else if (ch === '\n')
+            startNlPos = startEnd;
+        else
+            break;
+    }
+    let start = value.substring(0, startNlPos < startEnd ? startNlPos + 1 : startEnd);
+    if (start) {
+        value = value.substring(start.length);
+        start = start.replace(/\n+/g, `$&${indent}`);
+    }
+    const indentSize = indent ? '2' : '1'; // root is at -1
+    let header = (literal ? '|' : '>') + (startWithSpace ? indentSize : '') + chomp;
+    if (comment) {
+        header += ' ' + commentString(comment.replace(/ ?[\r\n]+/g, ' '));
+        if (onComment)
+            onComment();
+    }
+    if (literal) {
+        value = value.replace(/\n+/g, `$&${indent}`);
+        return `${header}\n${indent}${start}${value}${end}`;
+    }
+    value = value
+        .replace(/\n+/g, '\n$&')
+        .replace(/(?:^|\n)([\t ].*)(?:([\n\t ]*)\n(?![\n\t ]))?/g, '$1$2') // more-indented lines aren't folded
+        //                ^ more-ind. ^ empty     ^ capture next empty lines only at end of indent
+        .replace(/\n+/g, `$&${indent}`);
+    const body = foldFlowLines(`${start}${value}${end}`, indent, FOLD_BLOCK, getFoldOptions(ctx));
+    return `${header}\n${indent}${body}`;
+}
+function plainString(item, ctx, onComment, onChompKeep) {
+    const { type, value } = item;
+    const { actualString, implicitKey, indent, inFlow } = ctx;
+    if ((implicitKey && /[\n[\]{},]/.test(value)) ||
+        (inFlow && /[[\]{},]/.test(value))) {
+        return quotedString(value, ctx);
+    }
+    if (!value ||
+        /^[\n\t ,[\]{}#&*!|>'"%@`]|^[?-]$|^[?-][ \t]|[\n:][ \t]|[ \t]\n|[\n\t ]#|[\n\t :]$/.test(value)) {
+        // not allowed:
+        // - empty string, '-' or '?'
+        // - start with an indicator character (except [?:-]) or /[?-] /
+        // - '\n ', ': ' or ' \n' anywhere
+        // - '#' not preceded by a non-space char
+        // - end with ' ' or ':'
+        return implicitKey || inFlow || !value.includes('\n')
+            ? quotedString(value, ctx)
+            : blockString(item, ctx, onComment, onChompKeep);
+    }
+    if (!implicitKey &&
+        !inFlow &&
+        type !== Scalar.PLAIN &&
+        value.includes('\n')) {
+        // Where allowed & type not set explicitly, prefer block style for multiline strings
+        return blockString(item, ctx, onComment, onChompKeep);
+    }
+    if (indent === '' && containsDocumentMarker(value)) {
+        ctx.forceBlockIndent = true;
+        return blockString(item, ctx, onComment, onChompKeep);
+    }
+    const str = value.replace(/\n+/g, `$&\n${indent}`);
+    // Verify that output will be parsed as a string, as e.g. plain numbers and
+    // booleans get parsed with those types in v1.2 (e.g. '42', 'true' & '0.9e-3'),
+    // and others in v1.1.
+    if (actualString) {
+        const test = (tag) => tag.default && tag.tag !== 'tag:yaml.org,2002:str' && tag.test?.test(str);
+        const { compat, tags } = ctx.doc.schema;
+        if (tags.some(test) || compat?.some(test))
+            return quotedString(value, ctx);
+    }
+    return implicitKey
+        ? str
+        : foldFlowLines(str, indent, FOLD_FLOW, getFoldOptions(ctx));
+}
+function stringifyString(item, ctx, onComment, onChompKeep) {
+    const { implicitKey, inFlow } = ctx;
+    const ss = typeof item.value === 'string'
+        ? item
+        : Object.assign({}, item, { value: String(item.value) });
+    let { type } = item;
+    if (type !== Scalar.QUOTE_DOUBLE) {
+        // force double quotes on control characters & unpaired surrogates
+        if (/[\x00-\x08\x0b-\x1f\x7f-\x9f\u{D800}-\u{DFFF}]/u.test(ss.value))
+            type = Scalar.QUOTE_DOUBLE;
+    }
+    const _stringify = (_type) => {
+        switch (_type) {
+            case Scalar.BLOCK_FOLDED:
+            case Scalar.BLOCK_LITERAL:
+                return implicitKey || inFlow
+                    ? quotedString(ss.value, ctx) // blocks are not valid inside flow containers
+                    : blockString(ss, ctx, onComment, onChompKeep);
+            case Scalar.QUOTE_DOUBLE:
+                return doubleQuotedString(ss.value, ctx);
+            case Scalar.QUOTE_SINGLE:
+                return singleQuotedString(ss.value, ctx);
+            case Scalar.PLAIN:
+                return plainString(ss, ctx, onComment, onChompKeep);
+            default:
+                return null;
+        }
+    };
+    let res = _stringify(type);
+    if (res === null) {
+        const { defaultKeyType, defaultStringType } = ctx.options;
+        const t = (implicitKey && defaultKeyType) || defaultStringType;
+        res = _stringify(t);
+        if (res === null)
+            throw new Error(`Unsupported default string type ${t}`);
+    }
+    return res;
+}function createStringifyContext(doc, options) {
+    const opt = Object.assign({
+        blockQuote: true,
+        commentString: stringifyComment,
+        defaultKeyType: null,
+        defaultStringType: 'PLAIN',
+        directives: null,
+        doubleQuotedAsJSON: false,
+        doubleQuotedMinMultiLineLength: 40,
+        falseStr: 'false',
+        indentSeq: true,
+        lineWidth: 80,
+        minContentWidth: 20,
+        nullStr: 'null',
+        simpleKeys: false,
+        singleQuote: null,
+        trueStr: 'true',
+        verifyAliasOrder: true
+    }, doc.schema.toStringOptions, options);
+    let inFlow;
+    switch (opt.collectionStyle) {
+        case 'block':
+            inFlow = false;
+            break;
+        case 'flow':
+            inFlow = true;
+            break;
+        default:
+            inFlow = null;
+    }
+    return {
+        anchors: new Set(),
+        doc,
+        indent: '',
+        indentStep: typeof opt.indent === 'number' ? ' '.repeat(opt.indent) : '  ',
+        inFlow,
+        options: opt
+    };
+}
+function getTagObject(tags, item) {
+    if (item.tag) {
+        const match = tags.filter(t => t.tag === item.tag);
+        if (match.length > 0)
+            return match.find(t => t.format === item.format) ?? match[0];
+    }
+    let tagObj = undefined;
+    let obj;
+    if (isScalar$1(item)) {
+        obj = item.value;
+        const match = tags.filter(t => t.identify?.(obj));
+        tagObj =
+            match.find(t => t.format === item.format) ?? match.find(t => !t.format);
+    }
+    else {
+        obj = item;
+        tagObj = tags.find(t => t.nodeClass && obj instanceof t.nodeClass);
+    }
+    if (!tagObj) {
+        const name = obj?.constructor?.name ?? typeof obj;
+        throw new Error(`Tag not resolved for ${name} value`);
+    }
+    return tagObj;
+}
+// needs to be called before value stringifier to allow for circular anchor refs
+function stringifyProps(node, tagObj, { anchors, doc }) {
+    if (!doc.directives)
+        return '';
+    const props = [];
+    const anchor = (isScalar$1(node) || isCollection$1(node)) && node.anchor;
+    if (anchor && anchorIsValid(anchor)) {
+        anchors.add(anchor);
+        props.push(`&${anchor}`);
+    }
+    const tag = node.tag ? node.tag : tagObj.default ? null : tagObj.tag;
+    if (tag)
+        props.push(doc.directives.tagString(tag));
+    return props.join(' ');
+}
+function stringify$2(item, ctx, onComment, onChompKeep) {
+    if (isPair(item))
+        return item.toString(ctx, onComment, onChompKeep);
+    if (isAlias(item)) {
+        if (ctx.doc.directives)
+            return item.toString(ctx);
+        if (ctx.resolvedAliases?.has(item)) {
+            throw new TypeError(`Cannot stringify circular structure without alias nodes`);
+        }
+        else {
+            if (ctx.resolvedAliases)
+                ctx.resolvedAliases.add(item);
+            else
+                ctx.resolvedAliases = new Set([item]);
+            item = item.resolve(ctx.doc);
+        }
+    }
+    let tagObj = undefined;
+    const node = isNode(item)
+        ? item
+        : ctx.doc.createNode(item, { onTagObj: o => (tagObj = o) });
+    if (!tagObj)
+        tagObj = getTagObject(ctx.doc.schema.tags, node);
+    const props = stringifyProps(node, tagObj, ctx);
+    if (props.length > 0)
+        ctx.indentAtStart = (ctx.indentAtStart ?? 0) + props.length + 1;
+    const str = typeof tagObj.stringify === 'function'
+        ? tagObj.stringify(node, ctx, onComment, onChompKeep)
+        : isScalar$1(node)
+            ? stringifyString(node, ctx, onComment, onChompKeep)
+            : node.toString(ctx, onComment, onChompKeep);
+    if (!props)
+        return str;
+    return isScalar$1(node) || str[0] === '{' || str[0] === '['
+        ? `${props} ${str}`
+        : `${props}\n${ctx.indent}${str}`;
+}function stringifyPair({ key, value }, ctx, onComment, onChompKeep) {
+    const { allNullValues, doc, indent, indentStep, options: { commentString, indentSeq, simpleKeys } } = ctx;
+    let keyComment = (isNode(key) && key.comment) || null;
+    if (simpleKeys) {
+        if (keyComment) {
+            throw new Error('With simple keys, key nodes cannot have comments');
+        }
+        if (isCollection$1(key)) {
+            const msg = 'With simple keys, collection cannot be used as a key value';
+            throw new Error(msg);
+        }
+    }
+    let explicitKey = !simpleKeys &&
+        (!key ||
+            (keyComment && value == null && !ctx.inFlow) ||
+            isCollection$1(key) ||
+            (isScalar$1(key)
+                ? key.type === Scalar.BLOCK_FOLDED || key.type === Scalar.BLOCK_LITERAL
+                : typeof key === 'object'));
+    ctx = Object.assign({}, ctx, {
+        allNullValues: false,
+        implicitKey: !explicitKey && (simpleKeys || !allNullValues),
+        indent: indent + indentStep
+    });
+    let keyCommentDone = false;
+    let chompKeep = false;
+    let str = stringify$2(key, ctx, () => (keyCommentDone = true), () => (chompKeep = true));
+    if (!explicitKey && !ctx.inFlow && str.length > 1024) {
+        if (simpleKeys)
+            throw new Error('With simple keys, single line scalar must not span more than 1024 characters');
+        explicitKey = true;
+    }
+    if (ctx.inFlow) {
+        if (allNullValues || value == null) {
+            if (keyCommentDone && onComment)
+                onComment();
+            return str === '' ? '?' : explicitKey ? `? ${str}` : str;
+        }
+    }
+    else if ((allNullValues && !simpleKeys) || (value == null && explicitKey)) {
+        str = `? ${str}`;
+        if (keyComment && !keyCommentDone) {
+            str += lineComment(str, ctx.indent, commentString(keyComment));
+        }
+        else if (chompKeep && onChompKeep)
+            onChompKeep();
+        return str;
+    }
+    if (keyCommentDone)
+        keyComment = null;
+    if (explicitKey) {
+        if (keyComment)
+            str += lineComment(str, ctx.indent, commentString(keyComment));
+        str = `? ${str}\n${indent}:`;
+    }
+    else {
+        str = `${str}:`;
+        if (keyComment)
+            str += lineComment(str, ctx.indent, commentString(keyComment));
+    }
+    let vcb = '';
+    let valueComment = null;
+    if (isNode(value)) {
+        if (value.spaceBefore)
+            vcb = '\n';
+        if (value.commentBefore) {
+            const cs = commentString(value.commentBefore);
+            vcb += `\n${indentComment(cs, ctx.indent)}`;
+        }
+        valueComment = value.comment;
+    }
+    else if (value && typeof value === 'object') {
+        value = doc.createNode(value);
+    }
+    ctx.implicitKey = false;
+    if (!explicitKey && !keyComment && isScalar$1(value))
+        ctx.indentAtStart = str.length + 1;
+    chompKeep = false;
+    if (!indentSeq &&
+        indentStep.length >= 2 &&
+        !ctx.inFlow &&
+        !explicitKey &&
+        isSeq(value) &&
+        !value.flow &&
+        !value.tag &&
+        !value.anchor) {
+        // If indentSeq === false, consider '- ' as part of indentation where possible
+        ctx.indent = ctx.indent.substr(2);
+    }
+    let valueCommentDone = false;
+    const valueStr = stringify$2(value, ctx, () => (valueCommentDone = true), () => (chompKeep = true));
+    let ws = ' ';
+    if (vcb || keyComment) {
+        if (valueStr === '' && !ctx.inFlow)
+            ws = vcb === '\n' ? '\n\n' : vcb;
+        else
+            ws = `${vcb}\n${ctx.indent}`;
+    }
+    else if (!explicitKey && isCollection$1(value)) {
+        const flow = valueStr[0] === '[' || valueStr[0] === '{';
+        if (!flow || valueStr.includes('\n'))
+            ws = `\n${ctx.indent}`;
+    }
+    else if (valueStr === '' || valueStr[0] === '\n')
+        ws = '';
+    str += ws + valueStr;
+    if (ctx.inFlow) {
+        if (valueCommentDone && onComment)
+            onComment();
+    }
+    else if (valueComment && !valueCommentDone) {
+        str += lineComment(str, ctx.indent, commentString(valueComment));
+    }
+    else if (chompKeep && onChompKeep) {
+        onChompKeep();
+    }
+    return str;
+}function warn(logLevel, warning) {
+    if (logLevel === 'debug' || logLevel === 'warn') {
+        if (typeof process !== 'undefined' && process.emitWarning)
+            process.emitWarning(warning);
+        else
+            console.warn(warning);
+    }
+}const MERGE_KEY = '<<';
+function addPairToJSMap(ctx, map, { key, value }) {
+    if (ctx?.doc.schema.merge && isMergeKey(key)) {
+        value = isAlias(value) ? value.resolve(ctx.doc) : value;
+        if (isSeq(value))
+            for (const it of value.items)
+                mergeToJSMap(ctx, map, it);
+        else if (Array.isArray(value))
+            for (const it of value)
+                mergeToJSMap(ctx, map, it);
+        else
+            mergeToJSMap(ctx, map, value);
+    }
+    else {
+        const jsKey = toJS(key, '', ctx);
+        if (map instanceof Map) {
+            map.set(jsKey, toJS(value, jsKey, ctx));
+        }
+        else if (map instanceof Set) {
+            map.add(jsKey);
+        }
+        else {
+            const stringKey = stringifyKey(key, jsKey, ctx);
+            const jsValue = toJS(value, stringKey, ctx);
+            if (stringKey in map)
+                Object.defineProperty(map, stringKey, {
+                    value: jsValue,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                });
+            else
+                map[stringKey] = jsValue;
+        }
+    }
+    return map;
+}
+const isMergeKey = (key) => key === MERGE_KEY ||
+    (isScalar$1(key) &&
+        key.value === MERGE_KEY &&
+        (!key.type || key.type === Scalar.PLAIN));
+// If the value associated with a merge key is a single mapping node, each of
+// its key/value pairs is inserted into the current mapping, unless the key
+// already exists in it. If the value associated with the merge key is a
+// sequence, then this sequence is expected to contain mapping nodes and each
+// of these nodes is merged in turn according to its order in the sequence.
+// Keys in mapping nodes earlier in the sequence override keys specified in
+// later mapping nodes. -- http://yaml.org/type/merge.html
+function mergeToJSMap(ctx, map, value) {
+    const source = ctx && isAlias(value) ? value.resolve(ctx.doc) : value;
+    if (!isMap(source))
+        throw new Error('Merge sources must be maps or map aliases');
+    const srcMap = source.toJSON(null, ctx, Map);
+    for (const [key, value] of srcMap) {
+        if (map instanceof Map) {
+            if (!map.has(key))
+                map.set(key, value);
+        }
+        else if (map instanceof Set) {
+            map.add(key);
+        }
+        else if (!Object.prototype.hasOwnProperty.call(map, key)) {
+            Object.defineProperty(map, key, {
+                value,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            });
+        }
+    }
+    return map;
+}
+function stringifyKey(key, jsKey, ctx) {
+    if (jsKey === null)
+        return '';
+    if (typeof jsKey !== 'object')
+        return String(jsKey);
+    if (isNode(key) && ctx && ctx.doc) {
+        const strCtx = createStringifyContext(ctx.doc, {});
+        strCtx.anchors = new Set();
+        for (const node of ctx.anchors.keys())
+            strCtx.anchors.add(node.anchor);
+        strCtx.inFlow = true;
+        strCtx.inStringifyKey = true;
+        const strKey = key.toString(strCtx);
+        if (!ctx.mapKeyWarned) {
+            let jsonStr = JSON.stringify(strKey);
+            if (jsonStr.length > 40)
+                jsonStr = jsonStr.substring(0, 36) + '..."';
+            warn(ctx.doc.options.logLevel, `Keys with collection values will be stringified due to JS Object restrictions: ${jsonStr}. Set mapAsMap: true to use object keys.`);
+            ctx.mapKeyWarned = true;
+        }
+        return strKey;
+    }
+    return JSON.stringify(jsKey);
+}function createPair(key, value, ctx) {
+    const k = createNode(key, undefined, ctx);
+    const v = createNode(value, undefined, ctx);
+    return new Pair(k, v);
+}
+class Pair {
+    constructor(key, value = null) {
+        Object.defineProperty(this, NODE_TYPE, { value: PAIR });
+        this.key = key;
+        this.value = value;
+    }
+    clone(schema) {
+        let { key, value } = this;
+        if (isNode(key))
+            key = key.clone(schema);
+        if (isNode(value))
+            value = value.clone(schema);
+        return new Pair(key, value);
+    }
+    toJSON(_, ctx) {
+        const pair = ctx?.mapAsMap ? new Map() : {};
+        return addPairToJSMap(ctx, pair, this);
+    }
+    toString(ctx, onComment, onChompKeep) {
+        return ctx?.doc
+            ? stringifyPair(this, ctx, onComment, onChompKeep)
+            : JSON.stringify(this);
+    }
+}function stringifyCollection(collection, ctx, options) {
+    const flow = ctx.inFlow ?? collection.flow;
+    const stringify = flow ? stringifyFlowCollection : stringifyBlockCollection;
+    return stringify(collection, ctx, options);
+}
+function stringifyBlockCollection({ comment, items }, ctx, { blockItemPrefix, flowChars, itemIndent, onChompKeep, onComment }) {
+    const { indent, options: { commentString } } = ctx;
+    const itemCtx = Object.assign({}, ctx, { indent: itemIndent, type: null });
+    let chompKeep = false; // flag for the preceding node's status
+    const lines = [];
+    for (let i = 0; i < items.length; ++i) {
+        const item = items[i];
+        let comment = null;
+        if (isNode(item)) {
+            if (!chompKeep && item.spaceBefore)
+                lines.push('');
+            addCommentBefore(ctx, lines, item.commentBefore, chompKeep);
+            if (item.comment)
+                comment = item.comment;
+        }
+        else if (isPair(item)) {
+            const ik = isNode(item.key) ? item.key : null;
+            if (ik) {
+                if (!chompKeep && ik.spaceBefore)
+                    lines.push('');
+                addCommentBefore(ctx, lines, ik.commentBefore, chompKeep);
+            }
+        }
+        chompKeep = false;
+        let str = stringify$2(item, itemCtx, () => (comment = null), () => (chompKeep = true));
+        if (comment)
+            str += lineComment(str, itemIndent, commentString(comment));
+        if (chompKeep && comment)
+            chompKeep = false;
+        lines.push(blockItemPrefix + str);
+    }
+    let str;
+    if (lines.length === 0) {
+        str = flowChars.start + flowChars.end;
+    }
+    else {
+        str = lines[0];
+        for (let i = 1; i < lines.length; ++i) {
+            const line = lines[i];
+            str += line ? `\n${indent}${line}` : '\n';
+        }
+    }
+    if (comment) {
+        str += '\n' + indentComment(commentString(comment), indent);
+        if (onComment)
+            onComment();
+    }
+    else if (chompKeep && onChompKeep)
+        onChompKeep();
+    return str;
+}
+function stringifyFlowCollection({ comment, items }, ctx, { flowChars, itemIndent, onComment }) {
+    const { indent, indentStep, options: { commentString } } = ctx;
+    itemIndent += indentStep;
+    const itemCtx = Object.assign({}, ctx, {
+        indent: itemIndent,
+        inFlow: true,
+        type: null
+    });
+    let reqNewline = false;
+    let linesAtValue = 0;
+    const lines = [];
+    for (let i = 0; i < items.length; ++i) {
+        const item = items[i];
+        let comment = null;
+        if (isNode(item)) {
+            if (item.spaceBefore)
+                lines.push('');
+            addCommentBefore(ctx, lines, item.commentBefore, false);
+            if (item.comment)
+                comment = item.comment;
+        }
+        else if (isPair(item)) {
+            const ik = isNode(item.key) ? item.key : null;
+            if (ik) {
+                if (ik.spaceBefore)
+                    lines.push('');
+                addCommentBefore(ctx, lines, ik.commentBefore, false);
+                if (ik.comment)
+                    reqNewline = true;
+            }
+            const iv = isNode(item.value) ? item.value : null;
+            if (iv) {
+                if (iv.comment)
+                    comment = iv.comment;
+                if (iv.commentBefore)
+                    reqNewline = true;
+            }
+            else if (item.value == null && ik && ik.comment) {
+                comment = ik.comment;
+            }
+        }
+        if (comment)
+            reqNewline = true;
+        let str = stringify$2(item, itemCtx, () => (comment = null));
+        if (i < items.length - 1)
+            str += ',';
+        if (comment)
+            str += lineComment(str, itemIndent, commentString(comment));
+        if (!reqNewline && (lines.length > linesAtValue || str.includes('\n')))
+            reqNewline = true;
+        lines.push(str);
+        linesAtValue = lines.length;
+    }
+    let str;
+    const { start, end } = flowChars;
+    if (lines.length === 0) {
+        str = start + end;
+    }
+    else {
+        if (!reqNewline) {
+            const len = lines.reduce((sum, line) => sum + line.length + 2, 2);
+            reqNewline = len > Collection.maxFlowStringSingleLineLength;
+        }
+        if (reqNewline) {
+            str = start;
+            for (const line of lines)
+                str += line ? `\n${indentStep}${indent}${line}` : '\n';
+            str += `\n${indent}${end}`;
+        }
+        else {
+            str = `${start} ${lines.join(' ')} ${end}`;
+        }
+    }
+    if (comment) {
+        str += lineComment(str, commentString(comment), indent);
+        if (onComment)
+            onComment();
+    }
+    return str;
+}
+function addCommentBefore({ indent, options: { commentString } }, lines, comment, chompKeep) {
+    if (comment && chompKeep)
+        comment = comment.replace(/^\n+/, '');
+    if (comment) {
+        const ic = indentComment(commentString(comment), indent);
+        lines.push(ic.trimStart()); // Avoid double indent on first line
+    }
+}function findPair(items, key) {
+    const k = isScalar$1(key) ? key.value : key;
+    for (const it of items) {
+        if (isPair(it)) {
+            if (it.key === key || it.key === k)
+                return it;
+            if (isScalar$1(it.key) && it.key.value === k)
+                return it;
+        }
+    }
+    return undefined;
+}
+class YAMLMap extends Collection {
+    constructor(schema) {
+        super(MAP, schema);
+        this.items = [];
+    }
+    static get tagName() {
+        return 'tag:yaml.org,2002:map';
+    }
+    /**
+     * Adds a value to the collection.
+     *
+     * @param overwrite - If not set `true`, using a key that is already in the
+     *   collection will throw. Otherwise, overwrites the previous value.
+     */
+    add(pair, overwrite) {
+        let _pair;
+        if (isPair(pair))
+            _pair = pair;
+        else if (!pair || typeof pair !== 'object' || !('key' in pair)) {
+            // In TypeScript, this never happens.
+            _pair = new Pair(pair, pair?.value);
+        }
+        else
+            _pair = new Pair(pair.key, pair.value);
+        const prev = findPair(this.items, _pair.key);
+        const sortEntries = this.schema?.sortMapEntries;
+        if (prev) {
+            if (!overwrite)
+                throw new Error(`Key ${_pair.key} already set`);
+            // For scalars, keep the old node & its comments and anchors
+            if (isScalar$1(prev.value) && isScalarValue(_pair.value))
+                prev.value.value = _pair.value;
+            else
+                prev.value = _pair.value;
+        }
+        else if (sortEntries) {
+            const i = this.items.findIndex(item => sortEntries(_pair, item) < 0);
+            if (i === -1)
+                this.items.push(_pair);
+            else
+                this.items.splice(i, 0, _pair);
+        }
+        else {
+            this.items.push(_pair);
+        }
+    }
+    delete(key) {
+        const it = findPair(this.items, key);
+        if (!it)
+            return false;
+        const del = this.items.splice(this.items.indexOf(it), 1);
+        return del.length > 0;
+    }
+    get(key, keepScalar) {
+        const it = findPair(this.items, key);
+        const node = it?.value;
+        return (!keepScalar && isScalar$1(node) ? node.value : node) ?? undefined;
+    }
+    has(key) {
+        return !!findPair(this.items, key);
+    }
+    set(key, value) {
+        this.add(new Pair(key, value), true);
+    }
+    /**
+     * @param ctx - Conversion context, originally set in Document#toJS()
+     * @param {Class} Type - If set, forces the returned collection type
+     * @returns Instance of Type, Map, or Object
+     */
+    toJSON(_, ctx, Type) {
+        const map = Type ? new Type() : ctx?.mapAsMap ? new Map() : {};
+        if (ctx?.onCreate)
+            ctx.onCreate(map);
+        for (const item of this.items)
+            addPairToJSMap(ctx, map, item);
+        return map;
+    }
+    toString(ctx, onComment, onChompKeep) {
+        if (!ctx)
+            return JSON.stringify(this);
+        for (const item of this.items) {
+            if (!isPair(item))
+                throw new Error(`Map items must all be pairs; found ${JSON.stringify(item)} instead`);
+        }
+        if (!ctx.allNullValues && this.hasAllNullValues(false))
+            ctx = Object.assign({}, ctx, { allNullValues: true });
+        return stringifyCollection(this, ctx, {
+            blockItemPrefix: '',
+            flowChars: { start: '{', end: '}' },
+            itemIndent: ctx.indent || '',
+            onChompKeep,
+            onComment
+        });
+    }
+}function createMap(schema, obj, ctx) {
+    const { keepUndefined, replacer } = ctx;
+    const map = new YAMLMap(schema);
+    const add = (key, value) => {
+        if (typeof replacer === 'function')
+            value = replacer.call(obj, key, value);
+        else if (Array.isArray(replacer) && !replacer.includes(key))
+            return;
+        if (value !== undefined || keepUndefined)
+            map.items.push(createPair(key, value, ctx));
+    };
+    if (obj instanceof Map) {
+        for (const [key, value] of obj)
+            add(key, value);
+    }
+    else if (obj && typeof obj === 'object') {
+        for (const key of Object.keys(obj))
+            add(key, obj[key]);
+    }
+    if (typeof schema.sortMapEntries === 'function') {
+        map.items.sort(schema.sortMapEntries);
+    }
+    return map;
+}
+const map = {
+    collection: 'map',
+    createNode: createMap,
+    default: true,
+    nodeClass: YAMLMap,
+    tag: 'tag:yaml.org,2002:map',
+    resolve(map, onError) {
+        if (!isMap(map))
+            onError('Expected a mapping for this tag');
+        return map;
+    }
+};class YAMLSeq extends Collection {
+    constructor(schema) {
+        super(SEQ, schema);
+        this.items = [];
+    }
+    static get tagName() {
+        return 'tag:yaml.org,2002:seq';
+    }
+    add(value) {
+        this.items.push(value);
+    }
+    /**
+     * Removes a value from the collection.
+     *
+     * `key` must contain a representation of an integer for this to succeed.
+     * It may be wrapped in a `Scalar`.
+     *
+     * @returns `true` if the item was found and removed.
+     */
+    delete(key) {
+        const idx = asItemIndex(key);
+        if (typeof idx !== 'number')
+            return false;
+        const del = this.items.splice(idx, 1);
+        return del.length > 0;
+    }
+    get(key, keepScalar) {
+        const idx = asItemIndex(key);
+        if (typeof idx !== 'number')
+            return undefined;
+        const it = this.items[idx];
+        return !keepScalar && isScalar$1(it) ? it.value : it;
+    }
+    /**
+     * Checks if the collection includes a value with the key `key`.
+     *
+     * `key` must contain a representation of an integer for this to succeed.
+     * It may be wrapped in a `Scalar`.
+     */
+    has(key) {
+        const idx = asItemIndex(key);
+        return typeof idx === 'number' && idx < this.items.length;
+    }
+    /**
+     * Sets a value in this collection. For `!!set`, `value` needs to be a
+     * boolean to add/remove the item from the set.
+     *
+     * If `key` does not contain a representation of an integer, this will throw.
+     * It may be wrapped in a `Scalar`.
+     */
+    set(key, value) {
+        const idx = asItemIndex(key);
+        if (typeof idx !== 'number')
+            throw new Error(`Expected a valid index, not ${key}.`);
+        const prev = this.items[idx];
+        if (isScalar$1(prev) && isScalarValue(value))
+            prev.value = value;
+        else
+            this.items[idx] = value;
+    }
+    toJSON(_, ctx) {
+        const seq = [];
+        if (ctx?.onCreate)
+            ctx.onCreate(seq);
+        let i = 0;
+        for (const item of this.items)
+            seq.push(toJS(item, String(i++), ctx));
+        return seq;
+    }
+    toString(ctx, onComment, onChompKeep) {
+        if (!ctx)
+            return JSON.stringify(this);
+        return stringifyCollection(this, ctx, {
+            blockItemPrefix: '- ',
+            flowChars: { start: '[', end: ']' },
+            itemIndent: (ctx.indent || '') + '  ',
+            onChompKeep,
+            onComment
+        });
+    }
+}
+function asItemIndex(key) {
+    let idx = isScalar$1(key) ? key.value : key;
+    if (idx && typeof idx === 'string')
+        idx = Number(idx);
+    return typeof idx === 'number' && Number.isInteger(idx) && idx >= 0
+        ? idx
+        : null;
+}function createSeq(schema, obj, ctx) {
+    const { replacer } = ctx;
+    const seq = new YAMLSeq(schema);
+    if (obj && Symbol.iterator in Object(obj)) {
+        let i = 0;
+        for (let it of obj) {
+            if (typeof replacer === 'function') {
+                const key = obj instanceof Set ? it : String(i++);
+                it = replacer.call(obj, key, it);
+            }
+            seq.items.push(createNode(it, undefined, ctx));
+        }
+    }
+    return seq;
+}
+const seq = {
+    collection: 'seq',
+    createNode: createSeq,
+    default: true,
+    nodeClass: YAMLSeq,
+    tag: 'tag:yaml.org,2002:seq',
+    resolve(seq, onError) {
+        if (!isSeq(seq))
+            onError('Expected a sequence for this tag');
+        return seq;
+    }
+};const string = {
+    identify: value => typeof value === 'string',
+    default: true,
+    tag: 'tag:yaml.org,2002:str',
+    resolve: str => str,
+    stringify(item, ctx, onComment, onChompKeep) {
+        ctx = Object.assign({ actualString: true }, ctx);
+        return stringifyString(item, ctx, onComment, onChompKeep);
+    }
+};const nullTag = {
+    identify: value => value == null,
+    createNode: () => new Scalar(null),
+    default: true,
+    tag: 'tag:yaml.org,2002:null',
+    test: /^(?:~|[Nn]ull|NULL)?$/,
+    resolve: () => new Scalar(null),
+    stringify: ({ source }, ctx) => typeof source === 'string' && nullTag.test.test(source)
+        ? source
+        : ctx.options.nullStr
+};const boolTag = {
+    identify: value => typeof value === 'boolean',
+    default: true,
+    tag: 'tag:yaml.org,2002:bool',
+    test: /^(?:[Tt]rue|TRUE|[Ff]alse|FALSE)$/,
+    resolve: str => new Scalar(str[0] === 't' || str[0] === 'T'),
+    stringify({ source, value }, ctx) {
+        if (source && boolTag.test.test(source)) {
+            const sv = source[0] === 't' || source[0] === 'T';
+            if (value === sv)
+                return source;
+        }
+        return value ? ctx.options.trueStr : ctx.options.falseStr;
+    }
+};function stringifyNumber({ format, minFractionDigits, tag, value }) {
+    if (typeof value === 'bigint')
+        return String(value);
+    const num = typeof value === 'number' ? value : Number(value);
+    if (!isFinite(num))
+        return isNaN(num) ? '.nan' : num < 0 ? '-.inf' : '.inf';
+    let n = JSON.stringify(value);
+    if (!format &&
+        minFractionDigits &&
+        (!tag || tag === 'tag:yaml.org,2002:float') &&
+        /^\d/.test(n)) {
+        let i = n.indexOf('.');
+        if (i < 0) {
+            i = n.length;
+            n += '.';
+        }
+        let d = minFractionDigits - (n.length - i - 1);
+        while (d-- > 0)
+            n += '0';
+    }
+    return n;
+}const floatNaN$1 = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    test: /^(?:[-+]?\.(?:inf|Inf|INF|nan|NaN|NAN))$/,
+    resolve: str => str.slice(-3).toLowerCase() === 'nan'
+        ? NaN
+        : str[0] === '-'
+            ? Number.NEGATIVE_INFINITY
+            : Number.POSITIVE_INFINITY,
+    stringify: stringifyNumber
+};
+const floatExp$1 = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    format: 'EXP',
+    test: /^[-+]?(?:\.[0-9]+|[0-9]+(?:\.[0-9]*)?)[eE][-+]?[0-9]+$/,
+    resolve: str => parseFloat(str),
+    stringify(node) {
+        const num = Number(node.value);
+        return isFinite(num) ? num.toExponential() : stringifyNumber(node);
+    }
+};
+const float$1 = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    test: /^[-+]?(?:\.[0-9]+|[0-9]+\.[0-9]*)$/,
+    resolve(str) {
+        const node = new Scalar(parseFloat(str));
+        const dot = str.indexOf('.');
+        if (dot !== -1 && str[str.length - 1] === '0')
+            node.minFractionDigits = str.length - dot - 1;
+        return node;
+    },
+    stringify: stringifyNumber
+};const intIdentify$2 = (value) => typeof value === 'bigint' || Number.isInteger(value);
+const intResolve$1 = (str, offset, radix, { intAsBigInt }) => (intAsBigInt ? BigInt(str) : parseInt(str.substring(offset), radix));
+function intStringify$1(node, radix, prefix) {
+    const { value } = node;
+    if (intIdentify$2(value) && value >= 0)
+        return prefix + value.toString(radix);
+    return stringifyNumber(node);
+}
+const intOct$1 = {
+    identify: value => intIdentify$2(value) && value >= 0,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    format: 'OCT',
+    test: /^0o[0-7]+$/,
+    resolve: (str, _onError, opt) => intResolve$1(str, 2, 8, opt),
+    stringify: node => intStringify$1(node, 8, '0o')
+};
+const int$1 = {
+    identify: intIdentify$2,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    test: /^[-+]?[0-9]+$/,
+    resolve: (str, _onError, opt) => intResolve$1(str, 0, 10, opt),
+    stringify: stringifyNumber
+};
+const intHex$1 = {
+    identify: value => intIdentify$2(value) && value >= 0,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    format: 'HEX',
+    test: /^0x[0-9a-fA-F]+$/,
+    resolve: (str, _onError, opt) => intResolve$1(str, 2, 16, opt),
+    stringify: node => intStringify$1(node, 16, '0x')
+};const schema$2 = [
+    map,
+    seq,
+    string,
+    nullTag,
+    boolTag,
+    intOct$1,
+    int$1,
+    intHex$1,
+    floatNaN$1,
+    floatExp$1,
+    float$1
+];function intIdentify$1(value) {
+    return typeof value === 'bigint' || Number.isInteger(value);
+}
+const stringifyJSON = ({ value }) => JSON.stringify(value);
+const jsonScalars = [
+    {
+        identify: value => typeof value === 'string',
+        default: true,
+        tag: 'tag:yaml.org,2002:str',
+        resolve: str => str,
+        stringify: stringifyJSON
+    },
+    {
+        identify: value => value == null,
+        createNode: () => new Scalar(null),
+        default: true,
+        tag: 'tag:yaml.org,2002:null',
+        test: /^null$/,
+        resolve: () => null,
+        stringify: stringifyJSON
+    },
+    {
+        identify: value => typeof value === 'boolean',
+        default: true,
+        tag: 'tag:yaml.org,2002:bool',
+        test: /^true|false$/,
+        resolve: str => str === 'true',
+        stringify: stringifyJSON
+    },
+    {
+        identify: intIdentify$1,
+        default: true,
+        tag: 'tag:yaml.org,2002:int',
+        test: /^-?(?:0|[1-9][0-9]*)$/,
+        resolve: (str, _onError, { intAsBigInt }) => intAsBigInt ? BigInt(str) : parseInt(str, 10),
+        stringify: ({ value }) => intIdentify$1(value) ? value.toString() : JSON.stringify(value)
+    },
+    {
+        identify: value => typeof value === 'number',
+        default: true,
+        tag: 'tag:yaml.org,2002:float',
+        test: /^-?(?:0|[1-9][0-9]*)(?:\.[0-9]*)?(?:[eE][-+]?[0-9]+)?$/,
+        resolve: str => parseFloat(str),
+        stringify: stringifyJSON
+    }
+];
+const jsonError = {
+    default: true,
+    tag: '',
+    test: /^/,
+    resolve(str, onError) {
+        onError(`Unresolved plain scalar ${JSON.stringify(str)}`);
+        return str;
+    }
+};
+const schema$1 = [map, seq].concat(jsonScalars, jsonError);const binary = {
+    identify: value => value instanceof Uint8Array,
+    default: false,
+    tag: 'tag:yaml.org,2002:binary',
+    /**
+     * Returns a Buffer in node and an Uint8Array in browsers
+     *
+     * To use the resulting buffer as an image, you'll want to do something like:
+     *
+     *   const blob = new Blob([buffer], { type: 'image/jpeg' })
+     *   document.querySelector('#photo').src = URL.createObjectURL(blob)
+     */
+    resolve(src, onError) {
+        if (typeof Buffer === 'function') {
+            return Buffer.from(src, 'base64');
+        }
+        else if (typeof atob === 'function') {
+            // On IE 11, atob() can't handle newlines
+            const str = atob(src.replace(/[\n\r]/g, ''));
+            const buffer = new Uint8Array(str.length);
+            for (let i = 0; i < str.length; ++i)
+                buffer[i] = str.charCodeAt(i);
+            return buffer;
+        }
+        else {
+            onError('This environment does not support reading binary tags; either Buffer or atob is required');
+            return src;
+        }
+    },
+    stringify({ comment, type, value }, ctx, onComment, onChompKeep) {
+        const buf = value; // checked earlier by binary.identify()
+        let str;
+        if (typeof Buffer === 'function') {
+            str =
+                buf instanceof Buffer
+                    ? buf.toString('base64')
+                    : Buffer.from(buf.buffer).toString('base64');
+        }
+        else if (typeof btoa === 'function') {
+            let s = '';
+            for (let i = 0; i < buf.length; ++i)
+                s += String.fromCharCode(buf[i]);
+            str = btoa(s);
+        }
+        else {
+            throw new Error('This environment does not support writing binary tags; either Buffer or btoa is required');
+        }
+        if (!type)
+            type = Scalar.BLOCK_LITERAL;
+        if (type !== Scalar.QUOTE_DOUBLE) {
+            const lineWidth = Math.max(ctx.options.lineWidth - ctx.indent.length, ctx.options.minContentWidth);
+            const n = Math.ceil(str.length / lineWidth);
+            const lines = new Array(n);
+            for (let i = 0, o = 0; i < n; ++i, o += lineWidth) {
+                lines[i] = str.substr(o, lineWidth);
+            }
+            str = lines.join(type === Scalar.BLOCK_LITERAL ? '\n' : ' ');
+        }
+        return stringifyString({ comment, type, value: str }, ctx, onComment, onChompKeep);
+    }
+};function resolvePairs(seq, onError) {
+    if (isSeq(seq)) {
+        for (let i = 0; i < seq.items.length; ++i) {
+            let item = seq.items[i];
+            if (isPair(item))
+                continue;
+            else if (isMap(item)) {
+                if (item.items.length > 1)
+                    onError('Each pair must have its own sequence indicator');
+                const pair = item.items[0] || new Pair(new Scalar(null));
+                if (item.commentBefore)
+                    pair.key.commentBefore = pair.key.commentBefore
+                        ? `${item.commentBefore}\n${pair.key.commentBefore}`
+                        : item.commentBefore;
+                if (item.comment) {
+                    const cn = pair.value ?? pair.key;
+                    cn.comment = cn.comment
+                        ? `${item.comment}\n${cn.comment}`
+                        : item.comment;
+                }
+                item = pair;
+            }
+            seq.items[i] = isPair(item) ? item : new Pair(item);
+        }
+    }
+    else
+        onError('Expected a sequence for this tag');
+    return seq;
+}
+function createPairs(schema, iterable, ctx) {
+    const { replacer } = ctx;
+    const pairs = new YAMLSeq(schema);
+    pairs.tag = 'tag:yaml.org,2002:pairs';
+    let i = 0;
+    if (iterable && Symbol.iterator in Object(iterable))
+        for (let it of iterable) {
+            if (typeof replacer === 'function')
+                it = replacer.call(iterable, String(i++), it);
+            let key, value;
+            if (Array.isArray(it)) {
+                if (it.length === 2) {
+                    key = it[0];
+                    value = it[1];
+                }
+                else
+                    throw new TypeError(`Expected [key, value] tuple: ${it}`);
+            }
+            else if (it && it instanceof Object) {
+                const keys = Object.keys(it);
+                if (keys.length === 1) {
+                    key = keys[0];
+                    value = it[key];
+                }
+                else
+                    throw new TypeError(`Expected { key: value } tuple: ${it}`);
+            }
+            else {
+                key = it;
+            }
+            pairs.items.push(createPair(key, value, ctx));
+        }
+    return pairs;
+}
+const pairs = {
+    collection: 'seq',
+    default: false,
+    tag: 'tag:yaml.org,2002:pairs',
+    resolve: resolvePairs,
+    createNode: createPairs
+};class YAMLOMap extends YAMLSeq {
+    constructor() {
+        super();
+        this.add = YAMLMap.prototype.add.bind(this);
+        this.delete = YAMLMap.prototype.delete.bind(this);
+        this.get = YAMLMap.prototype.get.bind(this);
+        this.has = YAMLMap.prototype.has.bind(this);
+        this.set = YAMLMap.prototype.set.bind(this);
+        this.tag = YAMLOMap.tag;
+    }
+    /**
+     * If `ctx` is given, the return type is actually `Map<unknown, unknown>`,
+     * but TypeScript won't allow widening the signature of a child method.
+     */
+    toJSON(_, ctx) {
+        if (!ctx)
+            return super.toJSON(_);
+        const map = new Map();
+        if (ctx?.onCreate)
+            ctx.onCreate(map);
+        for (const pair of this.items) {
+            let key, value;
+            if (isPair(pair)) {
+                key = toJS(pair.key, '', ctx);
+                value = toJS(pair.value, key, ctx);
+            }
+            else {
+                key = toJS(pair, '', ctx);
+            }
+            if (map.has(key))
+                throw new Error('Ordered maps must not include duplicate keys');
+            map.set(key, value);
+        }
+        return map;
+    }
+}
+YAMLOMap.tag = 'tag:yaml.org,2002:omap';
+const omap = {
+    collection: 'seq',
+    identify: value => value instanceof Map,
+    nodeClass: YAMLOMap,
+    default: false,
+    tag: 'tag:yaml.org,2002:omap',
+    resolve(seq, onError) {
+        const pairs = resolvePairs(seq, onError);
+        const seenKeys = [];
+        for (const { key } of pairs.items) {
+            if (isScalar$1(key)) {
+                if (seenKeys.includes(key.value)) {
+                    onError(`Ordered maps must not include duplicate keys: ${key.value}`);
+                }
+                else {
+                    seenKeys.push(key.value);
+                }
+            }
+        }
+        return Object.assign(new YAMLOMap(), pairs);
+    },
+    createNode(schema, iterable, ctx) {
+        const pairs = createPairs(schema, iterable, ctx);
+        const omap = new YAMLOMap();
+        omap.items = pairs.items;
+        return omap;
+    }
+};function boolStringify({ value, source }, ctx) {
+    const boolObj = value ? trueTag : falseTag;
+    if (source && boolObj.test.test(source))
+        return source;
+    return value ? ctx.options.trueStr : ctx.options.falseStr;
+}
+const trueTag = {
+    identify: value => value === true,
+    default: true,
+    tag: 'tag:yaml.org,2002:bool',
+    test: /^(?:Y|y|[Yy]es|YES|[Tt]rue|TRUE|[Oo]n|ON)$/,
+    resolve: () => new Scalar(true),
+    stringify: boolStringify
+};
+const falseTag = {
+    identify: value => value === false,
+    default: true,
+    tag: 'tag:yaml.org,2002:bool',
+    test: /^(?:N|n|[Nn]o|NO|[Ff]alse|FALSE|[Oo]ff|OFF)$/i,
+    resolve: () => new Scalar(false),
+    stringify: boolStringify
+};const floatNaN = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    test: /^[-+]?\.(?:inf|Inf|INF|nan|NaN|NAN)$/,
+    resolve: (str) => str.slice(-3).toLowerCase() === 'nan'
+        ? NaN
+        : str[0] === '-'
+            ? Number.NEGATIVE_INFINITY
+            : Number.POSITIVE_INFINITY,
+    stringify: stringifyNumber
+};
+const floatExp = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    format: 'EXP',
+    test: /^[-+]?(?:[0-9][0-9_]*)?(?:\.[0-9_]*)?[eE][-+]?[0-9]+$/,
+    resolve: (str) => parseFloat(str.replace(/_/g, '')),
+    stringify(node) {
+        const num = Number(node.value);
+        return isFinite(num) ? num.toExponential() : stringifyNumber(node);
+    }
+};
+const float = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    test: /^[-+]?(?:[0-9][0-9_]*)?\.[0-9_]*$/,
+    resolve(str) {
+        const node = new Scalar(parseFloat(str.replace(/_/g, '')));
+        const dot = str.indexOf('.');
+        if (dot !== -1) {
+            const f = str.substring(dot + 1).replace(/_/g, '');
+            if (f[f.length - 1] === '0')
+                node.minFractionDigits = f.length;
+        }
+        return node;
+    },
+    stringify: stringifyNumber
+};const intIdentify = (value) => typeof value === 'bigint' || Number.isInteger(value);
+function intResolve(str, offset, radix, { intAsBigInt }) {
+    const sign = str[0];
+    if (sign === '-' || sign === '+')
+        offset += 1;
+    str = str.substring(offset).replace(/_/g, '');
+    if (intAsBigInt) {
+        switch (radix) {
+            case 2:
+                str = `0b${str}`;
+                break;
+            case 8:
+                str = `0o${str}`;
+                break;
+            case 16:
+                str = `0x${str}`;
+                break;
+        }
+        const n = BigInt(str);
+        return sign === '-' ? BigInt(-1) * n : n;
+    }
+    const n = parseInt(str, radix);
+    return sign === '-' ? -1 * n : n;
+}
+function intStringify(node, radix, prefix) {
+    const { value } = node;
+    if (intIdentify(value)) {
+        const str = value.toString(radix);
+        return value < 0 ? '-' + prefix + str.substr(1) : prefix + str;
+    }
+    return stringifyNumber(node);
+}
+const intBin = {
+    identify: intIdentify,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    format: 'BIN',
+    test: /^[-+]?0b[0-1_]+$/,
+    resolve: (str, _onError, opt) => intResolve(str, 2, 2, opt),
+    stringify: node => intStringify(node, 2, '0b')
+};
+const intOct = {
+    identify: intIdentify,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    format: 'OCT',
+    test: /^[-+]?0[0-7_]+$/,
+    resolve: (str, _onError, opt) => intResolve(str, 1, 8, opt),
+    stringify: node => intStringify(node, 8, '0')
+};
+const int = {
+    identify: intIdentify,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    test: /^[-+]?[0-9][0-9_]*$/,
+    resolve: (str, _onError, opt) => intResolve(str, 0, 10, opt),
+    stringify: stringifyNumber
+};
+const intHex = {
+    identify: intIdentify,
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    format: 'HEX',
+    test: /^[-+]?0x[0-9a-fA-F_]+$/,
+    resolve: (str, _onError, opt) => intResolve(str, 2, 16, opt),
+    stringify: node => intStringify(node, 16, '0x')
+};class YAMLSet extends YAMLMap {
+    constructor(schema) {
+        super(schema);
+        this.tag = YAMLSet.tag;
+    }
+    add(key) {
+        let pair;
+        if (isPair(key))
+            pair = key;
+        else if (key &&
+            typeof key === 'object' &&
+            'key' in key &&
+            'value' in key &&
+            key.value === null)
+            pair = new Pair(key.key, null);
+        else
+            pair = new Pair(key, null);
+        const prev = findPair(this.items, pair.key);
+        if (!prev)
+            this.items.push(pair);
+    }
+    /**
+     * If `keepPair` is `true`, returns the Pair matching `key`.
+     * Otherwise, returns the value of that Pair's key.
+     */
+    get(key, keepPair) {
+        const pair = findPair(this.items, key);
+        return !keepPair && isPair(pair)
+            ? isScalar$1(pair.key)
+                ? pair.key.value
+                : pair.key
+            : pair;
+    }
+    set(key, value) {
+        if (typeof value !== 'boolean')
+            throw new Error(`Expected boolean value for set(key, value) in a YAML set, not ${typeof value}`);
+        const prev = findPair(this.items, key);
+        if (prev && !value) {
+            this.items.splice(this.items.indexOf(prev), 1);
+        }
+        else if (!prev && value) {
+            this.items.push(new Pair(key));
+        }
+    }
+    toJSON(_, ctx) {
+        return super.toJSON(_, ctx, Set);
+    }
+    toString(ctx, onComment, onChompKeep) {
+        if (!ctx)
+            return JSON.stringify(this);
+        if (this.hasAllNullValues(true))
+            return super.toString(Object.assign({}, ctx, { allNullValues: true }), onComment, onChompKeep);
+        else
+            throw new Error('Set items must all have null values');
+    }
+}
+YAMLSet.tag = 'tag:yaml.org,2002:set';
+const set = {
+    collection: 'map',
+    identify: value => value instanceof Set,
+    nodeClass: YAMLSet,
+    default: false,
+    tag: 'tag:yaml.org,2002:set',
+    resolve(map, onError) {
+        if (isMap(map)) {
+            if (map.hasAllNullValues(true))
+                return Object.assign(new YAMLSet(), map);
+            else
+                onError('Set items must all have null values');
+        }
+        else
+            onError('Expected a mapping for this tag');
+        return map;
+    },
+    createNode(schema, iterable, ctx) {
+        const { replacer } = ctx;
+        const set = new YAMLSet(schema);
+        if (iterable && Symbol.iterator in Object(iterable))
+            for (let value of iterable) {
+                if (typeof replacer === 'function')
+                    value = replacer.call(iterable, value, value);
+                set.items.push(createPair(value, null, ctx));
+            }
+        return set;
+    }
+};/** Internal types handle bigint as number, because TS can't figure it out. */
+function parseSexagesimal(str, asBigInt) {
+    const sign = str[0];
+    const parts = sign === '-' || sign === '+' ? str.substring(1) : str;
+    const num = (n) => asBigInt ? BigInt(n) : Number(n);
+    const res = parts
+        .replace(/_/g, '')
+        .split(':')
+        .reduce((res, p) => res * num(60) + num(p), num(0));
+    return (sign === '-' ? num(-1) * res : res);
+}
+/**
+ * hhhh:mm:ss.sss
+ *
+ * Internal types handle bigint as number, because TS can't figure it out.
+ */
+function stringifySexagesimal(node) {
+    let { value } = node;
+    let num = (n) => n;
+    if (typeof value === 'bigint')
+        num = n => BigInt(n);
+    else if (isNaN(value) || !isFinite(value))
+        return stringifyNumber(node);
+    let sign = '';
+    if (value < 0) {
+        sign = '-';
+        value *= num(-1);
+    }
+    const _60 = num(60);
+    const parts = [value % _60]; // seconds, including ms
+    if (value < 60) {
+        parts.unshift(0); // at least one : is required
+    }
+    else {
+        value = (value - parts[0]) / _60;
+        parts.unshift(value % _60); // minutes
+        if (value >= 60) {
+            value = (value - parts[0]) / _60;
+            parts.unshift(value); // hours
+        }
+    }
+    return (sign +
+        parts
+            .map(n => (n < 10 ? '0' + String(n) : String(n)))
+            .join(':')
+            .replace(/000000\d*$/, '') // % 60 may introduce error
+    );
+}
+const intTime = {
+    identify: value => typeof value === 'bigint' || Number.isInteger(value),
+    default: true,
+    tag: 'tag:yaml.org,2002:int',
+    format: 'TIME',
+    test: /^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+$/,
+    resolve: (str, _onError, { intAsBigInt }) => parseSexagesimal(str, intAsBigInt),
+    stringify: stringifySexagesimal
+};
+const floatTime = {
+    identify: value => typeof value === 'number',
+    default: true,
+    tag: 'tag:yaml.org,2002:float',
+    format: 'TIME',
+    test: /^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\.[0-9_]*$/,
+    resolve: str => parseSexagesimal(str, false),
+    stringify: stringifySexagesimal
+};
+const timestamp = {
+    identify: value => value instanceof Date,
+    default: true,
+    tag: 'tag:yaml.org,2002:timestamp',
+    // If the time zone is omitted, the timestamp is assumed to be specified in UTC. The time part
+    // may be omitted altogether, resulting in a date format. In such a case, the time part is
+    // assumed to be 00:00:00Z (start of day, UTC).
+    test: RegExp('^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})' + // YYYY-Mm-Dd
+        '(?:' + // time is optional
+        '(?:t|T|[ \\t]+)' + // t | T | whitespace
+        '([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}(\\.[0-9]+)?)' + // Hh:Mm:Ss(.ss)?
+        '(?:[ \\t]*(Z|[-+][012]?[0-9](?::[0-9]{2})?))?' + // Z | +5 | -03:30
+        ')?$'),
+    resolve(str) {
+        const match = str.match(timestamp.test);
+        if (!match)
+            throw new Error('!!timestamp expects a date, starting with yyyy-mm-dd');
+        const [, year, month, day, hour, minute, second] = match.map(Number);
+        const millisec = match[7] ? Number((match[7] + '00').substr(1, 3)) : 0;
+        let date = Date.UTC(year, month - 1, day, hour || 0, minute || 0, second || 0, millisec);
+        const tz = match[8];
+        if (tz && tz !== 'Z') {
+            let d = parseSexagesimal(tz, false);
+            if (Math.abs(d) < 30)
+                d *= 60;
+            date -= 60000 * d;
+        }
+        return new Date(date);
+    },
+    stringify: ({ value }) => value.toISOString().replace(/((T00:00)?:00)?\.000Z$/, '')
+};const schema = [
+    map,
+    seq,
+    string,
+    nullTag,
+    trueTag,
+    falseTag,
+    intBin,
+    intOct,
+    int,
+    intHex,
+    floatNaN,
+    floatExp,
+    float,
+    binary,
+    omap,
+    pairs,
+    set,
+    intTime,
+    floatTime,
+    timestamp
+];const schemas = new Map([
+    ['core', schema$2],
+    ['failsafe', [map, seq, string]],
+    ['json', schema$1],
+    ['yaml11', schema],
+    ['yaml-1.1', schema]
+]);
+const tagsByName = {
+    binary,
+    bool: boolTag,
+    float: float$1,
+    floatExp: floatExp$1,
+    floatNaN: floatNaN$1,
+    floatTime,
+    int: int$1,
+    intHex: intHex$1,
+    intOct: intOct$1,
+    intTime,
+    map,
+    null: nullTag,
+    omap,
+    pairs,
+    seq,
+    set,
+    timestamp
+};
+const coreKnownTags = {
+    'tag:yaml.org,2002:binary': binary,
+    'tag:yaml.org,2002:omap': omap,
+    'tag:yaml.org,2002:pairs': pairs,
+    'tag:yaml.org,2002:set': set,
+    'tag:yaml.org,2002:timestamp': timestamp
+};
+function getTags(customTags, schemaName) {
+    let tags = schemas.get(schemaName);
+    if (!tags) {
+        if (Array.isArray(customTags))
+            tags = [];
+        else {
+            const keys = Array.from(schemas.keys())
+                .filter(key => key !== 'yaml11')
+                .map(key => JSON.stringify(key))
+                .join(', ');
+            throw new Error(`Unknown schema "${schemaName}"; use one of ${keys} or define customTags array`);
+        }
+    }
+    if (Array.isArray(customTags)) {
+        for (const tag of customTags)
+            tags = tags.concat(tag);
+    }
+    else if (typeof customTags === 'function') {
+        tags = customTags(tags.slice());
+    }
+    return tags.map(tag => {
+        if (typeof tag !== 'string')
+            return tag;
+        const tagObj = tagsByName[tag];
+        if (tagObj)
+            return tagObj;
+        const keys = Object.keys(tagsByName)
+            .map(key => JSON.stringify(key))
+            .join(', ');
+        throw new Error(`Unknown custom tag "${tag}"; use one of ${keys}`);
+    });
+}const sortMapEntriesByKey = (a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
+class Schema {
+    constructor({ compat, customTags, merge, resolveKnownTags, schema, sortMapEntries, toStringDefaults }) {
+        this.compat = Array.isArray(compat)
+            ? getTags(compat, 'compat')
+            : compat
+                ? getTags(null, compat)
+                : null;
+        this.merge = !!merge;
+        this.name = (typeof schema === 'string' && schema) || 'core';
+        this.knownTags = resolveKnownTags ? coreKnownTags : {};
+        this.tags = getTags(customTags, this.name);
+        this.toStringOptions = toStringDefaults ?? null;
+        Object.defineProperty(this, MAP, { value: map });
+        Object.defineProperty(this, SCALAR$1, { value: string });
+        Object.defineProperty(this, SEQ, { value: seq });
+        // Used by createMap()
+        this.sortMapEntries =
+            typeof sortMapEntries === 'function'
+                ? sortMapEntries
+                : sortMapEntries === true
+                    ? sortMapEntriesByKey
+                    : null;
+    }
+    clone() {
+        const copy = Object.create(Schema.prototype, Object.getOwnPropertyDescriptors(this));
+        copy.tags = this.tags.slice();
+        return copy;
+    }
+}function stringifyDocument(doc, options) {
+    const lines = [];
+    let hasDirectives = options.directives === true;
+    if (options.directives !== false && doc.directives) {
+        const dir = doc.directives.toString(doc);
+        if (dir) {
+            lines.push(dir);
+            hasDirectives = true;
+        }
+        else if (doc.directives.docStart)
+            hasDirectives = true;
+    }
+    if (hasDirectives)
+        lines.push('---');
+    const ctx = createStringifyContext(doc, options);
+    const { commentString } = ctx.options;
+    if (doc.commentBefore) {
+        if (lines.length !== 1)
+            lines.unshift('');
+        const cs = commentString(doc.commentBefore);
+        lines.unshift(indentComment(cs, ''));
+    }
+    let chompKeep = false;
+    let contentComment = null;
+    if (doc.contents) {
+        if (isNode(doc.contents)) {
+            if (doc.contents.spaceBefore && hasDirectives)
+                lines.push('');
+            if (doc.contents.commentBefore) {
+                const cs = commentString(doc.contents.commentBefore);
+                lines.push(indentComment(cs, ''));
+            }
+            // top-level block scalars need to be indented if followed by a comment
+            ctx.forceBlockIndent = !!doc.comment;
+            contentComment = doc.contents.comment;
+        }
+        const onChompKeep = contentComment ? undefined : () => (chompKeep = true);
+        let body = stringify$2(doc.contents, ctx, () => (contentComment = null), onChompKeep);
+        if (contentComment)
+            body += lineComment(body, '', commentString(contentComment));
+        if ((body[0] === '|' || body[0] === '>') &&
+            lines[lines.length - 1] === '---') {
+            // Top-level block scalars with a preceding doc marker ought to use the
+            // same line for their header.
+            lines[lines.length - 1] = `--- ${body}`;
+        }
+        else
+            lines.push(body);
+    }
+    else {
+        lines.push(stringify$2(doc.contents, ctx));
+    }
+    if (doc.directives?.docEnd) {
+        if (doc.comment) {
+            const cs = commentString(doc.comment);
+            if (cs.includes('\n')) {
+                lines.push('...');
+                lines.push(indentComment(cs, ''));
+            }
+            else {
+                lines.push(`... ${cs}`);
+            }
+        }
+        else {
+            lines.push('...');
+        }
+    }
+    else {
+        let dc = doc.comment;
+        if (dc && chompKeep)
+            dc = dc.replace(/^\n+/, '');
+        if (dc) {
+            if ((!chompKeep || contentComment) && lines[lines.length - 1] !== '')
+                lines.push('');
+            lines.push(indentComment(commentString(dc), ''));
+        }
+    }
+    return lines.join('\n') + '\n';
+}/**
+ * Applies the JSON.parse reviver algorithm as defined in the ECMA-262 spec,
+ * in section 24.5.1.1 "Runtime Semantics: InternalizeJSONProperty" of the
+ * 2021 edition: https://tc39.es/ecma262/#sec-json.parse
+ *
+ * Includes extensions for handling Map and Set objects.
+ */
+function applyReviver(reviver, obj, key, val) {
+    if (val && typeof val === 'object') {
+        if (Array.isArray(val)) {
+            for (let i = 0, len = val.length; i < len; ++i) {
+                const v0 = val[i];
+                const v1 = applyReviver(reviver, val, String(i), v0);
+                if (v1 === undefined)
+                    delete val[i];
+                else if (v1 !== v0)
+                    val[i] = v1;
+            }
+        }
+        else if (val instanceof Map) {
+            for (const k of Array.from(val.keys())) {
+                const v0 = val.get(k);
+                const v1 = applyReviver(reviver, val, k, v0);
+                if (v1 === undefined)
+                    val.delete(k);
+                else if (v1 !== v0)
+                    val.set(k, v1);
+            }
+        }
+        else if (val instanceof Set) {
+            for (const v0 of Array.from(val)) {
+                const v1 = applyReviver(reviver, val, v0, v0);
+                if (v1 === undefined)
+                    val.delete(v0);
+                else if (v1 !== v0) {
+                    val.delete(v0);
+                    val.add(v1);
+                }
+            }
+        }
+        else {
+            for (const [k, v0] of Object.entries(val)) {
+                const v1 = applyReviver(reviver, val, k, v0);
+                if (v1 === undefined)
+                    delete val[k];
+                else if (v1 !== v0)
+                    val[k] = v1;
+            }
+        }
+    }
+    return reviver.call(obj, key, val);
+}class Document {
+    constructor(value, replacer, options) {
+        /** A comment before this Document */
+        this.commentBefore = null;
+        /** A comment immediately after this Document */
+        this.comment = null;
+        /** Errors encountered during parsing. */
+        this.errors = [];
+        /** Warnings encountered during parsing. */
+        this.warnings = [];
+        Object.defineProperty(this, NODE_TYPE, { value: DOC });
+        let _replacer = null;
+        if (typeof replacer === 'function' || Array.isArray(replacer)) {
+            _replacer = replacer;
+        }
+        else if (options === undefined && replacer) {
+            options = replacer;
+            replacer = undefined;
+        }
+        const opt = Object.assign({
+            intAsBigInt: false,
+            keepSourceTokens: false,
+            logLevel: 'warn',
+            prettyErrors: true,
+            strict: true,
+            uniqueKeys: true,
+            version: '1.2'
+        }, options);
+        this.options = opt;
+        let { version } = opt;
+        if (options?._directives) {
+            this.directives = options._directives.atDocument();
+            if (this.directives.yaml.explicit)
+                version = this.directives.yaml.version;
+        }
+        else
+            this.directives = new Directives({ version });
+        this.setSchema(version, options);
+        if (value === undefined)
+            this.contents = null;
+        else {
+            this.contents = this.createNode(value, _replacer, options);
+        }
+    }
+    /**
+     * Create a deep copy of this Document and its contents.
+     *
+     * Custom Node values that inherit from `Object` still refer to their original instances.
+     */
+    clone() {
+        const copy = Object.create(Document.prototype, {
+            [NODE_TYPE]: { value: DOC }
+        });
+        copy.commentBefore = this.commentBefore;
+        copy.comment = this.comment;
+        copy.errors = this.errors.slice();
+        copy.warnings = this.warnings.slice();
+        copy.options = Object.assign({}, this.options);
+        if (this.directives)
+            copy.directives = this.directives.clone();
+        copy.schema = this.schema.clone();
+        copy.contents = isNode(this.contents)
+            ? this.contents.clone(copy.schema)
+            : this.contents;
+        if (this.range)
+            copy.range = this.range.slice();
+        return copy;
+    }
+    /** Adds a value to the document. */
+    add(value) {
+        if (assertCollection(this.contents))
+            this.contents.add(value);
+    }
+    /** Adds a value to the document. */
+    addIn(path, value) {
+        if (assertCollection(this.contents))
+            this.contents.addIn(path, value);
+    }
+    /**
+     * Create a new `Alias` node, ensuring that the target `node` has the required anchor.
+     *
+     * If `node` already has an anchor, `name` is ignored.
+     * Otherwise, the `node.anchor` value will be set to `name`,
+     * or if an anchor with that name is already present in the document,
+     * `name` will be used as a prefix for a new unique anchor.
+     * If `name` is undefined, the generated anchor will use 'a' as a prefix.
+     */
+    createAlias(node, name) {
+        if (!node.anchor) {
+            const prev = anchorNames(this);
+            node.anchor =
+                // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+                !name || prev.has(name) ? findNewAnchor(name || 'a', prev) : name;
+        }
+        return new Alias(node.anchor);
+    }
+    createNode(value, replacer, options) {
+        let _replacer = undefined;
+        if (typeof replacer === 'function') {
+            value = replacer.call({ '': value }, '', value);
+            _replacer = replacer;
+        }
+        else if (Array.isArray(replacer)) {
+            const keyToStr = (v) => typeof v === 'number' || v instanceof String || v instanceof Number;
+            const asStr = replacer.filter(keyToStr).map(String);
+            if (asStr.length > 0)
+                replacer = replacer.concat(asStr);
+            _replacer = replacer;
+        }
+        else if (options === undefined && replacer) {
+            options = replacer;
+            replacer = undefined;
+        }
+        const { aliasDuplicateObjects, anchorPrefix, flow, keepUndefined, onTagObj, tag } = options ?? {};
+        const { onAnchor, setAnchors, sourceObjects } = createNodeAnchors(this, 
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+        anchorPrefix || 'a');
+        const ctx = {
+            aliasDuplicateObjects: aliasDuplicateObjects ?? true,
+            keepUndefined: keepUndefined ?? false,
+            onAnchor,
+            onTagObj,
+            replacer: _replacer,
+            schema: this.schema,
+            sourceObjects
+        };
+        const node = createNode(value, tag, ctx);
+        if (flow && isCollection$1(node))
+            node.flow = true;
+        setAnchors();
+        return node;
+    }
+    /**
+     * Convert a key and a value into a `Pair` using the current schema,
+     * recursively wrapping all values as `Scalar` or `Collection` nodes.
+     */
+    createPair(key, value, options = {}) {
+        const k = this.createNode(key, null, options);
+        const v = this.createNode(value, null, options);
+        return new Pair(k, v);
+    }
+    /**
+     * Removes a value from the document.
+     * @returns `true` if the item was found and removed.
+     */
+    delete(key) {
+        return assertCollection(this.contents) ? this.contents.delete(key) : false;
+    }
+    /**
+     * Removes a value from the document.
+     * @returns `true` if the item was found and removed.
+     */
+    deleteIn(path) {
+        if (isEmptyPath(path)) {
+            if (this.contents == null)
+                return false;
+            this.contents = null;
+            return true;
+        }
+        return assertCollection(this.contents)
+            ? this.contents.deleteIn(path)
+            : false;
+    }
+    /**
+     * Returns item at `key`, or `undefined` if not found. By default unwraps
+     * scalar values from their surrounding node; to disable set `keepScalar` to
+     * `true` (collections are always returned intact).
+     */
+    get(key, keepScalar) {
+        return isCollection$1(this.contents)
+            ? this.contents.get(key, keepScalar)
+            : undefined;
+    }
+    /**
+     * Returns item at `path`, or `undefined` if not found. By default unwraps
+     * scalar values from their surrounding node; to disable set `keepScalar` to
+     * `true` (collections are always returned intact).
+     */
+    getIn(path, keepScalar) {
+        if (isEmptyPath(path))
+            return !keepScalar && isScalar$1(this.contents)
+                ? this.contents.value
+                : this.contents;
+        return isCollection$1(this.contents)
+            ? this.contents.getIn(path, keepScalar)
+            : undefined;
+    }
+    /**
+     * Checks if the document includes a value with the key `key`.
+     */
+    has(key) {
+        return isCollection$1(this.contents) ? this.contents.has(key) : false;
+    }
+    /**
+     * Checks if the document includes a value at `path`.
+     */
+    hasIn(path) {
+        if (isEmptyPath(path))
+            return this.contents !== undefined;
+        return isCollection$1(this.contents) ? this.contents.hasIn(path) : false;
+    }
+    /**
+     * Sets a value in this document. For `!!set`, `value` needs to be a
+     * boolean to add/remove the item from the set.
+     */
+    set(key, value) {
+        if (this.contents == null) {
+            this.contents = collectionFromPath(this.schema, [key], value);
+        }
+        else if (assertCollection(this.contents)) {
+            this.contents.set(key, value);
+        }
+    }
+    /**
+     * Sets a value in this document. For `!!set`, `value` needs to be a
+     * boolean to add/remove the item from the set.
+     */
+    setIn(path, value) {
+        if (isEmptyPath(path))
+            this.contents = value;
+        else if (this.contents == null) {
+            this.contents = collectionFromPath(this.schema, Array.from(path), value);
+        }
+        else if (assertCollection(this.contents)) {
+            this.contents.setIn(path, value);
+        }
+    }
+    /**
+     * Change the YAML version and schema used by the document.
+     * A `null` version disables support for directives, explicit tags, anchors, and aliases.
+     * It also requires the `schema` option to be given as a `Schema` instance value.
+     *
+     * Overrides all previously set schema options.
+     */
+    setSchema(version, options = {}) {
+        if (typeof version === 'number')
+            version = String(version);
+        let opt;
+        switch (version) {
+            case '1.1':
+                if (this.directives)
+                    this.directives.yaml.version = '1.1';
+                else
+                    this.directives = new Directives({ version: '1.1' });
+                opt = { merge: true, resolveKnownTags: false, schema: 'yaml-1.1' };
+                break;
+            case '1.2':
+            case 'next':
+                if (this.directives)
+                    this.directives.yaml.version = version;
+                else
+                    this.directives = new Directives({ version });
+                opt = { merge: false, resolveKnownTags: true, schema: 'core' };
+                break;
+            case null:
+                if (this.directives)
+                    delete this.directives;
+                opt = null;
+                break;
+            default: {
+                const sv = JSON.stringify(version);
+                throw new Error(`Expected '1.1', '1.2' or null as first argument, but found: ${sv}`);
+            }
+        }
+        // Not using `instanceof Schema` to allow for duck typing
+        if (options.schema instanceof Object)
+            this.schema = options.schema;
+        else if (opt)
+            this.schema = new Schema(Object.assign(opt, options));
+        else
+            throw new Error(`With a null YAML version, the { schema: Schema } option is required`);
+    }
+    // json & jsonArg are only used from toJSON()
+    toJS({ json, jsonArg, mapAsMap, maxAliasCount, onAnchor, reviver } = {}) {
+        const ctx = {
+            anchors: new Map(),
+            doc: this,
+            keep: !json,
+            mapAsMap: mapAsMap === true,
+            mapKeyWarned: false,
+            maxAliasCount: typeof maxAliasCount === 'number' ? maxAliasCount : 100,
+            stringify: stringify$2
+        };
+        const res = toJS(this.contents, jsonArg ?? '', ctx);
+        if (typeof onAnchor === 'function')
+            for (const { count, res } of ctx.anchors.values())
+                onAnchor(res, count);
+        return typeof reviver === 'function'
+            ? applyReviver(reviver, { '': res }, '', res)
+            : res;
+    }
+    /**
+     * A JSON representation of the document `contents`.
+     *
+     * @param jsonArg Used by `JSON.stringify` to indicate the array index or
+     *   property name.
+     */
+    toJSON(jsonArg, onAnchor) {
+        return this.toJS({ json: true, jsonArg, mapAsMap: false, onAnchor });
+    }
+    /** A YAML representation of the document. */
+    toString(options = {}) {
+        if (this.errors.length > 0)
+            throw new Error('Document with errors cannot be stringified');
+        if ('indent' in options &&
+            (!Number.isInteger(options.indent) || Number(options.indent) <= 0)) {
+            const s = JSON.stringify(options.indent);
+            throw new Error(`"indent" option must be a positive integer, not ${s}`);
+        }
+        return stringifyDocument(this, options);
+    }
+}
+function assertCollection(contents) {
+    if (isCollection$1(contents))
+        return true;
+    throw new Error('Expected a YAML collection as document contents');
+}class YAMLError extends Error {
+    constructor(name, pos, code, message) {
+        super();
+        this.name = name;
+        this.code = code;
+        this.message = message;
+        this.pos = pos;
+    }
+}
+class YAMLParseError extends YAMLError {
+    constructor(pos, code, message) {
+        super('YAMLParseError', pos, code, message);
+    }
+}
+class YAMLWarning extends YAMLError {
+    constructor(pos, code, message) {
+        super('YAMLWarning', pos, code, message);
+    }
+}
+const prettifyError = (src, lc) => (error) => {
+    if (error.pos[0] === -1)
+        return;
+    error.linePos = error.pos.map(pos => lc.linePos(pos));
+    const { line, col } = error.linePos[0];
+    error.message += ` at line ${line}, column ${col}`;
+    let ci = col - 1;
+    let lineStr = src
+        .substring(lc.lineStarts[line - 1], lc.lineStarts[line])
+        .replace(/[\n\r]+$/, '');
+    // Trim to max 80 chars, keeping col position near the middle
+    if (ci >= 60 && lineStr.length > 80) {
+        const trimStart = Math.min(ci - 39, lineStr.length - 79);
+        lineStr = '…' + lineStr.substring(trimStart);
+        ci -= trimStart - 1;
+    }
+    if (lineStr.length > 80)
+        lineStr = lineStr.substring(0, 79) + '…';
+    // Include previous line in context if pointing at line start
+    if (line > 1 && /^ *$/.test(lineStr.substring(0, ci))) {
+        // Regexp won't match if start is trimmed
+        let prev = src.substring(lc.lineStarts[line - 2], lc.lineStarts[line - 1]);
+        if (prev.length > 80)
+            prev = prev.substring(0, 79) + '…\n';
+        lineStr = prev + lineStr;
+    }
+    if (/[^ ]/.test(lineStr)) {
+        let count = 1;
+        const end = error.linePos[1];
+        if (end && end.line === line && end.col > col) {
+            count = Math.min(end.col - col, 80 - ci);
+        }
+        const pointer = ' '.repeat(ci) + '^'.repeat(count);
+        error.message += `:\n\n${lineStr}\n${pointer}\n`;
+    }
+};function resolveProps(tokens, { flow, indicator, next, offset, onError, startOnNewline }) {
+    let spaceBefore = false;
+    let atNewline = startOnNewline;
+    let hasSpace = startOnNewline;
+    let comment = '';
+    let commentSep = '';
+    let hasNewline = false;
+    let hasNewlineAfterProp = false;
+    let reqSpace = false;
+    let anchor = null;
+    let tag = null;
+    let comma = null;
+    let found = null;
+    let start = null;
+    for (const token of tokens) {
+        if (reqSpace) {
+            if (token.type !== 'space' &&
+                token.type !== 'newline' &&
+                token.type !== 'comma')
+                onError(token.offset, 'MISSING_CHAR', 'Tags and anchors must be separated from the next token by white space');
+            reqSpace = false;
+        }
+        switch (token.type) {
+            case 'space':
+                // At the doc level, tabs at line start may be parsed
+                // as leading white space rather than indentation.
+                // In a flow collection, only the parser handles indent.
+                if (!flow &&
+                    atNewline &&
+                    indicator !== 'doc-start' &&
+                    token.source[0] === '\t')
+                    onError(token, 'TAB_AS_INDENT', 'Tabs are not allowed as indentation');
+                hasSpace = true;
+                break;
+            case 'comment': {
+                if (!hasSpace)
+                    onError(token, 'MISSING_CHAR', 'Comments must be separated from other tokens by white space characters');
+                const cb = token.source.substring(1) || ' ';
+                if (!comment)
+                    comment = cb;
+                else
+                    comment += commentSep + cb;
+                commentSep = '';
+                atNewline = false;
+                break;
+            }
+            case 'newline':
+                if (atNewline) {
+                    if (comment)
+                        comment += token.source;
+                    else
+                        spaceBefore = true;
+                }
+                else
+                    commentSep += token.source;
+                atNewline = true;
+                hasNewline = true;
+                if (anchor || tag)
+                    hasNewlineAfterProp = true;
+                hasSpace = true;
+                break;
+            case 'anchor':
+                if (anchor)
+                    onError(token, 'MULTIPLE_ANCHORS', 'A node can have at most one anchor');
+                if (token.source.endsWith(':'))
+                    onError(token.offset + token.source.length - 1, 'BAD_ALIAS', 'Anchor ending in : is ambiguous', true);
+                anchor = token;
+                if (start === null)
+                    start = token.offset;
+                atNewline = false;
+                hasSpace = false;
+                reqSpace = true;
+                break;
+            case 'tag': {
+                if (tag)
+                    onError(token, 'MULTIPLE_TAGS', 'A node can have at most one tag');
+                tag = token;
+                if (start === null)
+                    start = token.offset;
+                atNewline = false;
+                hasSpace = false;
+                reqSpace = true;
+                break;
+            }
+            case indicator:
+                // Could here handle preceding comments differently
+                if (anchor || tag)
+                    onError(token, 'BAD_PROP_ORDER', `Anchors and tags must be after the ${token.source} indicator`);
+                if (found)
+                    onError(token, 'UNEXPECTED_TOKEN', `Unexpected ${token.source} in ${flow ?? 'collection'}`);
+                found = token;
+                atNewline = false;
+                hasSpace = false;
+                break;
+            case 'comma':
+                if (flow) {
+                    if (comma)
+                        onError(token, 'UNEXPECTED_TOKEN', `Unexpected , in ${flow}`);
+                    comma = token;
+                    atNewline = false;
+                    hasSpace = false;
+                    break;
+                }
+            // else fallthrough
+            default:
+                onError(token, 'UNEXPECTED_TOKEN', `Unexpected ${token.type} token`);
+                atNewline = false;
+                hasSpace = false;
+        }
+    }
+    const last = tokens[tokens.length - 1];
+    const end = last ? last.offset + last.source.length : offset;
+    if (reqSpace &&
+        next &&
+        next.type !== 'space' &&
+        next.type !== 'newline' &&
+        next.type !== 'comma' &&
+        (next.type !== 'scalar' || next.source !== ''))
+        onError(next.offset, 'MISSING_CHAR', 'Tags and anchors must be separated from the next token by white space');
+    return {
+        comma,
+        found,
+        spaceBefore,
+        comment,
+        hasNewline,
+        hasNewlineAfterProp,
+        anchor,
+        tag,
+        end,
+        start: start ?? end
+    };
+}function containsNewline(key) {
+    if (!key)
+        return null;
+    switch (key.type) {
+        case 'alias':
+        case 'scalar':
+        case 'double-quoted-scalar':
+        case 'single-quoted-scalar':
+            if (key.source.includes('\n'))
+                return true;
+            if (key.end)
+                for (const st of key.end)
+                    if (st.type === 'newline')
+                        return true;
+            return false;
+        case 'flow-collection':
+            for (const it of key.items) {
+                for (const st of it.start)
+                    if (st.type === 'newline')
+                        return true;
+                if (it.sep)
+                    for (const st of it.sep)
+                        if (st.type === 'newline')
+                            return true;
+                if (containsNewline(it.key) || containsNewline(it.value))
+                    return true;
+            }
+            return false;
+        default:
+            return true;
+    }
+}function flowIndentCheck(indent, fc, onError) {
+    if (fc?.type === 'flow-collection') {
+        const end = fc.end[0];
+        if (end.indent === indent &&
+            (end.source === ']' || end.source === '}') &&
+            containsNewline(fc)) {
+            const msg = 'Flow end indicator should be more indented than parent';
+            onError(end, 'BAD_INDENT', msg, true);
+        }
+    }
+}function mapIncludes(ctx, items, search) {
+    const { uniqueKeys } = ctx.options;
+    if (uniqueKeys === false)
+        return false;
+    const isEqual = typeof uniqueKeys === 'function'
+        ? uniqueKeys
+        : (a, b) => a === b ||
+            (isScalar$1(a) &&
+                isScalar$1(b) &&
+                a.value === b.value &&
+                !(a.value === '<<' && ctx.schema.merge));
+    return items.some(pair => isEqual(pair.key, search));
+}const startColMsg = 'All mapping items must start at the same column';
+function resolveBlockMap({ composeNode, composeEmptyNode }, ctx, bm, onError) {
+    const map = new YAMLMap(ctx.schema);
+    if (ctx.atRoot)
+        ctx.atRoot = false;
+    let offset = bm.offset;
+    let commentEnd = null;
+    for (const collItem of bm.items) {
+        const { start, key, sep, value } = collItem;
+        // key properties
+        const keyProps = resolveProps(start, {
+            indicator: 'explicit-key-ind',
+            next: key ?? sep?.[0],
+            offset,
+            onError,
+            startOnNewline: true
+        });
+        const implicitKey = !keyProps.found;
+        if (implicitKey) {
+            if (key) {
+                if (key.type === 'block-seq')
+                    onError(offset, 'BLOCK_AS_IMPLICIT_KEY', 'A block sequence may not be used as an implicit map key');
+                else if ('indent' in key && key.indent !== bm.indent)
+                    onError(offset, 'BAD_INDENT', startColMsg);
+            }
+            if (!keyProps.anchor && !keyProps.tag && !sep) {
+                commentEnd = keyProps.end;
+                if (keyProps.comment) {
+                    if (map.comment)
+                        map.comment += '\n' + keyProps.comment;
+                    else
+                        map.comment = keyProps.comment;
+                }
+                continue;
+            }
+            if (keyProps.hasNewlineAfterProp || containsNewline(key)) {
+                onError(key ?? start[start.length - 1], 'MULTILINE_IMPLICIT_KEY', 'Implicit keys need to be on a single line');
+            }
+        }
+        else if (keyProps.found?.indent !== bm.indent) {
+            onError(offset, 'BAD_INDENT', startColMsg);
+        }
+        // key value
+        const keyStart = keyProps.end;
+        const keyNode = key
+            ? composeNode(ctx, key, keyProps, onError)
+            : composeEmptyNode(ctx, keyStart, start, null, keyProps, onError);
+        if (ctx.schema.compat)
+            flowIndentCheck(bm.indent, key, onError);
+        if (mapIncludes(ctx, map.items, keyNode))
+            onError(keyStart, 'DUPLICATE_KEY', 'Map keys must be unique');
+        // value properties
+        const valueProps = resolveProps(sep ?? [], {
+            indicator: 'map-value-ind',
+            next: value,
+            offset: keyNode.range[2],
+            onError,
+            startOnNewline: !key || key.type === 'block-scalar'
+        });
+        offset = valueProps.end;
+        if (valueProps.found) {
+            if (implicitKey) {
+                if (value?.type === 'block-map' && !valueProps.hasNewline)
+                    onError(offset, 'BLOCK_AS_IMPLICIT_KEY', 'Nested mappings are not allowed in compact mappings');
+                if (ctx.options.strict &&
+                    keyProps.start < valueProps.found.offset - 1024)
+                    onError(keyNode.range, 'KEY_OVER_1024_CHARS', 'The : indicator must be at most 1024 chars after the start of an implicit block mapping key');
+            }
+            // value value
+            const valueNode = value
+                ? composeNode(ctx, value, valueProps, onError)
+                : composeEmptyNode(ctx, offset, sep, null, valueProps, onError);
+            if (ctx.schema.compat)
+                flowIndentCheck(bm.indent, value, onError);
+            offset = valueNode.range[2];
+            const pair = new Pair(keyNode, valueNode);
+            if (ctx.options.keepSourceTokens)
+                pair.srcToken = collItem;
+            map.items.push(pair);
+        }
+        else {
+            // key with no value
+            if (implicitKey)
+                onError(keyNode.range, 'MISSING_CHAR', 'Implicit map keys need to be followed by map values');
+            if (valueProps.comment) {
+                if (keyNode.comment)
+                    keyNode.comment += '\n' + valueProps.comment;
+                else
+                    keyNode.comment = valueProps.comment;
+            }
+            const pair = new Pair(keyNode);
+            if (ctx.options.keepSourceTokens)
+                pair.srcToken = collItem;
+            map.items.push(pair);
+        }
+    }
+    if (commentEnd && commentEnd < offset)
+        onError(commentEnd, 'IMPOSSIBLE', 'Map comment with trailing content');
+    map.range = [bm.offset, offset, commentEnd ?? offset];
+    return map;
+}function resolveBlockSeq({ composeNode, composeEmptyNode }, ctx, bs, onError) {
+    const seq = new YAMLSeq(ctx.schema);
+    if (ctx.atRoot)
+        ctx.atRoot = false;
+    let offset = bs.offset;
+    let commentEnd = null;
+    for (const { start, value } of bs.items) {
+        const props = resolveProps(start, {
+            indicator: 'seq-item-ind',
+            next: value,
+            offset,
+            onError,
+            startOnNewline: true
+        });
+        if (!props.found) {
+            if (props.anchor || props.tag || value) {
+                if (value && value.type === 'block-seq')
+                    onError(props.end, 'BAD_INDENT', 'All sequence items must start at the same column');
+                else
+                    onError(offset, 'MISSING_CHAR', 'Sequence item without - indicator');
+            }
+            else {
+                commentEnd = props.end;
+                if (props.comment)
+                    seq.comment = props.comment;
+                continue;
+            }
+        }
+        const node = value
+            ? composeNode(ctx, value, props, onError)
+            : composeEmptyNode(ctx, props.end, start, null, props, onError);
+        if (ctx.schema.compat)
+            flowIndentCheck(bs.indent, value, onError);
+        offset = node.range[2];
+        seq.items.push(node);
+    }
+    seq.range = [bs.offset, offset, commentEnd ?? offset];
+    return seq;
+}function resolveEnd(end, offset, reqSpace, onError) {
+    let comment = '';
+    if (end) {
+        let hasSpace = false;
+        let sep = '';
+        for (const token of end) {
+            const { source, type } = token;
+            switch (type) {
+                case 'space':
+                    hasSpace = true;
+                    break;
+                case 'comment': {
+                    if (reqSpace && !hasSpace)
+                        onError(token, 'MISSING_CHAR', 'Comments must be separated from other tokens by white space characters');
+                    const cb = source.substring(1) || ' ';
+                    if (!comment)
+                        comment = cb;
+                    else
+                        comment += sep + cb;
+                    sep = '';
+                    break;
+                }
+                case 'newline':
+                    if (comment)
+                        sep += source;
+                    hasSpace = true;
+                    break;
+                default:
+                    onError(token, 'UNEXPECTED_TOKEN', `Unexpected ${type} at node end`);
+            }
+            offset += source.length;
+        }
+    }
+    return { comment, offset };
+}const blockMsg = 'Block collections are not allowed within flow collections';
+const isBlock = (token) => token && (token.type === 'block-map' || token.type === 'block-seq');
+function resolveFlowCollection({ composeNode, composeEmptyNode }, ctx, fc, onError) {
+    const isMap = fc.start.source === '{';
+    const fcName = isMap ? 'flow map' : 'flow sequence';
+    const coll = isMap
+        ? new YAMLMap(ctx.schema)
+        : new YAMLSeq(ctx.schema);
+    coll.flow = true;
+    const atRoot = ctx.atRoot;
+    if (atRoot)
+        ctx.atRoot = false;
+    let offset = fc.offset + fc.start.source.length;
+    for (let i = 0; i < fc.items.length; ++i) {
+        const collItem = fc.items[i];
+        const { start, key, sep, value } = collItem;
+        const props = resolveProps(start, {
+            flow: fcName,
+            indicator: 'explicit-key-ind',
+            next: key ?? sep?.[0],
+            offset,
+            onError,
+            startOnNewline: false
+        });
+        if (!props.found) {
+            if (!props.anchor && !props.tag && !sep && !value) {
+                if (i === 0 && props.comma)
+                    onError(props.comma, 'UNEXPECTED_TOKEN', `Unexpected , in ${fcName}`);
+                else if (i < fc.items.length - 1)
+                    onError(props.start, 'UNEXPECTED_TOKEN', `Unexpected empty item in ${fcName}`);
+                if (props.comment) {
+                    if (coll.comment)
+                        coll.comment += '\n' + props.comment;
+                    else
+                        coll.comment = props.comment;
+                }
+                offset = props.end;
+                continue;
+            }
+            if (!isMap && ctx.options.strict && containsNewline(key))
+                onError(key, // checked by containsNewline()
+                'MULTILINE_IMPLICIT_KEY', 'Implicit keys of flow sequence pairs need to be on a single line');
+        }
+        if (i === 0) {
+            if (props.comma)
+                onError(props.comma, 'UNEXPECTED_TOKEN', `Unexpected , in ${fcName}`);
+        }
+        else {
+            if (!props.comma)
+                onError(props.start, 'MISSING_CHAR', `Missing , between ${fcName} items`);
+            if (props.comment) {
+                let prevItemComment = '';
+                loop: for (const st of start) {
+                    switch (st.type) {
+                        case 'comma':
+                        case 'space':
+                            break;
+                        case 'comment':
+                            prevItemComment = st.source.substring(1);
+                            break loop;
+                        default:
+                            break loop;
+                    }
+                }
+                if (prevItemComment) {
+                    let prev = coll.items[coll.items.length - 1];
+                    if (isPair(prev))
+                        prev = prev.value ?? prev.key;
+                    if (prev.comment)
+                        prev.comment += '\n' + prevItemComment;
+                    else
+                        prev.comment = prevItemComment;
+                    props.comment = props.comment.substring(prevItemComment.length + 1);
+                }
+            }
+        }
+        if (!isMap && !sep && !props.found) {
+            // item is a value in a seq
+            // → key & sep are empty, start does not include ? or :
+            const valueNode = value
+                ? composeNode(ctx, value, props, onError)
+                : composeEmptyNode(ctx, props.end, sep, null, props, onError);
+            coll.items.push(valueNode);
+            offset = valueNode.range[2];
+            if (isBlock(value))
+                onError(valueNode.range, 'BLOCK_IN_FLOW', blockMsg);
+        }
+        else {
+            // item is a key+value pair
+            // key value
+            const keyStart = props.end;
+            const keyNode = key
+                ? composeNode(ctx, key, props, onError)
+                : composeEmptyNode(ctx, keyStart, start, null, props, onError);
+            if (isBlock(key))
+                onError(keyNode.range, 'BLOCK_IN_FLOW', blockMsg);
+            // value properties
+            const valueProps = resolveProps(sep ?? [], {
+                flow: fcName,
+                indicator: 'map-value-ind',
+                next: value,
+                offset: keyNode.range[2],
+                onError,
+                startOnNewline: false
+            });
+            if (valueProps.found) {
+                if (!isMap && !props.found && ctx.options.strict) {
+                    if (sep)
+                        for (const st of sep) {
+                            if (st === valueProps.found)
+                                break;
+                            if (st.type === 'newline') {
+                                onError(st, 'MULTILINE_IMPLICIT_KEY', 'Implicit keys of flow sequence pairs need to be on a single line');
+                                break;
+                            }
+                        }
+                    if (props.start < valueProps.found.offset - 1024)
+                        onError(valueProps.found, 'KEY_OVER_1024_CHARS', 'The : indicator must be at most 1024 chars after the start of an implicit flow sequence key');
+                }
+            }
+            else if (value) {
+                if ('source' in value && value.source && value.source[0] === ':')
+                    onError(value, 'MISSING_CHAR', `Missing space after : in ${fcName}`);
+                else
+                    onError(valueProps.start, 'MISSING_CHAR', `Missing , or : between ${fcName} items`);
+            }
+            // value value
+            const valueNode = value
+                ? composeNode(ctx, value, valueProps, onError)
+                : valueProps.found
+                    ? composeEmptyNode(ctx, valueProps.end, sep, null, valueProps, onError)
+                    : null;
+            if (valueNode) {
+                if (isBlock(value))
+                    onError(valueNode.range, 'BLOCK_IN_FLOW', blockMsg);
+            }
+            else if (valueProps.comment) {
+                if (keyNode.comment)
+                    keyNode.comment += '\n' + valueProps.comment;
+                else
+                    keyNode.comment = valueProps.comment;
+            }
+            const pair = new Pair(keyNode, valueNode);
+            if (ctx.options.keepSourceTokens)
+                pair.srcToken = collItem;
+            if (isMap) {
+                const map = coll;
+                if (mapIncludes(ctx, map.items, keyNode))
+                    onError(keyStart, 'DUPLICATE_KEY', 'Map keys must be unique');
+                map.items.push(pair);
+            }
+            else {
+                const map = new YAMLMap(ctx.schema);
+                map.flow = true;
+                map.items.push(pair);
+                coll.items.push(map);
+            }
+            offset = valueNode ? valueNode.range[2] : valueProps.end;
+        }
+    }
+    const expectedEnd = isMap ? '}' : ']';
+    const [ce, ...ee] = fc.end;
+    let cePos = offset;
+    if (ce && ce.source === expectedEnd)
+        cePos = ce.offset + ce.source.length;
+    else {
+        const name = fcName[0].toUpperCase() + fcName.substring(1);
+        const msg = atRoot
+            ? `${name} must end with a ${expectedEnd}`
+            : `${name} in block collection must be sufficiently indented and end with a ${expectedEnd}`;
+        onError(offset, atRoot ? 'MISSING_CHAR' : 'BAD_INDENT', msg);
+        if (ce && ce.source.length !== 1)
+            ee.unshift(ce);
+    }
+    if (ee.length > 0) {
+        const end = resolveEnd(ee, cePos, ctx.options.strict, onError);
+        if (end.comment) {
+            if (coll.comment)
+                coll.comment += '\n' + end.comment;
+            else
+                coll.comment = end.comment;
+        }
+        coll.range = [fc.offset, cePos, end.offset];
+    }
+    else {
+        coll.range = [fc.offset, cePos, cePos];
+    }
+    return coll;
+}function composeCollection(CN, ctx, token, tagToken, onError) {
+    let coll;
+    switch (token.type) {
+        case 'block-map': {
+            coll = resolveBlockMap(CN, ctx, token, onError);
+            break;
+        }
+        case 'block-seq': {
+            coll = resolveBlockSeq(CN, ctx, token, onError);
+            break;
+        }
+        case 'flow-collection': {
+            coll = resolveFlowCollection(CN, ctx, token, onError);
+            break;
+        }
+    }
+    if (!tagToken)
+        return coll;
+    const tagName = ctx.directives.tagName(tagToken.source, msg => onError(tagToken, 'TAG_RESOLVE_FAILED', msg));
+    if (!tagName)
+        return coll;
+    // Cast needed due to: https://github.com/Microsoft/TypeScript/issues/3841
+    const Coll = coll.constructor;
+    if (tagName === '!' || tagName === Coll.tagName) {
+        coll.tag = Coll.tagName;
+        return coll;
+    }
+    const expType = isMap(coll) ? 'map' : 'seq';
+    let tag = ctx.schema.tags.find(t => t.collection === expType && t.tag === tagName);
+    if (!tag) {
+        const kt = ctx.schema.knownTags[tagName];
+        if (kt && kt.collection === expType) {
+            ctx.schema.tags.push(Object.assign({}, kt, { default: false }));
+            tag = kt;
+        }
+        else {
+            onError(tagToken, 'TAG_RESOLVE_FAILED', `Unresolved tag: ${tagName}`, true);
+            coll.tag = tagName;
+            return coll;
+        }
+    }
+    const res = tag.resolve(coll, msg => onError(tagToken, 'TAG_RESOLVE_FAILED', msg), ctx.options);
+    const node = isNode(res)
+        ? res
+        : new Scalar(res);
+    node.range = coll.range;
+    node.tag = tagName;
+    if (tag?.format)
+        node.format = tag.format;
+    return node;
+}function resolveBlockScalar(scalar, strict, onError) {
+    const start = scalar.offset;
+    const header = parseBlockScalarHeader(scalar, strict, onError);
+    if (!header)
+        return { value: '', type: null, comment: '', range: [start, start, start] };
+    const type = header.mode === '>' ? Scalar.BLOCK_FOLDED : Scalar.BLOCK_LITERAL;
+    const lines = scalar.source ? splitLines(scalar.source) : [];
+    // determine the end of content & start of chomping
+    let chompStart = lines.length;
+    for (let i = lines.length - 1; i >= 0; --i) {
+        const content = lines[i][1];
+        if (content === '' || content === '\r')
+            chompStart = i;
+        else
+            break;
+    }
+    // shortcut for empty contents
+    if (chompStart === 0) {
+        const value = header.chomp === '+' && lines.length > 0
+            ? '\n'.repeat(Math.max(1, lines.length - 1))
+            : '';
+        let end = start + header.length;
+        if (scalar.source)
+            end += scalar.source.length;
+        return { value, type, comment: header.comment, range: [start, end, end] };
+    }
+    // find the indentation level to trim from start
+    let trimIndent = scalar.indent + header.indent;
+    let offset = scalar.offset + header.length;
+    let contentStart = 0;
+    for (let i = 0; i < chompStart; ++i) {
+        const [indent, content] = lines[i];
+        if (content === '' || content === '\r') {
+            if (header.indent === 0 && indent.length > trimIndent)
+                trimIndent = indent.length;
+        }
+        else {
+            if (indent.length < trimIndent) {
+                const message = 'Block scalars with more-indented leading empty lines must use an explicit indentation indicator';
+                onError(offset + indent.length, 'MISSING_CHAR', message);
+            }
+            if (header.indent === 0)
+                trimIndent = indent.length;
+            contentStart = i;
+            break;
+        }
+        offset += indent.length + content.length + 1;
+    }
+    // include trailing more-indented empty lines in content
+    for (let i = lines.length - 1; i >= chompStart; --i) {
+        if (lines[i][0].length > trimIndent)
+            chompStart = i + 1;
+    }
+    let value = '';
+    let sep = '';
+    let prevMoreIndented = false;
+    // leading whitespace is kept intact
+    for (let i = 0; i < contentStart; ++i)
+        value += lines[i][0].slice(trimIndent) + '\n';
+    for (let i = contentStart; i < chompStart; ++i) {
+        let [indent, content] = lines[i];
+        offset += indent.length + content.length + 1;
+        const crlf = content[content.length - 1] === '\r';
+        if (crlf)
+            content = content.slice(0, -1);
+        /* istanbul ignore if already caught in lexer */
+        if (content && indent.length < trimIndent) {
+            const src = header.indent
+                ? 'explicit indentation indicator'
+                : 'first line';
+            const message = `Block scalar lines must not be less indented than their ${src}`;
+            onError(offset - content.length - (crlf ? 2 : 1), 'BAD_INDENT', message);
+            indent = '';
+        }
+        if (type === Scalar.BLOCK_LITERAL) {
+            value += sep + indent.slice(trimIndent) + content;
+            sep = '\n';
+        }
+        else if (indent.length > trimIndent || content[0] === '\t') {
+            // more-indented content within a folded block
+            if (sep === ' ')
+                sep = '\n';
+            else if (!prevMoreIndented && sep === '\n')
+                sep = '\n\n';
+            value += sep + indent.slice(trimIndent) + content;
+            sep = '\n';
+            prevMoreIndented = true;
+        }
+        else if (content === '') {
+            // empty line
+            if (sep === '\n')
+                value += '\n';
+            else
+                sep = '\n';
+        }
+        else {
+            value += sep + content;
+            sep = ' ';
+            prevMoreIndented = false;
+        }
+    }
+    switch (header.chomp) {
+        case '-':
+            break;
+        case '+':
+            for (let i = chompStart; i < lines.length; ++i)
+                value += '\n' + lines[i][0].slice(trimIndent);
+            if (value[value.length - 1] !== '\n')
+                value += '\n';
+            break;
+        default:
+            value += '\n';
+    }
+    const end = start + header.length + scalar.source.length;
+    return { value, type, comment: header.comment, range: [start, end, end] };
+}
+function parseBlockScalarHeader({ offset, props }, strict, onError) {
+    /* istanbul ignore if should not happen */
+    if (props[0].type !== 'block-scalar-header') {
+        onError(props[0], 'IMPOSSIBLE', 'Block scalar header not found');
+        return null;
+    }
+    const { source } = props[0];
+    const mode = source[0];
+    let indent = 0;
+    let chomp = '';
+    let error = -1;
+    for (let i = 1; i < source.length; ++i) {
+        const ch = source[i];
+        if (!chomp && (ch === '-' || ch === '+'))
+            chomp = ch;
+        else {
+            const n = Number(ch);
+            if (!indent && n)
+                indent = n;
+            else if (error === -1)
+                error = offset + i;
+        }
+    }
+    if (error !== -1)
+        onError(error, 'UNEXPECTED_TOKEN', `Block scalar header includes extra characters: ${source}`);
+    let hasSpace = false;
+    let comment = '';
+    let length = source.length;
+    for (let i = 1; i < props.length; ++i) {
+        const token = props[i];
+        switch (token.type) {
+            case 'space':
+                hasSpace = true;
+            // fallthrough
+            case 'newline':
+                length += token.source.length;
+                break;
+            case 'comment':
+                if (strict && !hasSpace) {
+                    const message = 'Comments must be separated from other tokens by white space characters';
+                    onError(token, 'MISSING_CHAR', message);
+                }
+                length += token.source.length;
+                comment = token.source.substring(1);
+                break;
+            case 'error':
+                onError(token, 'UNEXPECTED_TOKEN', token.message);
+                length += token.source.length;
+                break;
+            /* istanbul ignore next should not happen */
+            default: {
+                const message = `Unexpected token in block scalar header: ${token.type}`;
+                onError(token, 'UNEXPECTED_TOKEN', message);
+                const ts = token.source;
+                if (ts && typeof ts === 'string')
+                    length += ts.length;
+            }
+        }
+    }
+    return { mode, indent, chomp, comment, length };
+}
+/** @returns Array of lines split up as `[indent, content]` */
+function splitLines(source) {
+    const split = source.split(/\n( *)/);
+    const first = split[0];
+    const m = first.match(/^( *)/);
+    const line0 = m?.[1]
+        ? [m[1], first.slice(m[1].length)]
+        : ['', first];
+    const lines = [line0];
+    for (let i = 1; i < split.length; i += 2)
+        lines.push([split[i], split[i + 1]]);
+    return lines;
+}function resolveFlowScalar(scalar, strict, onError) {
+    const { offset, type, source, end } = scalar;
+    let _type;
+    let value;
+    const _onError = (rel, code, msg) => onError(offset + rel, code, msg);
+    switch (type) {
+        case 'scalar':
+            _type = Scalar.PLAIN;
+            value = plainValue(source, _onError);
+            break;
+        case 'single-quoted-scalar':
+            _type = Scalar.QUOTE_SINGLE;
+            value = singleQuotedValue(source, _onError);
+            break;
+        case 'double-quoted-scalar':
+            _type = Scalar.QUOTE_DOUBLE;
+            value = doubleQuotedValue(source, _onError);
+            break;
+        /* istanbul ignore next should not happen */
+        default:
+            onError(scalar, 'UNEXPECTED_TOKEN', `Expected a flow scalar value, but found: ${type}`);
+            return {
+                value: '',
+                type: null,
+                comment: '',
+                range: [offset, offset + source.length, offset + source.length]
+            };
+    }
+    const valueEnd = offset + source.length;
+    const re = resolveEnd(end, valueEnd, strict, onError);
+    return {
+        value,
+        type: _type,
+        comment: re.comment,
+        range: [offset, valueEnd, re.offset]
+    };
+}
+function plainValue(source, onError) {
+    let badChar = '';
+    switch (source[0]) {
+        /* istanbul ignore next should not happen */
+        case '\t':
+            badChar = 'a tab character';
+            break;
+        case ',':
+            badChar = 'flow indicator character ,';
+            break;
+        case '%':
+            badChar = 'directive indicator character %';
+            break;
+        case '|':
+        case '>': {
+            badChar = `block scalar indicator ${source[0]}`;
+            break;
+        }
+        case '@':
+        case '`': {
+            badChar = `reserved character ${source[0]}`;
+            break;
+        }
+    }
+    if (badChar)
+        onError(0, 'BAD_SCALAR_START', `Plain value cannot start with ${badChar}`);
+    return foldLines(source);
+}
+function singleQuotedValue(source, onError) {
+    if (source[source.length - 1] !== "'" || source.length === 1)
+        onError(source.length, 'MISSING_CHAR', "Missing closing 'quote");
+    return foldLines(source.slice(1, -1)).replace(/''/g, "'");
+}
+function foldLines(source) {
+    /**
+     * The negative lookbehind here and in the `re` RegExp is to
+     * prevent causing a polynomial search time in certain cases.
+     *
+     * The try-catch is for Safari, which doesn't support this yet:
+     * https://caniuse.com/js-regexp-lookbehind
+     */
+    let first, line;
+    try {
+        first = new RegExp('(.*?)(?<![ \t])[ \t]*\r?\n', 'sy');
+        line = new RegExp('[ \t]*(.*?)(?:(?<![ \t])[ \t]*)?\r?\n', 'sy');
+    }
+    catch (_) {
+        first = /(.*?)[ \t]*\r?\n/sy;
+        line = /[ \t]*(.*?)[ \t]*\r?\n/sy;
+    }
+    let match = first.exec(source);
+    if (!match)
+        return source;
+    let res = match[1];
+    let sep = ' ';
+    let pos = first.lastIndex;
+    line.lastIndex = pos;
+    while ((match = line.exec(source))) {
+        if (match[1] === '') {
+            if (sep === '\n')
+                res += sep;
+            else
+                sep = '\n';
+        }
+        else {
+            res += sep + match[1];
+            sep = ' ';
+        }
+        pos = line.lastIndex;
+    }
+    const last = /[ \t]*(.*)/sy;
+    last.lastIndex = pos;
+    match = last.exec(source);
+    return res + sep + (match?.[1] ?? '');
+}
+function doubleQuotedValue(source, onError) {
+    let res = '';
+    for (let i = 1; i < source.length - 1; ++i) {
+        const ch = source[i];
+        if (ch === '\r' && source[i + 1] === '\n')
+            continue;
+        if (ch === '\n') {
+            const { fold, offset } = foldNewline(source, i);
+            res += fold;
+            i = offset;
+        }
+        else if (ch === '\\') {
+            let next = source[++i];
+            const cc = escapeCodes[next];
+            if (cc)
+                res += cc;
+            else if (next === '\n') {
+                // skip escaped newlines, but still trim the following line
+                next = source[i + 1];
+                while (next === ' ' || next === '\t')
+                    next = source[++i + 1];
+            }
+            else if (next === '\r' && source[i + 1] === '\n') {
+                // skip escaped CRLF newlines, but still trim the following line
+                next = source[++i + 1];
+                while (next === ' ' || next === '\t')
+                    next = source[++i + 1];
+            }
+            else if (next === 'x' || next === 'u' || next === 'U') {
+                const length = { x: 2, u: 4, U: 8 }[next];
+                res += parseCharCode(source, i + 1, length, onError);
+                i += length;
+            }
+            else {
+                const raw = source.substr(i - 1, 2);
+                onError(i - 1, 'BAD_DQ_ESCAPE', `Invalid escape sequence ${raw}`);
+                res += raw;
+            }
+        }
+        else if (ch === ' ' || ch === '\t') {
+            // trim trailing whitespace
+            const wsStart = i;
+            let next = source[i + 1];
+            while (next === ' ' || next === '\t')
+                next = source[++i + 1];
+            if (next !== '\n' && !(next === '\r' && source[i + 2] === '\n'))
+                res += i > wsStart ? source.slice(wsStart, i + 1) : ch;
+        }
+        else {
+            res += ch;
+        }
+    }
+    if (source[source.length - 1] !== '"' || source.length === 1)
+        onError(source.length, 'MISSING_CHAR', 'Missing closing "quote');
+    return res;
+}
+/**
+ * Fold a single newline into a space, multiple newlines to N - 1 newlines.
+ * Presumes `source[offset] === '\n'`
+ */
+function foldNewline(source, offset) {
+    let fold = '';
+    let ch = source[offset + 1];
+    while (ch === ' ' || ch === '\t' || ch === '\n' || ch === '\r') {
+        if (ch === '\r' && source[offset + 2] !== '\n')
+            break;
+        if (ch === '\n')
+            fold += '\n';
+        offset += 1;
+        ch = source[offset + 1];
+    }
+    if (!fold)
+        fold = ' ';
+    return { fold, offset };
+}
+const escapeCodes = {
+    '0': '\0',
+    a: '\x07',
+    b: '\b',
+    e: '\x1b',
+    f: '\f',
+    n: '\n',
+    r: '\r',
+    t: '\t',
+    v: '\v',
+    N: '\u0085',
+    _: '\u00a0',
+    L: '\u2028',
+    P: '\u2029',
+    ' ': ' ',
+    '"': '"',
+    '/': '/',
+    '\\': '\\',
+    '\t': '\t'
+};
+function parseCharCode(source, offset, length, onError) {
+    const cc = source.substr(offset, length);
+    const ok = cc.length === length && /^[0-9a-fA-F]+$/.test(cc);
+    const code = ok ? parseInt(cc, 16) : NaN;
+    if (isNaN(code)) {
+        const raw = source.substr(offset - 2, length + 2);
+        onError(offset - 2, 'BAD_DQ_ESCAPE', `Invalid escape sequence ${raw}`);
+        return raw;
+    }
+    return String.fromCodePoint(code);
+}function composeScalar(ctx, token, tagToken, onError) {
+    const { value, type, comment, range } = token.type === 'block-scalar'
+        ? resolveBlockScalar(token, ctx.options.strict, onError)
+        : resolveFlowScalar(token, ctx.options.strict, onError);
+    const tagName = tagToken
+        ? ctx.directives.tagName(tagToken.source, msg => onError(tagToken, 'TAG_RESOLVE_FAILED', msg))
+        : null;
+    const tag = tagToken && tagName
+        ? findScalarTagByName(ctx.schema, value, tagName, tagToken, onError)
+        : token.type === 'scalar'
+            ? findScalarTagByTest(ctx, value, token, onError)
+            : ctx.schema[SCALAR$1];
+    let scalar;
+    try {
+        const res = tag.resolve(value, msg => onError(tagToken ?? token, 'TAG_RESOLVE_FAILED', msg), ctx.options);
+        scalar = isScalar$1(res) ? res : new Scalar(res);
+    }
+    catch (error) {
+        const msg = error instanceof Error ? error.message : String(error);
+        onError(tagToken ?? token, 'TAG_RESOLVE_FAILED', msg);
+        scalar = new Scalar(value);
+    }
+    scalar.range = range;
+    scalar.source = value;
+    if (type)
+        scalar.type = type;
+    if (tagName)
+        scalar.tag = tagName;
+    if (tag.format)
+        scalar.format = tag.format;
+    if (comment)
+        scalar.comment = comment;
+    return scalar;
+}
+function findScalarTagByName(schema, value, tagName, tagToken, onError) {
+    if (tagName === '!')
+        return schema[SCALAR$1]; // non-specific tag
+    const matchWithTest = [];
+    for (const tag of schema.tags) {
+        if (!tag.collection && tag.tag === tagName) {
+            if (tag.default && tag.test)
+                matchWithTest.push(tag);
+            else
+                return tag;
+        }
+    }
+    for (const tag of matchWithTest)
+        if (tag.test?.test(value))
+            return tag;
+    const kt = schema.knownTags[tagName];
+    if (kt && !kt.collection) {
+        // Ensure that the known tag is available for stringifying,
+        // but does not get used by default.
+        schema.tags.push(Object.assign({}, kt, { default: false, test: undefined }));
+        return kt;
+    }
+    onError(tagToken, 'TAG_RESOLVE_FAILED', `Unresolved tag: ${tagName}`, tagName !== 'tag:yaml.org,2002:str');
+    return schema[SCALAR$1];
+}
+function findScalarTagByTest({ directives, schema }, value, token, onError) {
+    const tag = schema.tags.find(tag => tag.default && tag.test?.test(value)) || schema[SCALAR$1];
+    if (schema.compat) {
+        const compat = schema.compat.find(tag => tag.default && tag.test?.test(value)) ??
+            schema[SCALAR$1];
+        if (tag.tag !== compat.tag) {
+            const ts = directives.tagString(tag.tag);
+            const cs = directives.tagString(compat.tag);
+            const msg = `Value may be parsed as either ${ts} or ${cs}`;
+            onError(token, 'TAG_RESOLVE_FAILED', msg, true);
+        }
+    }
+    return tag;
+}function emptyScalarPosition(offset, before, pos) {
+    if (before) {
+        if (pos === null)
+            pos = before.length;
+        for (let i = pos - 1; i >= 0; --i) {
+            let st = before[i];
+            switch (st.type) {
+                case 'space':
+                case 'comment':
+                case 'newline':
+                    offset -= st.source.length;
+                    continue;
+            }
+            // Technically, an empty scalar is immediately after the last non-empty
+            // node, but it's more useful to place it after any whitespace.
+            st = before[++i];
+            while (st?.type === 'space') {
+                offset += st.source.length;
+                st = before[++i];
+            }
+            break;
+        }
+    }
+    return offset;
+}const CN = { composeNode, composeEmptyNode };
+function composeNode(ctx, token, props, onError) {
+    const { spaceBefore, comment, anchor, tag } = props;
+    let node;
+    let isSrcToken = true;
+    switch (token.type) {
+        case 'alias':
+            node = composeAlias(ctx, token, onError);
+            if (anchor || tag)
+                onError(token, 'ALIAS_PROPS', 'An alias node must not specify any properties');
+            break;
+        case 'scalar':
+        case 'single-quoted-scalar':
+        case 'double-quoted-scalar':
+        case 'block-scalar':
+            node = composeScalar(ctx, token, tag, onError);
+            if (anchor)
+                node.anchor = anchor.source.substring(1);
+            break;
+        case 'block-map':
+        case 'block-seq':
+        case 'flow-collection':
+            node = composeCollection(CN, ctx, token, tag, onError);
+            if (anchor)
+                node.anchor = anchor.source.substring(1);
+            break;
+        default: {
+            const message = token.type === 'error'
+                ? token.message
+                : `Unsupported token (type: ${token.type})`;
+            onError(token, 'UNEXPECTED_TOKEN', message);
+            node = composeEmptyNode(ctx, token.offset, undefined, null, props, onError);
+            isSrcToken = false;
+        }
+    }
+    if (anchor && node.anchor === '')
+        onError(anchor, 'BAD_ALIAS', 'Anchor cannot be an empty string');
+    if (spaceBefore)
+        node.spaceBefore = true;
+    if (comment) {
+        if (token.type === 'scalar' && token.source === '')
+            node.comment = comment;
+        else
+            node.commentBefore = comment;
+    }
+    // @ts-expect-error Type checking misses meaning of isSrcToken
+    if (ctx.options.keepSourceTokens && isSrcToken)
+        node.srcToken = token;
+    return node;
+}
+function composeEmptyNode(ctx, offset, before, pos, { spaceBefore, comment, anchor, tag, end }, onError) {
+    const token = {
+        type: 'scalar',
+        offset: emptyScalarPosition(offset, before, pos),
+        indent: -1,
+        source: ''
+    };
+    const node = composeScalar(ctx, token, tag, onError);
+    if (anchor) {
+        node.anchor = anchor.source.substring(1);
+        if (node.anchor === '')
+            onError(anchor, 'BAD_ALIAS', 'Anchor cannot be an empty string');
+    }
+    if (spaceBefore)
+        node.spaceBefore = true;
+    if (comment) {
+        node.comment = comment;
+        node.range[2] = end;
+    }
+    return node;
+}
+function composeAlias({ options }, { offset, source, end }, onError) {
+    const alias = new Alias(source.substring(1));
+    if (alias.source === '')
+        onError(offset, 'BAD_ALIAS', 'Alias cannot be an empty string');
+    if (alias.source.endsWith(':'))
+        onError(offset + source.length - 1, 'BAD_ALIAS', 'Alias ending in : is ambiguous', true);
+    const valueEnd = offset + source.length;
+    const re = resolveEnd(end, valueEnd, options.strict, onError);
+    alias.range = [offset, valueEnd, re.offset];
+    if (re.comment)
+        alias.comment = re.comment;
+    return alias;
+}function composeDoc(options, directives, { offset, start, value, end }, onError) {
+    const opts = Object.assign({ _directives: directives }, options);
+    const doc = new Document(undefined, opts);
+    const ctx = {
+        atRoot: true,
+        directives: doc.directives,
+        options: doc.options,
+        schema: doc.schema
+    };
+    const props = resolveProps(start, {
+        indicator: 'doc-start',
+        next: value ?? end?.[0],
+        offset,
+        onError,
+        startOnNewline: true
+    });
+    if (props.found) {
+        doc.directives.docStart = true;
+        if (value &&
+            (value.type === 'block-map' || value.type === 'block-seq') &&
+            !props.hasNewline)
+            onError(props.end, 'MISSING_CHAR', 'Block collection cannot start on same line with directives-end marker');
+    }
+    doc.contents = value
+        ? composeNode(ctx, value, props, onError)
+        : composeEmptyNode(ctx, props.end, start, null, props, onError);
+    const contentEnd = doc.contents.range[2];
+    const re = resolveEnd(end, contentEnd, false, onError);
+    if (re.comment)
+        doc.comment = re.comment;
+    doc.range = [offset, contentEnd, re.offset];
+    return doc;
+}function getErrorPos(src) {
+    if (typeof src === 'number')
+        return [src, src + 1];
+    if (Array.isArray(src))
+        return src.length === 2 ? src : [src[0], src[1]];
+    const { offset, source } = src;
+    return [offset, offset + (typeof source === 'string' ? source.length : 1)];
+}
+function parsePrelude(prelude) {
+    let comment = '';
+    let atComment = false;
+    let afterEmptyLine = false;
+    for (let i = 0; i < prelude.length; ++i) {
+        const source = prelude[i];
+        switch (source[0]) {
+            case '#':
+                comment +=
+                    (comment === '' ? '' : afterEmptyLine ? '\n\n' : '\n') +
+                        (source.substring(1) || ' ');
+                atComment = true;
+                afterEmptyLine = false;
+                break;
+            case '%':
+                if (prelude[i + 1]?.[0] !== '#')
+                    i += 1;
+                atComment = false;
+                break;
+            default:
+                // This may be wrong after doc-end, but in that case it doesn't matter
+                if (!atComment)
+                    afterEmptyLine = true;
+                atComment = false;
+        }
+    }
+    return { comment, afterEmptyLine };
+}
+/**
+ * Compose a stream of CST nodes into a stream of YAML Documents.
+ *
+ * ```ts
+ * import { Composer, Parser } from 'yaml'
+ *
+ * const src: string = ...
+ * const tokens = new Parser().parse(src)
+ * const docs = new Composer().compose(tokens)
+ * ```
+ */
+class Composer {
+    constructor(options = {}) {
+        this.doc = null;
+        this.atDirectives = false;
+        this.prelude = [];
+        this.errors = [];
+        this.warnings = [];
+        this.onError = (source, code, message, warning) => {
+            const pos = getErrorPos(source);
+            if (warning)
+                this.warnings.push(new YAMLWarning(pos, code, message));
+            else
+                this.errors.push(new YAMLParseError(pos, code, message));
+        };
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+        this.directives = new Directives({ version: options.version || '1.2' });
+        this.options = options;
+    }
+    decorate(doc, afterDoc) {
+        const { comment, afterEmptyLine } = parsePrelude(this.prelude);
+        //console.log({ dc: doc.comment, prelude, comment })
+        if (comment) {
+            const dc = doc.contents;
+            if (afterDoc) {
+                doc.comment = doc.comment ? `${doc.comment}\n${comment}` : comment;
+            }
+            else if (afterEmptyLine || doc.directives.docStart || !dc) {
+                doc.commentBefore = comment;
+            }
+            else if (isCollection$1(dc) && !dc.flow && dc.items.length > 0) {
+                let it = dc.items[0];
+                if (isPair(it))
+                    it = it.key;
+                const cb = it.commentBefore;
+                it.commentBefore = cb ? `${comment}\n${cb}` : comment;
+            }
+            else {
+                const cb = dc.commentBefore;
+                dc.commentBefore = cb ? `${comment}\n${cb}` : comment;
+            }
+        }
+        if (afterDoc) {
+            Array.prototype.push.apply(doc.errors, this.errors);
+            Array.prototype.push.apply(doc.warnings, this.warnings);
+        }
+        else {
+            doc.errors = this.errors;
+            doc.warnings = this.warnings;
+        }
+        this.prelude = [];
+        this.errors = [];
+        this.warnings = [];
+    }
+    /**
+     * Current stream status information.
+     *
+     * Mostly useful at the end of input for an empty stream.
+     */
+    streamInfo() {
+        return {
+            comment: parsePrelude(this.prelude).comment,
+            directives: this.directives,
+            errors: this.errors,
+            warnings: this.warnings
+        };
+    }
+    /**
+     * Compose tokens into documents.
+     *
+     * @param forceDoc - If the stream contains no document, still emit a final document including any comments and directives that would be applied to a subsequent document.
+     * @param endOffset - Should be set if `forceDoc` is also set, to set the document range end and to indicate errors correctly.
+     */
+    *compose(tokens, forceDoc = false, endOffset = -1) {
+        for (const token of tokens)
+            yield* this.next(token);
+        yield* this.end(forceDoc, endOffset);
+    }
+    /** Advance the composer by one CST token. */
+    *next(token) {
+        switch (token.type) {
+            case 'directive':
+                this.directives.add(token.source, (offset, message, warning) => {
+                    const pos = getErrorPos(token);
+                    pos[0] += offset;
+                    this.onError(pos, 'BAD_DIRECTIVE', message, warning);
+                });
+                this.prelude.push(token.source);
+                this.atDirectives = true;
+                break;
+            case 'document': {
+                const doc = composeDoc(this.options, this.directives, token, this.onError);
+                if (this.atDirectives && !doc.directives.docStart)
+                    this.onError(token, 'MISSING_CHAR', 'Missing directives-end/doc-start indicator line');
+                this.decorate(doc, false);
+                if (this.doc)
+                    yield this.doc;
+                this.doc = doc;
+                this.atDirectives = false;
+                break;
+            }
+            case 'byte-order-mark':
+            case 'space':
+                break;
+            case 'comment':
+            case 'newline':
+                this.prelude.push(token.source);
+                break;
+            case 'error': {
+                const msg = token.source
+                    ? `${token.message}: ${JSON.stringify(token.source)}`
+                    : token.message;
+                const error = new YAMLParseError(getErrorPos(token), 'UNEXPECTED_TOKEN', msg);
+                if (this.atDirectives || !this.doc)
+                    this.errors.push(error);
+                else
+                    this.doc.errors.push(error);
+                break;
+            }
+            case 'doc-end': {
+                if (!this.doc) {
+                    const msg = 'Unexpected doc-end without preceding document';
+                    this.errors.push(new YAMLParseError(getErrorPos(token), 'UNEXPECTED_TOKEN', msg));
+                    break;
+                }
+                this.doc.directives.docEnd = true;
+                const end = resolveEnd(token.end, token.offset + token.source.length, this.doc.options.strict, this.onError);
+                this.decorate(this.doc, true);
+                if (end.comment) {
+                    const dc = this.doc.comment;
+                    this.doc.comment = dc ? `${dc}\n${end.comment}` : end.comment;
+                }
+                this.doc.range[2] = end.offset;
+                break;
+            }
+            default:
+                this.errors.push(new YAMLParseError(getErrorPos(token), 'UNEXPECTED_TOKEN', `Unsupported token ${token.type}`));
+        }
+    }
+    /**
+     * Call at end of input to yield any remaining document.
+     *
+     * @param forceDoc - If the stream contains no document, still emit a final document including any comments and directives that would be applied to a subsequent document.
+     * @param endOffset - Should be set if `forceDoc` is also set, to set the document range end and to indicate errors correctly.
+     */
+    *end(forceDoc = false, endOffset = -1) {
+        if (this.doc) {
+            this.decorate(this.doc, true);
+            yield this.doc;
+            this.doc = null;
+        }
+        else if (forceDoc) {
+            const opts = Object.assign({ _directives: this.directives }, this.options);
+            const doc = new Document(undefined, opts);
+            if (this.atDirectives)
+                this.onError(endOffset, 'MISSING_CHAR', 'Missing directives-end indicator line');
+            doc.range = [0, endOffset, endOffset];
+            this.decorate(doc, false);
+            yield doc;
+        }
+    }
+}function resolveAsScalar(token, strict = true, onError) {
+    if (token) {
+        const _onError = (pos, code, message) => {
+            const offset = typeof pos === 'number' ? pos : Array.isArray(pos) ? pos[0] : pos.offset;
+            if (onError)
+                onError(offset, code, message);
+            else
+                throw new YAMLParseError([offset, offset + 1], code, message);
+        };
+        switch (token.type) {
+            case 'scalar':
+            case 'single-quoted-scalar':
+            case 'double-quoted-scalar':
+                return resolveFlowScalar(token, strict, _onError);
+            case 'block-scalar':
+                return resolveBlockScalar(token, strict, _onError);
+        }
+    }
+    return null;
+}
+/**
+ * Create a new scalar token with `value`
+ *
+ * Values that represent an actual string but may be parsed as a different type should use a `type` other than `'PLAIN'`,
+ * as this function does not support any schema operations and won't check for such conflicts.
+ *
+ * @param value The string representation of the value, which will have its content properly indented.
+ * @param context.end Comments and whitespace after the end of the value, or after the block scalar header. If undefined, a newline will be added.
+ * @param context.implicitKey Being within an implicit key may affect the resolved type of the token's value.
+ * @param context.indent The indent level of the token.
+ * @param context.inFlow Is this scalar within a flow collection? This may affect the resolved type of the token's value.
+ * @param context.offset The offset position of the token.
+ * @param context.type The preferred type of the scalar token. If undefined, the previous type of the `token` will be used, defaulting to `'PLAIN'`.
+ */
+function createScalarToken(value, context) {
+    const { implicitKey = false, indent, inFlow = false, offset = -1, type = 'PLAIN' } = context;
+    const source = stringifyString({ type, value }, {
+        implicitKey,
+        indent: indent > 0 ? ' '.repeat(indent) : '',
+        inFlow,
+        options: { blockQuote: true, lineWidth: -1 }
+    });
+    const end = context.end ?? [
+        { type: 'newline', offset: -1, indent, source: '\n' }
+    ];
+    switch (source[0]) {
+        case '|':
+        case '>': {
+            const he = source.indexOf('\n');
+            const head = source.substring(0, he);
+            const body = source.substring(he + 1) + '\n';
+            const props = [
+                { type: 'block-scalar-header', offset, indent, source: head }
+            ];
+            if (!addEndtoBlockProps(props, end))
+                props.push({ type: 'newline', offset: -1, indent, source: '\n' });
+            return { type: 'block-scalar', offset, indent, props, source: body };
+        }
+        case '"':
+            return { type: 'double-quoted-scalar', offset, indent, source, end };
+        case "'":
+            return { type: 'single-quoted-scalar', offset, indent, source, end };
+        default:
+            return { type: 'scalar', offset, indent, source, end };
+    }
+}
+/**
+ * Set the value of `token` to the given string `value`, overwriting any previous contents and type that it may have.
+ *
+ * Best efforts are made to retain any comments previously associated with the `token`,
+ * though all contents within a collection's `items` will be overwritten.
+ *
+ * Values that represent an actual string but may be parsed as a different type should use a `type` other than `'PLAIN'`,
+ * as this function does not support any schema operations and won't check for such conflicts.
+ *
+ * @param token Any token. If it does not include an `indent` value, the value will be stringified as if it were an implicit key.
+ * @param value The string representation of the value, which will have its content properly indented.
+ * @param context.afterKey In most cases, values after a key should have an additional level of indentation.
+ * @param context.implicitKey Being within an implicit key may affect the resolved type of the token's value.
+ * @param context.inFlow Being within a flow collection may affect the resolved type of the token's value.
+ * @param context.type The preferred type of the scalar token. If undefined, the previous type of the `token` will be used, defaulting to `'PLAIN'`.
+ */
+function setScalarValue(token, value, context = {}) {
+    let { afterKey = false, implicitKey = false, inFlow = false, type } = context;
+    let indent = 'indent' in token ? token.indent : null;
+    if (afterKey && typeof indent === 'number')
+        indent += 2;
+    if (!type)
+        switch (token.type) {
+            case 'single-quoted-scalar':
+                type = 'QUOTE_SINGLE';
+                break;
+            case 'double-quoted-scalar':
+                type = 'QUOTE_DOUBLE';
+                break;
+            case 'block-scalar': {
+                const header = token.props[0];
+                if (header.type !== 'block-scalar-header')
+                    throw new Error('Invalid block scalar header');
+                type = header.source[0] === '>' ? 'BLOCK_FOLDED' : 'BLOCK_LITERAL';
+                break;
+            }
+            default:
+                type = 'PLAIN';
+        }
+    const source = stringifyString({ type, value }, {
+        implicitKey: implicitKey || indent === null,
+        indent: indent !== null && indent > 0 ? ' '.repeat(indent) : '',
+        inFlow,
+        options: { blockQuote: true, lineWidth: -1 }
+    });
+    switch (source[0]) {
+        case '|':
+        case '>':
+            setBlockScalarValue(token, source);
+            break;
+        case '"':
+            setFlowScalarValue(token, source, 'double-quoted-scalar');
+            break;
+        case "'":
+            setFlowScalarValue(token, source, 'single-quoted-scalar');
+            break;
+        default:
+            setFlowScalarValue(token, source, 'scalar');
+    }
+}
+function setBlockScalarValue(token, source) {
+    const he = source.indexOf('\n');
+    const head = source.substring(0, he);
+    const body = source.substring(he + 1) + '\n';
+    if (token.type === 'block-scalar') {
+        const header = token.props[0];
+        if (header.type !== 'block-scalar-header')
+            throw new Error('Invalid block scalar header');
+        header.source = head;
+        token.source = body;
+    }
+    else {
+        const { offset } = token;
+        const indent = 'indent' in token ? token.indent : -1;
+        const props = [
+            { type: 'block-scalar-header', offset, indent, source: head }
+        ];
+        if (!addEndtoBlockProps(props, 'end' in token ? token.end : undefined))
+            props.push({ type: 'newline', offset: -1, indent, source: '\n' });
+        for (const key of Object.keys(token))
+            if (key !== 'type' && key !== 'offset')
+                delete token[key];
+        Object.assign(token, { type: 'block-scalar', indent, props, source: body });
+    }
+}
+/** @returns `true` if last token is a newline */
+function addEndtoBlockProps(props, end) {
+    if (end)
+        for (const st of end)
+            switch (st.type) {
+                case 'space':
+                case 'comment':
+                    props.push(st);
+                    break;
+                case 'newline':
+                    props.push(st);
+                    return true;
+            }
+    return false;
+}
+function setFlowScalarValue(token, source, type) {
+    switch (token.type) {
+        case 'scalar':
+        case 'double-quoted-scalar':
+        case 'single-quoted-scalar':
+            token.type = type;
+            token.source = source;
+            break;
+        case 'block-scalar': {
+            const end = token.props.slice(1);
+            let oa = source.length;
+            if (token.props[0].type === 'block-scalar-header')
+                oa -= token.props[0].source.length;
+            for (const tok of end)
+                tok.offset += oa;
+            delete token.props;
+            Object.assign(token, { type, source, end });
+            break;
+        }
+        case 'block-map':
+        case 'block-seq': {
+            const offset = token.offset + source.length;
+            const nl = { type: 'newline', offset, indent: token.indent, source: '\n' };
+            delete token.items;
+            Object.assign(token, { type, source, end: [nl] });
+            break;
+        }
+        default: {
+            const indent = 'indent' in token ? token.indent : -1;
+            const end = 'end' in token && Array.isArray(token.end)
+                ? token.end.filter(st => st.type === 'space' ||
+                    st.type === 'comment' ||
+                    st.type === 'newline')
+                : [];
+            for (const key of Object.keys(token))
+                if (key !== 'type' && key !== 'offset')
+                    delete token[key];
+            Object.assign(token, { type, indent, source, end });
+        }
+    }
+}/**
+ * Stringify a CST document, token, or collection item
+ *
+ * Fair warning: This applies no validation whatsoever, and
+ * simply concatenates the sources in their logical order.
+ */
+const stringify$1 = (cst) => 'type' in cst ? stringifyToken(cst) : stringifyItem(cst);
+function stringifyToken(token) {
+    switch (token.type) {
+        case 'block-scalar': {
+            let res = '';
+            for (const tok of token.props)
+                res += stringifyToken(tok);
+            return res + token.source;
+        }
+        case 'block-map':
+        case 'block-seq': {
+            let res = '';
+            for (const item of token.items)
+                res += stringifyItem(item);
+            return res;
+        }
+        case 'flow-collection': {
+            let res = token.start.source;
+            for (const item of token.items)
+                res += stringifyItem(item);
+            for (const st of token.end)
+                res += st.source;
+            return res;
+        }
+        case 'document': {
+            let res = stringifyItem(token);
+            if (token.end)
+                for (const st of token.end)
+                    res += st.source;
+            return res;
+        }
+        default: {
+            let res = token.source;
+            if ('end' in token && token.end)
+                for (const st of token.end)
+                    res += st.source;
+            return res;
+        }
+    }
+}
+function stringifyItem({ start, key, sep, value }) {
+    let res = '';
+    for (const st of start)
+        res += st.source;
+    if (key)
+        res += stringifyToken(key);
+    if (sep)
+        for (const st of sep)
+            res += st.source;
+    if (value)
+        res += stringifyToken(value);
+    return res;
+}const BREAK = Symbol('break visit');
+const SKIP = Symbol('skip children');
+const REMOVE = Symbol('remove item');
+/**
+ * Apply a visitor to a CST document or item.
+ *
+ * Walks through the tree (depth-first) starting from the root, calling a
+ * `visitor` function with two arguments when entering each item:
+ *   - `item`: The current item, which included the following members:
+ *     - `start: SourceToken[]` – Source tokens before the key or value,
+ *       possibly including its anchor or tag.
+ *     - `key?: Token | null` – Set for pair values. May then be `null`, if
+ *       the key before the `:` separator is empty.
+ *     - `sep?: SourceToken[]` – Source tokens between the key and the value,
+ *       which should include the `:` map value indicator if `value` is set.
+ *     - `value?: Token` – The value of a sequence item, or of a map pair.
+ *   - `path`: The steps from the root to the current node, as an array of
+ *     `['key' | 'value', number]` tuples.
+ *
+ * The return value of the visitor may be used to control the traversal:
+ *   - `undefined` (default): Do nothing and continue
+ *   - `visit.SKIP`: Do not visit the children of this token, continue with
+ *      next sibling
+ *   - `visit.BREAK`: Terminate traversal completely
+ *   - `visit.REMOVE`: Remove the current item, then continue with the next one
+ *   - `number`: Set the index of the next step. This is useful especially if
+ *     the index of the current token has changed.
+ *   - `function`: Define the next visitor for this item. After the original
+ *     visitor is called on item entry, next visitors are called after handling
+ *     a non-empty `key` and when exiting the item.
+ */
+function visit(cst, visitor) {
+    if ('type' in cst && cst.type === 'document')
+        cst = { start: cst.start, value: cst.value };
+    _visit(Object.freeze([]), cst, visitor);
+}
+// Without the `as symbol` casts, TS declares these in the `visit`
+// namespace using `var`, but then complains about that because
+// `unique symbol` must be `const`.
+/** Terminate visit traversal completely */
+visit.BREAK = BREAK;
+/** Do not visit the children of the current item */
+visit.SKIP = SKIP;
+/** Remove the current item */
+visit.REMOVE = REMOVE;
+/** Find the item at `path` from `cst` as the root */
+visit.itemAtPath = (cst, path) => {
+    let item = cst;
+    for (const [field, index] of path) {
+        const tok = item?.[field];
+        if (tok && 'items' in tok) {
+            item = tok.items[index];
+        }
+        else
+            return undefined;
+    }
+    return item;
+};
+/**
+ * Get the immediate parent collection of the item at `path` from `cst` as the root.
+ *
+ * Throws an error if the collection is not found, which should never happen if the item itself exists.
+ */
+visit.parentCollection = (cst, path) => {
+    const parent = visit.itemAtPath(cst, path.slice(0, -1));
+    const field = path[path.length - 1][0];
+    const coll = parent?.[field];
+    if (coll && 'items' in coll)
+        return coll;
+    throw new Error('Parent collection not found');
+};
+function _visit(path, item, visitor) {
+    let ctrl = visitor(item, path);
+    if (typeof ctrl === 'symbol')
+        return ctrl;
+    for (const field of ['key', 'value']) {
+        const token = item[field];
+        if (token && 'items' in token) {
+            for (let i = 0; i < token.items.length; ++i) {
+                const ci = _visit(Object.freeze(path.concat([[field, i]])), token.items[i], visitor);
+                if (typeof ci === 'number')
+                    i = ci - 1;
+                else if (ci === BREAK)
+                    return BREAK;
+                else if (ci === REMOVE) {
+                    token.items.splice(i, 1);
+                    i -= 1;
+                }
+            }
+            if (typeof ctrl === 'function' && field === 'key')
+                ctrl = ctrl(item, path);
+        }
+    }
+    return typeof ctrl === 'function' ? ctrl(item, path) : ctrl;
+}/** The byte order mark */
+const BOM = '\u{FEFF}';
+/** Start of doc-mode */
+const DOCUMENT = '\x02'; // C0: Start of Text
+/** Unexpected end of flow-mode */
+const FLOW_END = '\x18'; // C0: Cancel
+/** Next token is a scalar value */
+const SCALAR = '\x1f'; // C0: Unit Separator
+/** @returns `true` if `token` is a flow or block collection */
+const isCollection = (token) => !!token && 'items' in token;
+/** @returns `true` if `token` is a flow or block scalar; not an alias */
+const isScalar = (token) => !!token &&
+    (token.type === 'scalar' ||
+        token.type === 'single-quoted-scalar' ||
+        token.type === 'double-quoted-scalar' ||
+        token.type === 'block-scalar');
+/* istanbul ignore next */
+/** Get a printable representation of a lexer token */
+function prettyToken(token) {
+    switch (token) {
+        case BOM:
+            return '<BOM>';
+        case DOCUMENT:
+            return '<DOC>';
+        case FLOW_END:
+            return '<FLOW_END>';
+        case SCALAR:
+            return '<SCALAR>';
+        default:
+            return JSON.stringify(token);
+    }
+}
+/** Identify the type of a lexer token. May return `null` for unknown tokens. */
+function tokenType(source) {
+    switch (source) {
+        case BOM:
+            return 'byte-order-mark';
+        case DOCUMENT:
+            return 'doc-mode';
+        case FLOW_END:
+            return 'flow-error-end';
+        case SCALAR:
+            return 'scalar';
+        case '---':
+            return 'doc-start';
+        case '...':
+            return 'doc-end';
+        case '':
+        case '\n':
+        case '\r\n':
+            return 'newline';
+        case '-':
+            return 'seq-item-ind';
+        case '?':
+            return 'explicit-key-ind';
+        case ':':
+            return 'map-value-ind';
+        case '{':
+            return 'flow-map-start';
+        case '}':
+            return 'flow-map-end';
+        case '[':
+            return 'flow-seq-start';
+        case ']':
+            return 'flow-seq-end';
+        case ',':
+            return 'comma';
+    }
+    switch (source[0]) {
+        case ' ':
+        case '\t':
+            return 'space';
+        case '#':
+            return 'comment';
+        case '%':
+            return 'directive-line';
+        case '*':
+            return 'alias';
+        case '&':
+            return 'anchor';
+        case '!':
+            return 'tag';
+        case "'":
+            return 'single-quoted-scalar';
+        case '"':
+            return 'double-quoted-scalar';
+        case '|':
+        case '>':
+            return 'block-scalar-header';
+    }
+    return null;
+}const cst=/*#__PURE__*/Object.defineProperty({__proto__:null,BOM,DOCUMENT,FLOW_END,SCALAR,isCollection,isScalar,prettyToken,tokenType,createScalarToken,resolveAsScalar,setScalarValue,stringify:stringify$1,visit},Symbol.toStringTag,{value:'Module'});/*
+START -> stream
+
+stream
+  directive -> line-end -> stream
+  indent + line-end -> stream
+  [else] -> line-start
+
+line-end
+  comment -> line-end
+  newline -> .
+  input-end -> END
+
+line-start
+  doc-start -> doc
+  doc-end -> stream
+  [else] -> indent -> block-start
+
+block-start
+  seq-item-start -> block-start
+  explicit-key-start -> block-start
+  map-value-start -> block-start
+  [else] -> doc
+
+doc
+  line-end -> line-start
+  spaces -> doc
+  anchor -> doc
+  tag -> doc
+  flow-start -> flow -> doc
+  flow-end -> error -> doc
+  seq-item-start -> error -> doc
+  explicit-key-start -> error -> doc
+  map-value-start -> doc
+  alias -> doc
+  quote-start -> quoted-scalar -> doc
+  block-scalar-header -> line-end -> block-scalar(min) -> line-start
+  [else] -> plain-scalar(false, min) -> doc
+
+flow
+  line-end -> flow
+  spaces -> flow
+  anchor -> flow
+  tag -> flow
+  flow-start -> flow -> flow
+  flow-end -> .
+  seq-item-start -> error -> flow
+  explicit-key-start -> flow
+  map-value-start -> flow
+  alias -> flow
+  quote-start -> quoted-scalar -> flow
+  comma -> flow
+  [else] -> plain-scalar(true, 0) -> flow
+
+quoted-scalar
+  quote-end -> .
+  [else] -> quoted-scalar
+
+block-scalar(min)
+  newline + peek(indent < min) -> .
+  [else] -> block-scalar(min)
+
+plain-scalar(is-flow, min)
+  scalar-end(is-flow) -> .
+  peek(newline + (indent < min)) -> .
+  [else] -> plain-scalar(min)
+*/
+function isEmpty(ch) {
+    switch (ch) {
+        case undefined:
+        case ' ':
+        case '\n':
+        case '\r':
+        case '\t':
+            return true;
+        default:
+            return false;
+    }
+}
+const hexDigits = '0123456789ABCDEFabcdef'.split('');
+const tagChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-#;/?:@&=+$_.!~*'()".split('');
+const invalidFlowScalarChars = ',[]{}'.split('');
+const invalidAnchorChars = ' ,[]{}\n\r\t'.split('');
+const isNotAnchorChar = (ch) => !ch || invalidAnchorChars.includes(ch);
+/**
+ * Splits an input string into lexical tokens, i.e. smaller strings that are
+ * easily identifiable by `tokens.tokenType()`.
+ *
+ * Lexing starts always in a "stream" context. Incomplete input may be buffered
+ * until a complete token can be emitted.
+ *
+ * In addition to slices of the original input, the following control characters
+ * may also be emitted:
+ *
+ * - `\x02` (Start of Text): A document starts with the next token
+ * - `\x18` (Cancel): Unexpected end of flow-mode (indicates an error)
+ * - `\x1f` (Unit Separator): Next token is a scalar value
+ * - `\u{FEFF}` (Byte order mark): Emitted separately outside documents
+ */
+class Lexer {
+    constructor() {
+        /**
+         * Flag indicating whether the end of the current buffer marks the end of
+         * all input
+         */
+        this.atEnd = false;
+        /**
+         * Explicit indent set in block scalar header, as an offset from the current
+         * minimum indent, so e.g. set to 1 from a header `|2+`. Set to -1 if not
+         * explicitly set.
+         */
+        this.blockScalarIndent = -1;
+        /**
+         * Block scalars that include a + (keep) chomping indicator in their header
+         * include trailing empty lines, which are otherwise excluded from the
+         * scalar's contents.
+         */
+        this.blockScalarKeep = false;
+        /** Current input */
+        this.buffer = '';
+        /**
+         * Flag noting whether the map value indicator : can immediately follow this
+         * node within a flow context.
+         */
+        this.flowKey = false;
+        /** Count of surrounding flow collection levels. */
+        this.flowLevel = 0;
+        /**
+         * Minimum level of indentation required for next lines to be parsed as a
+         * part of the current scalar value.
+         */
+        this.indentNext = 0;
+        /** Indentation level of the current line. */
+        this.indentValue = 0;
+        /** Position of the next \n character. */
+        this.lineEndPos = null;
+        /** Stores the state of the lexer if reaching the end of incpomplete input */
+        this.next = null;
+        /** A pointer to `buffer`; the current position of the lexer. */
+        this.pos = 0;
+    }
+    /**
+     * Generate YAML tokens from the `source` string. If `incomplete`,
+     * a part of the last line may be left as a buffer for the next call.
+     *
+     * @returns A generator of lexical tokens
+     */
+    *lex(source, incomplete = false) {
+        if (source) {
+            this.buffer = this.buffer ? this.buffer + source : source;
+            this.lineEndPos = null;
+        }
+        this.atEnd = !incomplete;
+        let next = this.next ?? 'stream';
+        while (next && (incomplete || this.hasChars(1)))
+            next = yield* this.parseNext(next);
+    }
+    atLineEnd() {
+        let i = this.pos;
+        let ch = this.buffer[i];
+        while (ch === ' ' || ch === '\t')
+            ch = this.buffer[++i];
+        if (!ch || ch === '#' || ch === '\n')
+            return true;
+        if (ch === '\r')
+            return this.buffer[i + 1] === '\n';
+        return false;
+    }
+    charAt(n) {
+        return this.buffer[this.pos + n];
+    }
+    continueScalar(offset) {
+        let ch = this.buffer[offset];
+        if (this.indentNext > 0) {
+            let indent = 0;
+            while (ch === ' ')
+                ch = this.buffer[++indent + offset];
+            if (ch === '\r') {
+                const next = this.buffer[indent + offset + 1];
+                if (next === '\n' || (!next && !this.atEnd))
+                    return offset + indent + 1;
+            }
+            return ch === '\n' || indent >= this.indentNext || (!ch && !this.atEnd)
+                ? offset + indent
+                : -1;
+        }
+        if (ch === '-' || ch === '.') {
+            const dt = this.buffer.substr(offset, 3);
+            if ((dt === '---' || dt === '...') && isEmpty(this.buffer[offset + 3]))
+                return -1;
+        }
+        return offset;
+    }
+    getLine() {
+        let end = this.lineEndPos;
+        if (typeof end !== 'number' || (end !== -1 && end < this.pos)) {
+            end = this.buffer.indexOf('\n', this.pos);
+            this.lineEndPos = end;
+        }
+        if (end === -1)
+            return this.atEnd ? this.buffer.substring(this.pos) : null;
+        if (this.buffer[end - 1] === '\r')
+            end -= 1;
+        return this.buffer.substring(this.pos, end);
+    }
+    hasChars(n) {
+        return this.pos + n <= this.buffer.length;
+    }
+    setNext(state) {
+        this.buffer = this.buffer.substring(this.pos);
+        this.pos = 0;
+        this.lineEndPos = null;
+        this.next = state;
+        return null;
+    }
+    peek(n) {
+        return this.buffer.substr(this.pos, n);
+    }
+    *parseNext(next) {
+        switch (next) {
+            case 'stream':
+                return yield* this.parseStream();
+            case 'line-start':
+                return yield* this.parseLineStart();
+            case 'block-start':
+                return yield* this.parseBlockStart();
+            case 'doc':
+                return yield* this.parseDocument();
+            case 'flow':
+                return yield* this.parseFlowCollection();
+            case 'quoted-scalar':
+                return yield* this.parseQuotedScalar();
+            case 'block-scalar':
+                return yield* this.parseBlockScalar();
+            case 'plain-scalar':
+                return yield* this.parsePlainScalar();
+        }
+    }
+    *parseStream() {
+        let line = this.getLine();
+        if (line === null)
+            return this.setNext('stream');
+        if (line[0] === BOM) {
+            yield* this.pushCount(1);
+            line = line.substring(1);
+        }
+        if (line[0] === '%') {
+            let dirEnd = line.length;
+            const cs = line.indexOf('#');
+            if (cs !== -1) {
+                const ch = line[cs - 1];
+                if (ch === ' ' || ch === '\t')
+                    dirEnd = cs - 1;
+            }
+            while (true) {
+                const ch = line[dirEnd - 1];
+                if (ch === ' ' || ch === '\t')
+                    dirEnd -= 1;
+                else
+                    break;
+            }
+            const n = (yield* this.pushCount(dirEnd)) + (yield* this.pushSpaces(true));
+            yield* this.pushCount(line.length - n); // possible comment
+            this.pushNewline();
+            return 'stream';
+        }
+        if (this.atLineEnd()) {
+            const sp = yield* this.pushSpaces(true);
+            yield* this.pushCount(line.length - sp);
+            yield* this.pushNewline();
+            return 'stream';
+        }
+        yield DOCUMENT;
+        return yield* this.parseLineStart();
+    }
+    *parseLineStart() {
+        const ch = this.charAt(0);
+        if (!ch && !this.atEnd)
+            return this.setNext('line-start');
+        if (ch === '-' || ch === '.') {
+            if (!this.atEnd && !this.hasChars(4))
+                return this.setNext('line-start');
+            const s = this.peek(3);
+            if (s === '---' && isEmpty(this.charAt(3))) {
+                yield* this.pushCount(3);
+                this.indentValue = 0;
+                this.indentNext = 0;
+                return 'doc';
+            }
+            else if (s === '...' && isEmpty(this.charAt(3))) {
+                yield* this.pushCount(3);
+                return 'stream';
+            }
+        }
+        this.indentValue = yield* this.pushSpaces(false);
+        if (this.indentNext > this.indentValue && !isEmpty(this.charAt(1)))
+            this.indentNext = this.indentValue;
+        return yield* this.parseBlockStart();
+    }
+    *parseBlockStart() {
+        const [ch0, ch1] = this.peek(2);
+        if (!ch1 && !this.atEnd)
+            return this.setNext('block-start');
+        if ((ch0 === '-' || ch0 === '?' || ch0 === ':') && isEmpty(ch1)) {
+            const n = (yield* this.pushCount(1)) + (yield* this.pushSpaces(true));
+            this.indentNext = this.indentValue + 1;
+            this.indentValue += n;
+            return yield* this.parseBlockStart();
+        }
+        return 'doc';
+    }
+    *parseDocument() {
+        yield* this.pushSpaces(true);
+        const line = this.getLine();
+        if (line === null)
+            return this.setNext('doc');
+        let n = yield* this.pushIndicators();
+        switch (line[n]) {
+            case '#':
+                yield* this.pushCount(line.length - n);
+            // fallthrough
+            case undefined:
+                yield* this.pushNewline();
+                return yield* this.parseLineStart();
+            case '{':
+            case '[':
+                yield* this.pushCount(1);
+                this.flowKey = false;
+                this.flowLevel = 1;
+                return 'flow';
+            case '}':
+            case ']':
+                // this is an error
+                yield* this.pushCount(1);
+                return 'doc';
+            case '*':
+                yield* this.pushUntil(isNotAnchorChar);
+                return 'doc';
+            case '"':
+            case "'":
+                return yield* this.parseQuotedScalar();
+            case '|':
+            case '>':
+                n += yield* this.parseBlockScalarHeader();
+                n += yield* this.pushSpaces(true);
+                yield* this.pushCount(line.length - n);
+                yield* this.pushNewline();
+                return yield* this.parseBlockScalar();
+            default:
+                return yield* this.parsePlainScalar();
+        }
+    }
+    *parseFlowCollection() {
+        let nl, sp;
+        let indent = -1;
+        do {
+            nl = yield* this.pushNewline();
+            if (nl > 0) {
+                sp = yield* this.pushSpaces(false);
+                this.indentValue = indent = sp;
+            }
+            else {
+                sp = 0;
+            }
+            sp += yield* this.pushSpaces(true);
+        } while (nl + sp > 0);
+        const line = this.getLine();
+        if (line === null)
+            return this.setNext('flow');
+        if ((indent !== -1 && indent < this.indentNext && line[0] !== '#') ||
+            (indent === 0 &&
+                (line.startsWith('---') || line.startsWith('...')) &&
+                isEmpty(line[3]))) {
+            // Allowing for the terminal ] or } at the same (rather than greater)
+            // indent level as the initial [ or { is technically invalid, but
+            // failing here would be surprising to users.
+            const atFlowEndMarker = indent === this.indentNext - 1 &&
+                this.flowLevel === 1 &&
+                (line[0] === ']' || line[0] === '}');
+            if (!atFlowEndMarker) {
+                // this is an error
+                this.flowLevel = 0;
+                yield FLOW_END;
+                return yield* this.parseLineStart();
+            }
+        }
+        let n = 0;
+        while (line[n] === ',') {
+            n += yield* this.pushCount(1);
+            n += yield* this.pushSpaces(true);
+            this.flowKey = false;
+        }
+        n += yield* this.pushIndicators();
+        switch (line[n]) {
+            case undefined:
+                return 'flow';
+            case '#':
+                yield* this.pushCount(line.length - n);
+                return 'flow';
+            case '{':
+            case '[':
+                yield* this.pushCount(1);
+                this.flowKey = false;
+                this.flowLevel += 1;
+                return 'flow';
+            case '}':
+            case ']':
+                yield* this.pushCount(1);
+                this.flowKey = true;
+                this.flowLevel -= 1;
+                return this.flowLevel ? 'flow' : 'doc';
+            case '*':
+                yield* this.pushUntil(isNotAnchorChar);
+                return 'flow';
+            case '"':
+            case "'":
+                this.flowKey = true;
+                return yield* this.parseQuotedScalar();
+            case ':': {
+                const next = this.charAt(1);
+                if (this.flowKey || isEmpty(next) || next === ',') {
+                    this.flowKey = false;
+                    yield* this.pushCount(1);
+                    yield* this.pushSpaces(true);
+                    return 'flow';
+                }
+            }
+            // fallthrough
+            default:
+                this.flowKey = false;
+                return yield* this.parsePlainScalar();
+        }
+    }
+    *parseQuotedScalar() {
+        const quote = this.charAt(0);
+        let end = this.buffer.indexOf(quote, this.pos + 1);
+        if (quote === "'") {
+            while (end !== -1 && this.buffer[end + 1] === "'")
+                end = this.buffer.indexOf("'", end + 2);
+        }
+        else {
+            // double-quote
+            while (end !== -1) {
+                let n = 0;
+                while (this.buffer[end - 1 - n] === '\\')
+                    n += 1;
+                if (n % 2 === 0)
+                    break;
+                end = this.buffer.indexOf('"', end + 1);
+            }
+        }
+        // Only looking for newlines within the quotes
+        const qb = this.buffer.substring(0, end);
+        let nl = qb.indexOf('\n', this.pos);
+        if (nl !== -1) {
+            while (nl !== -1) {
+                const cs = this.continueScalar(nl + 1);
+                if (cs === -1)
+                    break;
+                nl = qb.indexOf('\n', cs);
+            }
+            if (nl !== -1) {
+                // this is an error caused by an unexpected unindent
+                end = nl - (qb[nl - 1] === '\r' ? 2 : 1);
+            }
+        }
+        if (end === -1) {
+            if (!this.atEnd)
+                return this.setNext('quoted-scalar');
+            end = this.buffer.length;
+        }
+        yield* this.pushToIndex(end + 1, false);
+        return this.flowLevel ? 'flow' : 'doc';
+    }
+    *parseBlockScalarHeader() {
+        this.blockScalarIndent = -1;
+        this.blockScalarKeep = false;
+        let i = this.pos;
+        while (true) {
+            const ch = this.buffer[++i];
+            if (ch === '+')
+                this.blockScalarKeep = true;
+            else if (ch > '0' && ch <= '9')
+                this.blockScalarIndent = Number(ch) - 1;
+            else if (ch !== '-')
+                break;
+        }
+        return yield* this.pushUntil(ch => isEmpty(ch) || ch === '#');
+    }
+    *parseBlockScalar() {
+        let nl = this.pos - 1; // may be -1 if this.pos === 0
+        let indent = 0;
+        let ch;
+        loop: for (let i = this.pos; (ch = this.buffer[i]); ++i) {
+            switch (ch) {
+                case ' ':
+                    indent += 1;
+                    break;
+                case '\n':
+                    nl = i;
+                    indent = 0;
+                    break;
+                case '\r': {
+                    const next = this.buffer[i + 1];
+                    if (!next && !this.atEnd)
+                        return this.setNext('block-scalar');
+                    if (next === '\n')
+                        break;
+                } // fallthrough
+                default:
+                    break loop;
+            }
+        }
+        if (!ch && !this.atEnd)
+            return this.setNext('block-scalar');
+        if (indent >= this.indentNext) {
+            if (this.blockScalarIndent === -1)
+                this.indentNext = indent;
+            else
+                this.indentNext += this.blockScalarIndent;
+            do {
+                const cs = this.continueScalar(nl + 1);
+                if (cs === -1)
+                    break;
+                nl = this.buffer.indexOf('\n', cs);
+            } while (nl !== -1);
+            if (nl === -1) {
+                if (!this.atEnd)
+                    return this.setNext('block-scalar');
+                nl = this.buffer.length;
+            }
+        }
+        if (!this.blockScalarKeep) {
+            do {
+                let i = nl - 1;
+                let ch = this.buffer[i];
+                if (ch === '\r')
+                    ch = this.buffer[--i];
+                const lastChar = i; // Drop the line if last char not more indented
+                while (ch === ' ' || ch === '\t')
+                    ch = this.buffer[--i];
+                if (ch === '\n' && i >= this.pos && i + 1 + indent > lastChar)
+                    nl = i;
+                else
+                    break;
+            } while (true);
+        }
+        yield SCALAR;
+        yield* this.pushToIndex(nl + 1, true);
+        return yield* this.parseLineStart();
+    }
+    *parsePlainScalar() {
+        const inFlow = this.flowLevel > 0;
+        let end = this.pos - 1;
+        let i = this.pos - 1;
+        let ch;
+        while ((ch = this.buffer[++i])) {
+            if (ch === ':') {
+                const next = this.buffer[i + 1];
+                if (isEmpty(next) || (inFlow && next === ','))
+                    break;
+                end = i;
+            }
+            else if (isEmpty(ch)) {
+                let next = this.buffer[i + 1];
+                if (ch === '\r') {
+                    if (next === '\n') {
+                        i += 1;
+                        ch = '\n';
+                        next = this.buffer[i + 1];
+                    }
+                    else
+                        end = i;
+                }
+                if (next === '#' || (inFlow && invalidFlowScalarChars.includes(next)))
+                    break;
+                if (ch === '\n') {
+                    const cs = this.continueScalar(i + 1);
+                    if (cs === -1)
+                        break;
+                    i = Math.max(i, cs - 2); // to advance, but still account for ' #'
+                }
+            }
+            else {
+                if (inFlow && invalidFlowScalarChars.includes(ch))
+                    break;
+                end = i;
+            }
+        }
+        if (!ch && !this.atEnd)
+            return this.setNext('plain-scalar');
+        yield SCALAR;
+        yield* this.pushToIndex(end + 1, true);
+        return inFlow ? 'flow' : 'doc';
+    }
+    *pushCount(n) {
+        if (n > 0) {
+            yield this.buffer.substr(this.pos, n);
+            this.pos += n;
+            return n;
+        }
+        return 0;
+    }
+    *pushToIndex(i, allowEmpty) {
+        const s = this.buffer.slice(this.pos, i);
+        if (s) {
+            yield s;
+            this.pos += s.length;
+            return s.length;
+        }
+        else if (allowEmpty)
+            yield '';
+        return 0;
+    }
+    *pushIndicators() {
+        switch (this.charAt(0)) {
+            case '!':
+                return ((yield* this.pushTag()) +
+                    (yield* this.pushSpaces(true)) +
+                    (yield* this.pushIndicators()));
+            case '&':
+                return ((yield* this.pushUntil(isNotAnchorChar)) +
+                    (yield* this.pushSpaces(true)) +
+                    (yield* this.pushIndicators()));
+            case '-': // this is an error
+            case '?': // this is an error outside flow collections
+            case ':': {
+                const inFlow = this.flowLevel > 0;
+                const ch1 = this.charAt(1);
+                if (isEmpty(ch1) || (inFlow && invalidFlowScalarChars.includes(ch1))) {
+                    if (!inFlow)
+                        this.indentNext = this.indentValue + 1;
+                    else if (this.flowKey)
+                        this.flowKey = false;
+                    return ((yield* this.pushCount(1)) +
+                        (yield* this.pushSpaces(true)) +
+                        (yield* this.pushIndicators()));
+                }
+            }
+        }
+        return 0;
+    }
+    *pushTag() {
+        if (this.charAt(1) === '<') {
+            let i = this.pos + 2;
+            let ch = this.buffer[i];
+            while (!isEmpty(ch) && ch !== '>')
+                ch = this.buffer[++i];
+            return yield* this.pushToIndex(ch === '>' ? i + 1 : i, false);
+        }
+        else {
+            let i = this.pos + 1;
+            let ch = this.buffer[i];
+            while (ch) {
+                if (tagChars.includes(ch))
+                    ch = this.buffer[++i];
+                else if (ch === '%' &&
+                    hexDigits.includes(this.buffer[i + 1]) &&
+                    hexDigits.includes(this.buffer[i + 2])) {
+                    ch = this.buffer[(i += 3)];
+                }
+                else
+                    break;
+            }
+            return yield* this.pushToIndex(i, false);
+        }
+    }
+    *pushNewline() {
+        const ch = this.buffer[this.pos];
+        if (ch === '\n')
+            return yield* this.pushCount(1);
+        else if (ch === '\r' && this.charAt(1) === '\n')
+            return yield* this.pushCount(2);
+        else
+            return 0;
+    }
+    *pushSpaces(allowTabs) {
+        let i = this.pos - 1;
+        let ch;
+        do {
+            ch = this.buffer[++i];
+        } while (ch === ' ' || (allowTabs && ch === '\t'));
+        const n = i - this.pos;
+        if (n > 0) {
+            yield this.buffer.substr(this.pos, n);
+            this.pos = i;
+        }
+        return n;
+    }
+    *pushUntil(test) {
+        let i = this.pos;
+        let ch = this.buffer[i];
+        while (!test(ch))
+            ch = this.buffer[++i];
+        return yield* this.pushToIndex(i, false);
+    }
+}/**
+ * Tracks newlines during parsing in order to provide an efficient API for
+ * determining the one-indexed `{ line, col }` position for any offset
+ * within the input.
+ */
+class LineCounter {
+    constructor() {
+        this.lineStarts = [];
+        /**
+         * Should be called in ascending order. Otherwise, call
+         * `lineCounter.lineStarts.sort()` before calling `linePos()`.
+         */
+        this.addNewLine = (offset) => this.lineStarts.push(offset);
+        /**
+         * Performs a binary search and returns the 1-indexed { line, col }
+         * position of `offset`. If `line === 0`, `addNewLine` has never been
+         * called or `offset` is before the first known newline.
+         */
+        this.linePos = (offset) => {
+            let low = 0;
+            let high = this.lineStarts.length;
+            while (low < high) {
+                const mid = (low + high) >> 1; // Math.floor((low + high) / 2)
+                if (this.lineStarts[mid] < offset)
+                    low = mid + 1;
+                else
+                    high = mid;
+            }
+            if (this.lineStarts[low] === offset)
+                return { line: low + 1, col: 1 };
+            if (low === 0)
+                return { line: 0, col: offset };
+            const start = this.lineStarts[low - 1];
+            return { line: low, col: offset - start + 1 };
+        };
+    }
+}function includesToken(list, type) {
+    for (let i = 0; i < list.length; ++i)
+        if (list[i].type === type)
+            return true;
+    return false;
+}
+function findNonEmptyIndex(list) {
+    for (let i = 0; i < list.length; ++i) {
+        switch (list[i].type) {
+            case 'space':
+            case 'comment':
+            case 'newline':
+                break;
+            default:
+                return i;
+        }
+    }
+    return -1;
+}
+function isFlowToken(token) {
+    switch (token?.type) {
+        case 'alias':
+        case 'scalar':
+        case 'single-quoted-scalar':
+        case 'double-quoted-scalar':
+        case 'flow-collection':
+            return true;
+        default:
+            return false;
+    }
+}
+function getPrevProps(parent) {
+    switch (parent.type) {
+        case 'document':
+            return parent.start;
+        case 'block-map': {
+            const it = parent.items[parent.items.length - 1];
+            return it.sep ?? it.start;
+        }
+        case 'block-seq':
+            return parent.items[parent.items.length - 1].start;
+        /* istanbul ignore next should not happen */
+        default:
+            return [];
+    }
+}
+/** Note: May modify input array */
+function getFirstKeyStartProps(prev) {
+    if (prev.length === 0)
+        return [];
+    let i = prev.length;
+    loop: while (--i >= 0) {
+        switch (prev[i].type) {
+            case 'doc-start':
+            case 'explicit-key-ind':
+            case 'map-value-ind':
+            case 'seq-item-ind':
+            case 'newline':
+                break loop;
+        }
+    }
+    while (prev[++i]?.type === 'space') {
+        /* loop */
+    }
+    return prev.splice(i, prev.length);
+}
+function fixFlowSeqItems(fc) {
+    if (fc.start.type === 'flow-seq-start') {
+        for (const it of fc.items) {
+            if (it.sep &&
+                !it.value &&
+                !includesToken(it.start, 'explicit-key-ind') &&
+                !includesToken(it.sep, 'map-value-ind')) {
+                if (it.key)
+                    it.value = it.key;
+                delete it.key;
+                if (isFlowToken(it.value)) {
+                    if (it.value.end)
+                        Array.prototype.push.apply(it.value.end, it.sep);
+                    else
+                        it.value.end = it.sep;
+                }
+                else
+                    Array.prototype.push.apply(it.start, it.sep);
+                delete it.sep;
+            }
+        }
+    }
+}
+/**
+ * A YAML concrete syntax tree (CST) parser
+ *
+ * ```ts
+ * const src: string = ...
+ * for (const token of new Parser().parse(src)) {
+ *   // token: Token
+ * }
+ * ```
+ *
+ * To use the parser with a user-provided lexer:
+ *
+ * ```ts
+ * function* parse(source: string, lexer: Lexer) {
+ *   const parser = new Parser()
+ *   for (const lexeme of lexer.lex(source))
+ *     yield* parser.next(lexeme)
+ *   yield* parser.end()
+ * }
+ *
+ * const src: string = ...
+ * const lexer = new Lexer()
+ * for (const token of parse(src, lexer)) {
+ *   // token: Token
+ * }
+ * ```
+ */
+class Parser {
+    /**
+     * @param onNewLine - If defined, called separately with the start position of
+     *   each new line (in `parse()`, including the start of input).
+     */
+    constructor(onNewLine) {
+        /** If true, space and sequence indicators count as indentation */
+        this.atNewLine = true;
+        /** If true, next token is a scalar value */
+        this.atScalar = false;
+        /** Current indentation level */
+        this.indent = 0;
+        /** Current offset since the start of parsing */
+        this.offset = 0;
+        /** On the same line with a block map key */
+        this.onKeyLine = false;
+        /** Top indicates the node that's currently being built */
+        this.stack = [];
+        /** The source of the current token, set in parse() */
+        this.source = '';
+        /** The type of the current token, set in parse() */
+        this.type = '';
+        // Must be defined after `next()`
+        this.lexer = new Lexer();
+        this.onNewLine = onNewLine;
+    }
+    /**
+     * Parse `source` as a YAML stream.
+     * If `incomplete`, a part of the last line may be left as a buffer for the next call.
+     *
+     * Errors are not thrown, but yielded as `{ type: 'error', message }` tokens.
+     *
+     * @returns A generator of tokens representing each directive, document, and other structure.
+     */
+    *parse(source, incomplete = false) {
+        if (this.onNewLine && this.offset === 0)
+            this.onNewLine(0);
+        for (const lexeme of this.lexer.lex(source, incomplete))
+            yield* this.next(lexeme);
+        if (!incomplete)
+            yield* this.end();
+    }
+    /**
+     * Advance the parser by the `source` of one lexical token.
+     */
+    *next(source) {
+        this.source = source;
+        if (this.atScalar) {
+            this.atScalar = false;
+            yield* this.step();
+            this.offset += source.length;
+            return;
+        }
+        const type = tokenType(source);
+        if (!type) {
+            const message = `Not a YAML token: ${source}`;
+            yield* this.pop({ type: 'error', offset: this.offset, message, source });
+            this.offset += source.length;
+        }
+        else if (type === 'scalar') {
+            this.atNewLine = false;
+            this.atScalar = true;
+            this.type = 'scalar';
+        }
+        else {
+            this.type = type;
+            yield* this.step();
+            switch (type) {
+                case 'newline':
+                    this.atNewLine = true;
+                    this.indent = 0;
+                    if (this.onNewLine)
+                        this.onNewLine(this.offset + source.length);
+                    break;
+                case 'space':
+                    if (this.atNewLine && source[0] === ' ')
+                        this.indent += source.length;
+                    break;
+                case 'explicit-key-ind':
+                case 'map-value-ind':
+                case 'seq-item-ind':
+                    if (this.atNewLine)
+                        this.indent += source.length;
+                    break;
+                case 'doc-mode':
+                case 'flow-error-end':
+                    return;
+                default:
+                    this.atNewLine = false;
+            }
+            this.offset += source.length;
+        }
+    }
+    /** Call at end of input to push out any remaining constructions */
+    *end() {
+        while (this.stack.length > 0)
+            yield* this.pop();
+    }
+    get sourceToken() {
+        const st = {
+            type: this.type,
+            offset: this.offset,
+            indent: this.indent,
+            source: this.source
+        };
+        return st;
+    }
+    *step() {
+        const top = this.peek(1);
+        if (this.type === 'doc-end' && (!top || top.type !== 'doc-end')) {
+            while (this.stack.length > 0)
+                yield* this.pop();
+            this.stack.push({
+                type: 'doc-end',
+                offset: this.offset,
+                source: this.source
+            });
+            return;
+        }
+        if (!top)
+            return yield* this.stream();
+        switch (top.type) {
+            case 'document':
+                return yield* this.document(top);
+            case 'alias':
+            case 'scalar':
+            case 'single-quoted-scalar':
+            case 'double-quoted-scalar':
+                return yield* this.scalar(top);
+            case 'block-scalar':
+                return yield* this.blockScalar(top);
+            case 'block-map':
+                return yield* this.blockMap(top);
+            case 'block-seq':
+                return yield* this.blockSequence(top);
+            case 'flow-collection':
+                return yield* this.flowCollection(top);
+            case 'doc-end':
+                return yield* this.documentEnd(top);
+        }
+        /* istanbul ignore next should not happen */
+        yield* this.pop();
+    }
+    peek(n) {
+        return this.stack[this.stack.length - n];
+    }
+    *pop(error) {
+        const token = error ?? this.stack.pop();
+        /* istanbul ignore if should not happen */
+        if (!token) {
+            const message = 'Tried to pop an empty stack';
+            yield { type: 'error', offset: this.offset, source: '', message };
+        }
+        else if (this.stack.length === 0) {
+            yield token;
+        }
+        else {
+            const top = this.peek(1);
+            if (token.type === 'block-scalar') {
+                // Block scalars use their parent rather than header indent
+                token.indent = 'indent' in top ? top.indent : 0;
+            }
+            else if (token.type === 'flow-collection' && top.type === 'document') {
+                // Ignore all indent for top-level flow collections
+                token.indent = 0;
+            }
+            if (token.type === 'flow-collection')
+                fixFlowSeqItems(token);
+            switch (top.type) {
+                case 'document':
+                    top.value = token;
+                    break;
+                case 'block-scalar':
+                    top.props.push(token); // error
+                    break;
+                case 'block-map': {
+                    const it = top.items[top.items.length - 1];
+                    if (it.value) {
+                        top.items.push({ start: [], key: token, sep: [] });
+                        this.onKeyLine = true;
+                        return;
+                    }
+                    else if (it.sep) {
+                        it.value = token;
+                    }
+                    else {
+                        Object.assign(it, { key: token, sep: [] });
+                        this.onKeyLine = !includesToken(it.start, 'explicit-key-ind');
+                        return;
+                    }
+                    break;
+                }
+                case 'block-seq': {
+                    const it = top.items[top.items.length - 1];
+                    if (it.value)
+                        top.items.push({ start: [], value: token });
+                    else
+                        it.value = token;
+                    break;
+                }
+                case 'flow-collection': {
+                    const it = top.items[top.items.length - 1];
+                    if (!it || it.value)
+                        top.items.push({ start: [], key: token, sep: [] });
+                    else if (it.sep)
+                        it.value = token;
+                    else
+                        Object.assign(it, { key: token, sep: [] });
+                    return;
+                }
+                /* istanbul ignore next should not happen */
+                default:
+                    yield* this.pop();
+                    yield* this.pop(token);
+            }
+            if ((top.type === 'document' ||
+                top.type === 'block-map' ||
+                top.type === 'block-seq') &&
+                (token.type === 'block-map' || token.type === 'block-seq')) {
+                const last = token.items[token.items.length - 1];
+                if (last &&
+                    !last.sep &&
+                    !last.value &&
+                    last.start.length > 0 &&
+                    findNonEmptyIndex(last.start) === -1 &&
+                    (token.indent === 0 ||
+                        last.start.every(st => st.type !== 'comment' || st.indent < token.indent))) {
+                    if (top.type === 'document')
+                        top.end = last.start;
+                    else
+                        top.items.push({ start: last.start });
+                    token.items.splice(-1, 1);
+                }
+            }
+        }
+    }
+    *stream() {
+        switch (this.type) {
+            case 'directive-line':
+                yield { type: 'directive', offset: this.offset, source: this.source };
+                return;
+            case 'byte-order-mark':
+            case 'space':
+            case 'comment':
+            case 'newline':
+                yield this.sourceToken;
+                return;
+            case 'doc-mode':
+            case 'doc-start': {
+                const doc = {
+                    type: 'document',
+                    offset: this.offset,
+                    start: []
+                };
+                if (this.type === 'doc-start')
+                    doc.start.push(this.sourceToken);
+                this.stack.push(doc);
+                return;
+            }
+        }
+        yield {
+            type: 'error',
+            offset: this.offset,
+            message: `Unexpected ${this.type} token in YAML stream`,
+            source: this.source
+        };
+    }
+    *document(doc) {
+        if (doc.value)
+            return yield* this.lineEnd(doc);
+        switch (this.type) {
+            case 'doc-start': {
+                if (findNonEmptyIndex(doc.start) !== -1) {
+                    yield* this.pop();
+                    yield* this.step();
+                }
+                else
+                    doc.start.push(this.sourceToken);
+                return;
+            }
+            case 'anchor':
+            case 'tag':
+            case 'space':
+            case 'comment':
+            case 'newline':
+                doc.start.push(this.sourceToken);
+                return;
+        }
+        const bv = this.startBlockValue(doc);
+        if (bv)
+            this.stack.push(bv);
+        else {
+            yield {
+                type: 'error',
+                offset: this.offset,
+                message: `Unexpected ${this.type} token in YAML document`,
+                source: this.source
+            };
+        }
+    }
+    *scalar(scalar) {
+        if (this.type === 'map-value-ind') {
+            const prev = getPrevProps(this.peek(2));
+            const start = getFirstKeyStartProps(prev);
+            let sep;
+            if (scalar.end) {
+                sep = scalar.end;
+                sep.push(this.sourceToken);
+                delete scalar.end;
+            }
+            else
+                sep = [this.sourceToken];
+            const map = {
+                type: 'block-map',
+                offset: scalar.offset,
+                indent: scalar.indent,
+                items: [{ start, key: scalar, sep }]
+            };
+            this.onKeyLine = true;
+            this.stack[this.stack.length - 1] = map;
+        }
+        else
+            yield* this.lineEnd(scalar);
+    }
+    *blockScalar(scalar) {
+        switch (this.type) {
+            case 'space':
+            case 'comment':
+            case 'newline':
+                scalar.props.push(this.sourceToken);
+                return;
+            case 'scalar':
+                scalar.source = this.source;
+                // block-scalar source includes trailing newline
+                this.atNewLine = true;
+                this.indent = 0;
+                if (this.onNewLine) {
+                    let nl = this.source.indexOf('\n') + 1;
+                    while (nl !== 0) {
+                        this.onNewLine(this.offset + nl);
+                        nl = this.source.indexOf('\n', nl) + 1;
+                    }
+                }
+                yield* this.pop();
+                break;
+            /* istanbul ignore next should not happen */
+            default:
+                yield* this.pop();
+                yield* this.step();
+        }
+    }
+    *blockMap(map) {
+        const it = map.items[map.items.length - 1];
+        // it.sep is true-ish if pair already has key or : separator
+        switch (this.type) {
+            case 'newline':
+                this.onKeyLine = false;
+                if (it.value) {
+                    const end = 'end' in it.value ? it.value.end : undefined;
+                    const last = Array.isArray(end) ? end[end.length - 1] : undefined;
+                    if (last?.type === 'comment')
+                        end?.push(this.sourceToken);
+                    else
+                        map.items.push({ start: [this.sourceToken] });
+                }
+                else if (it.sep) {
+                    it.sep.push(this.sourceToken);
+                }
+                else {
+                    it.start.push(this.sourceToken);
+                }
+                return;
+            case 'space':
+            case 'comment':
+                if (it.value) {
+                    map.items.push({ start: [this.sourceToken] });
+                }
+                else if (it.sep) {
+                    it.sep.push(this.sourceToken);
+                }
+                else {
+                    if (this.atIndentedComment(it.start, map.indent)) {
+                        const prev = map.items[map.items.length - 2];
+                        const end = prev?.value?.end;
+                        if (Array.isArray(end)) {
+                            Array.prototype.push.apply(end, it.start);
+                            end.push(this.sourceToken);
+                            map.items.pop();
+                            return;
+                        }
+                    }
+                    it.start.push(this.sourceToken);
+                }
+                return;
+        }
+        if (this.indent >= map.indent) {
+            const atNextItem = !this.onKeyLine && this.indent === map.indent && it.sep;
+            // For empty nodes, assign newline-separated not indented empty tokens to following node
+            let start = [];
+            if (atNextItem && it.sep && !it.value) {
+                const nl = [];
+                for (let i = 0; i < it.sep.length; ++i) {
+                    const st = it.sep[i];
+                    switch (st.type) {
+                        case 'newline':
+                            nl.push(i);
+                            break;
+                        case 'space':
+                            break;
+                        case 'comment':
+                            if (st.indent > map.indent)
+                                nl.length = 0;
+                            break;
+                        default:
+                            nl.length = 0;
+                    }
+                }
+                if (nl.length >= 2)
+                    start = it.sep.splice(nl[1]);
+            }
+            switch (this.type) {
+                case 'anchor':
+                case 'tag':
+                    if (atNextItem || it.value) {
+                        start.push(this.sourceToken);
+                        map.items.push({ start });
+                        this.onKeyLine = true;
+                    }
+                    else if (it.sep) {
+                        it.sep.push(this.sourceToken);
+                    }
+                    else {
+                        it.start.push(this.sourceToken);
+                    }
+                    return;
+                case 'explicit-key-ind':
+                    if (!it.sep && !includesToken(it.start, 'explicit-key-ind')) {
+                        it.start.push(this.sourceToken);
+                    }
+                    else if (atNextItem || it.value) {
+                        start.push(this.sourceToken);
+                        map.items.push({ start });
+                    }
+                    else {
+                        this.stack.push({
+                            type: 'block-map',
+                            offset: this.offset,
+                            indent: this.indent,
+                            items: [{ start: [this.sourceToken] }]
+                        });
+                    }
+                    this.onKeyLine = true;
+                    return;
+                case 'map-value-ind':
+                    if (includesToken(it.start, 'explicit-key-ind')) {
+                        if (!it.sep) {
+                            if (includesToken(it.start, 'newline')) {
+                                Object.assign(it, { key: null, sep: [this.sourceToken] });
+                            }
+                            else {
+                                const start = getFirstKeyStartProps(it.start);
+                                this.stack.push({
+                                    type: 'block-map',
+                                    offset: this.offset,
+                                    indent: this.indent,
+                                    items: [{ start, key: null, sep: [this.sourceToken] }]
+                                });
+                            }
+                        }
+                        else if (it.value) {
+                            map.items.push({ start: [], key: null, sep: [this.sourceToken] });
+                        }
+                        else if (includesToken(it.sep, 'map-value-ind')) {
+                            this.stack.push({
+                                type: 'block-map',
+                                offset: this.offset,
+                                indent: this.indent,
+                                items: [{ start, key: null, sep: [this.sourceToken] }]
+                            });
+                        }
+                        else if (isFlowToken(it.key) &&
+                            !includesToken(it.sep, 'newline')) {
+                            const start = getFirstKeyStartProps(it.start);
+                            const key = it.key;
+                            const sep = it.sep;
+                            sep.push(this.sourceToken);
+                            // @ts-expect-error type guard is wrong here
+                            delete it.key, delete it.sep;
+                            this.stack.push({
+                                type: 'block-map',
+                                offset: this.offset,
+                                indent: this.indent,
+                                items: [{ start, key, sep }]
+                            });
+                        }
+                        else if (start.length > 0) {
+                            // Not actually at next item
+                            it.sep = it.sep.concat(start, this.sourceToken);
+                        }
+                        else {
+                            it.sep.push(this.sourceToken);
+                        }
+                    }
+                    else {
+                        if (!it.sep) {
+                            Object.assign(it, { key: null, sep: [this.sourceToken] });
+                        }
+                        else if (it.value || atNextItem) {
+                            map.items.push({ start, key: null, sep: [this.sourceToken] });
+                        }
+                        else if (includesToken(it.sep, 'map-value-ind')) {
+                            this.stack.push({
+                                type: 'block-map',
+                                offset: this.offset,
+                                indent: this.indent,
+                                items: [{ start: [], key: null, sep: [this.sourceToken] }]
+                            });
+                        }
+                        else {
+                            it.sep.push(this.sourceToken);
+                        }
+                    }
+                    this.onKeyLine = true;
+                    return;
+                case 'alias':
+                case 'scalar':
+                case 'single-quoted-scalar':
+                case 'double-quoted-scalar': {
+                    const fs = this.flowScalar(this.type);
+                    if (atNextItem || it.value) {
+                        map.items.push({ start, key: fs, sep: [] });
+                        this.onKeyLine = true;
+                    }
+                    else if (it.sep) {
+                        this.stack.push(fs);
+                    }
+                    else {
+                        Object.assign(it, { key: fs, sep: [] });
+                        this.onKeyLine = true;
+                    }
+                    return;
+                }
+                default: {
+                    const bv = this.startBlockValue(map);
+                    if (bv) {
+                        if (atNextItem &&
+                            bv.type !== 'block-seq' &&
+                            includesToken(it.start, 'explicit-key-ind')) {
+                            map.items.push({ start });
+                        }
+                        this.stack.push(bv);
+                        return;
+                    }
+                }
+            }
+        }
+        yield* this.pop();
+        yield* this.step();
+    }
+    *blockSequence(seq) {
+        const it = seq.items[seq.items.length - 1];
+        switch (this.type) {
+            case 'newline':
+                if (it.value) {
+                    const end = 'end' in it.value ? it.value.end : undefined;
+                    const last = Array.isArray(end) ? end[end.length - 1] : undefined;
+                    if (last?.type === 'comment')
+                        end?.push(this.sourceToken);
+                    else
+                        seq.items.push({ start: [this.sourceToken] });
+                }
+                else
+                    it.start.push(this.sourceToken);
+                return;
+            case 'space':
+            case 'comment':
+                if (it.value)
+                    seq.items.push({ start: [this.sourceToken] });
+                else {
+                    if (this.atIndentedComment(it.start, seq.indent)) {
+                        const prev = seq.items[seq.items.length - 2];
+                        const end = prev?.value?.end;
+                        if (Array.isArray(end)) {
+                            Array.prototype.push.apply(end, it.start);
+                            end.push(this.sourceToken);
+                            seq.items.pop();
+                            return;
+                        }
+                    }
+                    it.start.push(this.sourceToken);
+                }
+                return;
+            case 'anchor':
+            case 'tag':
+                if (it.value || this.indent <= seq.indent)
+                    break;
+                it.start.push(this.sourceToken);
+                return;
+            case 'seq-item-ind':
+                if (this.indent !== seq.indent)
+                    break;
+                if (it.value || includesToken(it.start, 'seq-item-ind'))
+                    seq.items.push({ start: [this.sourceToken] });
+                else
+                    it.start.push(this.sourceToken);
+                return;
+        }
+        if (this.indent > seq.indent) {
+            const bv = this.startBlockValue(seq);
+            if (bv) {
+                this.stack.push(bv);
+                return;
+            }
+        }
+        yield* this.pop();
+        yield* this.step();
+    }
+    *flowCollection(fc) {
+        const it = fc.items[fc.items.length - 1];
+        if (this.type === 'flow-error-end') {
+            let top;
+            do {
+                yield* this.pop();
+                top = this.peek(1);
+            } while (top && top.type === 'flow-collection');
+        }
+        else if (fc.end.length === 0) {
+            switch (this.type) {
+                case 'comma':
+                case 'explicit-key-ind':
+                    if (!it || it.sep)
+                        fc.items.push({ start: [this.sourceToken] });
+                    else
+                        it.start.push(this.sourceToken);
+                    return;
+                case 'map-value-ind':
+                    if (!it || it.value)
+                        fc.items.push({ start: [], key: null, sep: [this.sourceToken] });
+                    else if (it.sep)
+                        it.sep.push(this.sourceToken);
+                    else
+                        Object.assign(it, { key: null, sep: [this.sourceToken] });
+                    return;
+                case 'space':
+                case 'comment':
+                case 'newline':
+                case 'anchor':
+                case 'tag':
+                    if (!it || it.value)
+                        fc.items.push({ start: [this.sourceToken] });
+                    else if (it.sep)
+                        it.sep.push(this.sourceToken);
+                    else
+                        it.start.push(this.sourceToken);
+                    return;
+                case 'alias':
+                case 'scalar':
+                case 'single-quoted-scalar':
+                case 'double-quoted-scalar': {
+                    const fs = this.flowScalar(this.type);
+                    if (!it || it.value)
+                        fc.items.push({ start: [], key: fs, sep: [] });
+                    else if (it.sep)
+                        this.stack.push(fs);
+                    else
+                        Object.assign(it, { key: fs, sep: [] });
+                    return;
+                }
+                case 'flow-map-end':
+                case 'flow-seq-end':
+                    fc.end.push(this.sourceToken);
+                    return;
+            }
+            const bv = this.startBlockValue(fc);
+            /* istanbul ignore else should not happen */
+            if (bv)
+                this.stack.push(bv);
+            else {
+                yield* this.pop();
+                yield* this.step();
+            }
+        }
+        else {
+            const parent = this.peek(2);
+            if (parent.type === 'block-map' &&
+                ((this.type === 'map-value-ind' && parent.indent === fc.indent) ||
+                    (this.type === 'newline' &&
+                        !parent.items[parent.items.length - 1].sep))) {
+                yield* this.pop();
+                yield* this.step();
+            }
+            else if (this.type === 'map-value-ind' &&
+                parent.type !== 'flow-collection') {
+                const prev = getPrevProps(parent);
+                const start = getFirstKeyStartProps(prev);
+                fixFlowSeqItems(fc);
+                const sep = fc.end.splice(1, fc.end.length);
+                sep.push(this.sourceToken);
+                const map = {
+                    type: 'block-map',
+                    offset: fc.offset,
+                    indent: fc.indent,
+                    items: [{ start, key: fc, sep }]
+                };
+                this.onKeyLine = true;
+                this.stack[this.stack.length - 1] = map;
+            }
+            else {
+                yield* this.lineEnd(fc);
+            }
+        }
+    }
+    flowScalar(type) {
+        if (this.onNewLine) {
+            let nl = this.source.indexOf('\n') + 1;
+            while (nl !== 0) {
+                this.onNewLine(this.offset + nl);
+                nl = this.source.indexOf('\n', nl) + 1;
+            }
+        }
+        return {
+            type,
+            offset: this.offset,
+            indent: this.indent,
+            source: this.source
+        };
+    }
+    startBlockValue(parent) {
+        switch (this.type) {
+            case 'alias':
+            case 'scalar':
+            case 'single-quoted-scalar':
+            case 'double-quoted-scalar':
+                return this.flowScalar(this.type);
+            case 'block-scalar-header':
+                return {
+                    type: 'block-scalar',
+                    offset: this.offset,
+                    indent: this.indent,
+                    props: [this.sourceToken],
+                    source: ''
+                };
+            case 'flow-map-start':
+            case 'flow-seq-start':
+                return {
+                    type: 'flow-collection',
+                    offset: this.offset,
+                    indent: this.indent,
+                    start: this.sourceToken,
+                    items: [],
+                    end: []
+                };
+            case 'seq-item-ind':
+                return {
+                    type: 'block-seq',
+                    offset: this.offset,
+                    indent: this.indent,
+                    items: [{ start: [this.sourceToken] }]
+                };
+            case 'explicit-key-ind': {
+                this.onKeyLine = true;
+                const prev = getPrevProps(parent);
+                const start = getFirstKeyStartProps(prev);
+                start.push(this.sourceToken);
+                return {
+                    type: 'block-map',
+                    offset: this.offset,
+                    indent: this.indent,
+                    items: [{ start }]
+                };
+            }
+            case 'map-value-ind': {
+                this.onKeyLine = true;
+                const prev = getPrevProps(parent);
+                const start = getFirstKeyStartProps(prev);
+                return {
+                    type: 'block-map',
+                    offset: this.offset,
+                    indent: this.indent,
+                    items: [{ start, key: null, sep: [this.sourceToken] }]
+                };
+            }
+        }
+        return null;
+    }
+    atIndentedComment(start, indent) {
+        if (this.type !== 'comment')
+            return false;
+        if (this.indent <= indent)
+            return false;
+        return start.every(st => st.type === 'newline' || st.type === 'space');
+    }
+    *documentEnd(docEnd) {
+        if (this.type !== 'doc-mode') {
+            if (docEnd.end)
+                docEnd.end.push(this.sourceToken);
+            else
+                docEnd.end = [this.sourceToken];
+            if (this.type === 'newline')
+                yield* this.pop();
+        }
+    }
+    *lineEnd(token) {
+        switch (this.type) {
+            case 'comma':
+            case 'doc-start':
+            case 'doc-end':
+            case 'flow-seq-end':
+            case 'flow-map-end':
+            case 'map-value-ind':
+                yield* this.pop();
+                yield* this.step();
+                break;
+            case 'newline':
+                this.onKeyLine = false;
+            // fallthrough
+            case 'space':
+            case 'comment':
+            default:
+                // all other values are errors
+                if (token.end)
+                    token.end.push(this.sourceToken);
+                else
+                    token.end = [this.sourceToken];
+                if (this.type === 'newline')
+                    yield* this.pop();
+        }
+    }
+}function parseOptions(options) {
+    const prettyErrors = options.prettyErrors !== false;
+    const lineCounter = options.lineCounter || (prettyErrors && new LineCounter()) || null;
+    return { lineCounter, prettyErrors };
+}
+/**
+ * Parse the input as a stream of YAML documents.
+ *
+ * Documents should be separated from each other by `...` or `---` marker lines.
+ *
+ * @returns If an empty `docs` array is returned, it will be of type
+ *   EmptyStream and contain additional stream information. In
+ *   TypeScript, you should use `'empty' in docs` as a type guard for it.
+ */
+function parseAllDocuments(source, options = {}) {
+    const { lineCounter, prettyErrors } = parseOptions(options);
+    const parser = new Parser(lineCounter?.addNewLine);
+    const composer = new Composer(options);
+    const docs = Array.from(composer.compose(parser.parse(source)));
+    if (prettyErrors && lineCounter)
+        for (const doc of docs) {
+            doc.errors.forEach(prettifyError(source, lineCounter));
+            doc.warnings.forEach(prettifyError(source, lineCounter));
+        }
+    if (docs.length > 0)
+        return docs;
+    return Object.assign([], { empty: true }, composer.streamInfo());
+}
+/** Parse an input string into a single YAML.Document */
+function parseDocument(source, options = {}) {
+    const { lineCounter, prettyErrors } = parseOptions(options);
+    const parser = new Parser(lineCounter?.addNewLine);
+    const composer = new Composer(options);
+    // `doc` is always set by compose.end(true) at the very latest
+    let doc = null;
+    for (const _doc of composer.compose(parser.parse(source), true, source.length)) {
+        if (!doc)
+            doc = _doc;
+        else if (doc.options.logLevel !== 'silent') {
+            doc.errors.push(new YAMLParseError(_doc.range.slice(0, 2), 'MULTIPLE_DOCS', 'Source contains multiple documents; please use YAML.parseAllDocuments()'));
+            break;
+        }
+    }
+    if (prettyErrors && lineCounter) {
+        doc.errors.forEach(prettifyError(source, lineCounter));
+        doc.warnings.forEach(prettifyError(source, lineCounter));
+    }
+    return doc;
+}
+function parse(src, reviver, options) {
+    let _reviver = undefined;
+    if (typeof reviver === 'function') {
+        _reviver = reviver;
+    }
+    else if (options === undefined && reviver && typeof reviver === 'object') {
+        options = reviver;
+    }
+    const doc = parseDocument(src, options);
+    if (!doc)
+        return null;
+    doc.warnings.forEach(warning => warn(doc.options.logLevel, warning));
+    if (doc.errors.length > 0) {
+        if (doc.options.logLevel !== 'silent')
+            throw doc.errors[0];
+        else
+            doc.errors = [];
+    }
+    return doc.toJS(Object.assign({ reviver: _reviver }, options));
+}
+function stringify(value, replacer, options) {
+    let _replacer = null;
+    if (typeof replacer === 'function' || Array.isArray(replacer)) {
+        _replacer = replacer;
+    }
+    else if (options === undefined && replacer) {
+        options = replacer;
+    }
+    if (typeof options === 'string')
+        options = options.length;
+    if (typeof options === 'number') {
+        const indent = Math.round(options);
+        options = indent < 1 ? undefined : indent > 8 ? { indent: 8 } : { indent };
+    }
+    if (value === undefined) {
+        const { keepUndefined } = options ?? replacer ?? {};
+        if (!keepUndefined)
+            return undefined;
+    }
+    return new Document(value, _replacer, options).toString(options);
+}const YAML=/*#__PURE__*/Object.defineProperty({__proto__:null,CST:cst,Composer,Document,Schema,YAMLError,YAMLParseError,YAMLWarning,Alias,isAlias,isCollection:isCollection$1,isDocument,isMap,isNode,isPair,isScalar:isScalar$1,isSeq,Pair,Scalar,YAMLMap,YAMLSeq,Lexer,LineCounter,Parser,parse,parseAllDocuments,parseDocument,stringify,visit:visit$1,visitAsync},Symbol.toStringTag,{value:'Module'});try {
+	const chalk = new Chalk({ level: 3 });
+	const iftttMakerURLRegExp = /^(?:https:\/\/maker\.ifttt\.com\/use\/)?(?<key>(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z])$/u;
+	coreExports.startGroup(`Import inputs.`);
+	let eventName = coreExports.getInput("eventname");
+	if (!isString(eventName, { pattern: /^(?:[\da-zA-Z][\da-zA-Z_-]*)?[\da-zA-Z]$/u })) {
+		throw new TypeError(`\`${eventName}\` is not a valid IFTTT webhook event name!`);
+	}
+	console.log(`${chalk.bold("Event Name:")} ${eventName}`);
+	if (!isString(eventName, { lowerCase: true })) {
+		coreExports.warning(`Event name \`${eventName}\` is recommended to keep in lower case to prevent issues!`);
+	}
+	let keyRaw = coreExports.getInput("key");
+	if (!isString(keyRaw, { pattern: iftttMakerURLRegExp })) {
+		throw new TypeError(`Input \`key\` is not a valid IFTTT webhook key!`);
+	}
+	let key = keyRaw.match(iftttMakerURLRegExp).groups.key;
+	coreExports.setSecret(key);
+	let arbitrary = coreExports.getBooleanInput("arbitrary");
+	if (typeof arbitrary !== "boolean") {
+		throw new TypeError(`Input \`arbitrary\` must be type of boolean!`);
+	}
+	let payloadRaw = coreExports.getInput("payload");
+	let payload = isStringifyJSON(payloadRaw, { arrayRoot: false }) ? JSON.parse(payloadRaw) : YAML.parse(payloadRaw);
+	if (!isJSON(payload, { arrayRoot: false })) {
+		throw new TypeError(`\`${payload}\` is not a valid IFTTT webhook JSON/YAML/YML payload!`);
+	}
+	let payloadStringify = JSON.stringify(payload);
+	console.log(`${chalk.bold("Payload:")} ${payloadStringify}`);
+	coreExports.endGroup();
+	coreExports.startGroup(`Post network request to IFTTT.`);
+	let response = await fetch(
+		`https://maker.ifttt.com/trigger/${eventName}${arbitrary ? "/json" : ""}/with/key/${key}`,
+		{
+			body: payloadStringify,
+			follow: 1,
+			headers: {
+				"Content-Type": "application/json",
+				"User-Agent": `TriggerIFTTTWebhookApplet.GitHubAction/5.0.0 NodeJS/${process.versions.node}`
+			},
+			method: "POST",
+			redirect: "follow"
+		}
+	).catch((reason) => {
+		throw new Error(`Unexpected web request issue: ${reason?.message}`);
+	});
+	let responseText = await response.text();
+	coreExports.setOutput("response", responseText);
+	coreExports.setOutput("status_code", response.status);
+	coreExports.setOutput("status_ok", response.ok);
+	coreExports.setOutput("status_text", response.statusText);
+	if (!response.ok) {
+		throw new Error(`Unexpected response status \`${response.status} ${response.statusText}\`: ${responseText}`);
+	}
+	console.log(`${chalk.bold("Response Status:")} ${response.status} ${response.statusText}`);
+	console.log(`${chalk.bold("Response Content:")} ${responseText}`);
+	coreExports.endGroup();
+} catch (error) {
+	coreExports.error(error?.message);
+	coreExports.endGroup();
+	process.exit(1);
+}export{FormData as F,File as a};//# sourceMappingURL=main.js.map
