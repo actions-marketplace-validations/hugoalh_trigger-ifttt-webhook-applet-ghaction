@@ -15,16 +15,16 @@
 	"license": "MIT",
 	"author": "hugoalh",
 	"type": "module",
-	"main": "./dist/main.js",
+	"main": "./dist/index.js",
 	"exports": {
-		"import": "./dist/main.js"
+		"import": "./dist/index.js"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hugoalh/trigger-ifttt-webhook-applet-ghaction.git"
 	},
 	"scripts": {
-		"build": "node esbuild.js"
+		"build": "ncc build src/index.js --out dist --no-cache --no-source-map-register --target es2021"
 	},
 	"dependencies": {
 		"@actions/core": "^1.10.0",
@@ -35,7 +35,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.11.2",
-		"esbuild": "^0.15.12",
+		"@vercel/ncc": "^0.34.0",
 		"eslint": "^8.25.0",
 		"eslint-plugin-only-warn": "^1.0.3",
 		"typescript": "^4.8.4"
