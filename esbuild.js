@@ -6,7 +6,9 @@ console.log(await build({
 		"./src/main.js"
 	],
 	format: "esm",
-	minify: true,
+	minifyIdentifiers: true,
+	minifySyntax: false,
+	minifyWhitespace: true,
 	outfile: "./dist/main.js",
 	platform: "node",
 	sourcemap: "linked",
