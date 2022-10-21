@@ -34,19 +34,16 @@ try {
 	console.log(`${chalk.bold("Payload:")} ${payloadStringify}`);
 	ghactionsEndGroup();
 	ghactionsStartGroup(`Post network request to IFTTT.`);
-	let response = await nodeFetch(
-		`https://maker.ifttt.com/trigger/${eventName}${arbitrary ? "/json" : ""}/with/key/${key}`,
-		{
-			body: payloadStringify,
-			follow: 1,
-			headers: {
-				"Content-Type": "application/json",
-				"User-Agent": `TriggerIFTTTWebhookApplet.GitHubAction/5.0.0 NodeJS/${process.versions.node}`
-			},
-			method: "POST",
-			redirect: "follow"
-		}
-	).catch((reason) => {
+	let response = await nodeFetch(`https://maker.ifttt.com/trigger/${eventName}${arbitrary ? "/json" : ""}/with/key/${key}`, {
+		body: payloadStringify,
+		follow: 1,
+		headers: {
+			"Content-Type": "application/json",
+			"User-Agent": `TriggerIFTTTWebhookApplet.GitHubAction/5.0.0 NodeJS/${process.versions.node}`
+		},
+		method: "POST",
+		redirect: "follow"
+	}).catch((reason) => {
 		throw new Error(`Unexpected web request issue: ${reason?.message}`);
 	});
 	let responseText = await response.text();
