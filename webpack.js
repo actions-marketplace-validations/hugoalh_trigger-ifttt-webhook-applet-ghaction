@@ -8,17 +8,8 @@ const webpackConfig = {
 	},
 	mode: "production",
 	optimization: {
-		minimize: true,
-		minimizer: [
-			new TerserPlugin({
-				extractComments: false,
-				terserOptions: {
-					format: {
-						comments: false
-					}
-				}
-			})
-		]
+		minimize: false,
+		minimizer: [new TerserPlugin({ extractComments: false })]
 	},
 	output: {
 		asyncChunks: false,
